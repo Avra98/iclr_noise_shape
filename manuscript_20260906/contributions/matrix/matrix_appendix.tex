@@ -1,0 +1,413 @@
+% Exact matrix theorem and full reduction to the cited Markov renewal theorem.
+\section{Matrix renewal at a locally expanding center}
+\label{app:matrix-renewal}
+
+\subsection{Definitions and explicit assumptions}
+Let $A_1,A_2,\ldots$ be iid invertible matrices. Work on a compact
+communicating class $\mathcal S$ of signed unit directions; projective
+space is sufficient when no statement depends on sign. For a nonzero
+vector, write $U=r_0e^Z S$. Define the Markov additive process
+\begin{equation}
+ S_{n+1}=\frac{A_{n+1}S_n}{\|A_{n+1}S_n\|},\qquad
+ Z_{n+1}=Z_n+Y_{n+1},\qquad
+ Y_{n+1}=\log\|A_{n+1}S_n\|.
+ \label{eq:map-exact}
+\end{equation}
+Its joint direction--increment kernel is $K(s,ds',dy)$. The term
+``Markov additive'' means precisely that this kernel depends on the
+current direction but not on the current log radius. Let $P_q$ be
+\eqref{eq:matrix-pressure-main}, acting on continuous functions with
+the supremum norm, and let $k(q)$ be its spectral radius. In particular
+$P_0 1=1$ and $k(0)=1$.
+
+\begin{assumption}[Negative-order renewal hypotheses]
+\label{ass:matrix-renewal}
+The following conditions hold.
+\begin{enumerate}
+\item For some $\alpha>0$ there exist a continuous $h$, constants
+$0<h_{\min}\le h\le h_{\max}<\infty$, and a probability measure $\chi$
+such that
+\begin{equation}
+ P_{-\alpha}h=h,\quad \chi P_{-\alpha}=\chi,\quad
+ \chi(h)=1,\quad k(-\alpha)=1.
+ \label{eq:matrix-eigen}
+\end{equation}
+For some $t\in(0,\alpha)$, $P_{-\alpha+t}$ is bounded on
+$C(\mathcal S)$ and $k(-\alpha+t)<1$.
+\item The probability kernel
+\begin{equation}
+ \widehat K(s,ds',dy)
+   =e^{-\alpha y}\frac{h(s')}{h(s)}K(s,ds',dy)
+ \label{eq:matrix-tilt}
+\end{equation}
+has a positive Harris recurrent angular chain, with invariant law
+$\widehat\chi(ds)=h(s)\chi(ds)$, and each one-step angular law
+$\widehat P(s,\cdot)$ is absolutely continuous with respect to
+$\widehat\chi$. Under $\widehat\chi$,
+\begin{equation}
+ \widehat{\mathbb E}|Y_1|<\infty,
+ \qquad \widehat{\mathbb E}Y_1=-m<0.
+ \label{eq:matrix-tilt-drift}
+\end{equation}
+\item The tilted Markov additive process is nonarithmetic: there is no
+$b>0$ and measurable $c:\mathcal S\to[0,b)$ such that
+$Y_1\in c(S_0)-c(S_1)+b\mathbb Z$ almost surely under its stationary
+angular law.
+\end{enumerate}
+\end{assumption}
+
+These are hypotheses on the actual random matrices, not conclusions
+from a positive one-step scalar log gain. Absolute continuity in the
+second condition is a convenient sufficient condition extending the
+almost-every-start Markov renewal theorem to every starting direction.
+Singular or finitely supported matrix laws may require a different
+all-start renewal theorem; the present statement does not silently
+cover them. If the dominant eigenvalue and eigenfunction are
+differentiable at $-\alpha$, differentiating $P_qh_q=k(q)h_q$ and
+integrating against $\chi$ gives
+$k'(-\alpha)=\chi(P'_{-\alpha}h)=-m$.
+Thus $m=-(\log k)'(-\alpha)$ in that case. Strict convexity of
+$\log k$ between the two roots guarantees $k(-\alpha+t)<1$.
+
+Let $\tau=\inf\{n\ge0:Z_n\ge0\}$ and let $\zeta$ be an entry law on
+$(-\infty,0)\times\mathcal S$. We impose
+\begin{equation}
+ L:=\mathbb E_\zeta\tau\in(0,\infty),\qquad
+ \mathbb E_\zeta e^{-\alpha Z_0}<\infty.
+ \label{eq:matrix-entry}
+\end{equation}
+At the transition that would exit, the regenerative reference chain
+instead draws its next state from an independent copy of $\zeta$.
+Consequently each cycle contains states numbered $0,\ldots,\tau-1$.
+This construction specifies a reference process. Probabilistic
+regeneration of actual SGD is addressed separately below.
+
+\subsection{A uniform occupation bound derived from the spectrum}
+\begin{lemma}[Tilted interval potentials are uniformly bounded]
+\label{lem:matrix-potential-bound}
+Under Assumption~\ref{ass:matrix-renewal}(1), for each $b>0$ there is
+$C_b<\infty$ such that
+\begin{equation}
+ \sup_{z,s,x}\widehat{\mathbb E}_{z,s}
+ \sum_{n\ge0}{\bf1}_{\{Z_n\in(x,x+b]\}}\le C_b.
+ \label{eq:uniform-renewal-bound}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The exact change of measure gives
+\begin{equation}
+ \widehat{\mathbb E}_s
+ e^{t(Z_n-Z_0)}
+ =\frac{P_{-\alpha+t}^{,n}h(s)}{h(s)}
+ \le C\rho^n
+ \label{eq:tilted-exp-contraction}
+\end{equation}
+for some $\rho<1$ and $C<\infty$.
+Indeed, choose $\rho$ strictly between $k(-\alpha+t)$ and $1$;
+the spectral-radius formula bounds the operator powers by a constant
+times $\rho^n$, and $h$ is bounded above and away from zero.
+If $Z_0\in(x,x+b]$, exponential Markov inequality yields
+\[
+ \widehat{\mathbb P}_{Z_0,s}(Z_n\in(x,x+b])
+ \le e^{tb}C\rho^n.
+\]
+Summing over $n$ bounds occupation by $e^{tb}C/(1-\rho)$.
+For any other initial state, apply this bound at its first visit to
+the interval, using the strong Markov property. If there is no first
+visit the occupation is zero. This proves the claim, uniformly over
+both direction and log radius.
+\end{proof}
+
+\subsection{Unrestricted and killed renewal asymptotics}
+Write $U_{z,s}$ and $\widehat U_{z,s}$ for the unrestricted occupation
+measures of \eqref{eq:map-exact} under its original and tilted laws.
+For $n$ steps, multiplying \eqref{eq:matrix-tilt} along a path gives
+the exact likelihood ratio
+\begin{equation}
+ \left.\frac{d\widehat{\mathbb P}_{z,s}}
+ {d\mathbb P_{z,s}}\right|_{\mathcal F_n}
+ = e^{-\alpha(Z_n-z)}\frac{h(S_n)}{h(s)}.
+ \label{eq:matrix-rn}
+\end{equation}
+Consequently
+\begin{equation}
+ U_{z,s}(dx,ds')=
+ e^{\alpha(x-z)}\frac{h(s)}{h(s')}
+ \widehat U_{z,s}(dx,ds').
+ \label{eq:potential-tilt-exact}
+\end{equation}
+
+Apply the Markov renewal theorem of \citet[Theorem 1]{alsmeyer1997}
+to the positive-drift process $-Z$. For an angular set $D$ and a finite
+log interval, its conclusion, together with the exponential test
+weight in \eqref{eq:potential-tilt-exact}, gives
+\begin{equation}
+ \lim_{x\to-\infty}e^{-\alpha x}U_{z,s}((x,x+b]\times D)
+ = e^{-\alpha z}h(s)
+ \frac{e^{\alpha b}-1}{\alpha m}\,
+ \chi(D).
+ \label{eq:unrestricted-matrix-renewal}
+\end{equation}
+Initially the theorem gives the limit for $\widehat\chi$-almost every
+starting direction. To obtain it for an arbitrary $s$, split the
+tilted occupation into its time-zero atom and its potential after the
+first step. The time-zero atom eventually lies outside the translated
+interval. The next direction has a law absolutely continuous with
+respect to $\widehat\chi$, so the almost-everywhere limit applies after
+this step. Lemma~\ref{lem:matrix-potential-bound}, together with the
+bounded test weight $e^{\alpha u}/h(s')$, permits dominated convergence
+over this first step. This proves the limit for every $s$ and every
+finite initial $z$. The angular factor is $\chi$, since division by
+$h(s')$ cancels the $h(s')$ in $\widehat\chi$.
+
+Moreover, \eqref{eq:potential-tilt-exact} and the same lemma give a
+constant $C_b'$ such that, for all $x,z,s$,
+\begin{equation}
+ e^{-\alpha x}U_{z,s}((x,x+b]\times\mathcal S)
+ \le C_b'e^{-\alpha z}h(s).
+ \label{eq:original-renewal-domination}
+\end{equation}
+This bound is the domination needed for integration over entry and exit
+states. It has been proved, rather than included as an unverified
+``uniform renewal'' assumption.
+
+\begin{proof}[Proof of Theorem~\ref{thm:matrix-central-main}]
+Let $G_\zeta$ denote expected occupation before $\tau$.
+The strong Markov property gives, on bounded log intervals,
+\begin{equation}
+ G_\zeta=U_\zeta-
+ \mathbb E_\zeta U_{Z_\tau,S_\tau}.
+ \label{eq:killed-subtraction}
+\end{equation}
+Finite mean exit time implies $\tau<\infty$ almost surely under
+$\mathbb P_\zeta$. The entry moment in \eqref{eq:matrix-entry}, bounded
+$h$, and $Z_\tau\ge0$ permit integrating
+\eqref{eq:unrestricted-matrix-renewal} in both terms by
+\eqref{eq:original-renewal-domination}. Hence
+\begin{equation}
+ \lim_{x\to-\infty}e^{-\alpha x}G_\zeta((x,x+b]\times D)
+ = D_\alpha\frac{e^{\alpha b}-1}{\alpha m}\chi(D),
+ \label{eq:killed-asymptotic}
+\end{equation}
+where
+\begin{equation}
+ D_\alpha=
+ \mathbb E_\zeta\!\left[e^{-\alpha Z_0}h(S_0)
+                 -e^{-\alpha Z_\tau}h(S_\tau)\right].
+ \label{eq:matrix-central-constant}
+\end{equation}
+Its sign cannot be read by comparing endpoint radii alone, because
+directions change. For each fixed start, summing the stopped likelihood
+ratio \eqref{eq:matrix-rn} over events $\{\tau=n\}$ instead gives
+\[
+ \mathbb E_{z,s}[e^{-\alpha Z_\tau}h(S_\tau);\tau<\infty]
+ =e^{-\alpha z}h(s)\,
+   \widehat{\mathbb P}_{z,s}(\tau<\infty).
+\]
+Therefore
+\begin{equation}
+ D_\alpha=
+ \mathbb E_\zeta\!\left[
+ e^{-\alpha Z_0}h(S_0)
+ \widehat{\mathbb P}_{Z_0,S_0}(\tau=\infty)\right].
+ \label{eq:positive-constant}
+\end{equation}
+The stated positive-survival condition makes $D_\alpha>0$.
+It is enough for a positive entry mass to be sufficiently far below
+the upper boundary: by \eqref{eq:tilted-exp-contraction},
+\[
+ \widehat{\mathbb P}_{z,s}(\tau<\infty)
+ \le \sum_{n\ge1}\widehat{\mathbb P}_{z,s}(Z_n\ge0)
+ \le \frac{C\rho}{1-\rho}e^{tz},
+\]
+which is strictly below one for all sufficiently negative $z$.
+
+The regenerative occupation formula
+\begin{equation}
+ \pi(F)=\frac{1}{L}\,
+ \mathbb E_\zeta\sum_{n=0}^{\tau-1}{\bf1}_{\{(Z_n,S_n)\in F\}}
+ \label{eq:regeneration-formula}
+\end{equation}
+defines an invariant probability. For a bounded test function, summing
+its expected one-step change over a cycle telescopes to the difference
+between two cycle starts, both with law $\zeta$; hence its integral
+against $\pi P-\pi$ is zero.
+To pass from intervals to the half-line $(-\infty,x]$, partition it
+into intervals $(x-(j+1)b,x-jb]$. The bound
+\eqref{eq:original-renewal-domination} dominates their rescaled
+occupations by a summable geometric sequence in $j$. Summing
+\eqref{eq:killed-asymptotic} therefore yields
+\begin{equation}
+ \lim_{x\to-\infty}e^{-\alpha x}\pi(Z\le x,S\in D)
+ = \frac{D_\alpha}{\alpha m L}\chi(D).
+ \label{eq:matrix-final-constant}
+\end{equation}
+Substituting $x=\log(r/r_0)$ proves the theorem, with
+$C=D_\alpha/(\alpha mL)$.
+\end{proof}
+
+The theorem proves a small-ball asymptotic. Differentiating an
+asymptotic cumulative distribution without further hypotheses is
+invalid. A radial-density conclusion requires the corresponding
+renewal-density result, for example a suitable smoothing condition
+giving convergence of local densities. Angular density conclusions
+additionally require regularity of $\chi$.
+
+\subsection{A noncommuting law that verifies every renewal hypothesis}
+\label{app:realizable-matrix-renewal}
+The preceding assumptions are realizable even by symmetric random
+matrices. For $d\ge2$, take
+\begin{equation}
+ A=M(I-2vv^\top),\qquad
+ v\sim\operatorname{Unif}(S^{d-1}),\qquad
+ M\sim\tfrac14\operatorname{Unif}[.49,.51]
+      +\tfrac34\operatorname{Unif}[1.99,2.01],
+ \label{eq:reflection-example}
+\end{equation}
+with independent draws at each update. Independent reflections
+generically do not commute. Their norm gain is $M$, so
+$P_q=m(q)R$, where $m(q)=\mathbb EM^q$ and $R$ is the angular
+reflection kernel. Thus $h=1$, $k(q)=m(q)$, and $\chi$ is uniform
+surface probability. This scalar formula is special to this example;
+the matrix theorem itself retains the coupled angular dynamics.
+
+For completeness the reflection kernel has, with respect to uniform
+surface probability, density
+\begin{equation}
+ R(s,ds')=\|s-s'\|^{2-d}\chi(ds')\quad(s'\ne s).
+ \label{eq:reflection-angular-density}
+\end{equation}
+To verify it, put $s=e_1$ and let $\theta$ be the angle between $s$ and
+$s'$. Reflection gives $|v^\top s|=\sin(\theta/2)$.
+Changing variables from the spherical coordinate of $v$ gives
+the angle density $c_d\cos^{d-2}(\theta/2)$, whereas a uniform
+$s'$ has angle density $c_d\sin^{d-2}\theta$. Their ratio is
+$(2\sin(\theta/2))^{2-d}=\|s-s'\|^{2-d}$.
+In particular $R(s,\cdot)\ge2^{2-d}\chi(\cdot)$, so it is a
+uniformly mixing Harris kernel, and its symmetry verifies invariance
+of $\chi$. Its one-step laws are absolutely continuous.
+
+The top product norm equals $\prod_{j=1}^n M_j$, since every remaining
+factor is orthogonal. Hence
+\[
+ \gamma=\mathbb E\log M
+ \ge\tfrac14\log(.49)+\tfrac34\log(1.99)>0,
+ \qquad
+ m(-1)\le\frac{1}{4(.49)}+\frac{3}{4(1.99)}<1.
+\]
+Strict log convexity and the positive mass below one imply a unique
+negative root $m(-\alpha)=1$ with $\alpha>1$ and
+$m(-\alpha+t)<1$ for every $t\in(0,\alpha)$.
+Tilting changes only the scalar multiplier law; it leaves $R$
+unchanged. The tilted log increment has bounded support, a density,
+and strictly negative mean $m'(-\alpha)<0$, so all spectral and
+nonarithmetic hypotheses hold.
+
+Choose the entry log radius $Z_0=-1$ and an independent uniform
+direction. Since the original log increments are iid with mean
+$\gamma>0$ and are bounded above by $\log2.01$, Wald's identity at
+$\tau\wedge n$ gives
+\[
+ \gamma\mathbb E(\tau\wedge n)
+   =\mathbb EZ_{\tau\wedge n}+1
+   \le\log2.01+1.
+\]
+The strong law gives almost-sure exit; monotone convergence now gives
+finite mean exit time. The entry inverse moment is $e^\alpha$.
+Under the tilted law $e^{\alpha Z_n}$ is a nonnegative martingale;
+optional stopping yields
+$\widehat{\mathbb P}_{-1,s}(\tau<\infty)\le e^{-\alpha}<1$.
+The central-law coefficient is therefore strictly positive.
+All hypotheses of Theorem~\ref{thm:matrix-central-main} have been
+verified for this noncommuting law.
+
+The matrices are symmetric, so they can be written
+$A=I-\eta H$ for symmetric sample Hessians. In $d=2$,
+$\mathbb E(I-2vv^\top)=0$, so $\mathbb EH=I/\eta$ is positive
+definite even though individual sample Hessians need not be. The
+independent restart remains an explicit return mechanism of the
+reference process; it is not silently identified with an SGD update.
+
+\subsection{An exact, conditional transfer statement for nonlinear SGD}
+\begin{proposition}[Nonlinear occupation transfer]
+\label{prop:nonlinear-transfer}
+Consider a nonlinear chain that has genuine regenerative cycles of
+finite mean length $T$, with cycle endpoints outside the local domain
+$\mathcal D=\{(z,s):z<0\}$. Let $Q$ be its actual transition kernel
+killed on leaving $\mathcal D$, and let $L_0$ be the kernel of
+\eqref{eq:map-exact} killed at its upper exit. Let $G$ be the expected
+measure of all local visits in one complete cycle, and $\nu$ the
+expected measure of every entry into $\mathcal D$ in that cycle. Put
+\begin{equation}
+ \mathcal J=\nu+G(Q-L_0),\qquad
+ H(z,s)=e^{-\alpha z}h(s)
+       \widehat{\mathbb P}_{z,s}(\tau=\infty).
+ \label{eq:nonlinear-source}
+\end{equation}
+Assume the killed linear chain exits from $G$-almost every starting
+point and that
+\begin{equation}
+ \int e^{-\alpha z}\,|\mathcal J|(dz,ds)<\infty,
+ \qquad D_Q:=\int H\,d\mathcal J>0.
+ \label{eq:source-integrability}
+\end{equation}
+Under Assumption~\ref{ass:matrix-renewal}, the genuine invariant law
+has the same central exponent:
+\begin{equation}
+ \lim_{r\downarrow0}
+ \frac{\pi(\|U\|\le r,S\in D)}{(r/r_0)^\alpha}
+ = \frac{D_Q}{\alpha m\mathbb ET}\chi(D).
+ \label{eq:nonlinear-central-law}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Counting each visit as either an entry or the successor of a previous
+local visit yields $G=\nu+GQ$. Thus $G=\mathcal J+GL_0$ exactly, and
+\[
+ \sum_{j=0}^{n-1}\mathcal J L_0^j=G-GL_0^n.
+\]
+Since $G$ is finite and the killed linear chain exits $G$-almost
+everywhere, $GL_0^n$ tends to zero in total variation. For each fixed
+bounded log interval, the killed potential is bounded by its
+unrestricted potential, and \eqref{eq:original-renewal-domination}
+shows absolute integrability against $|\mathcal J|$ by
+\eqref{eq:source-integrability}. We may therefore pass to the infinite
+sum and then integrate the killed asymptotic against the signed source.
+The coefficient is $D_Q$. Summing intervals as in the preceding proof
+and dividing occupation by the complete nonlinear cycle length proves
+\eqref{eq:nonlinear-central-law}.
+\end{proof}
+
+The source is signed. A nonnegative entry law does not guarantee
+$D_Q>0$, because nonlinear correction can cancel its leading term.
+The source condition can be checked without assuming the desired
+central exponent. For example, suppose $V_p(z,s)$ is comparable to
+$e^{-pz}$ for some $0<p<\alpha$ and satisfies
+\begin{equation}
+ QV_p\le\rho_p V_p,\qquad \rho_p<1,
+ \qquad \nu(e^{-\alpha z})<\infty,
+ \label{eq:inverse-occupation-drift}
+\end{equation}
+and
+\begin{equation}
+ \int e^{-\alpha z'}
+ |Q-L_0|((z,s),d(z',s'))\le C V_p(z,s).
+ \label{eq:weighted-kernel-discrepancy}
+\end{equation}
+Decomposing the cycle into its actual local excursions gives
+$G=\nu\sum_{n\ge0}Q^n$ and hence
+$G(V_p)\le\nu(V_p)/(1-\rho_p)<\infty$.
+Equations \eqref{eq:inverse-occupation-drift}--\eqref{eq:weighted-kernel-discrepancy}
+then imply \eqref{eq:source-integrability}'s integrability assertion.
+An eigenfunction $h_p$ with $P_{-p}h_p=k(-p)h_p$ and $k(-p)<1$
+suggests $V_p=e^{-pz}h_p(s)$ for this independent drift calculation.
+
+A Taylor expansion $F_B(u)=A_Bu+O(\|u\|^{1+\delta})$ does not by
+itself prove \eqref{eq:weighted-kernel-discrepancy}: nearby point masses
+have order-one total variation distance. Smooth transition laws or a
+different perturbative renewal theorem are needed. Fixed nondegenerate
+additive noise also destroys the multiplicative approximation as
+$r\downarrow0$. For that case an intermediate small-noise annulus,
+with estimates uniform in the noise scale, must replace the literal
+zero-radius limit. We do not claim these transfer conditions for the
+neural experiments.

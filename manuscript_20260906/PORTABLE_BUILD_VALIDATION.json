@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "archive_crc": "passed",
+  "fresh_directory_latex_build": "passed",
+  "pages": 37,
+  "extracted_text_identical_to_delivered_pdf": true,
+  "original_training_result_directories_required_for_latex_build": false
+}

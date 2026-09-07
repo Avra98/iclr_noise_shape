@@ -1,0 +1,4601 @@
+{
+  "inputs": {
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/grids_vision/numeric_grid_audit.json": "aef20da9e8c067847987434f135f338dae98c0b7d14e5d2112d4cdeed3188e6b",
+    "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/figure_review_20260905/figure_inputs.pkl": "88bbdcc449627605a439bb7640336d779289d6444e5d2388d160739e3e8629af",
+    "/scratch/users/ghoshavr/eoss/papers/iclr_stochastic_stability_20260906/contributions/empirical/local_window_bimodality.py": "56bc4372c274881a5c7eb35189f237321571fcf17ff916a771c14003db65c55a",
+    "/scratch/users/ghoshavr/eoss/results/CNN_DIRECTIONAL_WINDOWS_20260905/branches/mlp_iid_control/trace.npz": "405096a2f9e685132fde8498419a0e11b3b7dacf31aad0777ecc129e5a73eb06",
+    "/scratch/users/ghoshavr/eoss/results/CNN_DIRECTIONAL_WINDOWS_20260905/branches/mlp_iid_control/fresh_probes.npz": "a249235df02356304e4ab18cbdcc3691d50caba19a725aa4965641961329174e",
+    "/scratch/users/ghoshavr/eoss/results/CNN_DIRECTIONAL_WINDOWS_20260905/branches/mlp_iid_control/meta.json": "10cfc17dd26bf6b8f678421496fc7da4cfea0cad191c110f564632358d8057de",
+    "/scratch/users/ghoshavr/eoss/results/CNN_DIRECTIONAL_WINDOWS_20260905/branches/mlp_iid_control/full_loss.json": "eb8a9fdc242814a0efd98a07460dc5b90fc14aad4766d5072f6379a449cd0d49",
+    "/scratch/users/ghoshavr/eoss/results/CNN_DIRECTIONAL_WINDOWS_20260905/directional_analysis/mlp_iid_control/summary.json": "b3b7aebd34c7aa306c59c2b4b61bc784608062273fc76bec9cc892f4645f0094",
+    "/scratch/users/ghoshavr/eoss/results/CNN_DIRECTIONAL_WINDOWS_20260905/analysis/confirmation.json": "f5a5f823b7f807fb34109ae68c19bc20cf40be9b3d9f50df81bc5185d2e681d7",
+    "/scratch/users/ghoshavr/eoss/results/CNN_DIRECTIONAL_WINDOWS_20260905/branches/cnn_discovery/trace.npz": "bee2b011bc03e24bac182ae9049f62e460ce6e55dafd85b368a92261a7852496",
+    "/scratch/users/ghoshavr/eoss/results/CNN_DIRECTIONAL_WINDOWS_20260905/branches/cnn_confirmation/trace.npz": "9c539225b16c8e8cb7ac1c06ef7586e0fbc9bebc7fccf7615a0bbfd5ac8da39f"
+  },
+  "grid": {
+    "cnn_silu": {
+      "figure_id": "cnn_silu_grid_eta_batch",
+      "arch": "cnn_silu",
+      "learning_rates": [
+        0.04,
+        0.08,
+        0.16
+      ],
+      "batch_sizes": [
+        8,
+        32,
+        128,
+        512,
+        2048,
+        4096
+      ],
+      "cells": [
+        {
+          "eta": 0.04,
+          "B": 8,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88881/B8",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88882/B8",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88883/B8"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 3,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.5238563263012226,
+                -0.7816426894131716,
+                -0.7340812376313919
+              ],
+              "mean": -0.6798600844485954,
+              "minimum": -0.7816426894131716,
+              "maximum": -0.5238563263012226,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.3070438901657205,
+                0.18149475676247695,
+                0.1905193893294024
+              ],
+              "mean": 0.2263526787525333,
+              "minimum": 0.18149475676247695,
+              "maximum": 0.3070438901657205,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.804525683930439,
+                0.5984960048589402,
+                0.5970859620839061
+              ],
+              "mean": 0.6667025502910952,
+              "minimum": 0.5970859620839061,
+              "maximum": 0.804525683930439,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                1.0815174757180288,
+                0.6759181360970073,
+                0.6628333697192892
+              ],
+              "mean": 0.8067563271781083,
+              "minimum": 0.6628333697192892,
+              "maximum": 1.0815174757180288,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.3382846797360215,
+                0.5556813696580549,
+                0.44075860557950924
+              ],
+              "mean": 0.7782415516578619,
+              "minimum": 0.44075860557950924,
+              "maximum": 1.3382846797360215,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.20535714285714285,
+                0.017857142857142856,
+                0.0
+              ],
+              "mean": 0.0744047619047619,
+              "minimum": 0.0,
+              "maximum": 0.20535714285714285,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.04,
+          "B": 32,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88881/B32",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88882/B32",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88883/B32"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 1,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.006787161721508442,
+                -0.3439581658702651,
+                -0.2321943893651305
+              ],
+              "mean": -0.19431323898563468,
+              "minimum": -0.3439581658702651,
+              "maximum": -0.006787161721508442,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.894162903235872,
+                0.5013873857514057,
+                0.7309893102341959
+              ],
+              "mean": 0.7088465330738245,
+              "minimum": 0.5013873857514057,
+              "maximum": 0.894162903235872,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                1.091796533539758,
+                0.7898454830772208,
+                0.8490146982737918
+              ],
+              "mean": 0.9102189049635901,
+              "minimum": 0.7898454830772208,
+              "maximum": 1.091796533539758,
+              "seed_threshold_disagreement": true
+            },
+            "A2": {
+              "seed_values": [
+                1.1896993014080193,
+                0.865034054668631,
+                0.9221221174813269
+              ],
+              "mean": 0.9922851578526591,
+              "minimum": 0.865034054668631,
+              "maximum": 1.1896993014080193,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.9155702453155168,
+                1.2341172428480363,
+                1.206093049509705
+              ],
+              "mean": 1.4519268458910861,
+              "minimum": 1.206093049509705,
+              "maximum": 1.9155702453155168,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.5290178571428571,
+                0.18526785714285715,
+                0.16071428571428573
+              ],
+              "mean": 0.29166666666666663,
+              "minimum": 0.16071428571428573,
+              "maximum": 0.5290178571428571,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.04,
+          "B": 128,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88881/B128",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88882/B128",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88883/B128"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 2,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.03268941498858655,
+                -0.48204067189505867,
+                -0.5534748151647615
+              ],
+              "mean": -0.33427535735707786,
+              "minimum": -0.5534748151647615,
+              "maximum": 0.03268941498858655,
+              "seed_threshold_disagreement": true
+            },
+            "H": {
+              "seed_values": [
+                0.8420330216197387,
+                0.07144202369329505,
+                0.02811402663660329
+              ],
+              "mean": 0.31386302398321236,
+              "minimum": 0.02811402663660329,
+              "maximum": 0.8420330216197387,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                1.1398352893861274,
+                0.9413702967391036,
+                0.9790226716553769
+              ],
+              "mean": 1.0200760859268694,
+              "minimum": 0.9413702967391036,
+              "maximum": 1.1398352893861274,
+              "seed_threshold_disagreement": true
+            },
+            "A2": {
+              "seed_values": [
+                1.2037660846302516,
+                1.0910127120898891,
+                1.1427278833975292
+              ],
+              "mean": 1.1458355600392232,
+              "minimum": 1.0910127120898891,
+              "maximum": 1.2037660846302516,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                2.0367589400843324,
+                1.5873997741744077,
+                1.6797801809623618
+              ],
+              "mean": 1.7679796317403673,
+              "minimum": 1.5873997741744077,
+              "maximum": 2.0367589400843324,
+              "seed_threshold_disagreement": true
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.7633928571428571,
+                0.5200892857142857,
+                0.5558035714285714
+              ],
+              "mean": 0.613095238095238,
+              "minimum": 0.5200892857142857,
+              "maximum": 0.7633928571428571,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.04,
+          "B": 512,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88881/B512",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88882/B512",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88883/B512"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.11195376059672028,
+                0.02784544095185642,
+                -0.11597298700773039
+              ],
+              "mean": 0.007942071513615437,
+              "minimum": -0.11597298700773039,
+              "maximum": 0.11195376059672028,
+              "seed_threshold_disagreement": true
+            },
+            "H": {
+              "seed_values": [
+                1.037894392099257,
+                0.9921937329130335,
+                0.8338247460628089
+              ],
+              "mean": 0.9546376236916997,
+              "minimum": 0.8338247460628089,
+              "maximum": 1.037894392099257,
+              "seed_threshold_disagreement": true
+            },
+            "A1": {
+              "seed_values": [
+                1.1719708674356433,
+                1.0617444015900057,
+                0.9416090978435424
+              ],
+              "mean": 1.0584414556230637,
+              "minimum": 0.9416090978435424,
+              "maximum": 1.1719708674356433,
+              "seed_threshold_disagreement": true
+            },
+            "A2": {
+              "seed_values": [
+                1.2060419602356987,
+                1.0915010124205962,
+                0.9848984522104596
+              ],
+              "mean": 1.0941471416222515,
+              "minimum": 0.9848984522104596,
+              "maximum": 1.2060419602356987,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                2.1719708674356433,
+                1.7961178583344721,
+                1.6675220343974384
+              ],
+              "mean": 1.8785369200558513,
+              "minimum": 1.6675220343974384,
+              "maximum": 2.1719708674356433,
+              "seed_threshold_disagreement": true
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.8571428571428571,
+                0.5714285714285714,
+                0.47098214285714285
+              ],
+              "mean": 0.6331845238095237,
+              "minimum": 0.47098214285714285,
+              "maximum": 0.8571428571428571,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.04,
+          "B": 2048,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88881/B2048",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88882/B2048",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88883/B2048"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 736
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.06075836745731901,
+                0.041382904082743664,
+                -0.11134407425129698
+              ],
+              "mean": -0.0030676009037447723,
+              "minimum": -0.11134407425129698,
+              "maximum": 0.06075836745731901,
+              "seed_threshold_disagreement": true
+            },
+            "H": {
+              "seed_values": [
+                1.0540473279842806,
+                1.0395160780364103,
+                0.8535815690493976
+              ],
+              "mean": 0.9823816583566961,
+              "minimum": 0.8535815690493976,
+              "maximum": 1.0540473279842806,
+              "seed_threshold_disagreement": true
+            },
+            "A1": {
+              "seed_values": [
+                1.070332173282952,
+                1.0449534825684246,
+                0.930425836002142
+              ],
+              "mean": 1.0152371639511728,
+              "minimum": 0.930425836002142,
+              "maximum": 1.070332173282952,
+              "seed_threshold_disagreement": true
+            },
+            "A2": {
+              "seed_values": [
+                1.0771565821040563,
+                1.0476135677537877,
+                0.959545778915887
+              ],
+              "mean": 1.0281053095912436,
+              "minimum": 0.959545778915887,
+              "maximum": 1.0771565821040563,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                2.070332173282952,
+                1.7717226692351364,
+                1.647182191117508
+              ],
+              "mean": 1.8297456778785322,
+              "minimum": 1.647182191117508,
+              "maximum": 2.070332173282952,
+              "seed_threshold_disagreement": true
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.8260869565217391,
+                0.6227678571428571,
+                0.5892857142857143
+              ],
+              "mean": 0.6793801759834368,
+              "minimum": 0.5892857142857143,
+              "maximum": 0.8260869565217391,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.04,
+          "B": 4096,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88881/B4096",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88882/B4096",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.04/seed88883/B4096"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.028150544343619962,
+                0.019532228380527362,
+                -0.0023926497606096236
+              ],
+              "mean": -0.0036703219079007414,
+              "minimum": -0.028150544343619962,
+              "maximum": 0.019532228380527362,
+              "seed_threshold_disagreement": true
+            },
+            "H": {
+              "seed_values": [
+                0.9701396845712452,
+                1.0155584050496183,
+                0.9974583277677188
+              ],
+              "mean": 0.9943854724628607,
+              "minimum": 0.9701396845712452,
+              "maximum": 1.0155584050496183,
+              "seed_threshold_disagreement": true
+            },
+            "A1": {
+              "seed_values": [
+                0.9742779887939415,
+                1.0237661024090943,
+                0.9977617824026109
+              ],
+              "mean": 0.9986019578685489,
+              "minimum": 0.9742779887939415,
+              "maximum": 1.0237661024090943,
+              "seed_threshold_disagreement": true
+            },
+            "A2": {
+              "seed_values": [
+                0.9762433466979985,
+                1.0276639092337816,
+                0.9979130457832067
+              ],
+              "mean": 1.000606767238329,
+              "minimum": 0.9762433466979985,
+              "maximum": 1.0276639092337816,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.6930120636903079,
+                1.7441487783348604,
+                1.7114448843069965
+              ],
+              "mean": 1.7162019087773883,
+              "minimum": 1.6930120636903079,
+              "maximum": 1.7441487783348604,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.5111607142857143,
+                0.5714285714285714,
+                0.484375
+              ],
+              "mean": 0.5223214285714285,
+              "minimum": 0.484375,
+              "maximum": 0.5714285714285714,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.08,
+          "B": 8,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88881/B8",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88882/B8",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88883/B8"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 3,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.4283914120624464,
+                -0.6098338240911308,
+                -0.6994215465849916
+              ],
+              "mean": -0.5792155942461896,
+              "minimum": -0.6994215465849916,
+              "maximum": -0.4283914120624464,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.05499725360525023,
+                0.039789010842236655,
+                0.2180373609934978
+              ],
+              "mean": 0.10427454181366157,
+              "minimum": 0.039789010842236655,
+              "maximum": 0.2180373609934978,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.8959655068836325,
+                0.7699047961348592,
+                0.6608472494080162
+              ],
+              "mean": 0.7755725174755025,
+              "minimum": 0.6608472494080162,
+              "maximum": 0.8959655068836325,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                1.1426252397691983,
+                0.9630536793704924,
+                0.7694421916606646
+              ],
+              "mean": 0.9583737036001185,
+              "minimum": 0.7694421916606646,
+              "maximum": 1.1426252397691983,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.6807346818033688,
+                1.0708013241490286,
+                0.9699511836090549
+              ],
+              "mean": 1.2404957298538175,
+              "minimum": 0.9699511836090549,
+              "maximum": 1.6807346818033688,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.29910714285714285,
+                0.16964285714285715,
+                0.109375
+              ],
+              "mean": 0.19270833333333334,
+              "minimum": 0.109375,
+              "maximum": 0.29910714285714285,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.08,
+          "B": 32,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88881/B32",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88882/B32",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88883/B32"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 1,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.03663107491127569,
+                -0.235168879563945,
+                -0.23737043826480328
+              ],
+              "mean": -0.14530274763915751,
+              "minimum": -0.23737043826480328,
+              "maximum": 0.03663107491127569,
+              "seed_threshold_disagreement": true
+            },
+            "H": {
+              "seed_values": [
+                0.9542952601664393,
+                0.6090386378344832,
+                0.6731736263285979
+              ],
+              "mean": 0.7455025081098402,
+              "minimum": 0.6090386378344832,
+              "maximum": 0.9542952601664393,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                1.1128311591702278,
+                0.8945692433191532,
+                0.8859934019081012
+              ],
+              "mean": 0.9644646014658274,
+              "minimum": 0.8859934019081012,
+              "maximum": 1.1128311591702278,
+              "seed_threshold_disagreement": true
+            },
+            "A2": {
+              "seed_values": [
+                1.1847904533944138,
+                0.9817877768382351,
+                0.9751895428344726
+              ],
+              "mean": 1.0472559243557071,
+              "minimum": 0.9751895428344726,
+              "maximum": 1.1847904533944138,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.9479370005201904,
+                1.3872077493012072,
+                1.4044997214223431
+              ],
+              "mean": 1.5798814904145804,
+              "minimum": 1.3872077493012072,
+              "maximum": 1.9479370005201904,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.5948660714285714,
+                0.34151785714285715,
+                0.34375
+              ],
+              "mean": 0.42671130952380953,
+              "minimum": 0.34151785714285715,
+              "maximum": 0.5948660714285714,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.08,
+          "B": 128,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88881/B128",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88882/B128",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88883/B128"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.032168132980363674,
+                0.19286754468349793,
+                0.1880964885864676
+              ],
+              "mean": 0.13771072208344307,
+              "minimum": 0.032168132980363674,
+              "maximum": 0.19286754468349793,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.9295591999905195,
+                1.0824098475258215,
+                1.1519250919556374
+              ],
+              "mean": 1.0546313798239926,
+              "minimum": 0.9295591999905195,
+              "maximum": 1.1519250919556374,
+              "seed_threshold_disagreement": true
+            },
+            "A1": {
+              "seed_values": [
+                1.0945045460803469,
+                1.298411592749491,
+                1.255709125918094
+              ],
+              "mean": 1.216208421582644,
+              "minimum": 1.0945045460803469,
+              "maximum": 1.298411592749491,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                1.1387736966321387,
+                1.3561262363808042,
+                1.3003436784386742
+              ],
+              "mean": 1.2650812038172055,
+              "minimum": 1.1387736966321387,
+              "maximum": 1.3561262363808042,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                2.094504546080347,
+                2.298411592749491,
+                2.255709125918094
+              ],
+              "mean": 2.216208421582644,
+              "minimum": 2.094504546080347,
+              "maximum": 2.298411592749491,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.6785714285714286,
+                0.8102678571428571,
+                0.7823660714285714
+              ],
+              "mean": 0.7570684523809522,
+              "minimum": 0.6785714285714286,
+              "maximum": 0.8102678571428571,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.08,
+          "B": 512,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88881/B512",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88882/B512",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88883/B512"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.25738040155026576,
+                0.16994438168192874,
+                0.09972478175006759
+              ],
+              "mean": 0.1756831883274207,
+              "minimum": 0.09972478175006759,
+              "maximum": 0.25738040155026576,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                1.2897641609845476,
+                1.164319503431301,
+                1.0743884153575431
+              ],
+              "mean": 1.1761573599244637,
+              "minimum": 1.0743884153575431,
+              "maximum": 1.2897641609845476,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                1.297418207543227,
+                1.203668165831672,
+                1.1307441520103658
+              ],
+              "mean": 1.2106101751284217,
+              "minimum": 1.1307441520103658,
+              "maximum": 1.297418207543227,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                1.301420295622546,
+                1.2198724682013347,
+                1.152887027732791
+              ],
+              "mean": 1.2247265971855572,
+              "minimum": 1.152887027732791,
+              "maximum": 1.301420295622546,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                2.297418207543227,
+                1.974072413902481,
+                1.9313791097678015
+              ],
+              "mean": 2.067623243737837,
+              "minimum": 1.9313791097678015,
+              "maximum": 2.297418207543227,
+              "seed_threshold_disagreement": true
+            },
+            "frac_expand": {
+              "seed_values": [
+                1.0,
+                0.8526785714285714,
+                0.8102678571428571
+              ],
+              "mean": 0.8876488095238094,
+              "minimum": 0.8102678571428571,
+              "maximum": 1.0,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.08,
+          "B": 2048,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88881/B2048",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88882/B2048",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88883/B2048"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.15525091415996584,
+                0.10273840731443906,
+                0.0770041262758681
+              ],
+              "mean": 0.11166448258342433,
+              "minimum": 0.0770041262758681,
+              "maximum": 0.15525091415996584,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                1.1568798184950995,
+                1.0951055751891383,
+                1.063994447833825
+              ],
+              "mean": 1.1053266138393543,
+              "minimum": 1.063994447833825,
+              "maximum": 1.1568798184950995,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                1.181418746365404,
+                1.1212052579615546,
+                1.0938338367467013
+              ],
+              "mean": 1.13215261369122,
+              "minimum": 1.0938338367467013,
+              "maximum": 1.181418746365404,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                1.197586728009921,
+                1.1340755278023351,
+                1.105664012482342
+              ],
+              "mean": 1.1457754227648662,
+              "minimum": 1.105664012482342,
+              "maximum": 1.197586728009921,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                2.1814187463654036,
+                1.8768015388339472,
+                1.8793956261277305
+              ],
+              "mean": 1.9792053037756938,
+              "minimum": 1.8768015388339472,
+              "maximum": 2.1814187463654036,
+              "seed_threshold_disagreement": true
+            },
+            "frac_expand": {
+              "seed_values": [
+                1.0,
+                0.8348214285714286,
+                0.8526785714285714
+              ],
+              "mean": 0.8958333333333334,
+              "minimum": 0.8348214285714286,
+              "maximum": 1.0,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.08,
+          "B": 4096,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88881/B4096",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88882/B4096",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88883/B4096"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.09534665430692679,
+                0.07896365163328896,
+                0.04573144934850713
+              ],
+              "mean": 0.07334725176290763,
+              "minimum": 0.04573144934850713,
+              "maximum": 0.09534665430692679,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                1.0869095136101095,
+                1.0731105877444223,
+                1.0420942150424228
+              ],
+              "mean": 1.067371438798985,
+              "minimum": 1.0420942150424228,
+              "maximum": 1.0869095136101095,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                1.1165739983138228,
+                1.0918404410361942,
+                1.0509679817609396
+              ],
+              "mean": 1.0864608070369857,
+              "minimum": 1.0509679817609396,
+              "maximum": 1.1165739983138228,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                1.1369408035051916,
+                1.1020551033892076,
+                1.054673457643732
+              ],
+              "mean": 1.097889788179377,
+              "minimum": 1.054673457643732,
+              "maximum": 1.1369408035051916,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                2.1165739983138225,
+                1.828964372884478,
+                1.8079671788997838
+              ],
+              "mean": 1.917835183366028,
+              "minimum": 1.8079671788997838,
+              "maximum": 2.1165739983138225,
+              "seed_threshold_disagreement": true
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.9207589285714286,
+                0.7834821428571429,
+                0.8571428571428571
+              ],
+              "mean": 0.8537946428571429,
+              "minimum": 0.7834821428571429,
+              "maximum": 0.9207589285714286,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.16,
+          "B": 8,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88881/B8",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88882/B8",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88883/B8"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 2,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.5034329805349891,
+                -0.11123984827518914,
+                0.23819896056273177
+              ],
+              "mean": -0.1254912894158155,
+              "minimum": -0.5034329805349891,
+              "maximum": 0.23819896056273177,
+              "seed_threshold_disagreement": true
+            },
+            "H": {
+              "seed_values": [
+                0.303909359568532,
+                0.02084600835827013,
+                0.7691841575800981
+              ],
+              "mean": 0.36464650850230007,
+              "minimum": 0.02084600835827013,
+              "maximum": 0.7691841575800981,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.8704302342964689,
+                1.5830277608092096,
+                1.9733819239296841
+              ],
+              "mean": 1.475613306345121,
+              "minimum": 0.8704302342964689,
+              "maximum": 1.9733819239296841,
+              "seed_threshold_disagreement": true
+            },
+            "A2": {
+              "seed_values": [
+                1.143501196782201,
+                2.368263811477576,
+                2.732136496122248
+              ],
+              "mean": 2.081300501460675,
+              "minimum": 1.143501196782201,
+              "maximum": 2.732136496122248,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.4501468063681726,
+                2.18751348024721,
+                2.4900976650157345
+              ],
+              "mean": 2.042585983877039,
+              "minimum": 1.4501468063681726,
+              "maximum": 2.4900976650157345,
+              "seed_threshold_disagreement": true
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.29017857142857145,
+                0.4263392857142857,
+                0.5022321428571429
+              ],
+              "mean": 0.40625,
+              "minimum": 0.29017857142857145,
+              "maximum": 0.5022321428571429,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.16,
+          "B": 32,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88881/B32",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88882/B32",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88883/B32"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 3,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.42004057364113007,
+                -0.44001467429516766,
+                -0.5070530046644534
+              ],
+              "mean": -0.455702750866917,
+              "minimum": -0.5070530046644534,
+              "maximum": -0.42004057364113007,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.2983296514108643,
+                0.22771551681240354,
+                0.20120769914263745
+              ],
+              "mean": 0.24241762245530177,
+              "minimum": 0.20120769914263745,
+              "maximum": 0.2983296514108643,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.8626948404868386,
+                0.9437671529125804,
+                0.8732588875502967
+              ],
+              "mean": 0.8932402936499052,
+              "minimum": 0.8626948404868386,
+              "maximum": 0.9437671529125804,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                0.9973396415819877,
+                1.1260411825048924,
+                1.0364840378788227
+              ],
+              "mean": 1.053288287321901,
+              "minimum": 0.9973396415819877,
+              "maximum": 1.1260411825048924,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.5511711299590065,
+                1.8668869380254338,
+                1.6225636326303632
+              ],
+              "mean": 1.6802072335382678,
+              "minimum": 1.5511711299590065,
+              "maximum": 1.8668869380254338,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.43526785714285715,
+                0.46651785714285715,
+                0.4174107142857143
+              ],
+              "mean": 0.43973214285714285,
+              "minimum": 0.4174107142857143,
+              "maximum": 0.46651785714285715,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.16,
+          "B": 128,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88881/B128",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88882/B128",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88883/B128"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 2,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.1022550951932691,
+                -0.00797744218199324,
+                0.44327167596517597
+              ],
+              "mean": 0.17918310965881726,
+              "minimum": -0.00797744218199324,
+              "maximum": 0.44327167596517597,
+              "seed_threshold_disagreement": true
+            },
+            "H": {
+              "seed_values": [
+                0.6164887497495376,
+                0.2000804070373056,
+                1.4647922616541715
+              ],
+              "mean": 0.7604538061470049,
+              "minimum": 0.2000804070373056,
+              "maximum": 1.4647922616541715,
+              "seed_threshold_disagreement": true
+            },
+            "A1": {
+              "seed_values": [
+                1.2831347264300643,
+                1.2095401568098079,
+                1.6263340125382826
+              ],
+              "mean": 1.373002965259385,
+              "minimum": 1.2095401568098079,
+              "maximum": 1.6263340125382826,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                1.3756971241172704,
+                1.3127637147029556,
+                1.6918373976060035
+              ],
+              "mean": 1.4600994121420765,
+              "minimum": 1.3127637147029556,
+              "maximum": 1.6918373976060035,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                2.1954225687837003,
+                2.200530554178357,
+                2.6263340125382824
+              ],
+              "mean": 2.3407623785001133,
+              "minimum": 2.1954225687837003,
+              "maximum": 2.6263340125382824,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.8147321428571429,
+                0.7410714285714286,
+                0.9397321428571429
+              ],
+              "mean": 0.8318452380952381,
+              "minimum": 0.7410714285714286,
+              "maximum": 0.9397321428571429,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.16,
+          "B": 512,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88881/B512",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88882/B512",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88883/B512"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 1,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.10197191528151882,
+                -0.1459322509040697,
+                0.08340344229417239
+              ],
+              "mean": 0.013147702223873839,
+              "minimum": -0.1459322509040697,
+              "maximum": 0.10197191528151882,
+              "seed_threshold_disagreement": true
+            },
+            "H": {
+              "seed_values": [
+                1.0631955011745193,
+                0.49346895118706424,
+                1.0033443067695726
+              ],
+              "mean": 0.8533362530437186,
+              "minimum": 0.49346895118706424,
+              "maximum": 1.0631955011745193,
+              "seed_threshold_disagreement": true
+            },
+            "A1": {
+              "seed_values": [
+                1.1399555652704974,
+                1.0112567455389023,
+                1.1392950880565698
+              ],
+              "mean": 1.0968357996219897,
+              "minimum": 1.0112567455389023,
+              "maximum": 1.1399555652704974,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                1.1652453648360364,
+                1.0740935729788406,
+                1.1731728775407428
+              ],
+              "mean": 1.1375039384518733,
+              "minimum": 1.0740935729788406,
+              "maximum": 1.1731728775407428,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                2.1399555652704976,
+                2.009720260664699,
+                2.1392950880565698
+              ],
+              "mean": 2.0963236379972554,
+              "minimum": 2.009720260664699,
+              "maximum": 2.1399555652704976,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.7299107142857143,
+                0.6629464285714286,
+                0.8526785714285714
+              ],
+              "mean": 0.7485119047619048,
+              "minimum": 0.6629464285714286,
+              "maximum": 0.8526785714285714,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.16,
+          "B": 2048,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88881/B2048",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88882/B2048",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88883/B2048"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.1594881220851724,
+                0.18636344765251137,
+                -0.09383492047087351
+              ],
+              "mean": 0.08400554975560343,
+              "minimum": -0.09383492047087351,
+              "maximum": 0.18636344765251137,
+              "seed_threshold_disagreement": true
+            },
+            "H": {
+              "seed_values": [
+                1.1543059768699617,
+                1.186677354638142,
+                0.8275847276821241
+              ],
+              "mean": 1.0561893530634092,
+              "minimum": 0.8275847276821241,
+              "maximum": 1.186677354638142,
+              "seed_threshold_disagreement": true
+            },
+            "A1": {
+              "seed_values": [
+                1.1972600309918136,
+                1.2284718501536211,
+                0.9666603371944671
+              ],
+              "mean": 1.1307974061133006,
+              "minimum": 0.9666603371944671,
+              "maximum": 1.2284718501536211,
+              "seed_threshold_disagreement": true
+            },
+            "A2": {
+              "seed_values": [
+                1.2281730130990771,
+                1.2582878109332152,
+                1.002265284147257
+              ],
+              "mean": 1.1629087027265166,
+              "minimum": 1.002265284147257,
+              "maximum": 1.2582878109332152,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                2.1972600309918136,
+                2.2284718501536216,
+                1.966660337194467
+              ],
+              "mean": 2.1307974061133006,
+              "minimum": 1.966660337194467,
+              "maximum": 2.2284718501536216,
+              "seed_threshold_disagreement": true
+            },
+            "frac_expand": {
+              "seed_values": [
+                1.0,
+                1.0,
+                0.578125
+              ],
+              "mean": 0.859375,
+              "minimum": 0.578125,
+              "maximum": 1.0,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.16,
+          "B": 4096,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88881/B4096",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88882/B4096",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.16/seed88883/B4096"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 448
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.11218765932603444,
+                -0.023305262451434588,
+                0.14074592064339772
+              ],
+              "mean": 0.07654277250599918,
+              "minimum": -0.023305262451434588,
+              "maximum": 0.14074592064339772,
+              "seed_threshold_disagreement": true
+            },
+            "H": {
+              "seed_values": [
+                1.1139261635835545,
+                0.9687331140802434,
+                1.1400197707988011
+              ],
+              "mean": 1.0742263494875328,
+              "minimum": 0.9687331140802434,
+              "maximum": 1.1400197707988011,
+              "seed_threshold_disagreement": true
+            },
+            "A1": {
+              "seed_values": [
+                1.123654687798653,
+                0.9844277840784252,
+                1.1634798437225267
+              ],
+              "mean": 1.090520771866535,
+              "minimum": 0.9844277840784252,
+              "maximum": 1.1634798437225267,
+              "seed_threshold_disagreement": true
+            },
+            "A2": {
+              "seed_values": [
+                1.1286862753145497,
+                0.9911469964769153,
+                1.177038922872706
+              ],
+              "mean": 1.0989573982213903,
+              "minimum": 0.9911469964769153,
+              "maximum": 1.177038922872706,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                2.1236546877986533,
+                1.9844277840784252,
+                2.1634798437225267
+              ],
+              "mean": 2.090520771866535,
+              "minimum": 1.9844277840784252,
+              "maximum": 2.1634798437225267,
+              "seed_threshold_disagreement": true
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.9977678571428571,
+                0.5714285714285714,
+                0.9799107142857143
+              ],
+              "mean": 0.8497023809523809,
+              "minimum": 0.5714285714285714,
+              "maximum": 0.9977678571428571,
+              "seed_threshold_disagreement": false
+            }
+          }
+        }
+      ]
+    },
+    "mlp_silu": {
+      "figure_id": "mlp_silu_grid_eta_batch",
+      "arch": "mlp_silu",
+      "learning_rates": [
+        0.01,
+        0.02,
+        0.04
+      ],
+      "batch_sizes": [
+        8,
+        32,
+        128,
+        512,
+        2048,
+        4096
+      ],
+      "cells": [
+        {
+          "eta": 0.01,
+          "B": 8,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88881/B8",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88882/B8",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88883/B8"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 1792
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 1,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.7731863431297216,
+                -0.26806922453260035,
+                -0.25568685733414964
+              ],
+              "mean": -0.4323141416654905,
+              "minimum": -0.7731863431297216,
+              "maximum": -0.25568685733414964,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.23762179859727411,
+                0.6679166568379903,
+                0.7411057998731578
+              ],
+              "mean": 0.5488814184361407,
+              "minimum": 0.23762179859727411,
+              "maximum": 0.7411057998731578,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.5800432508803085,
+                0.788909031017082,
+                0.7894947054908961
+              ],
+              "mean": 0.7194823291294288,
+              "minimum": 0.5800432508803085,
+              "maximum": 0.7894947054908961,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                0.6777171156933444,
+                0.8028768550517802,
+                0.8005635590683042
+              ],
+              "mean": 0.760385843271143,
+              "minimum": 0.6777171156933444,
+              "maximum": 0.8028768550517802,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                0.5762323263612118,
+                0.21140740912015546,
+                0.21050529450910394
+              ],
+              "mean": 0.33271500999682374,
+              "minimum": 0.21050529450910394,
+              "maximum": 0.5762323263612118,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.020089285714285716,
+                0.0,
+                0.0
+              ],
+              "mean": 0.006696428571428572,
+              "minimum": 0.0,
+              "maximum": 0.020089285714285716,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.01,
+          "B": 32,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88881/B32",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88882/B32",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88883/B32"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 1792
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 3,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -1.4108356312696795,
+                -0.7147423808601562,
+                -0.5951764408281272
+              ],
+              "mean": -0.9069181509859877,
+              "minimum": -1.4108356312696795,
+              "maximum": -0.5951764408281272,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.07413524619352463,
+                0.26618161496865156,
+                0.3581838789482865
+              ],
+              "mean": 0.2328335800368209,
+              "minimum": 0.07413524619352463,
+              "maximum": 0.3581838789482865,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.3772910985406008,
+                0.6010459545000923,
+                0.6332843988741983
+              ],
+              "mean": 0.5372071506382972,
+              "minimum": 0.3772910985406008,
+              "maximum": 0.6332843988741983,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                0.4728936959351582,
+                0.671592239622904,
+                0.6895851451622299
+              ],
+              "mean": 0.611357026906764,
+              "minimum": 0.4728936959351582,
+              "maximum": 0.6895851451622299,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                0.7412459383324181,
+                0.408359897765147,
+                0.3744203740770614
+              ],
+              "mean": 0.5080087367248756,
+              "minimum": 0.3744203740770614,
+              "maximum": 0.7412459383324181,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.0033482142857142855,
+                0.0,
+                0.0
+              ],
+              "mean": 0.0011160714285714285,
+              "minimum": 0.0,
+              "maximum": 0.0033482142857142855,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.01,
+          "B": 128,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88881/B128",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88882/B128",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88883/B128"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 1792
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 1,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.24186463664952026,
+                -1.3517791615337074,
+                -0.38357382186458494
+              ],
+              "mean": -0.6590725400159375,
+              "minimum": -1.3517791615337074,
+              "maximum": -0.24186463664952026,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.7337196412465314,
+                0.02184342368362716,
+                0.5989947942505996
+              ],
+              "mean": 0.45151928639358613,
+              "minimum": 0.02184342368362716,
+              "maximum": 0.7337196412465314,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.8216508421853079,
+                0.48153166544344855,
+                0.735672761442039
+              ],
+              "mean": 0.6796184230235984,
+              "minimum": 0.48153166544344855,
+              "maximum": 0.8216508421853079,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                0.8522170059144129,
+                0.6195235775969201,
+                0.7746644540072632
+              ],
+              "mean": 0.7488016791728654,
+              "minimum": 0.6195235775969201,
+              "maximum": 0.8522170059144129,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.5681323370281584,
+                0.6363453102928294,
+                0.9499738956034618
+              ],
+              "mean": 1.0514838476414832,
+              "minimum": 0.6363453102928294,
+              "maximum": 1.5681323370281584,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.17633928571428573,
+                0.0,
+                0.03571428571428571
+              ],
+              "mean": 0.07068452380952382,
+              "minimum": 0.0,
+              "maximum": 0.17633928571428573,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.01,
+          "B": 512,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88881/B512",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88882/B512",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88883/B512"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 1792
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.044830743591751,
+                -0.11112290158473281,
+                -0.2582640214318146
+              ],
+              "mean": -0.13807255553609946,
+              "minimum": -0.2582640214318146,
+              "maximum": -0.044830743591751,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.9500690850971277,
+                0.8898939167824842,
+                0.7551122576948467
+              ],
+              "mean": 0.8650250865248196,
+              "minimum": 0.7551122576948467,
+              "maximum": 0.9500690850971277,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.9621634496500027,
+                0.8995619598314087,
+                0.7881841633124319
+              ],
+              "mean": 0.8833031909312811,
+              "minimum": 0.7881841633124319,
+              "maximum": 0.9621634496500027,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                0.9680838494797638,
+                0.9041120566414553,
+                0.8024306448168463
+              ],
+              "mean": 0.8915421836460218,
+              "minimum": 0.8024306448168463,
+              "maximum": 0.9680838494797638,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.7086820947194081,
+                1.113083196377525,
+                1.0027076468777738
+              ],
+              "mean": 1.2748243126582357,
+              "minimum": 1.0027076468777738,
+              "maximum": 1.7086820947194081,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.36830357142857145,
+                0.08816964285714286,
+                0.004464285714285714
+              ],
+              "mean": 0.15364583333333334,
+              "minimum": 0.004464285714285714,
+              "maximum": 0.36830357142857145,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.01,
+          "B": 2048,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88881/B2048",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88882/B2048",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88883/B2048"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 1792
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.016043169751106628,
+                -0.07401601523949683,
+                -0.018403504469231415
+              ],
+              "mean": -0.025458783319207205,
+              "minimum": -0.07401601523949683,
+              "maximum": 0.016043169751106628,
+              "seed_threshold_disagreement": true
+            },
+            "H": {
+              "seed_values": [
+                1.0115585932225333,
+                0.926993891578664,
+                0.979167635943295
+              ],
+              "mean": 0.9725733735814974,
+              "minimum": 0.926993891578664,
+              "maximum": 1.0115585932225333,
+              "seed_threshold_disagreement": true
+            },
+            "A1": {
+              "seed_values": [
+                1.0206878284601684,
+                0.93031462661212,
+                0.9843026498546233
+              ],
+              "mean": 0.9784350349756372,
+              "minimum": 0.93031462661212,
+              "maximum": 1.0206878284601684,
+              "seed_threshold_disagreement": true
+            },
+            "A2": {
+              "seed_values": [
+                1.0250881650024088,
+                0.9319660474087987,
+                0.9867801942032863
+              ],
+              "mean": 0.9812781355381647,
+              "minimum": 0.9319660474087987,
+              "maximum": 1.0250881650024088,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.7669334491986188,
+                1.1383010942008727,
+                1.191597279097847
+              ],
+              "mean": 1.3656106074991128,
+              "minimum": 1.1383010942008727,
+              "maximum": 1.7669334491986188,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.6032366071428571,
+                0.07700892857142858,
+                0.42299107142857145
+              ],
+              "mean": 0.36774553571428575,
+              "minimum": 0.07700892857142858,
+              "maximum": 0.6032366071428571,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.01,
+          "B": 4096,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88881/B4096",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88882/B4096",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.01/seed88883/B4096"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 1792
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.015938895021155034,
+                -0.04719323345531674,
+                -0.03464924225896098
+              ],
+              "mean": -0.03259379024514425,
+              "minimum": -0.04719323345531674,
+              "maximum": -0.015938895021155034,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.983251125717994,
+                0.9530101360293293,
+                0.9647018259390011
+              ],
+              "mean": 0.9669876958954414,
+              "minimum": 0.9530101360293293,
+              "maximum": 0.983251125717994,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.9850857867769833,
+                0.9547743169178784,
+                0.9671452305133398
+              ],
+              "mean": 0.9690017780694005,
+              "minimum": 0.9547743169178784,
+              "maximum": 0.9850857867769833,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                0.985948228955736,
+                0.9556247198642477,
+                0.9683062716046763
+              ],
+              "mean": 0.9699597401415533,
+              "minimum": 0.9556247198642477,
+              "maximum": 0.985948228955736,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.7268813764550117,
+                1.1517926450149893,
+                1.1666715029582373
+              ],
+              "mean": 1.3484485081427462,
+              "minimum": 1.1517926450149893,
+              "maximum": 1.7268813764550117,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.40513392857142855,
+                0.07366071428571429,
+                0.21986607142857142
+              ],
+              "mean": 0.23288690476190477,
+              "minimum": 0.07366071428571429,
+              "maximum": 0.40513392857142855,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.02,
+          "B": 8,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88881/B8",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88882/B8",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88883/B8"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 1792
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 3,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.8237969677250029,
+                -0.6172118579244152,
+                -0.5955970180762137
+              ],
+              "mean": -0.6788686145752106,
+              "minimum": -0.8237969677250029,
+              "maximum": -0.5955970180762137,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.07423013659166806,
+                0.32485227095489905,
+                0.32756617196821514
+              ],
+              "mean": 0.24221619317159407,
+              "minimum": 0.07423013659166806,
+              "maximum": 0.32756617196821514,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.9505115397176774,
+                0.6338963125613545,
+                0.6335985945578441
+              ],
+              "mean": 0.7393354822789586,
+              "minimum": 0.6335985945578441,
+              "maximum": 0.9505115397176774,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                2.37378048808155,
+                0.6929758855433392,
+                0.6786594085286123
+              ],
+              "mean": 1.2484719273845004,
+              "minimum": 0.6786594085286123,
+              "maximum": 2.37378048808155,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.4142841868134524,
+                0.4479069630471849,
+                0.393942136000086
+              ],
+              "mean": 0.7520444286202411,
+              "minimum": 0.393942136000086,
+              "maximum": 1.4142841868134524,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.15569196428571427,
+                0.016741071428571428,
+                0.010044642857142858
+              ],
+              "mean": 0.06082589285714285,
+              "minimum": 0.010044642857142858,
+              "maximum": 0.15569196428571427,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.02,
+          "B": 32,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88881/B32",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88882/B32",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88883/B32"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 1792
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 3,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.7250396509532008,
+                -1.0886489333912581,
+                -1.216922474924313
+              ],
+              "mean": -1.010203686422924,
+              "minimum": -1.216922474924313,
+              "maximum": -0.7250396509532008,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.14787272041981764,
+                0.11295669654909354,
+                0.0670374682632368
+              ],
+              "mean": 0.10928896174404933,
+              "minimum": 0.0670374682632368,
+              "maximum": 0.14787272041981764,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.7205735889238706,
+                0.5057772687170163,
+                0.4758673114935917
+              ],
+              "mean": 0.5674060563781594,
+              "minimum": 0.4758673114935917,
+              "maximum": 0.7205735889238706,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                0.9090528719640356,
+                0.6080165895085157,
+                0.5943046651766604
+              ],
+              "mean": 0.7037913755497373,
+              "minimum": 0.5943046651766604,
+              "maximum": 0.9090528719640356,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.462647037849384,
+                0.7914072758408868,
+                0.6888758792341422
+              ],
+              "mean": 0.9809767309748044,
+              "minimum": 0.6888758792341422,
+              "maximum": 1.462647037849384,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.22098214285714285,
+                0.015625,
+                0.014508928571428572
+              ],
+              "mean": 0.08370535714285714,
+              "minimum": 0.014508928571428572,
+              "maximum": 0.22098214285714285,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.02,
+          "B": 128,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88881/B128",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88882/B128",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88883/B128"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 1792
+            },
+            {
+              "seed": "88882",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 1792
+            },
+            {
+              "seed": "88883",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 1792
+            }
+          ],
+          "inverse_warning_seeds": 2,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.5377737317798698,
+                -0.5490675500817309,
+                -0.40607759561495194
+              ],
+              "mean": -0.4976396258255176,
+              "minimum": -0.5490675500817309,
+              "maximum": -0.40607759561495194,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.4057297058718704,
+                0.3020006266303539,
+                0.36926843157763944
+              ],
+              "mean": 0.35899958802662124,
+              "minimum": 0.3020006266303539,
+              "maximum": 0.4057297058718704,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.6862173652278506,
+                0.7228183463166414,
+                0.8560594454072029
+              ],
+              "mean": 0.7550317189838983,
+              "minimum": 0.6862173652278506,
+              "maximum": 0.8560594454072029,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                0.7682805800210936,
+                0.8276020772766829,
+                0.9988850240309235
+              ],
+              "mean": 0.8649225604429001,
+              "minimum": 0.7682805800210936,
+              "maximum": 0.9988850240309235,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.5538579870936584,
+                1.6559036477153275,
+                1.7375995842124532
+              ],
+              "mean": 1.6491204063404796,
+              "minimum": 1.5538579870936584,
+              "maximum": 1.7375995842124532,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.18526785714285715,
+                0.23549107142857142,
+                0.3716517857142857
+              ],
+              "mean": 0.26413690476190477,
+              "minimum": 0.18526785714285715,
+              "maximum": 0.3716517857142857,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.02,
+          "B": 512,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88881/B512",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88882/B512",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88883/B512"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 1792
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 2,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.2163290989033117,
+                -0.41391901413756393,
+                -0.2919877219697777
+              ],
+              "mean": -0.3074119450035511,
+              "minimum": -0.41391901413756393,
+              "maximum": -0.2163290989033117,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.27407358377821617,
+                0.4921530956693774,
+                0.7012077920033246
+              ],
+              "mean": 0.4891448238169727,
+              "minimum": 0.27407358377821617,
+              "maximum": 0.7012077920033246,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.969535992581766,
+                0.7309049695777226,
+                0.7776305592462821
+              ],
+              "mean": 0.8260238404685901,
+              "minimum": 0.7309049695777226,
+              "maximum": 0.969535992581766,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                1.0295487404692547,
+                0.771100690264412,
+                0.8003339750639856
+              ],
+              "mean": 0.8669944685992174,
+              "minimum": 0.771100690264412,
+              "maximum": 1.0295487404692547,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.9643273956968017,
+                1.4658125627803804,
+                1.5120856397193922
+              ],
+              "mean": 1.6474085327321915,
+              "minimum": 1.4658125627803804,
+              "maximum": 1.9643273956968017,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.66015625,
+                0.03125,
+                0.030133928571428572
+              ],
+              "mean": 0.24051339285714288,
+              "minimum": 0.030133928571428572,
+              "maximum": 0.66015625,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.02,
+          "B": 2048,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88881/B2048",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88882/B2048",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88883/B2048"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 1792
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.026268875852263913,
+                -0.19815269240007943,
+                -0.10756446692807595
+              ],
+              "mean": -0.11066201172680644,
+              "minimum": -0.19815269240007943,
+              "maximum": -0.026268875852263913,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.971619622563998,
+                0.8095893598185601,
+                0.896780459118211
+              ],
+              "mean": 0.892663147166923,
+              "minimum": 0.8095893598185601,
+              "maximum": 0.971619622563998,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.9765539653432312,
+                0.8312607890064438,
+                0.8992649504855805
+              ],
+              "mean": 0.902359901611752,
+              "minimum": 0.8312607890064438,
+              "maximum": 0.9765539653432312,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                0.9790591857804646,
+                0.842422377072821,
+                0.900519650702153
+              ],
+              "mean": 0.9073337378518129,
+              "minimum": 0.842422377072821,
+              "maximum": 0.9790591857804646,
+              "seed_threshold_disagreement": false
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.9765539653432314,
+                1.5602888127704915,
+                1.630349808232721
+              ],
+              "mean": 1.7223975287821478,
+              "minimum": 1.5602888127704915,
+              "maximum": 1.9765539653432314,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.35714285714285715,
+                0.13504464285714285,
+                0.029017857142857144
+              ],
+              "mean": 0.17373511904761904,
+              "minimum": 0.029017857142857144,
+              "maximum": 0.35714285714285715,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.02,
+          "B": 4096,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88881/B4096",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88882/B4096",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.02/seed88883/B4096"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 2500,
+              "last_step": 20000,
+              "checkpoints": 3,
+              "n": 1792
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.028687727901110766,
+                0.0014971678986594541,
+                -0.022081829748397428
+              ],
+              "mean": 0.0027010220171242634,
+              "minimum": -0.022081829748397428,
+              "maximum": 0.028687727901110766,
+              "seed_threshold_disagreement": true
+            },
+            "H": {
+              "seed_values": [
+                1.027804293211856,
+                0.9994921292550698,
+                0.9750051616037109
+              ],
+              "mean": 1.0007671946902124,
+              "minimum": 0.9750051616037109,
+              "maximum": 1.027804293211856,
+              "seed_threshold_disagreement": true
+            },
+            "A1": {
+              "seed_values": [
+                1.0303461664631632,
+                1.0034722259914315,
+                0.9812098080520383
+              ],
+              "mean": 1.0050094001688776,
+              "minimum": 0.9812098080520383,
+              "maximum": 1.0303461664631632,
+              "seed_threshold_disagreement": true
+            },
+            "A2": {
+              "seed_values": [
+                1.0315363148452443,
+                1.0054102001634955,
+                0.9841466000503869
+              ],
+              "mean": 1.0070310383530423,
+              "minimum": 0.9841466000503869,
+              "maximum": 1.0315363148452443,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                2.0303461664631635,
+                1.7285769126340398,
+                1.7062900671187815
+              ],
+              "mean": 1.8217377154053283,
+              "minimum": 1.7062900671187815,
+              "maximum": 2.0303461664631635,
+              "seed_threshold_disagreement": true
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.8080357142857143,
+                0.5647321428571429,
+                0.5412946428571429
+              ],
+              "mean": 0.6380208333333334,
+              "minimum": 0.5412946428571429,
+              "maximum": 0.8080357142857143,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.04,
+          "B": 8,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88881/B8",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88882/B8",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88883/B8"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 3,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.6539113094751323,
+                -0.8717596816898767,
+                -0.9637415252005285
+              ],
+              "mean": -0.8298041721218459,
+              "minimum": -0.9637415252005285,
+              "maximum": -0.6539113094751323,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.18786254698008292,
+                0.1328173857835813,
+                0.09727057240129977
+              ],
+              "mean": 0.13931683505498801,
+              "minimum": 0.09727057240129977,
+              "maximum": 0.18786254698008292,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.8733320299154845,
+                0.5718248919754924,
+                0.5481535368134604
+              ],
+              "mean": 0.6644368195681457,
+              "minimum": 0.5481535368134604,
+              "maximum": 0.8733320299154845,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                1.4000965133570484,
+                0.7043227772571247,
+                0.6896084798315033
+              ],
+              "mean": 0.9313425901485588,
+              "minimum": 0.6896084798315033,
+              "maximum": 1.4000965133570484,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.2038050005738132,
+                0.737223302421911,
+                0.7899487040714963
+              ],
+              "mean": 0.910325669022407,
+              "minimum": 0.737223302421911,
+              "maximum": 1.2038050005738132,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.17075892857142858,
+                0.05022321428571429,
+                0.052455357142857144
+              ],
+              "mean": 0.09114583333333333,
+              "minimum": 0.05022321428571429,
+              "maximum": 0.17075892857142858,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.04,
+          "B": 32,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88881/B32",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88882/B32",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88883/B32"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 2,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.4111035473678375,
+                -0.35907559635102376,
+                -0.6550281778782494
+              ],
+              "mean": -0.4750691071990369,
+              "minimum": -0.6550281778782494,
+              "maximum": -0.35907559635102376,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.23421486513548306,
+                0.48196586312435136,
+                0.27265901925908226
+              ],
+              "mean": 0.32961324917297224,
+              "minimum": 0.23421486513548306,
+              "maximum": 0.48196586312435136,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.8741373427276634,
+                0.8970691827084388,
+                0.6553579234668325
+              ],
+              "mean": 0.8088548163009782,
+              "minimum": 0.6553579234668325,
+              "maximum": 0.8970691827084388,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                1.1219933553456185,
+                1.1593450447577882,
+                0.8200912361295702
+              ],
+              "mean": 1.0338098787443257,
+              "minimum": 0.8200912361295702,
+              "maximum": 1.1593450447577882,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.3004449812116192,
+                1.3955611684819864,
+                1.1238377882957402
+              ],
+              "mean": 1.2732813126631153,
+              "minimum": 1.1238377882957402,
+              "maximum": 1.3955611684819864,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.22879464285714285,
+                0.25111607142857145,
+                0.11941964285714286
+              ],
+              "mean": 0.19977678571428573,
+              "minimum": 0.11941964285714286,
+              "maximum": 0.25111607142857145,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.04,
+          "B": 128,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88881/B128",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88882/B128",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88883/B128"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 3,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.6957182482930548,
+                -0.789948457075206,
+                -0.5392165475706844
+              ],
+              "mean": -0.6749610843129817,
+              "minimum": -0.789948457075206,
+              "maximum": -0.5392165475706844,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.031091462221816427,
+                0.1317786819081528,
+                0.083628261983357
+              ],
+              "mean": 0.08216613537110874,
+              "minimum": 0.031091462221816427,
+              "maximum": 0.1317786819081528,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                0.8833715896165754,
+                0.6262439206032051,
+                0.7532638582114263
+              ],
+              "mean": 0.7542931228104023,
+              "minimum": 0.6262439206032051,
+              "maximum": 0.8833715896165754,
+              "seed_threshold_disagreement": false
+            },
+            "A2": {
+              "seed_values": [
+                1.1066390525205732,
+                0.7291564386483383,
+                0.8616999164994511
+              ],
+              "mean": 0.8991651358894542,
+              "minimum": 0.7291564386483383,
+              "maximum": 1.1066390525205732,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.6490276052310688,
+                1.3600152380612147,
+                1.5552545826985302
+              ],
+              "mean": 1.5214324753302713,
+              "minimum": 1.3600152380612147,
+              "maximum": 1.6490276052310688,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.37723214285714285,
+                0.15401785714285715,
+                0.26674107142857145
+              ],
+              "mean": 0.2659970238095238,
+              "minimum": 0.15401785714285715,
+              "maximum": 0.37723214285714285,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.04,
+          "B": 512,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88881/B512",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88882/B512",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88883/B512"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                -0.026808052377786624,
+                -0.19436424813258338,
+                -0.1275823297405085
+              ],
+              "mean": -0.1162515434169595,
+              "minimum": -0.19436424813258338,
+              "maximum": -0.026808052377786624,
+              "seed_threshold_disagreement": false
+            },
+            "H": {
+              "seed_values": [
+                0.8634444331071023,
+                0.8053719019865387,
+                0.8497845785350591
+              ],
+              "mean": 0.8395336378762334,
+              "minimum": 0.8053719019865387,
+              "maximum": 0.8634444331071023,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                1.086119819282278,
+                0.8400093013416084,
+                0.909148348717817
+              ],
+              "mean": 0.9450924897805678,
+              "minimum": 0.8400093013416084,
+              "maximum": 1.086119819282278,
+              "seed_threshold_disagreement": true
+            },
+            "A2": {
+              "seed_values": [
+                1.1901158776341998,
+                0.8555562953634606,
+                0.9358883097990275
+              ],
+              "mean": 0.9938534942655627,
+              "minimum": 0.8555562953634606,
+              "maximum": 1.1901158776341998,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.8838200991077745,
+                1.6595665895833298,
+                1.7173382570911897
+              ],
+              "mean": 1.7535749819274313,
+              "minimum": 1.6595665895833298,
+              "maximum": 1.8838200991077745,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.5424107142857143,
+                0.15290178571428573,
+                0.41629464285714285
+              ],
+              "mean": 0.37053571428571425,
+              "minimum": 0.15290178571428573,
+              "maximum": 0.5424107142857143,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.04,
+          "B": 2048,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88881/B2048",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88882/B2048",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88883/B2048"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.020577431219386093,
+                -0.07664272807673614,
+                0.033049308375068136
+              ],
+              "mean": -0.007671996160760637,
+              "minimum": -0.07664272807673614,
+              "maximum": 0.033049308375068136,
+              "seed_threshold_disagreement": true
+            },
+            "H": {
+              "seed_values": [
+                0.9920182976702189,
+                0.9182833743132224,
+                0.9855410749018746
+              ],
+              "mean": 0.9652809156284387,
+              "minimum": 0.9182833743132224,
+              "maximum": 0.9920182976702189,
+              "seed_threshold_disagreement": false
+            },
+            "A1": {
+              "seed_values": [
+                1.0454900930813524,
+                0.9329162575384602,
+                1.069103453745379
+              ],
+              "mean": 1.015836601455064,
+              "minimum": 0.9329162575384602,
+              "maximum": 1.069103453745379,
+              "seed_threshold_disagreement": true
+            },
+            "A2": {
+              "seed_values": [
+                1.0670839594320987,
+                0.9386131484367649,
+                1.0955731789756367
+              ],
+              "mean": 1.0337567622815003,
+              "minimum": 0.9386131484367649,
+              "maximum": 1.0955731789756367,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.8557845792734002,
+                1.7285167020235555,
+                1.9038409563072898
+              ],
+              "mean": 1.8293807458680817,
+              "minimum": 1.7285167020235555,
+              "maximum": 1.9038409563072898,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.6026785714285714,
+                0.21763392857142858,
+                0.6852678571428571
+              ],
+              "mean": 0.5018601190476191,
+              "minimum": 0.21763392857142858,
+              "maximum": 0.6852678571428571,
+              "seed_threshold_disagreement": false
+            }
+          }
+        },
+        {
+          "eta": 0.04,
+          "B": 4096,
+          "training_seeds": [
+            "88881",
+            "88882",
+            "88883"
+          ],
+          "seeds_with_gain_estimates": 3,
+          "recorded_escapes": 0,
+          "source_paths": [
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88881/B4096",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88882/B4096",
+            "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88883/B4096"
+          ],
+          "pool_windows": [
+            {
+              "seed": "88881",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88882",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            },
+            {
+              "seed": "88883",
+              "first_step": 500,
+              "last_step": 10000,
+              "checkpoints": 3,
+              "n": 896
+            }
+          ],
+          "inverse_warning_seeds": 0,
+          "metrics": {
+            "Lambda": {
+              "seed_values": [
+                0.10376482913386435,
+                -0.0693332365679274,
+                -0.0593093463814795
+              ],
+              "mean": -0.00829258460518085,
+              "minimum": -0.0693332365679274,
+              "maximum": 0.10376482913386435,
+              "seed_threshold_disagreement": true
+            },
+            "H": {
+              "seed_values": [
+                1.0875031301874232,
+                0.920512324198849,
+                0.9356956200647493
+              ],
+              "mean": 0.9812370248170071,
+              "minimum": 0.920512324198849,
+              "maximum": 1.0875031301874232,
+              "seed_threshold_disagreement": true
+            },
+            "A1": {
+              "seed_values": [
+                1.1265515243146191,
+                0.9442908409175945,
+                0.9480758766817581
+              ],
+              "mean": 1.0063060806379907,
+              "minimum": 0.9442908409175945,
+              "maximum": 1.1265515243146191,
+              "seed_threshold_disagreement": true
+            },
+            "A2": {
+              "seed_values": [
+                1.1400741278602218,
+                0.9545546033453883,
+                0.9528787071954966
+              ],
+              "mean": 1.0158358128003688,
+              "minimum": 0.9528787071954966,
+              "maximum": 1.1400741278602218,
+              "seed_threshold_disagreement": true
+            },
+            "eta_E_s": {
+              "seed_values": [
+                1.9183618003429943,
+                1.733604479681102,
+                1.7351552637688492
+              ],
+              "mean": 1.795707181264315,
+              "minimum": 1.733604479681102,
+              "maximum": 1.9183618003429943,
+              "seed_threshold_disagreement": false
+            },
+            "frac_expand": {
+              "seed_values": [
+                0.8571428571428571,
+                0.49888392857142855,
+                0.28013392857142855
+              ],
+              "mean": 0.5453869047619048,
+              "minimum": 0.28013392857142855,
+              "maximum": 0.8571428571428571,
+              "seed_threshold_disagreement": false
+            }
+          }
+        }
+      ]
+    },
+    "aggregation": "Pool final three available checkpoints within each run; compute Lambda and H on each run pool; equally average those statistics across three runs. This is not H of a combined gain pool. Horizons vary.",
+    "raw_gain_recomputation": "All 72 displayed means agree with raw saved gains to <2e-12."
+  },
+  "iid_mlp": {
+    "metadata": {
+      "id": "mlp_iid_control",
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/NEURAL_NETWORK_RESULTS_20260905/07_FIXED_FRAME_BIMODALITY/checkpoint_snapshot/mlp_silu_b01e04d97c24/latest_resume.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/NEURAL_NETWORK_RESULTS_20260905/07_FIXED_FRAME_BIMODALITY/checkpoint_snapshot/mlp_silu_b01e04d97c24/trajectory_meta.json",
+      "frame": "/scratch/users/ghoshavr/eoss/results/NEURAL_NETWORK_RESULTS_20260905/07_FIXED_FRAME_BIMODALITY/vision/mlp_silu_b01e04d97c24/frame.pt",
+      "eta": 0.04,
+      "sampling": "iid_subsets",
+      "stream": 920201,
+      "role": "sampling_control",
+      "steps": 4096,
+      "probe_draws": 24,
+      "initial_draws": 128,
+      "frozen_horizon": 256,
+      "precision_steps": [
+        0,
+        512,
+        513,
+        2048
+      ],
+      "architecture": "mlp_silu",
+      "batch": 4096,
+      "requested_steps": 4096,
+      "axis_names": [
+        "fixed_top_ritz",
+        "fixed_gradient",
+        "fixed_random_1",
+        "fixed_random_2"
+      ],
+      "moving_names": [
+        "top_initialized",
+        "gradient_initialized",
+        "random_initialized"
+      ],
+      "checkpoint_sha256": "38913367ad977256c41e061dec5852154ffe8fa083146cc084dd767414f65366",
+      "parent_step": 10001,
+      "source_metadata": "/scratch/users/ghoshavr/eoss/results/NEURAL_NETWORK_RESULTS_20260905/07_FIXED_FRAME_BIMODALITY/checkpoint_snapshot/mlp_silu_b01e04d97c24/trajectory_meta.json",
+      "fixed_frame_eigenpair": {
+        "method": "fully_reorthogonalized_Lanczos_largest_algebraic_Ritz",
+        "iterations": 30,
+        "requested_iterations": 30,
+        "rayleigh": 68.10303292386104,
+        "ritz_value": 68.10302790782733,
+        "ritz_min": -2.130811398023109,
+        "absolute_residual": 1.9075247049547773e-05,
+        "relative_residual": 2.800939571841516e-07,
+        "residual_tolerance": 0.001,
+        "residual_converged": true,
+        "extremality_certified": false,
+        "sign_pivot": 1812651
+      },
+      "fixed_frame_examples": 8192,
+      "fixed_gradient_examples": 8192,
+      "axis_gram": [
+        [
+          0.9999999989702891,
+          0.40173611519190455,
+          -2.8994711628529827e-09,
+          4.851282462228247e-09
+        ],
+        [
+          0.40173611519190455,
+          1.0000000199113956,
+          -1.4006460165762321e-06,
+          -0.00035714764109408736
+        ],
+        [
+          -2.8994711628529827e-09,
+          -1.4006460165762321e-06,
+          1.000000000114297,
+          6.348187908702705e-09
+        ],
+        [
+          4.851282462228247e-09,
+          -0.00035714764109408736,
+          6.348187908702705e-09,
+          0.9999999998810859
+        ]
+      ],
+      "training_precision": "float32 with TF32 disabled",
+      "reduction_precision": "float64 for projections, Rayleigh quotients and norm ratios",
+      "optimizer": "plain SGD; no clipping, momentum or weight decay",
+      "loss": "mean examples, sum outputs squared error",
+      "coordinates": "q^T(theta_t-theta_checkpoint); fixed axes and center throughout; pre-update state",
+      "moving": "continuous product of every training-update Jacobian, normalized between updates, three initial directions; no direction resetting",
+      "fixed": "scalar compression 1-eta q^T H_B q / ||q||^2; full reset-axis norm ||(I-eta H_B)q||/||q|| also saved",
+      "precision_scope": "sparse same-state same-vector float64 derivative comparisons; no global asymptotic error bound",
+      "fresh_probe_pairing": "Same independently generated minibatches within each adjacent512k/512k+1 state pair, indexed by pair_group/draw_index",
+      "branch_is_exact_resume": false,
+      "source_sha256": "9165b30a76488c883df1d22798bd65e7be53bad966ae0f525c4e6e3e5212fea5",
+      "gpu": "NVIDIA RTX A5000",
+      "status": "completed",
+      "completed_updates": 4096,
+      "elapsed_seconds": 188.55749583244324
+    },
+    "display_window": [
+      2048,
+      2560
+    ],
+    "selection": "First 512 updates of late half; descriptive display selected after runs, not an optimized shape window or prospective hypothesis test.",
+    "shape": {
+      "n": 512,
+      "passes": true,
+      "by_bandwidth": {
+        "0.7": {
+          "peak_count": 2,
+          "h": 0.001301841712832325,
+          "passes": true,
+          "peaks": [
+            -0.014387286385157929,
+            -0.0016770851078337975
+          ],
+          "valley": -0.007607443837480618,
+          "left_mass": 0.5,
+          "valley_ratio": 0.03356041322731675,
+          "separation_sd": 1.9626293674031212,
+          "prominence_fraction": [
+            0.8748850946163629,
+            0.9999977065037509
+          ],
+          "resolution_ok": true
+        },
+        "1.0": {
+          "peak_count": 2,
+          "h": 0.0018597738754747503,
+          "passes": true,
+          "peaks": [
+            -0.01428888701087887,
+            -0.0017621826859475897
+          ],
+          "valley": -0.007807045819490009,
+          "left_mass": 0.5,
+          "valley_ratio": 0.1188600846386598,
+          "separation_sd": 1.9342949217293388,
+          "prominence_fraction": [
+            0.8025052245872288,
+            0.9999981906522522
+          ],
+          "resolution_ok": true
+        },
+        "1.4": {
+          "peak_count": 2,
+          "h": 0.00260368342566465,
+          "passes": true,
+          "peaks": [
+            -0.014233123070023845,
+            -0.001797380088936271
+          ],
+          "valley": -0.007962468290086648,
+          "left_mass": 0.5,
+          "valley_ratio": 0.3088351908590308,
+          "separation_sd": 1.9202492429213556,
+          "prominence_fraction": [
+            0.6444093224421689,
+            0.999998436203582
+          ],
+          "resolution_ok": true
+        },
+        "2.0": {
+          "peak_count": 2,
+          "h": 0.0037195477509495006,
+          "passes": true,
+          "peaks": [
+            -0.014077558778918604,
+            -0.0019528102485866818
+          ],
+          "valley": -0.008091600996086667,
+          "left_mass": 0.5,
+          "valley_ratio": 0.6581505187472189,
+          "separation_sd": 1.8722274351753696,
+          "prominence_fraction": [
+            0.32636984240919903,
+            0.9999985851110386
+          ],
+          "resolution_ok": true
+        }
+      },
+      "sd": 0.006476108779591839,
+      "bandwidth_pass_count": 4
+    },
+    "controls": {
+      "lag1": -0.9849405819107059,
+      "lag2": 0.9834101087423299,
+      "parity_gap_sd": 1.9195320655600656,
+      "block_mean_range_sd": 0.019498051501391882,
+      "split_wasserstein_sd": 0.14695772367810067,
+      "drift_flag": false,
+      "alternation_flag": true,
+      "recurring_switching": true,
+      "valley_crossings": 511,
+      "core_switches": 481,
+      "both_cores_in_both_halves": true
+    },
+    "late_propagated_growth": [
+      0.006423784464974117,
+      0.006423852718493532,
+      0.006423801106589354
+    ],
+    "late_fixed_axis_time_mixture": {
+      "n": 2048,
+      "valid": true,
+      "Lambda": -0.2679655057649715,
+      "H": 0.6585438829531134,
+      "expanding_fraction": 0.48388671875,
+      "exact_zero_count": 0,
+      "min_abs_a": 0.14458991296394808,
+      "largest_inverse_weight_share": 0.0022239077661550008
+    },
+    "phase_metrics": [
+      {
+        "pair": 0,
+        "step": 0,
+        "adjacent": 0,
+        "n": 24,
+        "valid": true,
+        "Lambda": 0.5354624399389484,
+        "H": 1.7005068430632977,
+        "expanding_fraction": 1.0,
+        "exact_zero_count": 0,
+        "min_abs_a": 1.377604658320518,
+        "largest_inverse_weight_share": 0.05143308086710812
+      },
+      {
+        "pair": 0,
+        "step": 1,
+        "adjacent": 1,
+        "n": 24,
+        "valid": true,
+        "Lambda": -1.665779605446078,
+        "H": 0.1864594922562935,
+        "expanding_fraction": 0.0,
+        "exact_zero_count": 0,
+        "min_abs_a": 0.11932025277293556,
+        "largest_inverse_weight_share": 0.06511170844955758
+      },
+      {
+        "pair": 1,
+        "step": 512,
+        "adjacent": 0,
+        "n": 24,
+        "valid": true,
+        "Lambda": 0.39576451382070155,
+        "H": 1.4786204749473786,
+        "expanding_fraction": 1.0,
+        "exact_zero_count": 0,
+        "min_abs_a": 1.2341757237810076,
+        "largest_inverse_weight_share": 0.04991929858042865
+      },
+      {
+        "pair": 1,
+        "step": 513,
+        "adjacent": 1,
+        "n": 24,
+        "valid": true,
+        "Lambda": -0.9198844056467634,
+        "H": 0.3935833047223829,
+        "expanding_fraction": 0.0,
+        "exact_zero_count": 0,
+        "min_abs_a": 0.28317993388725826,
+        "largest_inverse_weight_share": 0.0579112514729297
+      },
+      {
+        "pair": 2,
+        "step": 1024,
+        "adjacent": 0,
+        "n": 24,
+        "valid": true,
+        "Lambda": 0.3702837130116796,
+        "H": 1.444753854469144,
+        "expanding_fraction": 1.0,
+        "exact_zero_count": 0,
+        "min_abs_a": 1.272268811420365,
+        "largest_inverse_weight_share": 0.04731553326560158
+      },
+      {
+        "pair": 2,
+        "step": 1025,
+        "adjacent": 1,
+        "n": 24,
+        "valid": true,
+        "Lambda": -1.0533979518438346,
+        "H": 0.3452015702259835,
+        "expanding_fraction": 0.0,
+        "exact_zero_count": 0,
+        "min_abs_a": 0.25905942700216,
+        "largest_inverse_weight_share": 0.05552161882646351
+      },
+      {
+        "pair": 3,
+        "step": 1536,
+        "adjacent": 0,
+        "n": 24,
+        "valid": true,
+        "Lambda": 0.32047488445862704,
+        "H": 1.3710818873312487,
+        "expanding_fraction": 1.0,
+        "exact_zero_count": 0,
+        "min_abs_a": 1.0170618435701666,
+        "largest_inverse_weight_share": 0.05617004740989881
+      },
+      {
+        "pair": 3,
+        "step": 1537,
+        "adjacent": 1,
+        "n": 24,
+        "valid": true,
+        "Lambda": -0.8010466186692687,
+        "H": 0.4449237883949691,
+        "expanding_fraction": 0.0,
+        "exact_zero_count": 0,
+        "min_abs_a": 0.2942854188515276,
+        "largest_inverse_weight_share": 0.06299493619314085
+      },
+      {
+        "pair": 4,
+        "step": 2048,
+        "adjacent": 0,
+        "n": 24,
+        "valid": true,
+        "Lambda": 0.1672360983833646,
+        "H": 1.1749454115331135,
+        "expanding_fraction": 0.9166666666666666,
+        "exact_zero_count": 0,
+        "min_abs_a": 0.987531176769058,
+        "largest_inverse_weight_share": 0.04957419063370845
+      },
+      {
+        "pair": 4,
+        "step": 2049,
+        "adjacent": 1,
+        "n": 24,
+        "valid": true,
+        "Lambda": -0.5748282476585099,
+        "H": 0.5587222350888402,
+        "expanding_fraction": 0.0,
+        "exact_zero_count": 0,
+        "min_abs_a": 0.448871661482694,
+        "largest_inverse_weight_share": 0.051863584018211006
+      },
+      {
+        "pair": 5,
+        "step": 2560,
+        "adjacent": 0,
+        "n": 24,
+        "valid": true,
+        "Lambda": 0.3337063745930406,
+        "H": 1.3902263710745857,
+        "expanding_fraction": 1.0,
+        "exact_zero_count": 0,
+        "min_abs_a": 1.1280058010295626,
+        "largest_inverse_weight_share": 0.05135266036921407
+      },
+      {
+        "pair": 5,
+        "step": 2561,
+        "adjacent": 1,
+        "n": 24,
+        "valid": true,
+        "Lambda": -1.1469128763410554,
+        "H": 0.3141753391432221,
+        "expanding_fraction": 0.0,
+        "exact_zero_count": 0,
+        "min_abs_a": 0.21596046756441267,
+        "largest_inverse_weight_share": 0.06061590474684054
+      },
+      {
+        "pair": 6,
+        "step": 3072,
+        "adjacent": 0,
+        "n": 24,
+        "valid": true,
+        "Lambda": -0.5376115461862317,
+        "H": 0.5797030289973987,
+        "expanding_fraction": 0.0,
+        "exact_zero_count": 0,
+        "min_abs_a": 0.4450121494407475,
+        "largest_inverse_weight_share": 0.0542778279317691
+      },
+      {
+        "pair": 6,
+        "step": 3073,
+        "adjacent": 1,
+        "n": 24,
+        "valid": true,
+        "Lambda": 0.19744010906123113,
+        "H": 1.2106801920955101,
+        "expanding_fraction": 0.9166666666666666,
+        "exact_zero_count": 0,
+        "min_abs_a": 0.9438657721858508,
+        "largest_inverse_weight_share": 0.05344510786439109
+      },
+      {
+        "pair": 7,
+        "step": 3584,
+        "adjacent": 0,
+        "n": 24,
+        "valid": true,
+        "Lambda": -0.7662829258362827,
+        "H": 0.4620161402379838,
+        "expanding_fraction": 0.0,
+        "exact_zero_count": 0,
+        "min_abs_a": 0.3753364959709975,
+        "largest_inverse_weight_share": 0.0512891038216638
+      },
+      {
+        "pair": 7,
+        "step": 3585,
+        "adjacent": 1,
+        "n": 24,
+        "valid": true,
+        "Lambda": 0.2663657212676231,
+        "H": 1.300974585796086,
+        "expanding_fraction": 1.0,
+        "exact_zero_count": 0,
+        "min_abs_a": 1.0900692068666067,
+        "largest_inverse_weight_share": 0.04972828703600254
+      }
+    ],
+    "loss_initial": 0.02485086367232725,
+    "loss_final": 0.009353133180411533,
+    "initial_batch_scalar": {
+      "n": 128,
+      "valid": true,
+      "Lambda": 0.13585601868884145,
+      "H": 1.1443627603194584,
+      "expanding_fraction": 1.0,
+      "exact_zero_count": 0,
+      "min_abs_a": 1.0290725859225232,
+      "largest_inverse_weight_share": 0.008687758460673706
+    },
+    "full_summary_source": "/scratch/users/ghoshavr/eoss/results/CNN_DIRECTIONAL_WINDOWS_20260905/directional_analysis/mlp_iid_control/summary.json"
+  },
+  "cnn_confirmation": {
+    "locked": true,
+    "selection": {
+      "selection_source": "discovery_only",
+      "source": "/scratch/users/ghoshavr/eoss/results/CNN_DIRECTIONAL_WINDOWS_20260905/branches/cnn_discovery",
+      "trace_sha256": "bee2b011bc03e24bac182ae9049f62e460ce6e55dafd85b368a92261a7852496",
+      "axis_name": "fixed_top_ritz",
+      "checkpoint_sha256": "1b897babcc7149f44d9a627af30f9ab209fec362c82605267d86209781b96248",
+      "frame": "/scratch/users/ghoshavr/eoss/results/NEURAL_NETWORK_RESULTS_20260905/07_FIXED_FRAME_BIMODALITY/vision/cnn_silu_9c4ab8ad240e/frame.pt",
+      "analysis_code_sha256": "56bc4372c274881a5c7eb35189f237321571fcf17ff916a771c14003db65c55a",
+      "start_index": 672,
+      "width": 64,
+      "discovery_category": "alternating_two_lobes",
+      "raw_pass": true,
+      "note": "Locked relative window and axis; continuation streams share a parent checkpoint. Full scans do not constitute confirmation."
+    },
+    "confirmation_streams": [
+      {
+        "source": "/scratch/users/ghoshavr/eoss/results/CNN_DIRECTIONAL_WINDOWS_20260905/branches/cnn_confirmation",
+        "available": true,
+        "window": {
+          "axis_index": 0,
+          "axis_name": "fixed_top_ritz",
+          "width": 64,
+          "start_index": 672,
+          "stop_index_exclusive": 736,
+          "start_step": 672.0,
+          "end_step": 735.0,
+          "finite": true,
+          "raw_pass": false,
+          "detrended_pass": false,
+          "category": "no_robust_raw_two_lobes",
+          "raw": {
+            "n": 64,
+            "passes": false,
+            "by_bandwidth": {
+              "0.7": {
+                "peak_count": 2,
+                "h": 0.00011060247259214503,
+                "passes": true,
+                "peaks": [
+                  -0.00011613122497618813,
+                  0.0004786631872888735
+                ],
+                "valley": 0.00018353618883674375,
+                "left_mass": 0.5,
+                "valley_ratio": 0.33160604812368805,
+                "separation_sd": 1.638566566167605,
+                "prominence_fraction": [
+                  0.9999832611442954,
+                  0.6495715557148981
+                ],
+                "resolution_ok": true
+              },
+              "1.0": {
+                "peak_count": 2,
+                "h": 0.0001580035322744929,
+                "passes": true,
+                "peaks": [
+                  -0.00012247120198070774,
+                  0.00048617060785782545
+                ],
+                "valley": 0.00018515036351252046,
+                "left_mass": 0.5,
+                "valley_ratio": 0.5937166927012715,
+                "separation_sd": 1.6767140037097883,
+                "prominence_fraction": [
+                  0.9999859739333553,
+                  0.39519796015324166
+                ],
+                "resolution_ok": true
+              },
+              "1.4": {
+                "peak_count": 1,
+                "h": 0.00022120494518429007,
+                "passes": false,
+                "peaks": [
+                  -9.510549613486296e-05
+                ]
+              }
+            },
+            "sd": 0.0003629967952148619,
+            "bandwidth_pass_count": 2
+          },
+          "detrended": {
+            "n": 64,
+            "passes": false,
+            "by_bandwidth": {
+              "0.7": {
+                "peak_count": 2,
+                "h": 0.00011059537218008643,
+                "passes": true,
+                "peaks": [
+                  -0.0002936475267324225,
+                  0.0003013032575329205
+                ],
+                "valley": 8.369474440442486e-06,
+                "left_mass": 0.5,
+                "valley_ratio": 0.3335582572902902,
+                "separation_sd": 1.6391025732641207,
+                "prominence_fraction": [
+                  0.9999832206639231,
+                  0.6549466376154918
+                ],
+                "resolution_ok": true
+              },
+              "1.0": {
+                "peak_count": 2,
+                "h": 0.0001579933888286949,
+                "passes": true,
+                "peaks": [
+                  -0.0002978921584387053,
+                  0.0003095611923490106
+                ],
+                "valley": 7.1550677177347486e-06,
+                "left_mass": 0.5,
+                "valley_ratio": 0.5948624781158168,
+                "separation_sd": 1.6735474206383996,
+                "prominence_fraction": [
+                  0.9999859674269238,
+                  0.39704423866523236
+                ],
+                "resolution_ok": true
+              },
+              "1.4": {
+                "peak_count": 1,
+                "h": 0.00022119074436017285,
+                "passes": false,
+                "peaks": [
+                  -0.00027232503884132276
+                ]
+              }
+            },
+            "sd": 0.00036297349169585753,
+            "bandwidth_pass_count": 2
+          },
+          "controls": {
+            "lag1": -0.9419549256337101,
+            "lag2": 0.8967569403112409,
+            "parity_gap_sd": 0.10859239281996959,
+            "block_mean_range_sd": 0.16584892150582015,
+            "split_wasserstein_sd": 0.21337621300975126,
+            "drift_flag": false,
+            "alternation_flag": false,
+            "recurring_switching": true,
+            "valley_crossings": 61,
+            "core_switches": 54,
+            "both_cores_in_both_halves": true,
+            "even_raw_shape": {
+              "n": 32,
+              "passes": true,
+              "by_bandwidth": {
+                "1.0": {
+                  "peak_count": 2,
+                  "h": 0.00018355504382047038,
+                  "passes": true,
+                  "peaks": [
+                    -0.00019552738654493736,
+                    0.0004558463990219704
+                  ],
+                  "valley": 9.204009578952913e-05,
+                  "left_mass": 0.4375,
+                  "valley_ratio": 0.7296399511420204,
+                  "separation_sd": 1.7743282124243795,
+                  "prominence_fraction": [
+                    0.1857864852827974,
+                    0.9999781932683947
+                  ],
+                  "resolution_ok": true
+                }
+              },
+              "sd": 0.00036711008764094076,
+              "bandwidth_pass_count": 1
+            },
+            "odd_raw_shape": {
+              "n": 32,
+              "passes": false,
+              "by_bandwidth": {
+                "1.0": {
+                  "peak_count": 1,
+                  "h": 0.00017887608395291776,
+                  "passes": false,
+                  "peaks": [
+                    -8.44999203091636e-05
+                  ]
+                }
+              },
+              "sd": 0.00035775216790583553,
+              "bandwidth_pass_count": 0
+            }
+          },
+          "moments": {
+            "gradient_direction_realized": {
+              "n": 64,
+              "valid": true,
+              "Lambda": 0.3787734345564384,
+              "H": 1.4455340326063775,
+              "expanding_fraction": 1.0,
+              "exact_zero_count": 0,
+              "min_abs_a": 1.1476009780061673,
+              "largest_inverse_weight_share": 0.019681465676960476
+            },
+            "same_fixed_axis_realized": {
+              "n": 64,
+              "valid": true,
+              "Lambda": -0.01979628878955473,
+              "H": 0.9770681188835859,
+              "expanding_fraction": 0.421875,
+              "exact_zero_count": 0,
+              "min_abs_a": 0.7995527239921314,
+              "largest_inverse_weight_share": 0.019094037077792857
+            },
+            "moving_vector_mean_log_norm_gain": [
+              -0.00027551222033615335,
+              -0.000601545275396836,
+              1.7623171032955472e-05
+            ],
+            "same_fixed_axis_reset_mean_log_norm_gain": 0.39468636951239405,
+            "same_fixed_axis_mean_orthogonal_gain_sq": 1.246018293558741
+          }
+        }
+      }
+    ]
+  }
+}

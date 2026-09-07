@@ -1,0 +1,75 @@
+\section{Why the constructed neural controls have invariant laws}
+\label{app:bounded-network-proof}
+The following argument concerns the explicitly forced, bounded-parameter
+models in Appendix~\ref{app:constructed-vs-ordinary}; it does not assert
+recurrence for ordinary-network SGD.
+
+\begin{proposition}[Bounded data gradients and latent return]
+\label{prop:bounded-network-recurrence}
+On a finite-dimensional active parameter space, consider the exact update
+\[
+ \begin{gathered}
+ \theta^+=a\theta+b_B(\theta)+\nu Z,\qquad
+ a=1-\eta\mu,\quad |a|<1,\\
+ \sup_{B,\theta}\|b_B(\theta)\|\le K<\infty,
+ \qquad Z\sim N(0,I),\quad\nu>0.
+ \end{gathered}
+\]
+Assume fresh iid batches and Gaussian vectors, independent of each other
+and of the current state, and continuous $b_B$.
+The chain has a unique attracting invariant probability, a smooth
+strictly positive density, and every finite polynomial moment.
+These conclusions apply to the constructed tanh/sigmoid networks,
+including their frozen-output-bias ablation.
+\end{proposition}
+
+\begin{proof}
+First verify the bounded-gradient hypothesis for the stated networks.
+Let $d_0,\ldots,d_L$, with $d_L=1$, be fixed layer widths, and write
+$W_\ell=w_\ell\tanh\Theta_\ell$, $b_\ell=\tanh v_\ell$,
+$w_\ell=2/\sqrt{d_{\ell-1}}$.
+Finite inputs and targets give bounds $X_*,Y_*$. Hidden activations
+and their derivatives have absolute value at most one. Thus hidden
+outputs satisfy $A_\ell\le1$, with $A_0=X_*$, and the linear output
+satisfies $|f_\theta(x_i)|\le F=d_{L-1}w_L+1$.
+Set $D_L=1$ and $D_\ell=d_{\ell+1}w_{\ell+1}D_{\ell+1}$.
+Backpropagation and $|\tanh'|\le1$ give, for every latent coordinate,
+\[
+ |\partial_{\Theta_{\ell,jk}}f_\theta|
+ \le D_\ell w_\ell A_{\ell-1},\qquad
+ |\partial_{v_{\ell,j}}f_\theta|\le D_\ell.
+\]
+There are finitely many coordinates, so $\|\nabla f_\theta\|\le J<\infty$
+uniformly. Hence every individual and averaged squared-loss data gradient
+has norm at most $G=(F+Y_*)J$.
+The sampled objective therefore gives $b_B=-\eta g_B$, $K=\eta G$,
+and $\nu=\eta\sigma_{\rm eff}>0$ exactly.
+
+Put $q=|a|$ and $V=1+\|\theta\|$. The triangle inequality gives
+$PV\le qV+1-q+K+\nu\mathbb E\|Z\|$.
+On $\|\theta\|\le R$, all conditional Gaussian means have norm at
+most $qR+K$. Consequently their mixture density, on a target ball
+$\|u\|\le r$, is bounded below by
+\[
+ (2\pi\nu^2)^{-P/2}
+ \exp[-(r+qR+K)^2/(2\nu^2)]>0,
+\]
+where $P$ is the active dimension. This gives compact minorization,
+Lebesgue irreducibility, and aperiodicity. Localizing the displayed
+geometric drift to a sufficiently large ball, the Foster--Harris theorem
+gives uniqueness and weighted total-variation convergence
+\citep{hairermattingly2011}.
+For each $p>0$, subadditivity ($p\le1$) or Young's inequality ($p>1$)
+gives $P\|\theta\|^p\le q_p\|\theta\|^p+C_p$, with $q_p<1$.
+Iteration from a finite start, convergence in law, and Portmanteau give
+the invariant $p$th moment. Invariance expresses its density as a mixture
+of translated Gaussians with covariance $\nu^2I$; uniformly bounded
+Gaussian derivatives justify differentiation and imply smoothness and
+positivity. Freezing a bias removes its coordinate: the same argument
+holds on the remaining space, where the forcing is still full rank.
+\end{proof}
+
+For the reported $\mu=.05$ and $\eta\in\{.5,10\}$, the outer factors
+are $.975$ and $.5$. The proof establishes recurrence independently of
+any measured tangent-growth sign; it proves neither positive Lyapunov
+growth nor a density mode count.

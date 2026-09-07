@@ -1,0 +1,13 @@
+# Local build products and external model weights
+*.aux
+*.out
+*.log
+*.fdb_latexmk
+*.fls
+__pycache__/
+*.pyc
+*.pt
+*.pth
+*.bin
+*.bbl
+*.blg

@@ -1,0 +1,117 @@
+% Main-text candidate. Environments proposition/theorem/corollary/remark required.
+% All identifiers start sc: to avoid collisions with matrix-agent contributions.
+
+\subsection{From one deterministic edge to several stochastic diagnostics}
+For deterministic $L(x)=hx^2/2$ with $h>0$, the entire orbit is
+\begin{equation}
+ x_t=(1-\eta h)^t x_0.
+ \label{eq:deterministic}
+\end{equation}
+The condition $0<\eta h<2$ contracts every nonzero start to zero. At $\eta h=2$ the sign alternates without decay; above two the magnitude diverges. A fixed quadratic therefore cannot explain bounded large-step fluctuations after its expanding boundary. Random curvature changes the product law, and nonlinear curvature can change the orbit's return.
+
+On the scalar sampled quadratic
+\(\ell_B(x)=h_Bx^2/2-\xi_Bx\), SGD is exactly
+\begin{equation}
+ X_{t+1}=A_{t+1}X_t+\eta\xi_{t+1},\qquad A_B=1-\eta h_B.
+ \label{sc:quadratic}
+\end{equation}
+Two trajectories using the same sampled batches differ by
+\(\Delta_{t+1}=A_{t+1}\Delta_t\).
+Write \(M=|A_B|\), so moments always use the absolute multiplier, and define
+\begin{equation}
+ m(p)=\mathbb E M^p,\quad
+ \gamma=\mathbb E\log M,\quad
+ H=\frac1{m(-1)}.
+ \label{sc:diagnostics}
+\end{equation}
+Here \(H\) is the harmonic gain; its inverse \(m(-1)\) is the negative-moment
+coefficient. We only assign a finite inverse-moment estimate this meaning
+when the population inverse moment exists. For constant curvature and $p\ne0$,
+\(m(p)^{1/p}=M\), \(\gamma=\log M\), and \(H=M\): the boundaries all
+coincide at \(|1-\eta h|=1\). Curvature randomness separates them.
+
+\begin{proposition}[Scalar moment ordering]\label{sc:ordering}
+Let \(M>0\), \(\mathbb E|\log M|<\infty\), and suppose the displayed moments
+are finite. Then
+\begin{equation}
+ \log H\ \le\ \gamma\ \le\ \log m(1)\ \le\ \tfrac12\log m(2).
+ \label{sc:ladder}
+\end{equation}
+For iid multipliers and \(\Delta_0\ne0\),
+\(t^{-1}\log|\Delta_t/\Delta_0|\to\gamma\) almost surely and
+\(\mathbb E|\Delta_t/\Delta_0|^p=m(p)^t\).
+Consequently \(H>1\) implies \(\gamma>0\). The converse need not hold.
+\end{proposition}
+
+The use of absolute values matters: $m(1)$ is a mean-absolute multiplier, not the signed mean $\mathbb E a_B$. For $p>0$, $m(p)<1$ means contraction of a $p$th perturbation moment. For $p<0$ it means contraction of an \emph{inverse distance}, so it measures repulsion from zero, rather than contraction toward zero. The logarithmic criterion lies between these orders. We use the term harmonic expansion for $H>1$ while keeping this direction of the inequality explicit.
+
+A concrete two-curvature law already separates the references. Let $a_B=-1/2$ with probability $u$ and $a_B=-2$ otherwise; both are realizable with positive quadratic curvatures. Then
+\begin{equation}
+ \gamma=(1-2u)\log2,\qquad H=(1/2+3u/2)^{-1}.
+ \label{eq:two-curvatures}
+\end{equation}
+For $1/3<u<1/2$, the product is logarithmically expanding but $H<1$. For $u<1/3$, both diagnostics expand. No dimension or gradient-alignment assumption is needed for this separation.
+
+The classical Kesten--Goldie result concerns the \emph{affine} recursion
+\eqref{sc:quadratic}: with \(\gamma<0\), nondegenerate additive forcing, and
+the usual renewal assumptions, its stationary upper tail has exponent
+\(\kappa>0\) solving \(m(\kappa)=1\)
+\citep{kesten1973random,goldie1991implicit}.
+This is a baseline, not a theorem of post-expansion confinement. In
+particular, the nondegenerate Gaussian affine model used in
+Appendix~\ref{sc:proofs} has no invariant probability when \(\gamma>0\).
+An additional return mechanism is needed.
+
+\subsection{Nonlinear return changes an upper-tail question into a central-mass question}
+An \emph{invariant law} $\pi$ satisfies $X_0\sim\pi\Rightarrow X_t\sim\pi$ at every time. It is \emph{attracting} when other initial laws converge to it in distribution. These statements concern the law of a state; they need not imply contraction of paths using the same random updates.
+
+The simplest exact return model is saturated amplitude:
+\begin{equation}
+ R_{t+1}=\min\{r_*,M_{t+1}R_t\},\qquad 0<R_t\le r_*.
+ \label{sc:saturation}
+\end{equation}
+Here $r_*>0$ is the outer return radius. The model separates local multiplicative motion from return at this scale.
+It is an explicit model, not an identity for a globally quadratic loss.
+
+\begin{theorem}[An inverse-moment law after local expansion]\label{sc:central-law}
+Suppose \(\mathbb E|\log M|<\infty\), \(\gamma>0\),
+\(\log M\) is nonarithmetic, and
+\(m(-\alpha)=1\) for some \(\alpha>0\). Assume \(m(-q)\) is finite in a
+neighborhood of \(\alpha\) and
+\(0<-\mathbb E[M^{-\alpha}\log M]<\infty\).
+Then \eqref{sc:saturation} has a unique invariant probability on
+\((0,r_*]\), and for some \(C\in(0,\infty)\),
+\begin{equation}
+ \mathbb P_\pi(R\le r)\sim C(r/r_*)^\alpha,\qquad r\downarrow0.
+ \label{sc:smallball}
+\end{equation}
+If, additionally, \(\log M\) has a bounded continuous density of compact
+support, then
+\(p_R(r)\sim C\alpha r_*^{-\alpha}r^{\alpha-1}\).
+When the negative-moment curve is strictly convex and finite through
+\(1\) and \(\alpha\),
+\begin{equation}
+ H<1\Longleftrightarrow\alpha<1,\qquad
+ H=1\Longleftrightarrow\alpha=1,\qquad
+ H>1\Longleftrightarrow\alpha>1.
+ \label{sc:shape-ladder}
+\end{equation}
+\end{theorem}
+
+Thus positive local log growth can coexist with a central density cusp
+\((0<\alpha<1)\); the harmonic crossing separates this cusp from central
+depletion \((\alpha>1)\) in this return model. For a reflection-symmetric
+signed coordinate, the same power occurs on each side. Central depletion
+is a local shape conclusion. Exactly two modes additionally requires
+control of the outer density, and arbitrary reinjection can reverse the
+conclusion (Appendix~\ref{sc:counterexample}).
+
+\paragraph{Proof idea.}
+The change of variable \(W=\log(r_*/R)\) gives
+\(W_{t+1}=\max\{0,W_t-\log M_{t+1}\}\).
+This is a reflected random walk with negative mean increment.
+Its invariant law is the supremum of the unreflected walk. The nonarithmetic assumption rules out log-radius lattice effects. Tilting the
+increment law by \(M^{-\alpha}\) reverses its drift; the overshoot renewal
+theorem gives an exponential tail in \(W\), hence the power
+\eqref{sc:smallball} in \(R\). The root therefore has the opposite sign
+from the Kesten upper-tail root.

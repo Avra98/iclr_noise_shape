@@ -1,0 +1,123 @@
+\section{Proof of Theorem~\ref{thm:occupied-positive}: an exact positive-exponent control}
+\label{sec:piecewise-exact}
+A randomly perturbed tent map can be realized as SGD on coercive sampled
+losses. This control gives an analytic coexistence result for globally
+$C^1$, piecewise-$C^2$ losses; it is not a novelty claim about random
+expanding maps or a proof of the smooth neural examples' measured signs.
+Let $a_t\in\{0.58,0.62\}$ be iid equiprobable and let
+$\xi_t\sim\operatorname{Unif}[-0.38,0.38]$ be iid and independent of the
+$a_t$. Define
+\[
+\Psi(x)=\begin{cases}x-x|x|,&|x|\le1,\\
+-x+\operatorname{sign}(x),&|x|>1,
+\end{cases}
+\qquad \ell(x;a,\xi)=\frac{x^2}{2}-a\Psi(x)-\xi x.
+\]
+Values and first derivatives match at $-1,0,1$, so these losses are $C^1$
+with globally Lipschitz gradients, but not globally $C^2$. Every sample
+loss is coercive. At step size one its exact SGD update is
+\[
+X_{t+1}=F_{a_t}(X_t)+\xi_t,\qquad
+F_a(x)=a\{1-2\min(|x|,1)\}.
+\]
+No projection, gradient clipping, or reset is applied to the trajectory;
+the bounded map is the gradient update of the displayed piecewise loss.
+The population loss $L=x^2/2-0.6\Psi(x)$ has unique minimizer $3/11$ and
+curvature $-0.2$ on $(-1,0)$, hence is nonconvex.
+
+\paragraph{Invariant law and an explicit mixing bound.}
+Every state enters $K=[-1,1]$ in one update. Write $P$ for the transition
+kernel, $I=[-.5,.5]$, and $J=[.27,.35]$. A first-step uniform-noise interval
+has center in $[-.62,.62]$ and intersects $I$ in length at least $.26$.
+For $y\in I$, both possible $F_a(y)$ lie in $[0,.62]$; every uniform-noise
+interval with such a center contains $J$. Thus, globally in $x$,
+\[
+P^2(x,dz)\ge\frac{.26}{.76^2}\mathbf1_J(z)\,dz
+=\epsilon\,\frac{\mathbf1_J(z)}{.08}\,dz,
+\quad \epsilon=\frac{.08\cdot.26}{.76^2}
+=0.03601108033\ldots.
+\]
+The Doeblin contraction for $P^2$ gives a unique invariant probability
+$\pi$ and, for every initial law $\nu$,
+\[
+\|\nu P^n-\pi\|_{\mathrm{TV}}
+\le(1-\epsilon)^{\lfloor n/2\rfloor},
+\]
+where total variation is $\sup_A|\nu(A)-\pi(A)|$. Uniqueness for $P^2$
+also gives $\pi P=\pi$. The one-step density is bounded by $1/.76$;
+therefore so is the invariant density. Compact support gives all moments
+and finite expected risk. Smoothness of this density is not asserted.
+
+\paragraph{Exact stationary common-noise growth.}
+Absolute continuity implies that a stationary trajectory almost surely
+never visits $\{-1,0,1\}$. At all its differentiability points,
+$F'_a(x)=2a$ for $-1<x<0$ and $F'_a(x)=-2a$ for $0<x<1$.
+Hence the strong law gives exactly
+\[
+\lambda=\lim_{n\to\infty}\frac1n
+\log\left|\prod_{t=0}^{n-1}F'_{a_t}(X_t)\right|
+=\frac12\log(1.16\cdot1.24)
+=0.18176569237\ldots>0.
+\]
+Both the curvature randomness and the additive forcing are genuine.
+At the population minimizer the frozen derivatives are also $-2a$;
+its harmonic gain is $1.16\cdot1.24/1.20>1$. Thus central expansion,
+positive stationary tangent growth, uniform attraction in distribution,
+and finite risk coexist in this explicit control. No mode-count claim
+is needed.
+
+\paragraph{An essential initialization qualification.}
+For $|X_0|>1$ the first derivative is exactly zero. A tangent transported
+from that original initial state remains zero and has exponent $-\infty$.
+After one update the physical state is in the interior of $K$ and off all
+kinks almost surely; a tangent initialized \emph{then} has the positive
+exponent above. Such a post-entry diagnostic must be distinguished from
+the original derivative product. A kink initial point has no classical
+first-step derivative. This distinction changes no physical SGD update.
+Common-noise derivative checks share both $a_t$ and $\xi_t$.
+
+Random tent maps are established examples in the theory of random
+interval systems; see Kalle and Maggioni, \emph{Invariant densities for
+random systems of the interval}, Ergodic Theory and Dynamical Systems
+42 (2022), 141--179, doi:10.1017/etds.2020.127
+(arXiv:1805.11430). Their work is background here: the explicit
+minorization and derivative calculation prove this control directly.
+
+\paragraph{An open step-size region for the same loss.}
+Keep the loss and noise laws fixed and take $\eta\in[.98,1]$. The map is
+$G_{\eta,a,\xi}(x)=(1-\eta)x+\eta F_a(x)+\eta\xi$.
+With $q=1-\eta$, convexity of $K$ gives invariance and the global bound
+$d_K(G(x))\le qd_K(x)$. For $x\in K$ the deterministic center lies in
+$[-.6276,.62]$, and the noise half-width is at least $.3724$.
+Its overlap with $I$ has length at least $.2448$. For $y\in I$ the next
+center lies in $[-.01,.62]$, whose noise intervals all contain $J$.
+Thus the preceding minorization holds on $K$ uniformly with
+\[
+\epsilon_* =\frac{.08\cdot.2448}{.76^2}
+=0.03390581717\ldots.
+\]
+There is a unique invariant probability $\pi_\eta$ on $K$, with all
+moments and the corresponding uniform TV bound for starts in $K$.
+For $\eta<1$, any finite outside start has distance at most
+$q^n d_K(X_0)$. Once this is below $.1$, the independent event
+$\xi\ge0$, of probability $1/2$, forces entry: both endpoint images
+lie in $[-.6276,-.176]$, and the outside displacement is at most
+$.1q\le.002$. Hence entrance occurs almost surely in finite time.
+Every invariant law on the full line must be supported on $K$ by the
+distance contraction, so uniqueness is global. Convergence from every
+initial law follows, but is not uniform over the unbounded line when
+$\eta<1$.
+
+On the two halves of $K$ the derivative magnitudes are respectively
+$1+\eta(2a-1)$ and $\eta(1+2a)-1$. Bounded logarithmic gains and
+uniform ergodicity give the stationary exponent, with the uniform bound
+\[
+\lambda_\eta\ge\log\min\{1+.16\eta,2.16\eta-1\}
+\ge\log(1.1168)=0.11046745303\ldots>0.
+\]
+The same population minimizer also has frozen gains of magnitude
+$\eta(1+2a)-1>1$. This proves coexistence over an open interval of steps,
+not just a tuned single step. For $\eta<1$, the outside derivative is
+$q>0$, so finitely many pre-entry factors do not alter the exponent of
+a tangent started away from a kink. The outside-start annihilation at
+$\eta=1$ remains a distinct endpoint qualification.

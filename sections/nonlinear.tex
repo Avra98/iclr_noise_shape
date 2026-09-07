@@ -1,0 +1,46 @@
+
+The next construction makes return part of the sampled loss. Here the local exponent freezes a Jacobian at the population minimizer; the occupied exponent follows Jacobians along a stationary trajectory.
+
+To prove that return can arise from a gradient update, rather than from
+an imposed cap, draw \(h\in\{.95,1.05\}\) equiprobably and
+\(e\sim N(0,\sigma^2)\), independently, with \(\sigma>0\). Use
+\begin{equation}
+ \ell(x;h,e)=\tfrac12(\sqrt h\,x-e)^2
+ -\tfrac{.92}{2}\{x^2-\log(1+x^2)\}.
+ \label{sc:smooth-loss}
+\end{equation}
+Every sampled loss is coercive: it tends to infinity as $|x|\to\infty$. The population loss, up to a constant, is
+\(L(x)=.04x^2+.46\log(1+x^2)\), with unique minimizer zero but negative
+curvature on part of the line.
+
+\begin{theorem}[Smooth nonconvex SGD can return despite central expansion]
+\label{sc:nonlinear-recurrence}
+More generally, replace \(.92\) in \eqref{sc:smooth-loss} by \(\beta\)
+and draw \(h=\beta+\mu\pm s\) equiprobably, with
+\(0<s<\mu\) and \(\beta>8\mu\). At batch size one, every step
+\(0<\eta<2/(\mu+s)\) has a unique attracting invariant probability
+with a smooth, strictly positive, even density and all finite polynomial
+moments. Its central Jacobian is \(1-\eta h\), whereas its outer slopes
+are \(1-\eta(\mu\pm s)\).
+
+For \((\beta,\mu,s,\eta)=(.92,.08,.05,2.015)\), the central absolute
+gains are \(.91425,1.11575\), and
+\begin{equation}
+ \gamma_0=0.009938\ldots>0,\qquad
+ H_0=1.004999\ldots>1,\qquad \alpha_0=2.017427\ldots>1,
+ \label{sc:concrete-numbers}
+\end{equation}
+where \(\tfrac12(.91425^{-\alpha_0}+1.11575^{-\alpha_0})=1\).
+The outer slopes are \(.93955,.73805\), both strictly contracting.
+\end{theorem}
+
+\paragraph{Proof idea.}
+The exact update is
+\(X^+=A_\infty X-\eta\beta X/(1+X^2)+\eta\sqrt h\,e\), with
+\(A_\infty=1-\eta(h-\beta)\). The middle term is bounded and the outer
+slopes contract. For every $p>0$, the bound $\mathbb E[|X^+|^p\mid X=x]\le c_p|x|^p+C_p$, with $c_p<1$, controls excursions to infinity. This inward drift and the positive Gaussian transition density give recurrence and uniqueness. At the displayed step, the local random product has positive mean log gain because curvature is much larger near the origin. This theorem proves recurrence after the \emph{central} Lyapunov
+and harmonic boundaries; it does not identify the tangent exponent along
+the invariant trajectory or infer its modes. These are separate empirical
+measurements below.
+
+For this example $\alpha_0$ describes the \emph{frozen} multiplier law. At every fixed $\sigma>0$, the actual invariant density is strictly positive at zero, so a zero-noise power-law depletion cannot be inferred literally as $x\to0$. The recurrence theorem and the central renewal theorem establish complementary statements, with different hypotheses.

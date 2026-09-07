@@ -1,0 +1,272 @@
+{
+  "status": "passed",
+  "main_pages": 9,
+  "references_start_page": 10,
+  "full_pages": 37,
+  "full_bytes": 748839,
+  "main_only_bytes": 355734,
+  "full_sha256": "5f8a9aecb374da82f5dbd85aa0c2d353c02eda2e1a255d5366650b587c0d28be",
+  "main_only_sha256": "eea964eeb0f2d7d0b6ea21d4437f73019f93cf561f9fe0de512fe80be749ebbf",
+  "pdf_syntax_issues": [],
+  "all_pages_rendered": true,
+  "undefined_references": false,
+  "overfull_boxes": false,
+  "main_figures": 3,
+  "total_figures": 13,
+  "table_environments": 0,
+  "official_style_sha256": "a4852f68e080d6c5245057ca2039100b409e31727898aa93c03d78ddb84374a3",
+  "figures": [
+    {
+      "pdf": "figures/empirical_atlas_01_residual_new.pdf",
+      "png": "figures/empirical_atlas_01_residual_new.png",
+      "sha256": "dbd4a6f866d14703b13319b807fa39ee62ca2757b501a0cb5d4d797d365dacff"
+    },
+    {
+      "pdf": "figures/empirical_atlas_02_archived_conv.pdf",
+      "png": "figures/empirical_atlas_02_archived_conv.png",
+      "sha256": "a55680ea627b40fc5074a7ffb569f3bb97dc0268177c1bfd95b2356e619fc657"
+    },
+    {
+      "pdf": "figures/empirical_atlas_03_shallow_mlp.pdf",
+      "png": "figures/empirical_atlas_03_shallow_mlp.png",
+      "sha256": "2a47e1977f7d06fefa533aa2c9257361d9bc69e2f5b4ebc0da84b2ac091b329e"
+    },
+    {
+      "pdf": "figures/empirical_atlas_04_deep_mlp.pdf",
+      "png": "figures/empirical_atlas_04_deep_mlp.png",
+      "sha256": "34f71840f31861cdb55658cc4537cae8a084f723299de9b22859c4cebccb8709"
+    },
+    {
+      "pdf": "figures/empirical_atlas_05_tanh_vit.pdf",
+      "png": "figures/empirical_atlas_05_tanh_vit.png",
+      "sha256": "fb5b60781e05e61ee97cddb8aecf80ddab00b8d35f8b5630473991c26fe06935"
+    },
+    {
+      "pdf": "figures/empirical_atlas_06_gpt_raw.pdf",
+      "png": "figures/empirical_atlas_06_gpt_raw.png",
+      "sha256": "870231c9cee61e26907c4df8875992f46ede0f4f2c4966b5fabf968a1e6de309"
+    },
+    {
+      "pdf": "figures/empirical_atlas_07_gpt_frozen.pdf",
+      "png": "figures/empirical_atlas_07_gpt_frozen.png",
+      "sha256": "0ca5e94bec273d7842f01db0316daeb51473f7745a4c0cf2de5595d05ef0ffae"
+    },
+    {
+      "pdf": "figures/empirical_cnn_confirmation.pdf",
+      "png": "figures/empirical_cnn_confirmation.png",
+      "sha256": "013a30514fe733373f67c215c388ee7e0e42c3802ddda44c8bf764d8dfaad893"
+    },
+    {
+      "pdf": "figures/empirical_iid_mlp_dynamics.pdf",
+      "png": "figures/empirical_iid_mlp_dynamics.png",
+      "sha256": "685c56555887e0f1ef875bcca660b6663609a792630c5cf5f31858b012eab2f9"
+    },
+    {
+      "pdf": "figures/empirical_nonconvex_network_controls.pdf",
+      "png": "figures/empirical_nonconvex_network_controls.png",
+      "sha256": "7bd0bce7611ef3be0b89cf6ec4a4135feab4aca8f368f7d94d44d40cc7ae4f41"
+    },
+    {
+      "pdf": "figures/empirical_nonconvex_scalar_controls.pdf",
+      "png": "figures/empirical_nonconvex_scalar_controls.png",
+      "sha256": "ad1a80b0ea9b9b48d018cf823b5cd4f757c2a955a7c6aea38ff6e35198e0e27b"
+    },
+    {
+      "pdf": "figures/empirical_stability_heatmaps.pdf",
+      "png": "figures/empirical_stability_heatmaps.png",
+      "sha256": "f8893958e049d09e9f68ab4190b526ca21da64579ea3a810f7432d5688b7512f"
+    },
+    {
+      "pdf": "figures/theory_inverse_return.pdf",
+      "png": "figures/theory_inverse_return.png",
+      "sha256": "2b0b82ab608247306bd1702477ccf34b49d55af018c1d8edde6c5b372b06c406"
+    }
+  ],
+  "bookmarks": [
+    [
+      1,
+      "Introduction",
+      1
+    ],
+    [
+      1,
+      "Scalar quadratics and the negative-moment boundary",
+      2
+    ],
+    [
+      2,
+      "From one deterministic edge to several stochastic diagnostics",
+      2
+    ],
+    [
+      2,
+      "Nonlinear return changes an upper-tail question into a central-mass question",
+      2
+    ],
+    [
+      1,
+      "A matrix renewal formulation",
+      3
+    ],
+    [
+      2,
+      "Random matrices: radius and direction must evolve together",
+      3
+    ],
+    [
+      1,
+      "Nonconvex SGD supplies its own return",
+      4
+    ],
+    [
+      2,
+      "What balances at equilibrium?",
+      5
+    ],
+    [
+      1,
+      "From the theory to measurable neural quantities",
+      6
+    ],
+    [
+      1,
+      "Neural observations across regimes and windows",
+      6
+    ],
+    [
+      1,
+      "Relation to prior work and scope",
+      9
+    ],
+    [
+      1,
+      "Discussion",
+      9
+    ],
+    [
+      1,
+      "Scalar theory: assumptions and complete derivations",
+      12
+    ],
+    [
+      2,
+      "Deterministic and iid quadratic products",
+      12
+    ],
+    [
+      2,
+      "The affine baseline and why outer return matters",
+      12
+    ],
+    [
+      2,
+      "Proof of the reflected-log central law",
+      13
+    ],
+    [
+      2,
+      "A solvable return model with an exact density",
+      14
+    ],
+    [
+      2,
+      "Finite-mean reinjection: a useful generalization",
+      15
+    ],
+    [
+      2,
+      "Proof of the smooth nonlinear SGD example",
+      16
+    ],
+    [
+      2,
+      "A counterexample to a universal harmonic-to-bimodality claim",
+      17
+    ],
+    [
+      2,
+      "Exactly two modes in the confined diffusion normal form",
+      17
+    ],
+    [
+      1,
+      "Matrix renewal at a locally expanding center",
+      18
+    ],
+    [
+      2,
+      "Definitions and explicit assumptions",
+      18
+    ],
+    [
+      2,
+      "A uniform occupation bound derived from the spectrum",
+      18
+    ],
+    [
+      2,
+      "Unrestricted and killed renewal asymptotics",
+      19
+    ],
+    [
+      2,
+      "A noncommuting law that verifies every renewal hypothesis",
+      20
+    ],
+    [
+      2,
+      "An exact, conditional transfer statement for nonlinear SGD",
+      21
+    ],
+    [
+      1,
+      "An exact SGD construction and a projection counterexample",
+      22
+    ],
+    [
+      1,
+      "Proof of Theorem 5: an exact positive-exponent control",
+      24
+    ],
+    [
+      1,
+      "Why the constructed neural controls have invariant laws",
+      25
+    ],
+    [
+      1,
+      "Additional empirical details and controls",
+      26
+    ],
+    [
+      2,
+      "Smooth nonconvex and matched-noise controls",
+      27
+    ],
+    [
+      2,
+      "Constructed neural recurrence versus ordinary-network controls",
+      28
+    ],
+    [
+      2,
+      "Neural experiment definitions and audit",
+      29
+    ],
+    [
+      2,
+      "An architecture and dataset atlas",
+      31
+    ]
+  ],
+  "empirical_audits": [
+    "contributions/empirical/numerical_audit.json",
+    "contributions/empirical/atlas_provenance.json",
+    "contributions/empirical/nonconvex_provenance.json"
+  ],
+  "math_cross_reviews": [
+    "contributions/scalar/MATRIX_CROSS_AUDIT.md",
+    "contributions/matrix/scalar_crossreview.md"
+  ],
+  "scope": "Explicit-model theorems; finite-time neural observations. No universal neural harmonic transition or neural stationary law is asserted."
+}

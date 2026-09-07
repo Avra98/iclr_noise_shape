@@ -1,0 +1,4396 @@
+{
+  "inputs": {
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/SOURCE_MANIFEST.json": {
+      "sha256": "40ab493f1fafe2c5f90f05c25a3516a1d2d086fa9d0f5a94c2b052d7c95c414c",
+      "bytes": 326140
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/grids_vision/numeric_grid_audit.json": {
+      "sha256": "aef20da9e8c067847987434f135f338dae98c0b7d14e5d2112d4cdeed3188e6b",
+      "bytes": 577866
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/grids_gpt/numeric_grid_audit.json": {
+      "sha256": "3a24866a458661b2ca9c83e07a2912e6b20686b3c271c48e8ab8ec2db75814fd",
+      "bytes": 113344
+    },
+    "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/figure_review_20260905/figure_inputs.pkl": {
+      "sha256": "88bbdcc449627605a439bb7640336d779289d6444e5d2388d160739e3e8629af",
+      "bytes": 60488266
+    },
+    "/tmp/ghoshavr_part1_concise/old_inputs.pkl": {
+      "sha256": "e983e41a4123415ce450ca25ca1563fb6ae72e6206d423abc62df41f9e05fd19",
+      "bytes": 107674669
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/wrn_no_bn_grid_eta_batch.pdf": {
+      "sha256": "64c6d3e06fffa36542b0b70f0e0ca7220029eace4284f2cccceafe6d0a324848",
+      "bytes": 35488
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/resnet32_grid_eta_batch.pdf": {
+      "sha256": "d635d88ed49c32f69e4a2620135d73d25e3bba3d9b9eb72fbae9de958756efbc",
+      "bytes": 35791
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/cnn_grid_eta_batch.pdf": {
+      "sha256": "07488930b7d8214fef0d4d68908c354bd9eb63d9601efd679cec197ae003cf7d",
+      "bytes": 34505
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/resnet20_grid_eta_batch.pdf": {
+      "sha256": "3b0e579f30c055f925ab8dd8d186fe0e19a77aaa06139575df0ebfb86024c95c",
+      "bytes": 34819
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/mlp_d1_grid_eta_batch.pdf": {
+      "sha256": "8665a0118af478e54f0119395132342938fdc65b9b924d8245962f187df7d3e9",
+      "bytes": 35355
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/mlp_d2_grid_eta_batch.pdf": {
+      "sha256": "8ea8ab7c3ebb7cb3462de3596a210c5e3c5a177331f3a9c8d98bca21fac4e129",
+      "bytes": 35633
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/mlp_d3_grid_eta_batch.pdf": {
+      "sha256": "f1daa0d7690cf802977de949202839fb2a5c47be3639f0a7143d009da9e93157",
+      "bytes": 35247
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/mlp_d4_grid_eta_batch.pdf": {
+      "sha256": "64461027a30cec233a42f2eb8070b904ef6214569f48ef140659cf66f47f2ed9",
+      "bytes": 35468
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/mlp_tanh_grid_eta_batch.pdf": {
+      "sha256": "652f3a76f871bf53cacf13b835a50daeaf7016e9971abda31047af728a18a6f9",
+      "bytes": 35790
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/vit_grid_eta_batch.pdf": {
+      "sha256": "f7a88cde8514ce63ef24194a0a99133f1d065fdf9a708ebfd13e893b90a28d90",
+      "bytes": 34917
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/gpt_grid01_raw_hessian.pdf": {
+      "sha256": "4b7ac1c2dbcd61418fd5a927163571ead3ee6c5c1110891c0c21606cea60868d",
+      "bytes": 34286
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/gpt_grid02_raw_ggn.pdf": {
+      "sha256": "da610ba57e6699629734b58641d3d65670aafed019eb652fffb67ac49478bffc",
+      "bytes": 34294
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/gpt_grid03_frozen_adam_hessian.pdf": {
+      "sha256": "dd07287e6a3761573eff86099c6b8ccdc9b4ee92cfacd6030883a8ee6de71d55",
+      "bytes": 34880
+    },
+    "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/gpt_grid04_frozen_adam_ggn.pdf": {
+      "sha256": "b0f825008dce08f5a769d1274f6be6c2778d965de085f93550f65233e14a56b9",
+      "bytes": 34824
+    }
+  },
+  "pages": [
+    {
+      "file": "empirical_atlas_01_residual_new",
+      "views": [
+        {
+          "source_figure_id": "wrn_no_bn_grid_eta_batch",
+          "architecture": "WideResNet-10-2, native Fixup",
+          "dataset": "CIFAR-10, fixed 8192-example subset",
+          "source_vector": "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/wrn_no_bn_grid_eta_batch.pdf",
+          "accepted_part1_page": 22,
+          "epoch": "new20260905",
+          "axes": {
+            "eta": [
+              0.001,
+              0.002,
+              0.004
+            ],
+            "batch": [
+              8,
+              32,
+              128,
+              512,
+              2048,
+              4096
+            ]
+          },
+          "cells": [
+            {
+              "eta": 0.001,
+              "B": 8,
+              "values": {
+                "Lambda": -0.4626173969309025,
+                "H": 0.5007721151956382
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.001,
+              "B": 32,
+              "values": {
+                "Lambda": -0.6476022293563938,
+                "H": 0.44000119868401105
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.001,
+              "B": 128,
+              "values": {
+                "Lambda": -0.9127611100725895,
+                "H": 0.3503829065821369
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.001,
+              "B": 512,
+              "values": {
+                "Lambda": -1.2809006056323309,
+                "H": 0.3515654845581615
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.001,
+              "B": 2048,
+              "values": {
+                "Lambda": -1.7090175061099993,
+                "H": 0.3432499989165419
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.001,
+              "B": 4096,
+              "values": {
+                "Lambda": -1.3911622051124783,
+                "H": 0.37280626728702093
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.002,
+              "B": 8,
+              "values": {
+                "Lambda": -0.5489045976503256,
+                "H": 0.3749768464575926
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.002,
+              "B": 32,
+              "values": {
+                "Lambda": -0.6785541868404362,
+                "H": 0.46378447810588197
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.002,
+              "B": 128,
+              "values": {
+                "Lambda": -1.7209214463722802,
+                "H": 0.04557216618774098
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 2500,
+                  "last_step": 20000,
+                  "checkpoints": 3,
+                  "n": 896
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 2500,
+                  "last_step": 20000,
+                  "checkpoints": 3,
+                  "n": 896
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 2500,
+                  "last_step": 20000,
+                  "checkpoints": 3,
+                  "n": 896
+                }
+              ]
+            },
+            {
+              "eta": 0.002,
+              "B": 512,
+              "values": {
+                "Lambda": -1.218799713095632,
+                "H": 0.23143801590617544
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 2500,
+                  "last_step": 20000,
+                  "checkpoints": 3,
+                  "n": 896
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.002,
+              "B": 2048,
+              "values": {
+                "Lambda": -0.6770061394529928,
+                "H": 0.5251507739069601
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.002,
+              "B": 4096,
+              "values": {
+                "Lambda": -0.6473180842705609,
+                "H": 0.5322275167550985
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.004,
+              "B": 8,
+              "values": {
+                "Lambda": -0.5361067251738565,
+                "H": 0.4302395179540582
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.004,
+              "B": 32,
+              "values": {
+                "Lambda": -0.9697668023445439,
+                "H": 0.183724515816302
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.004,
+              "B": 128,
+              "values": {
+                "Lambda": -1.1261569974033583,
+                "H": 0.27615294635660187
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.004,
+              "B": 512,
+              "values": {
+                "Lambda": -1.1189042211560765,
+                "H": 0.2881954475657819
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.004,
+              "B": 2048,
+              "values": {
+                "Lambda": -0.4865542536221626,
+                "H": 0.6349446875547256
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.004,
+              "B": 4096,
+              "values": {
+                "Lambda": -0.37307225873194466,
+                "H": 0.7018372005118899
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            }
+          ],
+          "raw_recomputed_statistics": 36,
+          "missing_cells": 0,
+          "recorded_escapes": 0,
+          "optimizer_caveat": "Plain SGD; gradient-direction scalar compression, not propagated network growth."
+        },
+        {
+          "source_figure_id": "resnet32_grid_eta_batch",
+          "architecture": "ResNet-32 without BatchNorm",
+          "dataset": "CIFAR-10, fixed 8192-example subset",
+          "source_vector": "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/resnet32_grid_eta_batch.pdf",
+          "accepted_part1_page": 27,
+          "epoch": "new20260905",
+          "axes": {
+            "eta": [
+              0.025,
+              0.05,
+              0.1
+            ],
+            "batch": [
+              8,
+              32,
+              128,
+              512,
+              2048,
+              4096
+            ]
+          },
+          "cells": [
+            {
+              "eta": 0.025,
+              "B": 8,
+              "values": {
+                "Lambda": -0.356331237119605,
+                "H": 0.5594638917041165
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.025,
+              "B": 32,
+              "values": {
+                "Lambda": -0.7996151904693057,
+                "H": 0.3285848429018981
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.025,
+              "B": 128,
+              "values": {
+                "Lambda": -1.5384003142237141,
+                "H": 0.037620045430403544
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.025,
+              "B": 512,
+              "values": {
+                "Lambda": -0.6942143787487377,
+                "H": 0.4685972964631442
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.025,
+              "B": 2048,
+              "values": {
+                "Lambda": -0.07202948941468884,
+                "H": 0.9344075374128497
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.025,
+              "B": 4096,
+              "values": {
+                "Lambda": -0.10361491166441765,
+                "H": 0.9082493699613575
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.05,
+              "B": 8,
+              "values": {
+                "Lambda": -0.5981790099174181,
+                "H": 0.42155423692477473
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.05,
+              "B": 32,
+              "values": {
+                "Lambda": -0.8657216210634728,
+                "H": 0.19662026113305245
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.05,
+              "B": 128,
+              "values": {
+                "Lambda": -0.6872224156684265,
+                "H": 0.12360474585529335
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 2500,
+                  "last_step": 20000,
+                  "checkpoints": 3,
+                  "n": 896
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 2500,
+                  "last_step": 20000,
+                  "checkpoints": 3,
+                  "n": 896
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 2500,
+                  "last_step": 20000,
+                  "checkpoints": 3,
+                  "n": 896
+                }
+              ]
+            },
+            {
+              "eta": 0.05,
+              "B": 512,
+              "values": {
+                "Lambda": -0.7332868124204093,
+                "H": 0.3548649395430055
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 2500,
+                  "last_step": 20000,
+                  "checkpoints": 3,
+                  "n": 896
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.05,
+              "B": 2048,
+              "values": {
+                "Lambda": -0.2472799066757856,
+                "H": 0.5520558793152412
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 10000,
+                  "checkpoints": 3,
+                  "n": 448
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.05,
+              "B": 4096,
+              "values": {
+                "Lambda": -0.2665992874264499,
+                "H": 0.5343800397538542
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.1,
+              "B": 8,
+              "values": {
+                "Lambda": -0.6321865570464699,
+                "H": 0.27601663863685105
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.1,
+              "B": 32,
+              "values": {
+                "Lambda": -0.9843128564395883,
+                "H": 0.19550642836557688
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.1,
+              "B": 128,
+              "values": {
+                "Lambda": -1.1047559254433303,
+                "H": 0.13478995005954125
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.1,
+              "B": 512,
+              "values": {
+                "Lambda": -0.6648289228834959,
+                "H": 0.16112270805423998
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.1,
+              "B": 2048,
+              "values": {
+                "Lambda": 0.1340424687999494,
+                "H": 1.089752693435454
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            },
+            {
+              "eta": 0.1,
+              "B": 4096,
+              "values": {
+                "Lambda": 0.20799015849856348,
+                "H": 1.2083080340727024
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88882",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                },
+                {
+                  "seed": "88883",
+                  "first_step": 500,
+                  "last_step": 2500,
+                  "checkpoints": 2,
+                  "n": 192
+                }
+              ]
+            }
+          ],
+          "raw_recomputed_statistics": 36,
+          "missing_cells": 0,
+          "recorded_escapes": 0,
+          "optimizer_caveat": "Plain SGD; gradient-direction scalar compression, not propagated network growth."
+        }
+      ]
+    },
+    {
+      "file": "empirical_atlas_02_archived_conv",
+      "views": [
+        {
+          "source_figure_id": "cnn_grid_eta_batch",
+          "architecture": "CNN, 3 convolutional layers (ReLU)",
+          "dataset": "CIFAR-10, fixed 8192-example subset",
+          "source_vector": "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/cnn_grid_eta_batch.pdf",
+          "accepted_part1_page": 32,
+          "epoch": "archived_marc_arch_sweep",
+          "axes": {
+            "eta": [
+              0.04,
+              0.08
+            ],
+            "batch": [
+              8,
+              32,
+              128,
+              512,
+              2048,
+              4096
+            ]
+          },
+          "cells": [
+            {
+              "eta": 0.04,
+              "B": 8,
+              "values": {
+                "Lambda": -0.12706908375895506,
+                "H": 0.5622898844465711
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 4500
+                }
+              ]
+            },
+            {
+              "eta": 0.04,
+              "B": 32,
+              "values": {
+                "Lambda": 0.2508470036776682,
+                "H": 1.2359881820532752
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 4500
+                }
+              ]
+            },
+            {
+              "eta": 0.04,
+              "B": 128,
+              "values": {
+                "Lambda": 0.11316480693252574,
+                "H": 0.8782794680167374
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 1500
+                }
+              ]
+            },
+            {
+              "eta": 0.04,
+              "B": 512,
+              "values": {
+                "Lambda": 0.11915319294159125,
+                "H": 1.1207900228417123
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            },
+            {
+              "eta": 0.04,
+              "B": 2048,
+              "values": {
+                "Lambda": 0.004251947729405315,
+                "H": 1.0016429103446387
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            },
+            {
+              "eta": 0.04,
+              "B": 4096,
+              "values": {
+                "Lambda": -0.019910601339280857,
+                "H": 0.9781705410188478
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            },
+            {
+              "eta": 0.08,
+              "B": 8,
+              "values": {
+                "Lambda": -0.18815881202250573,
+                "H": 0.6285710076626831
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 4500
+                }
+              ]
+            },
+            {
+              "eta": 0.08,
+              "B": 32,
+              "values": {
+                "Lambda": 0.11433913911219469,
+                "H": 1.0805616254375976
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 4500
+                }
+              ]
+            },
+            {
+              "eta": 0.08,
+              "B": 128,
+              "values": {
+                "Lambda": 0.3504481444926857,
+                "H": 1.389728500361509
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 1500
+                }
+              ]
+            },
+            {
+              "eta": 0.08,
+              "B": 512,
+              "values": {
+                "Lambda": 0.2274957522953452,
+                "H": 1.2504741305924274
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            },
+            {
+              "eta": 0.08,
+              "B": 2048,
+              "values": {
+                "Lambda": 0.06326134818753641,
+                "H": 1.0645919615100325
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            },
+            {
+              "eta": 0.08,
+              "B": 4096,
+              "values": {
+                "Lambda": -0.1938303698990628,
+                "H": 0.7698231030776399
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            }
+          ],
+          "raw_recomputed_statistics": 24,
+          "missing_cells": 0,
+          "recorded_escapes": 0,
+          "optimizer_caveat": "Plain SGD; gradient-direction scalar compression, not propagated network growth."
+        },
+        {
+          "source_figure_id": "resnet20_grid_eta_batch",
+          "architecture": "ResNet-20 without BatchNorm",
+          "dataset": "CIFAR-10, fixed 8192-example subset",
+          "source_vector": "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/resnet20_grid_eta_batch.pdf",
+          "accepted_part1_page": 64,
+          "epoch": "archived_marc_arch_sweep",
+          "axes": {
+            "eta": [
+              0.025,
+              0.05
+            ],
+            "batch": [
+              8,
+              32,
+              128,
+              512,
+              2048,
+              4096
+            ]
+          },
+          "cells": [
+            {
+              "eta": 0.025,
+              "B": 8,
+              "values": {
+                "Lambda": -0.5465854387843325,
+                "H": 0.33647691892146175
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 13500,
+                  "last_step": 14999,
+                  "checkpoints": 3,
+                  "n": 4500
+                }
+              ]
+            },
+            {
+              "eta": 0.025,
+              "B": 32,
+              "values": {
+                "Lambda": -1.5144514288033706,
+                "H": 0.07544671950217455
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 13500,
+                  "last_step": 14999,
+                  "checkpoints": 3,
+                  "n": 4500
+                }
+              ]
+            },
+            {
+              "eta": 0.025,
+              "B": 128,
+              "values": {
+                "Lambda": -1.5794332598428689,
+                "H": 0.05357329895493731
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 13500,
+                  "last_step": 14999,
+                  "checkpoints": 3,
+                  "n": 1500
+                }
+              ]
+            },
+            {
+              "eta": 0.025,
+              "B": 512,
+              "values": {
+                "Lambda": -0.5601783298543215,
+                "H": 0.5451591346712932
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 13500,
+                  "last_step": 14999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            },
+            {
+              "eta": 0.025,
+              "B": 2048,
+              "values": {
+                "Lambda": -0.3244848910440671,
+                "H": 0.7010559969600916
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 13500,
+                  "last_step": 14999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            },
+            {
+              "eta": 0.025,
+              "B": 4096,
+              "values": {
+                "Lambda": -0.015754507351649044,
+                "H": 0.9728218423776931
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 13500,
+                  "last_step": 14999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            },
+            {
+              "eta": 0.05,
+              "B": 8,
+              "values": {
+                "Lambda": -0.9151211156081853,
+                "H": 0.14318329102647814
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 13500,
+                  "last_step": 14999,
+                  "checkpoints": 3,
+                  "n": 4500
+                }
+              ]
+            },
+            {
+              "eta": 0.05,
+              "B": 32,
+              "values": {
+                "Lambda": -1.6478575407650224,
+                "H": 0.06037770867785189
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 13500,
+                  "last_step": 14999,
+                  "checkpoints": 3,
+                  "n": 4500
+                }
+              ]
+            },
+            {
+              "eta": 0.05,
+              "B": 128,
+              "values": {
+                "Lambda": -0.8972989553431095,
+                "H": 0.12999092819640545
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 13500,
+                  "last_step": 14999,
+                  "checkpoints": 3,
+                  "n": 1500
+                }
+              ]
+            },
+            {
+              "eta": 0.05,
+              "B": 512,
+              "values": {
+                "Lambda": 0.15528487104337166,
+                "H": 1.1491921119770594
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 13500,
+                  "last_step": 14999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            },
+            {
+              "eta": 0.05,
+              "B": 2048,
+              "values": {
+                "Lambda": -0.12297949356522941,
+                "H": 0.8798049150308167
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 13500,
+                  "last_step": 14999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            },
+            {
+              "eta": 0.05,
+              "B": 4096,
+              "values": {
+                "Lambda": -0.11394323815124949,
+                "H": 0.8808830650223256
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 13500,
+                  "last_step": 14999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            }
+          ],
+          "raw_recomputed_statistics": 24,
+          "missing_cells": 0,
+          "recorded_escapes": 0,
+          "optimizer_caveat": "Plain SGD; gradient-direction scalar compression, not propagated network growth."
+        }
+      ]
+    },
+    {
+      "file": "empirical_atlas_03_shallow_mlp",
+      "views": [
+        {
+          "source_figure_id": "mlp_d1_grid_eta_batch",
+          "architecture": "MLP, 1 x 256 (ReLU)",
+          "dataset": "CIFAR-10, fixed 8192-example subset",
+          "source_vector": "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/mlp_d1_grid_eta_batch.pdf",
+          "accepted_part1_page": 37,
+          "epoch": "archived_marc_arch_sweep",
+          "axes": {
+            "eta": [
+              0.0025,
+              0.005,
+              0.01,
+              0.02
+            ],
+            "batch": [
+              8,
+              32,
+              128,
+              512,
+              2048,
+              4096
+            ]
+          },
+          "cells": [
+            {
+              "eta": 0.0025,
+              "B": 8,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.0025,
+              "B": 32,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.0025,
+              "B": 128,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.0025,
+              "B": 512,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.0025,
+              "B": 2048,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.0025,
+              "B": 4096,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.005,
+              "B": 8,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.005,
+              "B": 32,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.005,
+              "B": 128,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.005,
+              "B": 512,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.005,
+              "B": 2048,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.005,
+              "B": 4096,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.01,
+              "B": 8,
+              "values": {
+                "Lambda": -1.0933495766006764,
+                "H": 0.03992820004265281
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 32,
+              "values": {
+                "Lambda": -0.33401898798979995,
+                "H": 0.2774799136094189
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 128,
+              "values": {
+                "Lambda": 0.06509993506990489,
+                "H": 1.0341707805875147
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 512,
+              "values": {
+                "Lambda": 0.03679959335303874,
+                "H": 1.0304060122006924
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 2048,
+              "values": {
+                "Lambda": 0.0010219056386292634,
+                "H": 0.9994667745365763
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 4096,
+              "values": {
+                "Lambda": 0.019981363369634266,
+                "H": 1.0194141159200794
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.02,
+              "B": 8,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 32,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 128,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 512,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 2048,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 4096,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            }
+          ],
+          "raw_recomputed_statistics": 12,
+          "missing_cells": 18,
+          "recorded_escapes": 2,
+          "optimizer_caveat": "Plain SGD; gradient-direction scalar compression, not propagated network growth."
+        },
+        {
+          "source_figure_id": "mlp_d2_grid_eta_batch",
+          "architecture": "MLP, 2 x 512 (ReLU)",
+          "dataset": "CIFAR-10, fixed 8192-example subset",
+          "source_vector": "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/mlp_d2_grid_eta_batch.pdf",
+          "accepted_part1_page": 42,
+          "epoch": "archived_marc_arch_sweep",
+          "axes": {
+            "eta": [
+              0.005,
+              0.01,
+              0.02,
+              0.04
+            ],
+            "batch": [
+              8,
+              32,
+              128,
+              512,
+              2048,
+              4096
+            ]
+          },
+          "cells": [
+            {
+              "eta": 0.005,
+              "B": 8,
+              "values": {
+                "Lambda": -0.18146428542814405,
+                "H": 0.40155056092208774
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.005,
+              "B": 32,
+              "values": {
+                "Lambda": -0.8794928267072082,
+                "H": 0.11063595184906709
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.005,
+              "B": 128,
+              "values": {
+                "Lambda": -0.26172682918532825,
+                "H": 0.6326930784511314
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.005,
+              "B": 512,
+              "values": {
+                "Lambda": 0.0045984612821699375,
+                "H": 0.9974908462940097
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.005,
+              "B": 2048,
+              "values": {
+                "Lambda": -0.008723713706489675,
+                "H": 0.9899367927195538
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.005,
+              "B": 4096,
+              "values": {
+                "Lambda": 0.01375552203777719,
+                "H": 1.011691106017058
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 8,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.01,
+              "B": 32,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.01,
+              "B": 128,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.01,
+              "B": 512,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.01,
+              "B": 2048,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.01,
+              "B": 4096,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 8,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 32,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 128,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 512,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 2048,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 4096,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 8,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 32,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 128,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 512,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 2048,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 4096,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            }
+          ],
+          "raw_recomputed_statistics": 12,
+          "missing_cells": 18,
+          "recorded_escapes": 7,
+          "optimizer_caveat": "Plain SGD; gradient-direction scalar compression, not propagated network growth."
+        }
+      ]
+    },
+    {
+      "file": "empirical_atlas_04_deep_mlp",
+      "views": [
+        {
+          "source_figure_id": "mlp_d3_grid_eta_batch",
+          "architecture": "MLP, 3 x 256 (ReLU)",
+          "dataset": "CIFAR-10, fixed 8192-example subset",
+          "source_vector": "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/mlp_d3_grid_eta_batch.pdf",
+          "accepted_part1_page": 48,
+          "epoch": "archived_marc_arch_sweep",
+          "axes": {
+            "eta": [
+              0.01,
+              0.02,
+              0.04,
+              0.08
+            ],
+            "batch": [
+              8,
+              32,
+              128,
+              512,
+              2048,
+              4096
+            ]
+          },
+          "cells": [
+            {
+              "eta": 0.01,
+              "B": 8,
+              "values": {
+                "Lambda": -0.5602550501730843,
+                "H": 0.14546629544971137
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 32,
+              "values": {
+                "Lambda": -0.03782218966640649,
+                "H": 0.7098690348769057
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 128,
+              "values": {
+                "Lambda": -0.17776866249877057,
+                "H": 0.2102869801566206
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 512,
+              "values": {
+                "Lambda": -0.23955944505033094,
+                "H": 0.5138190463978756
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 2048,
+              "values": {
+                "Lambda": 0.011000044762063156,
+                "H": 1.0017635372092983
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 4096,
+              "values": {
+                "Lambda": -0.1411135968056734,
+                "H": 0.8523457088986595
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.02,
+              "B": 8,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 32,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 128,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 512,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 2048,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 4096,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 8,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 32,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 128,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 512,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 2048,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 4096,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.08,
+              "B": 8,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.08,
+              "B": 32,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.08,
+              "B": 128,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.08,
+              "B": 512,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.08,
+              "B": 2048,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.08,
+              "B": 4096,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            }
+          ],
+          "raw_recomputed_statistics": 12,
+          "missing_cells": 18,
+          "recorded_escapes": 3,
+          "optimizer_caveat": "Plain SGD; gradient-direction scalar compression, not propagated network growth."
+        },
+        {
+          "source_figure_id": "mlp_d4_grid_eta_batch",
+          "architecture": "MLP, 4 x 512 (ReLU)",
+          "dataset": "CIFAR-10, fixed 8192-example subset",
+          "source_vector": "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/mlp_d4_grid_eta_batch.pdf",
+          "accepted_part1_page": 53,
+          "epoch": "archived_marc_arch_sweep",
+          "axes": {
+            "eta": [
+              0.01,
+              0.02,
+              0.04,
+              0.08
+            ],
+            "batch": [
+              8,
+              32,
+              128,
+              512,
+              2048,
+              4096
+            ]
+          },
+          "cells": [
+            {
+              "eta": 0.01,
+              "B": 8,
+              "values": {
+                "Lambda": -1.1172236045782082,
+                "H": 0.07522909029097821
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 32,
+              "values": {
+                "Lambda": -1.5223925241428222,
+                "H": 0.053367019724376186
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 128,
+              "values": {
+                "Lambda": -1.1406709419990344,
+                "H": 0.061007190031415845
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 512,
+              "values": {
+                "Lambda": -0.42745294300844217,
+                "H": 0.5072120756941054
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 2048,
+              "values": {
+                "Lambda": -0.04407199789355852,
+                "H": 0.9518048129001576
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 4096,
+              "values": {
+                "Lambda": -1.7667798087643638,
+                "H": 0.03348082804343003
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.02,
+              "B": 8,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 32,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 128,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 512,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 2048,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.02,
+              "B": 4096,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 8,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 32,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 128,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 512,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 2048,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 4096,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.08,
+              "B": 8,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.08,
+              "B": 32,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.08,
+              "B": 128,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.08,
+              "B": 512,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.08,
+              "B": 2048,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.08,
+              "B": 4096,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            }
+          ],
+          "raw_recomputed_statistics": 12,
+          "missing_cells": 18,
+          "recorded_escapes": 2,
+          "optimizer_caveat": "Plain SGD; gradient-direction scalar compression, not propagated network growth."
+        }
+      ]
+    },
+    {
+      "file": "empirical_atlas_05_tanh_vit",
+      "views": [
+        {
+          "source_figure_id": "mlp_tanh_grid_eta_batch",
+          "architecture": "MLP, 2 x 512 (tanh)",
+          "dataset": "CIFAR-10, fixed 8192-example subset",
+          "source_vector": "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/mlp_tanh_grid_eta_batch.pdf",
+          "accepted_part1_page": 58,
+          "epoch": "archived_marc_arch_sweep",
+          "axes": {
+            "eta": [
+              0.005,
+              0.01,
+              0.02,
+              0.04
+            ],
+            "batch": [
+              8,
+              32,
+              128,
+              512,
+              2048,
+              4096
+            ]
+          },
+          "cells": [
+            {
+              "eta": 0.005,
+              "B": 8,
+              "values": {
+                "Lambda": -2.176579689562477,
+                "H": 0.032154537161987996
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.005,
+              "B": 32,
+              "values": {
+                "Lambda": -0.8339998352012132,
+                "H": 0.17091752915704353
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.005,
+              "B": 128,
+              "values": {
+                "Lambda": -0.10014798149648436,
+                "H": 0.885108659320872
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.005,
+              "B": 512,
+              "values": {
+                "Lambda": -0.0026712974036182738,
+                "H": 0.994016115903721
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.005,
+              "B": 2048,
+              "values": {
+                "Lambda": -0.002373569299013292,
+                "H": 0.9969204029652533
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.005,
+              "B": 4096,
+              "values": {
+                "Lambda": -0.003688287047239212,
+                "H": 0.9960938535142034
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 8,
+              "values": {
+                "Lambda": -2.29743958000873,
+                "H": 0.024503409347079043
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 32,
+              "values": {
+                "Lambda": -0.6448937970803658,
+                "H": 0.23934257718837385
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 128,
+              "values": {
+                "Lambda": -0.01263174251084462,
+                "H": 0.9714221182576186
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 512,
+              "values": {
+                "Lambda": 0.015327884659985323,
+                "H": 1.011919435441099
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 2048,
+              "values": {
+                "Lambda": 0.0001522767279369768,
+                "H": 0.999388665186691
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.01,
+              "B": 4096,
+              "values": {
+                "Lambda": 0.004590426503712427,
+                "H": 1.0043130607974902
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.02,
+              "B": 8,
+              "values": {
+                "Lambda": -0.674589762387458,
+                "H": 0.11821147918847079
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.02,
+              "B": 32,
+              "values": {
+                "Lambda": -0.7813134155648641,
+                "H": 0.20399644872178394
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.02,
+              "B": 128,
+              "values": {
+                "Lambda": 0.008989223979445824,
+                "H": 0.991011172761597
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.02,
+              "B": 512,
+              "values": {
+                "Lambda": 0.03577050569857555,
+                "H": 1.032791634709997
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.02,
+              "B": 2048,
+              "values": {
+                "Lambda": 0.008181454781812252,
+                "H": 1.0074901874709596
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.02,
+              "B": 4096,
+              "values": {
+                "Lambda": 0.003615628658211141,
+                "H": 1.0033728747533266
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 36000,
+                  "last_step": 39999,
+                  "checkpoints": 3,
+                  "n": 9000
+                }
+              ]
+            },
+            {
+              "eta": 0.04,
+              "B": 8,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 32,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 128,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 512,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 2048,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.04,
+              "B": 4096,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            }
+          ],
+          "raw_recomputed_statistics": 36,
+          "missing_cells": 6,
+          "recorded_escapes": 0,
+          "optimizer_caveat": "Plain SGD; gradient-direction scalar compression, not propagated network growth."
+        },
+        {
+          "source_figure_id": "vit_grid_eta_batch",
+          "architecture": "ViT, 2 blocks x width 64",
+          "dataset": "CIFAR-10, fixed 8192-example subset",
+          "source_vector": "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/vit_grid_eta_batch.pdf",
+          "accepted_part1_page": 69,
+          "epoch": "archived_marc_arch_sweep",
+          "axes": {
+            "eta": [
+              0.2,
+              0.4
+            ],
+            "batch": [
+              8,
+              32,
+              128,
+              512,
+              2048,
+              4096
+            ]
+          },
+          "cells": [
+            {
+              "eta": 0.2,
+              "B": 8,
+              "values": {
+                "Lambda": -0.9417613652122094,
+                "H": 0.057295640332449216
+              },
+              "recorded_escapes": 1,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 100,
+                  "last_step": 400,
+                  "checkpoints": 3,
+                  "n": 4500
+                }
+              ]
+            },
+            {
+              "eta": 0.2,
+              "B": 32,
+              "values": {
+                "Lambda": -1.2180755188808552,
+                "H": 0.09121295476890152
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 4500
+                }
+              ]
+            },
+            {
+              "eta": 0.2,
+              "B": 128,
+              "values": {
+                "Lambda": -0.745602708726974,
+                "H": 0.12420172304850038
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 1500
+                }
+              ]
+            },
+            {
+              "eta": 0.2,
+              "B": 512,
+              "values": {
+                "Lambda": -0.0006077991728708317,
+                "H": 0.3080837786742627
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            },
+            {
+              "eta": 0.2,
+              "B": 2048,
+              "values": {
+                "Lambda": 0.3438054012959463,
+                "H": 0.5749182773514887
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            },
+            {
+              "eta": 0.2,
+              "B": 4096,
+              "values": {
+                "Lambda": -0.20492106767463295,
+                "H": 0.5323233774015607
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "pool_windows": [
+                {
+                  "seed": "88881",
+                  "first_step": 18000,
+                  "last_step": 19999,
+                  "checkpoints": 3,
+                  "n": 600
+                }
+              ]
+            },
+            {
+              "eta": 0.4,
+              "B": 8,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.4,
+              "B": 32,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.4,
+              "B": 128,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.4,
+              "B": 512,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.4,
+              "B": 2048,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 1,
+              "missing": true,
+              "pool_windows": []
+            },
+            {
+              "eta": 0.4,
+              "B": 4096,
+              "values": {
+                "Lambda": null,
+                "H": null
+              },
+              "recorded_escapes": 0,
+              "missing": true,
+              "pool_windows": []
+            }
+          ],
+          "raw_recomputed_statistics": 12,
+          "missing_cells": 6,
+          "recorded_escapes": 4,
+          "optimizer_caveat": "Plain SGD; gradient-direction scalar compression, not propagated network growth."
+        }
+      ]
+    },
+    {
+      "file": "empirical_atlas_06_gpt_raw",
+      "views": [
+        {
+          "source_figure_id": "gpt_grid01_raw_hessian",
+          "architecture": "GPT 168M",
+          "dataset": "FineWeb-Edu subset",
+          "source_vector": "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/gpt_grid01_raw_hessian.pdf",
+          "accepted_part1_page": 74,
+          "epoch": "new20260905",
+          "axes": {
+            "eta": [
+              0.00015,
+              0.0003,
+              0.0006
+            ],
+            "batch": [
+              4,
+              16,
+              64
+            ]
+          },
+          "cells": [
+            {
+              "eta": 0.00015,
+              "B": 4,
+              "values": {
+                "Lambda": -0.0003109951256005813,
+                "H": 0.99968904277288
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            },
+            {
+              "eta": 0.00015,
+              "B": 16,
+              "values": {
+                "Lambda": -0.00016692096294112225,
+                "H": 0.9998330916684721
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            },
+            {
+              "eta": 0.00015,
+              "B": 64,
+              "values": {
+                "Lambda": -0.0005149582208273307,
+                "H": 0.9994851496081677
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            },
+            {
+              "eta": 0.0003,
+              "B": 4,
+              "values": {
+                "Lambda": -0.013366349397923617,
+                "H": 0.9509635740899767
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            },
+            {
+              "eta": 0.0003,
+              "B": 16,
+              "values": {
+                "Lambda": -0.0002884720627717571,
+                "H": 0.9997115629735305
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 144
+            },
+            {
+              "eta": 0.0003,
+              "B": 64,
+              "values": {
+                "Lambda": -0.0005869478443315776,
+                "H": 0.9994132126526327
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            },
+            {
+              "eta": 0.0006,
+              "B": 4,
+              "values": {
+                "Lambda": 6.615674068564409,
+                "H": 73.39898555822812
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            },
+            {
+              "eta": 0.0006,
+              "B": 16,
+              "values": {
+                "Lambda": 0.031060658987250928,
+                "H": 1.0124660713578804
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            },
+            {
+              "eta": 0.0006,
+              "B": 64,
+              "values": {
+                "Lambda": -0.0007617987522770213,
+                "H": 0.9992384786706542
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            }
+          ],
+          "raw_recomputed_statistics": 18,
+          "missing_cells": 0,
+          "recorded_escapes": 0,
+          "optimizer_caveat": "Adam parents; raw metrics are SGD counterfactuals; frozen metrics omit momentum and preconditioner evolution."
+        },
+        {
+          "source_figure_id": "gpt_grid02_raw_ggn",
+          "architecture": "GPT 168M",
+          "dataset": "FineWeb-Edu subset",
+          "source_vector": "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/gpt_grid02_raw_ggn.pdf",
+          "accepted_part1_page": 75,
+          "epoch": "new20260905",
+          "axes": {
+            "eta": [
+              0.00015,
+              0.0003,
+              0.0006
+            ],
+            "batch": [
+              4,
+              16,
+              64
+            ]
+          },
+          "cells": [
+            {
+              "eta": 0.00015,
+              "B": 4,
+              "values": {
+                "Lambda": -0.0003599949463702788,
+                "H": 0.9996400513989696
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            },
+            {
+              "eta": 0.00015,
+              "B": 16,
+              "values": {
+                "Lambda": -0.00016501685183908598,
+                "H": 0.9998349954027513
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            },
+            {
+              "eta": 0.00015,
+              "B": 64,
+              "values": {
+                "Lambda": -0.0005132905934961083,
+                "H": 0.9994868132866952
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            },
+            {
+              "eta": 0.0003,
+              "B": 4,
+              "values": {
+                "Lambda": -0.03606301848212326,
+                "H": 0.9635495920512561
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            },
+            {
+              "eta": 0.0003,
+              "B": 16,
+              "values": {
+                "Lambda": -0.0002941140420532761,
+                "H": 0.9997059252789257
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 72
+            },
+            {
+              "eta": 0.0003,
+              "B": 64,
+              "values": {
+                "Lambda": -0.0005809280841544627,
+                "H": 0.9994192310500254
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            },
+            {
+              "eta": 0.0006,
+              "B": 4,
+              "values": {
+                "Lambda": 3.973507566826015,
+                "H": 8.38660925834293
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            },
+            {
+              "eta": 0.0006,
+              "B": 16,
+              "values": {
+                "Lambda": -0.04067563267299041,
+                "H": 0.954849031440414
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            },
+            {
+              "eta": 0.0006,
+              "B": 64,
+              "values": {
+                "Lambda": -0.000759852544651227,
+                "H": 0.9992404223152254
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            }
+          ],
+          "raw_recomputed_statistics": 18,
+          "missing_cells": 0,
+          "recorded_escapes": 0,
+          "optimizer_caveat": "Adam parents; raw metrics are SGD counterfactuals; frozen metrics omit momentum and preconditioner evolution."
+        }
+      ]
+    },
+    {
+      "file": "empirical_atlas_07_gpt_frozen",
+      "views": [
+        {
+          "source_figure_id": "gpt_grid03_frozen_adam_hessian",
+          "architecture": "GPT 168M",
+          "dataset": "FineWeb-Edu subset",
+          "source_vector": "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/gpt_grid03_frozen_adam_hessian.pdf",
+          "accepted_part1_page": 76,
+          "epoch": "new20260905",
+          "axes": {
+            "eta": [
+              0.00015,
+              0.0003,
+              0.0006
+            ],
+            "batch": [
+              4,
+              16,
+              64
+            ]
+          },
+          "cells": [
+            {
+              "eta": 0.00015,
+              "B": 4,
+              "values": {
+                "Lambda": 4.646032324944106,
+                "H": 5.1642326266610254
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            },
+            {
+              "eta": 0.00015,
+              "B": 16,
+              "values": {
+                "Lambda": -0.2102236021267545,
+                "H": 0.41681756907656003
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            },
+            {
+              "eta": 0.00015,
+              "B": 64,
+              "values": {
+                "Lambda": 0.7644147828023754,
+                "H": 1.5792265235365501
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            },
+            {
+              "eta": 0.0003,
+              "B": 4,
+              "values": {
+                "Lambda": 7.9960156522963075,
+                "H": 201.42364028582602
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            },
+            {
+              "eta": 0.0003,
+              "B": 16,
+              "values": {
+                "Lambda": -0.04817829268436602,
+                "H": 0.23930358938680904
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 144
+            },
+            {
+              "eta": 0.0003,
+              "B": 64,
+              "values": {
+                "Lambda": 0.7928670508533596,
+                "H": 0.8795113441368377
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            },
+            {
+              "eta": 0.0006,
+              "B": 4,
+              "values": {
+                "Lambda": 15.125836818490475,
+                "H": 50999.85379024038
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            },
+            {
+              "eta": 0.0006,
+              "B": 16,
+              "values": {
+                "Lambda": 4.147935978170861,
+                "H": 1.879008061663802
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            },
+            {
+              "eta": 0.0006,
+              "B": 64,
+              "values": {
+                "Lambda": 0.7069054572533103,
+                "H": 1.3892537968936771
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 48
+            }
+          ],
+          "raw_recomputed_statistics": 18,
+          "missing_cells": 0,
+          "recorded_escapes": 0,
+          "optimizer_caveat": "Adam parents; raw metrics are SGD counterfactuals; frozen metrics omit momentum and preconditioner evolution."
+        },
+        {
+          "source_figure_id": "gpt_grid04_frozen_adam_ggn",
+          "architecture": "GPT 168M",
+          "dataset": "FineWeb-Edu subset",
+          "source_vector": "/scratch/users/ghoshavr/eoss/results/ALL_EMPIRICAL_RESULTS_20260905/PART_01_CONCISE/support/vector_sources/gpt_grid04_frozen_adam_ggn.pdf",
+          "accepted_part1_page": 77,
+          "epoch": "new20260905",
+          "axes": {
+            "eta": [
+              0.00015,
+              0.0003,
+              0.0006
+            ],
+            "batch": [
+              4,
+              16,
+              64
+            ]
+          },
+          "cells": [
+            {
+              "eta": 0.00015,
+              "B": 4,
+              "values": {
+                "Lambda": 4.449744612806958,
+                "H": 4.023377612386351
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            },
+            {
+              "eta": 0.00015,
+              "B": 16,
+              "values": {
+                "Lambda": 0.09558725935799743,
+                "H": 0.45299988504176736
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            },
+            {
+              "eta": 0.00015,
+              "B": 64,
+              "values": {
+                "Lambda": 0.6617087090973656,
+                "H": 1.408973591842672
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            },
+            {
+              "eta": 0.0003,
+              "B": 4,
+              "values": {
+                "Lambda": 7.005209245693219,
+                "H": 171.57230421829578
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            },
+            {
+              "eta": 0.0003,
+              "B": 16,
+              "values": {
+                "Lambda": -0.6345094275552603,
+                "H": 0.06651013950585792
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 72
+            },
+            {
+              "eta": 0.0003,
+              "B": 64,
+              "values": {
+                "Lambda": 0.7133635516625375,
+                "H": 1.9314837330638346
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            },
+            {
+              "eta": 0.0006,
+              "B": 4,
+              "values": {
+                "Lambda": 12.88070900391533,
+                "H": 46723.11672713253
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            },
+            {
+              "eta": 0.0006,
+              "B": 16,
+              "values": {
+                "Lambda": 3.707670805260894,
+                "H": 8.424897130400778
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            },
+            {
+              "eta": 0.0006,
+              "B": 64,
+              "values": {
+                "Lambda": 0.4315995964095644,
+                "H": 1.3626414494954862
+              },
+              "recorded_escapes": 0,
+              "missing": false,
+              "gain_samples": 24
+            }
+          ],
+          "raw_recomputed_statistics": 18,
+          "missing_cells": 0,
+          "recorded_escapes": 0,
+          "optimizer_caveat": "Adam parents; raw metrics are SGD counterfactuals; frozen metrics omit momentum and preconditioner evolution."
+        }
+      ]
+    }
+  ],
+  "convention": "Replot only Lambda and H from accepted six-panel grids. Every eta/batch cell is retained. Gray N/A denotes missing gain estimates; E denotes recorded cutoff escape, including pre-escape estimates. Each run pools final three available checkpoint samples, then run-level statistics are averaged. All available means independently recomputed from raw saved gains.",
+  "glyphs": "A trailing + or minus preserves the reference side when rounded; N/A is never a stable result.",
+  "colors": "Signed log(1+abs(value-reference)/0.05), centered at references0 and1; panel-specific negative and positive ranges. Cell text and colorbar ticks retain original units.",
+  "total_views": 14,
+  "total_missing_cells": 84,
+  "total_recorded_vision_escapes": 18,
+  "raw_recomputed_statistics": 288
+}

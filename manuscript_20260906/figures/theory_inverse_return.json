@@ -1,0 +1,33 @@
+{
+  "type": "exact analytic invariant density, no fitted curves",
+  "boundary_atoms": "Each boundary atom retained in audit and caption; not drawn as a finite density.",
+  "parameters": [
+    {
+      "alpha": 0.5,
+      "b": 3.5,
+      "c": 3.0,
+      "rho_continuous_mass": 0.8571428571428571,
+      "H": 0.9523809523809523,
+      "lambda0": 0.047619047619047616,
+      "each_boundary_atom": 0.07142857142857145
+    },
+    {
+      "alpha": 1.0,
+      "b": 4.0,
+      "c": 3.0,
+      "rho_continuous_mass": 0.75,
+      "H": 1.0,
+      "lambda0": 0.08333333333333331,
+      "each_boundary_atom": 0.125
+    },
+    {
+      "alpha": 2.0,
+      "b": 5.0,
+      "c": 3.0,
+      "rho_continuous_mass": 0.6,
+      "H": 1.0666666666666667,
+      "lambda0": 0.1333333333333333,
+      "each_boundary_atom": 0.2
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "cases": [
+    {
+      "id": "mlp_silu_B32",
+      "arch": "mlp_silu",
+      "batch": 32,
+      "eta": 0.04,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88881/B32/checkpoints/ckpt_020000.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88881/B32/trajectory_meta.json",
+      "parent_checkpoint_kind": "checkpoint20000"
+    },
+    {
+      "id": "mlp_silu_B128",
+      "arch": "mlp_silu",
+      "batch": 128,
+      "eta": 0.04,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88881/B128/checkpoints/ckpt_020000.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88881/B128/trajectory_meta.json",
+      "parent_checkpoint_kind": "checkpoint20000"
+    },
+    {
+      "id": "mlp_silu_B512",
+      "arch": "mlp_silu",
+      "batch": 512,
+      "eta": 0.04,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88881/B512/checkpoints/ckpt_020000.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88881/B512/trajectory_meta.json",
+      "parent_checkpoint_kind": "checkpoint20000"
+    },
+    {
+      "id": "mlp_silu_B4096",
+      "arch": "mlp_silu",
+      "batch": 4096,
+      "eta": 0.04,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88881/B4096/checkpoints/ckpt_020000.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/mlp_silu/eta0.04/seed88881/B4096/trajectory_meta.json",
+      "parent_checkpoint_kind": "checkpoint20000"
+    },
+    {
+      "id": "cnn_silu_B32",
+      "arch": "cnn_silu",
+      "batch": 32,
+      "eta": 0.08,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88881/B32/checkpoints/ckpt_020000.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88881/B32/trajectory_meta.json",
+      "parent_checkpoint_kind": "checkpoint20000"
+    },
+    {
+      "id": "cnn_silu_B128",
+      "arch": "cnn_silu",
+      "batch": 128,
+      "eta": 0.08,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88881/B128/checkpoints/ckpt_020000.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88881/B128/trajectory_meta.json",
+      "parent_checkpoint_kind": "checkpoint20000"
+    },
+    {
+      "id": "cnn_silu_B512",
+      "arch": "cnn_silu",
+      "batch": 512,
+      "eta": 0.08,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88881/B512/checkpoints/ckpt_020000.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88881/B512/trajectory_meta.json",
+      "parent_checkpoint_kind": "checkpoint20000"
+    },
+    {
+      "id": "cnn_silu_B4096",
+      "arch": "cnn_silu",
+      "batch": 4096,
+      "eta": 0.08,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88881/B4096/checkpoints/ckpt_020000.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/cnn_silu/eta0.08/seed88881/B4096/trajectory_meta.json",
+      "parent_checkpoint_kind": "checkpoint20000"
+    },
+    {
+      "id": "resnet32_B32",
+      "arch": "resnet32",
+      "batch": 32,
+      "eta": 0.05,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/resnet32/eta0.05/seed88881/B32/checkpoints/ckpt_020000.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/resnet32/eta0.05/seed88881/B32/trajectory_meta.json",
+      "parent_checkpoint_kind": "checkpoint20000"
+    },
+    {
+      "id": "resnet32_B128",
+      "arch": "resnet32",
+      "batch": 128,
+      "eta": 0.05,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/resnet32/eta0.05/seed88881/B128/checkpoints/ckpt_020000.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/resnet32/eta0.05/seed88881/B128/trajectory_meta.json",
+      "parent_checkpoint_kind": "checkpoint20000"
+    },
+    {
+      "id": "resnet32_B512",
+      "arch": "resnet32",
+      "batch": 512,
+      "eta": 0.05,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/resnet32/eta0.05/seed88881/B512/checkpoints/ckpt_020000.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/resnet32/eta0.05/seed88881/B512/trajectory_meta.json",
+      "parent_checkpoint_kind": "checkpoint20000"
+    },
+    {
+      "id": "resnet32_B4096",
+      "arch": "resnet32",
+      "batch": 4096,
+      "eta": 0.05,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/APPENDIX_DIRECTIONAL_LADDERS_20260906/pinned/resnet32_B4096.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/resnet32/eta0.05/seed88881/B4096/trajectory_meta.json",
+      "parent_checkpoint_kind": "last_saved_checkpoint"
+    },
+    {
+      "id": "wrn_no_bn_B32",
+      "arch": "wrn_no_bn",
+      "batch": 32,
+      "eta": 0.002,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B32/checkpoints/ckpt_020000.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B32/trajectory_meta.json",
+      "parent_checkpoint_kind": "checkpoint20000"
+    },
+    {
+      "id": "wrn_no_bn_B128",
+      "arch": "wrn_no_bn",
+      "batch": 128,
+      "eta": 0.002,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B128/checkpoints/ckpt_020000.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B128/trajectory_meta.json",
+      "parent_checkpoint_kind": "checkpoint20000"
+    },
+    {
+      "id": "wrn_no_bn_B512",
+      "arch": "wrn_no_bn",
+      "batch": 512,
+      "eta": 0.002,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B512/checkpoints/ckpt_020000.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B512/trajectory_meta.json",
+      "parent_checkpoint_kind": "checkpoint20000"
+    },
+    {
+      "id": "wrn_no_bn_B4096",
+      "arch": "wrn_no_bn",
+      "batch": 4096,
+      "eta": 0.002,
+      "checkpoint": "/scratch/users/ghoshavr/eoss/results/APPENDIX_DIRECTIONAL_LADDERS_20260906/pinned/wrn_no_bn_B4096.pt",
+      "metadata": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B4096/trajectory_meta.json",
+      "parent_checkpoint_kind": "last_saved_checkpoint"
+    }
+  ],
+  "selection": "One predeclared parent initialization, four batch sizes for four architecture families, original learning rate; checkpoint20000 if available, otherwise pinned latest checkpoint with actual step recorded. Independent IID-subset continuations, not selected by modality.",
+  "steps": 4096
+}

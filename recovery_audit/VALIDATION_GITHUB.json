@@ -1,0 +1,26 @@
+{
+  "validated_at": "2026-09-07T01:24:52.213251+00:00",
+  "main_pdf_pages": 50,
+  "main_text_pages": 9,
+  "main_text_evidence": "main:lastpage label in main.aux",
+  "main_pdf_sha256": "7ff74e5e6545c9e29b59ea2225419601c410e692f963cae2749583b3654ae868",
+  "build": "pdflatex, bibtex, pdflatex twice; successful CPU Slurm job 3515569",
+  "latex_warnings_checked": [
+    "Overfull",
+    "undefined",
+    "multiply defined",
+    "Float too large"
+  ],
+  "matched_warnings": [],
+  "visual_review_pages": [
+    8,
+    50
+  ],
+  "portable_anchor_renderer": "Passed, produced PDF and PNG using compact exported arrays",
+  "expanded_sweep_snapshot": {
+    "complete": 11,
+    "planned": 16
+  },
+  "drive_verification": "Unavailable: configured rclone remote has empty authentication token",
+  "upstream_preserved": "7da61b8c6f596a6e75d12f0c3283f51f2baef56b"
+}

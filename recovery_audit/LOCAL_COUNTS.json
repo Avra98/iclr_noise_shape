@@ -1,0 +1,187 @@
+{
+  "NEURAL_NETWORK_RESULTS_20260905": {
+    "files": 12973,
+    "bytes": 1839593786,
+    "extensions": {
+      ".json": 5411,
+      ".html": 3,
+      ".md": 26,
+      ".png": 1571,
+      ".csv": 99,
+      ".sbatch": 4,
+      ".lock": 121,
+      ".pt": 121,
+      ".log": 497,
+      ".npz": 5100,
+      ".py": 11,
+      ".tex": 9
+    }
+  },
+  "ALL_EMPIRICAL_RESULTS_20260905": {
+    "files": 291,
+    "bytes": 2919034990,
+    "extensions": {
+      ".md": 25,
+      ".html": 8,
+      ".css": 1,
+      ".json": 47,
+      ".csv": 3,
+      ".pdf": 92,
+      ".py": 25,
+      ".txt": 5,
+      ".zip": 2,
+      "(none)": 3,
+      ".png": 80
+    }
+  },
+  "ALL_FIGURES": {
+    "files": 8,
+    "bytes": 2276485,
+    "extensions": {
+      ".csv": 2,
+      ".json": 2,
+      ".html": 1,
+      ".md": 1,
+      ".png": 1,
+      ".py": 1
+    }
+  },
+  "APPENDIX_DIRECTIONAL_LADDERS_20260906": {
+    "files": 202,
+    "bytes": 107350376,
+    "extensions": {
+      ".json": 93,
+      ".sbatch": 2,
+      ".md": 1,
+      ".npz": 38,
+      ".py": 5,
+      ".pyc": 2,
+      ".lock": 16,
+      ".pt": 21,
+      ".log": 24
+    }
+  },
+  "CNN_DIRECTIONAL_WINDOWS_20260905": {
+    "files": 144,
+    "bytes": 53382245,
+    "extensions": {
+      ".json": 53,
+      ".pdf": 9,
+      "(none)": 1,
+      ".html": 3,
+      ".png": 24,
+      ".md": 7,
+      ".sbatch": 1,
+      ".py": 6,
+      ".pyc": 1,
+      ".log": 11,
+      ".npz": 23,
+      ".csv": 5
+    }
+  },
+  "OVERLEAF_FIGURES_20260906": {
+    "files": 124,
+    "bytes": 7161059,
+    "extensions": {
+      ".json": 12,
+      ".sbatch": 1,
+      ".md": 2,
+      ".log": 7,
+      ".out": 2,
+      ".aux": 2,
+      ".pdf": 75,
+      ".tex": 4,
+      "(none)": 1,
+      ".py": 5,
+      ".pyc": 2,
+      ".npz": 4,
+      ".png": 7
+    }
+  },
+  "RECOVERY_AUDIT_20260906": {
+    "files": 1,
+    "bytes": 605151,
+    "extensions": {
+      ".csv": 1
+    }
+  },
+  "marc_arch_sweep": {
+    "files": 1605,
+    "bytes": 4877413720,
+    "extensions": {
+      ".json": 239,
+      ".npz": 528,
+      ".pt": 838
+    }
+  },
+  "marc_moment_campaign_20260905": {
+    "files": 6051,
+    "bytes": 2338805498,
+    "extensions": {
+      ".json": 681,
+      ".md": 9,
+      ".sbatch": 3,
+      ".lock": 1,
+      ".log": 251,
+      ".py": 35,
+      ".html": 1,
+      ".png": 1440,
+      ".pkl": 1,
+      ".pdf": 1117,
+      ".csv": 191,
+      ".npz": 2060,
+      ".txt": 44,
+      ".pt": 217
+    }
+  },
+  "marc_optimizer_sweep_fixed_u_stride1": {
+    "files": 62,
+    "bytes": 90506428,
+    "extensions": {
+      ".npz": 18,
+      ".txt": 13,
+      ".png": 31
+    }
+  },
+  "marc_repro_lyap": {
+    "files": 836,
+    "bytes": 527260929,
+    "extensions": {
+      ".json": 84,
+      ".png": 46,
+      ".npz": 425,
+      ".pt": 234,
+      ".csv": 10,
+      ".pdf": 28,
+      ".tex": 9
+    }
+  },
+  "nonconvex_campaign_20260905": {
+    "files": 7470,
+    "bytes": 4318250325,
+    "extensions": {
+      ".md": 62,
+      ".json": 2798,
+      ".csv": 36,
+      ".psv": 1,
+      ".log": 291,
+      ".txt": 31,
+      ".png": 104,
+      ".pdf": 113,
+      ".npz": 3931,
+      ".nbi": 3,
+      ".nbc": 6,
+      ".tex": 19,
+      ".aux": 2,
+      ".out": 2,
+      ".fls": 2,
+      ".blg": 2,
+      ".bbl": 2,
+      ".fdb_latexmk": 2,
+      ".bib": 1,
+      ".pt": 29,
+      ".py": 24,
+      ".sbatch": 9
+    }
+  }
+}

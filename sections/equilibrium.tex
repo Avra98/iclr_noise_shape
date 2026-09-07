@@ -1,0 +1,35 @@
+\subsection{What balances at equilibrium?}
+For plain SGD $X^+=X-\eta g_B(X)$, stationarity with finite second moments gives the exact identity
+\begin{equation}
+ 2\mathbb E_\pi\langle X,\nabla L(X)\rangle
+ =\eta\mathbb E_{\pi,B}\|g_B(X)\|^2.
+ \label{eq:stationary-balance}
+\end{equation}
+Indeed, expand $\|X^+\|^2-\|X\|^2$, condition on $X$, and integrate against $\pi$. The identity is justified for Theorem~\ref{sc:nonlinear-recurrence}, whose loss gradients have linear growth and whose invariant law has all moments. Inward motion on the left balances the squared random updates on the right. Neither side is determined by the Jacobian at zero. The equilibrium is a distribution over visited states, rather than a point where the frozen multiplier must equal one.
+
+The balance is visible directly in the conditional radial drift of the smooth example. At batch one, define $d(x)=\mathbb E[(X^+)^2-X^2\mid X=x]$. Independence and the centered residual give
+\begin{equation}
+ d(x)=\left[\left(1-\eta\mu-\frac{\eta\beta}{1+x^2}\right)^2
+             +\eta^2s^2-1\right]x^2
+       +\eta^2\sigma^2(\beta+\mu).
+ \label{eq:exact-radial-drift}
+\end{equation}
+For the displayed parameters, small states have outward drift, whereas $d(x)$ is negative at sufficiently large $|x|$. The invariant law averages these regions so that $\mathbb E_\pi d(X)=0$. A zero of $d(x)$ is a local balance radius, not an assertion that the distribution is a point mass there.
+
+In the smooth construction, the outer slopes control return while the central sampled curvatures control frozen expansion. A separate exact control shows that the \emph{occupied} tangent exponent can be positive as well. Let $a\in\{.58,.62\}$ equiprobably, $\xi\sim\operatorname{Unif}[-.38,.38]$, and set
+\begin{equation}
+ \ell(x;a,\xi)=x^2/2-a\Psi(x)-\xi x,\qquad
+ \Psi(x)=\begin{cases}x-x|x|,&|x|\le1,\\-x+\operatorname{sign}(x),&|x|>1.\end{cases}
+ \label{eq:tent-loss-main}
+\end{equation}
+These coercive losses are $C^1$ with Lipschitz gradients and finitely many Hessian kinks. Their population loss is nonconvex.
+\begin{theorem}[Stationarity with positive occupied growth]
+\label{thm:occupied-positive}
+At $\eta=1$, SGD on \eqref{eq:tent-loss-main} has a unique attracting invariant law supported on $[-1,1]$, all moments finite, and stationary common-noise tangent exponent
+\begin{equation}
+ \lambda_\pi=\tfrac12\log(1.16\cdot1.24)=0.18176569\ldots>0.
+ \label{eq:tent-positive}
+\end{equation}
+For the same loss, all $\eta\in[.98,1]$ have a unique attracting invariant law and $\lambda_\pi\ge\log(1.1168)>0$.
+\end{theorem}
+At $\eta=1$, the update is the randomly perturbed tent map $X^+=a(1-2\min\{|X|,1\})+\xi$. A two-step minorization gives uniform mixing, while its derivative magnitude on the occupied interval is exactly $2a>1$, also giving an occupied harmonic gain above one. Appendix~\ref{sec:piecewise-exact} proves both assertions and the step-size interval. This is an explicit SGD realization of a familiar expanding-map mechanism. It shows that attraction of \emph{distributions} and growth of infinitesimal common-noise perturbations can coexist; no mode-count claim follows from the positive exponent.

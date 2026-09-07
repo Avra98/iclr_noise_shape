@@ -1,0 +1,32 @@
+\paragraph{Neural diagnostics separate the two scalar edges.}
+We study a three-convolution SiLU CNN and a two-hidden-layer, width-512 SiLU MLP,
+trained by plain SGD on the same 8,192-example CIFAR-10 subset with squared loss.
+At a fixed state, write $g_B=\nabla L_B(\theta)$,
+$s_B=g_B^\top\nabla^2L_B(\theta)g_B/\|g_B\|^2$, and $a_g=1-\eta s_B$.
+Figure~\ref{fig:neural-grids} estimates the log and negative-moment diagnostics of
+this scalar compression across batch sizes and step sizes.
+For the CNN, $(\eta,B)=(0.16,128)$ gives
+$(\widehat\Lambda_g,\widehat H_g)=(0.179,0.760)$, whereas $(0.08,512)$ gives
+$(0.176,1.176)$: similar positive log gain can occur on either side of the harmonic reference.
+Other settings approach one or both references; for example the MLP at $(0.02,4096)$
+has $(0.0027,1.0008)$.
+The settings and checkpoint windows matter: the sweep averages do not assign an architecture a universal stability threshold.
+
+\paragraph{A fixed coordinate reveals short-window structure.}
+We continue a retained MLP checkpoint for 4,096 updates at $B=4096$, $\eta=0.04$.
+Its initial 128-draw conditional probe has $(\widehat\Lambda_g,\widehat H_g)=(0.136,1.144)$;
+this selected checkpoint differs from the sweep's window averages.
+We freeze the reference leading-Hessian Ritz vector $q_\star$ and record
+$q_\star^\top(\theta_t-\theta_\star)$ before every update.
+The iid-minibatch control retains two-lobed occupancy
+(Figure~\ref{fig:neural-dynamics}); the displayed 512-update interval has lag-one
+correlation $-0.985$, consistent with approximate period-two alternation.
+Meanwhile, continuously propagated tangent vectors grow at approximately
+$0.00642$ per update over the last 2,048 updates, while training loss decreases.
+Fixed-axis compression has a different late log average, $-0.268$, because it discards coupling to other directions.
+Adjacent occupied states can also lie on opposite sides of $\widehat H_{q_\star}=1$.
+Thus the observations connect local expansion to bounded finite-time occupancy,
+but do not establish stationary bimodality, an asymptotic Lyapunov exponent,
+or a harmonic-threshold cause of neural bimodality.
+The CNN's discovery-selected 64-update candidate does not survive the same bandwidth screen
+in a separate continuation; the complete scans and this negative control are retained in the appendix.

@@ -1,0 +1,140 @@
+{
+  "figures": [
+    {
+      "file": "empirical_atlas_01_residual_new.pdf",
+      "bytes": 24629,
+      "sha256": "dbd4a6f866d14703b13319b807fa39ee62ca2757b501a0cb5d4d797d365dacff",
+      "pages": 1,
+      "width_in": 5.465664333767361,
+      "height_in": 3.5666601392957897,
+      "pdf_syntax": [],
+      "rendered": true,
+      "seed_annotations": false
+    },
+    {
+      "file": "empirical_atlas_02_archived_conv.pdf",
+      "bytes": 24254,
+      "sha256": "a55680ea627b40fc5074a7ffb569f3bb97dc0268177c1bfd95b2356e619fc657",
+      "pages": 1,
+      "width_in": 5.465664333767361,
+      "height_in": 3.5666601392957897,
+      "pdf_syntax": [],
+      "rendered": true,
+      "seed_annotations": false
+    },
+    {
+      "file": "empirical_atlas_03_shallow_mlp.pdf",
+      "bytes": 25001,
+      "sha256": "2a47e1977f7d06fefa533aa2c9257361d9bc69e2f5b4ebc0da84b2ac091b329e",
+      "pages": 1,
+      "width_in": 5.465710110134548,
+      "height_in": 3.5666601392957897,
+      "pdf_syntax": [],
+      "rendered": true,
+      "seed_annotations": false
+    },
+    {
+      "file": "empirical_atlas_04_deep_mlp.pdf",
+      "bytes": 25196,
+      "sha256": "34f71840f31861cdb55658cc4537cae8a084f723299de9b22859c4cebccb8709",
+      "pages": 1,
+      "width_in": 5.4656422932942705,
+      "height_in": 3.5666601392957897,
+      "pdf_syntax": [],
+      "rendered": true,
+      "seed_annotations": false
+    },
+    {
+      "file": "empirical_atlas_05_tanh_vit.pdf",
+      "bytes": 25669,
+      "sha256": "fb5b60781e05e61ee97cddb8aecf80ddab00b8d35f8b5630473991c26fe06935",
+      "pages": 1,
+      "width_in": 5.465671539306641,
+      "height_in": 3.5666601392957897,
+      "pdf_syntax": [],
+      "rendered": true,
+      "seed_annotations": false
+    },
+    {
+      "file": "empirical_atlas_06_gpt_raw.pdf",
+      "bytes": 24335,
+      "sha256": "870231c9cee61e26907c4df8875992f46ede0f4f2c4966b5fabf968a1e6de309",
+      "pages": 1,
+      "width_in": 5.465685102674696,
+      "height_in": 3.5666601392957897,
+      "pdf_syntax": [],
+      "rendered": true,
+      "seed_annotations": false
+    },
+    {
+      "file": "empirical_atlas_07_gpt_frozen.pdf",
+      "bytes": 25060,
+      "sha256": "0ca5e94bec273d7842f01db0316daeb51473f7745a4c0cf2de5595d05ef0ffae",
+      "pages": 1,
+      "width_in": 5.465739356146918,
+      "height_in": 3.5666601392957897,
+      "pdf_syntax": [],
+      "rendered": true,
+      "seed_annotations": false
+    },
+    {
+      "file": "empirical_cnn_confirmation.pdf",
+      "bytes": 29603,
+      "sha256": "013a30514fe733373f67c215c388ee7e0e42c3802ddda44c8bf764d8dfaad893",
+      "pages": 1,
+      "width_in": 6.56666013929579,
+      "height_in": 3.6166598002115884,
+      "pdf_syntax": [],
+      "rendered": true,
+      "seed_annotations": false
+    },
+    {
+      "file": "empirical_iid_mlp_dynamics.pdf",
+      "bytes": 55341,
+      "sha256": "685c56555887e0f1ef875bcca660b6663609a792630c5cf5f31858b012eab2f9",
+      "pages": 1,
+      "width_in": 5.466659969753689,
+      "height_in": 4.216659969753689,
+      "pdf_syntax": [],
+      "rendered": true,
+      "seed_annotations": false
+    },
+    {
+      "file": "empirical_nonconvex_network_controls.pdf",
+      "bytes": 22843,
+      "sha256": "7bd0bce7611ef3be0b89cf6ec4a4135feab4aca8f368f7d94d44d40cc7ae4f41",
+      "pages": 1,
+      "width_in": 5.466659969753689,
+      "height_in": 3.8166601392957897,
+      "pdf_syntax": [],
+      "rendered": true,
+      "seed_annotations": false
+    },
+    {
+      "file": "empirical_nonconvex_scalar_controls.pdf",
+      "bytes": 23482,
+      "sha256": "ad1a80b0ea9b9b48d018cf823b5cd4f757c2a955a7c6aea38ff6e35198e0e27b",
+      "pages": 1,
+      "width_in": 5.466465420193142,
+      "height_in": 2.566659927368164,
+      "pdf_syntax": [],
+      "rendered": true,
+      "seed_annotations": false
+    },
+    {
+      "file": "empirical_stability_heatmaps.pdf",
+      "bytes": 24707,
+      "sha256": "f8893958e049d09e9f68ab4190b526ca21da64579ea3a810f7432d5688b7512f",
+      "pages": 1,
+      "width_in": 5.465822007921007,
+      "height_in": 3.0166600545247397,
+      "pdf_syntax": [],
+      "rendered": true,
+      "seed_annotations": false
+    }
+  ],
+  "official_style_atlas_pages": 7,
+  "official_style_nonconvex_pages": 2,
+  "main_axis_label_pt": 8,
+  "main_tick_label_pt": 7
+}

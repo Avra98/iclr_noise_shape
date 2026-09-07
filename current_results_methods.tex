@@ -1,0 +1,29 @@
+\subsection{Directions, gains, and finite-window occupancy}
+We distinguish the direction used for measurement from the statistic applied to its gain law. For plain SGD let $H_B(\theta)=\nabla^2 L_B(\theta)$. A unit direction $q$ defines the scalar compression
+\begin{equation}
+ a_B(q;\theta)=q^\top(I-\eta H_B(\theta))q=1-\eta q^\top H_B(\theta)q.
+\end{equation}
+The batch-gradient measurement uses $q_B=g_B/\|g_B\|$, where $g_B=\nabla L_B(\theta)$; its sampled curvature is $s_B=g_B^\top H_Bg_B/(g_B^\top g_B)$. This is the batch-gradient curvature statistic used by the vision heatmaps. The gain law is formed before taking moments: $\mathbb E|1-\eta s_B|^p$ is not $|1-\eta\mathbb E s_B|^p$. An unweighted average of these Rayleigh quotients also differs in general from a gradient-norm-weighted batch-sharpness ratio.
+
+For the occupancy measurement, $q_*$ is a checkpoint-fixed leading full-data Hessian Ritz vector and $\theta_*$ is the checkpoint parameter vector, not an estimated minimizer. Every histogram uses $z_t=q_*^\top(\theta_t-\theta_*)$. We separately recompute a leading Ritz vector $q_1(t)$ and report $|q_1(t)^\top q_*|$. The plotting frame remains fixed even when the evolving eigenvector changes. Fixed checkpoint-gradient and random directions provide additional scalar comparisons.
+
+For any one declared gain pool, we report four generalized means:
+\begin{equation}
+ \mathsf H=\bigl\langle |a|^{-1}\bigr\rangle^{-1},\qquad
+ \mathsf G=\exp\langle\log|a|\rangle,\qquad
+ \mathsf A_1=\langle|a|\rangle,\qquad
+ \mathsf A_2=\sqrt{\langle|a|^2\rangle}.
+\end{equation}
+Their reference is one; $\Lambda=\log\mathsf G$ has reference zero. On the same pool $\mathsf H\leq\mathsf G\leq\mathsf A_1\leq\mathsf A_2$. Here $\mathsf H$ is the reciprocal of the inverse moment, so harmonic expansion means $\mathsf H>1$, equivalently $\langle|a|^{-1}\rangle<1$. This convention must not be confused with denoting the inverse moment itself by $H$. Inverse gains are not clipped; finite samples do not certify existence of a population negative moment.
+
+A scalar compression is also distinct from a norm gain $\|(I-\eta H_B)q\|$. To assess transported perturbations we propagate $v_{t+1}=(I-\eta H_{B_t}(\theta_t))v_t$, normalizing only its length between updates. The plotted cumulative sum is $\sum_{t<T}\log(\|v_{t+1}\|/\|v_t\|)$ before normalization. This preserves directional coupling; resetting $v_t$ to $q_*$ would measure a different object.
+
+\paragraph{Current observation.}
+The CIFAR-10 SiLU MLP continuation uses IID subsets of size 4096, learning rate 0.04, and 4096 additional updates from checkpoint 10001. Loss on its 8192-example training subset decreases from 0.02485 to 0.00935. Fixed-coordinate windows show alternating two-lobe occupancy while the late transported log-growth rate is approximately $+0.00642$ per update. The late fixed-axis scalar log average can nevertheless be negative. New eigenvector probes show variable alignment, including sharp decreases; they do not support a permanently fixed leading eigendirection. The paired probes also show phase-dependent harmonic gains. These observations establish finite-window coexistence, not an invariant neural distribution or a universal harmonic-to-bimodal transition. The previously selected CNN fixed-axis candidate fails confirmation under the same shape screen.
+
+\paragraph{Across architectures and optimizers.}
+The architecture-level figures combine runs without separate seed panels. Heatmap cells average per-run statistics from the last three available checkpoints; different cells can use different occupied states and times. The gain-law comparison explicitly labels its architecture-specific learning rates. For GPT 168M on the FineWeb-Edu subset, distinguish raw Hessian/GGN probes from frozen-Adam probes. With $D=\operatorname{diag}(1/(\sqrt{\hat v}+\epsilon))$ fixed, the latter use
+\begin{equation}
+ s_{D,B}=\frac{(Dg_B)^\top H_B(Dg_B)}{g_B^\top Dg_B},\qquad a_{D,B}=1-\eta s_{D,B},
+\end{equation}
+with $H_B$ replaced by GGN when specified. This is a scalar compression in symmetrically preconditioned coordinates; it is not the full Adam state-space Jacobian. All GPT parents process 16.384 million tokens.

@@ -1,0 +1,12 @@
+{
+  "figures": 73,
+  "pdf_pages": 76,
+  "pdf_bytes": 2441887,
+  "replay_exact": true,
+  "eigenvector_probes": 20,
+  "max_relative_ritz_residual": 2.697488713217722e-07,
+  "gain_order_verified": true,
+  "png_decode_verified": true,
+  "latex_compiled": true,
+  "portable_zip_compiled": true
+}

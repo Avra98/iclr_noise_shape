@@ -1,0 +1,432 @@
+[
+  {
+    "name": "fig01_mlp_loss_alignment_bimodality",
+    "caption": "The center and plotting direction are fixed at the parent checkpoint. All runs use IID subsets, original parent learning rate, and the full 8192-example training subset. Curvature matrices in the alignment panel use that same subset. Histograms use four declared 512-update intervals and 30 bins without selecting intervals by modality. The short trace uses updates2048\u20132111. Gain ladders use fresh minibatches at each plotted state: fixed-axis compression versus batch-gradient compression, each summarized by H,G,A1,A2. No propagated-tangent panel and no static ladder panels are included. Sparse even-update conditional probes do not average over oscillation phases; they do not establish stationarity or a full-network Lyapunov exponent. Alignment is measured, not assumed, and Ritz extremality is not certified. The original anchor uses128 fresh draws at zero and24 at subsequent even states512k."
+  },
+  {
+    "name": "fig02_direction_resolved_ladder",
+    "caption": "Fresh conditional minibatch probes at each displayed fixed state, using the same draws across directions. There are 128 draws at update zero and 24 at other displayed states. Only states at multiples of 512 are displayed here; the adjacent phase appears in Figure 3. The batch-gradient direction changes with the sampled batch. All other directions are checkpoint-fixed. Geometric gain G=exp(Lambda) shares the unit reference with H, A1 and A2. Finite H does not establish a finite population inverse moment."
+  },
+  {
+    "name": "fig03_paired_phase_ladder",
+    "caption": "Fixed leading-axis scalar gains: 24 identical fresh minibatches reused across the two states of each adjacent pair. All four measures are computed separately by phase. These are conditional one-step compression statistics, not the two-step product exponent."
+  },
+  {
+    "name": "fig04_cross_architecture_gain_laws",
+    "caption": "Batch-gradient scalar gains at update 20000 and matched training/probe batch size. Curves average within-run CDFs or log moments equally across available runs; this is not the log moment of pooled gains. No separate seed panels. Architecture-specific step sizes are labeled; this is not a controlled comparison changing architecture alone. Only measured final-checkpoint cases are shown; the full grids retain earlier/pre-escape observations. Positive and negative moments summarize gain distributions, not parameter-coordinate histograms."
+  },
+  {
+    "name": "cnn_silu_01_curvature",
+    "caption": "eta=0.04: step 10,000; eta=0.08: step 10,000; eta=0.16: step 10,000. Curves show average run-level measurements. The Hessian curve is a finite power-iteration estimate; it is not a certified largest eigenvalue. Actual saved learning rates are used. A red cross retains a pre-escape checkpoint.",
+    "title": "CNN with SiLU | curvature thresholds",
+    "source": "/tmp/ghoshavr_part1_concise/vision/cnn_silu/cnn_silu_01_curvature.pdf"
+  },
+  {
+    "name": "cnn_silu_02_moments",
+    "caption": "eta=0.04: step 10,000; eta=0.08: step 10,000; eta=0.16: step 10,000. Curves show average run-level measurements. H=1/E[1/|a|], G=exp(Lambda), A1=E|a|, A2=sqrt(E|a|^2). The lower panel uses a logarithmic scale. A mean of run-level H estimates is not H of a pooled distribution; finite estimates do not prove inverse-moment existence.",
+    "title": "CNN with SiLU | the moment ladder",
+    "source": "/tmp/ghoshavr_part1_concise/vision/cnn_silu/cnn_silu_02_moments.pdf"
+  },
+  {
+    "name": "cnn_silu_03_gain_law",
+    "caption": "eta=0.04: step 10,000; eta=0.08: step 10,000; eta=0.16: step 10,000. Curves show average run-level measurements. CDFs and log moments are computed within each run, then averaged equally. These are distributions of a conditional scalar multiplier, not distributions of a fixed parameter coordinate. Values near a=0 dominate inverse moments; p=0 is exactly zero by definition.",
+    "title": "CNN with SiLU | gain distributions and moment pressure",
+    "source": "/tmp/ghoshavr_part1_concise/vision/cnn_silu/cnn_silu_03_gain_law.pdf"
+  },
+  {
+    "name": "cnn_silu_04_dynamics",
+    "caption": "Each batch curve averages run-level measurements at shared checkpoints and stops at the last common measurement. Loss and gain panels use their own recorded sampling grids. Finite training prefixes and decreasing loss do not establish a stationary distribution.",
+    "title": "CNN with SiLU | training and conditional gain dynamics",
+    "source": "/tmp/ghoshavr_part1_concise/vision/cnn_silu/cnn_silu_04_dynamics.pdf"
+  },
+  {
+    "name": "mlp_silu_01_curvature",
+    "caption": "eta=0.01: step 10,000; eta=0.02: step 10,000; eta=0.04: step 10,000. Curves show average run-level measurements. The Hessian curve is a finite power-iteration estimate; it is not a certified largest eigenvalue. Actual saved learning rates are used. A red cross retains a pre-escape checkpoint.",
+    "title": "MLP, 2 x 512 (SiLU) | curvature thresholds",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_silu/mlp_silu_01_curvature.pdf"
+  },
+  {
+    "name": "mlp_silu_02_moments",
+    "caption": "eta=0.01: step 10,000; eta=0.02: step 10,000; eta=0.04: step 10,000. Curves show average run-level measurements. H=1/E[1/|a|], G=exp(Lambda), A1=E|a|, A2=sqrt(E|a|^2). The lower panel uses a logarithmic scale. A mean of run-level H estimates is not H of a pooled distribution; finite estimates do not prove inverse-moment existence.",
+    "title": "MLP, 2 x 512 (SiLU) | the moment ladder",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_silu/mlp_silu_02_moments.pdf"
+  },
+  {
+    "name": "mlp_silu_03_gain_law",
+    "caption": "eta=0.01: step 10,000; eta=0.02: step 10,000; eta=0.04: step 10,000. Curves show average run-level measurements. CDFs and log moments are computed within each run, then averaged equally. These are distributions of a conditional scalar multiplier, not distributions of a fixed parameter coordinate. Values near a=0 dominate inverse moments; p=0 is exactly zero by definition.",
+    "title": "MLP, 2 x 512 (SiLU) | gain distributions and moment pressure",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_silu/mlp_silu_03_gain_law.pdf"
+  },
+  {
+    "name": "mlp_silu_04_dynamics",
+    "caption": "Each batch curve averages run-level measurements at shared checkpoints and stops at the last common measurement. Loss and gain panels use their own recorded sampling grids. Finite training prefixes and decreasing loss do not establish a stationary distribution.",
+    "title": "MLP, 2 x 512 (SiLU) | training and conditional gain dynamics",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_silu/mlp_silu_04_dynamics.pdf"
+  },
+  {
+    "name": "wrn_no_bn_01_curvature",
+    "caption": "eta=0.001: step 2,500; eta=0.002: step 2,500; eta=0.004: step 2,500. Curves show average run-level measurements. The Hessian curve is a finite power-iteration estimate; it is not a certified largest eigenvalue. Actual saved learning rates are used. A red cross retains a pre-escape checkpoint.",
+    "title": "WideResNet-10-2, native Fixup | curvature thresholds",
+    "source": "/tmp/ghoshavr_part1_concise/vision/wrn_no_bn/wrn_no_bn_01_curvature.pdf"
+  },
+  {
+    "name": "wrn_no_bn_02_moments",
+    "caption": "eta=0.001: step 2,500; eta=0.002: step 2,500; eta=0.004: step 2,500. Curves show average run-level measurements. H=1/E[1/|a|], G=exp(Lambda), A1=E|a|, A2=sqrt(E|a|^2). The lower panel uses a logarithmic scale. A mean of run-level H estimates is not H of a pooled distribution; finite estimates do not prove inverse-moment existence.",
+    "title": "WideResNet-10-2, native Fixup | the moment ladder",
+    "source": "/tmp/ghoshavr_part1_concise/vision/wrn_no_bn/wrn_no_bn_02_moments.pdf"
+  },
+  {
+    "name": "wrn_no_bn_03_gain_law",
+    "caption": "eta=0.001: step 2,500; eta=0.002: step 2,500; eta=0.004: step 2,500. Curves show average run-level measurements. CDFs and log moments are computed within each run, then averaged equally. These are distributions of a conditional scalar multiplier, not distributions of a fixed parameter coordinate. Values near a=0 dominate inverse moments; p=0 is exactly zero by definition.",
+    "title": "WideResNet-10-2, native Fixup | gain distributions and moment pressure",
+    "source": "/tmp/ghoshavr_part1_concise/vision/wrn_no_bn/wrn_no_bn_03_gain_law.pdf"
+  },
+  {
+    "name": "wrn_no_bn_04_dynamics",
+    "caption": "Each batch curve averages run-level measurements at shared checkpoints and stops at the last common measurement. Loss and gain panels use their own recorded sampling grids. Finite training prefixes and decreasing loss do not establish a stationary distribution.",
+    "title": "WideResNet-10-2, native Fixup | training and conditional gain dynamics",
+    "source": "/tmp/ghoshavr_part1_concise/vision/wrn_no_bn/wrn_no_bn_04_dynamics.pdf"
+  },
+  {
+    "name": "resnet32_01_curvature",
+    "caption": "eta=0.025: step 2,500; eta=0.05: step 2,500; eta=0.1: step 2,500. Curves show average run-level measurements. The Hessian curve is a finite power-iteration estimate; it is not a certified largest eigenvalue. Actual saved learning rates are used. A red cross retains a pre-escape checkpoint.",
+    "title": "ResNet-32 without BatchNorm | curvature thresholds",
+    "source": "/tmp/ghoshavr_part1_concise/vision/resnet32/resnet32_01_curvature.pdf"
+  },
+  {
+    "name": "resnet32_02_moments",
+    "caption": "eta=0.025: step 2,500; eta=0.05: step 2,500; eta=0.1: step 2,500. Curves show average run-level measurements. H=1/E[1/|a|], G=exp(Lambda), A1=E|a|, A2=sqrt(E|a|^2). The lower panel uses a logarithmic scale. A mean of run-level H estimates is not H of a pooled distribution; finite estimates do not prove inverse-moment existence.",
+    "title": "ResNet-32 without BatchNorm | the moment ladder",
+    "source": "/tmp/ghoshavr_part1_concise/vision/resnet32/resnet32_02_moments.pdf"
+  },
+  {
+    "name": "resnet32_03_gain_law",
+    "caption": "eta=0.025: step 2,500; eta=0.05: step 2,500; eta=0.1: step 2,500. Curves show average run-level measurements. CDFs and log moments are computed within each run, then averaged equally. These are distributions of a conditional scalar multiplier, not distributions of a fixed parameter coordinate. Values near a=0 dominate inverse moments; p=0 is exactly zero by definition.",
+    "title": "ResNet-32 without BatchNorm | gain distributions and moment pressure",
+    "source": "/tmp/ghoshavr_part1_concise/vision/resnet32/resnet32_03_gain_law.pdf"
+  },
+  {
+    "name": "resnet32_04_dynamics",
+    "caption": "Each batch curve averages run-level measurements at shared checkpoints and stops at the last common measurement. Loss and gain panels use their own recorded sampling grids. Finite training prefixes and decreasing loss do not establish a stationary distribution.",
+    "title": "ResNet-32 without BatchNorm | training and conditional gain dynamics",
+    "source": "/tmp/ghoshavr_part1_concise/vision/resnet32/resnet32_04_dynamics.pdf"
+  },
+  {
+    "name": "cnn_01_curvature",
+    "caption": "eta=0.04: step 19,999; eta=0.08: step 19,999. Curves show average run-level measurements. The Hessian curve is a finite power-iteration estimate; it is not a certified largest eigenvalue. Actual saved learning rates are used. A red cross retains a pre-escape checkpoint.",
+    "title": "CNN, 3 convolutional layers (ReLU) | curvature thresholds",
+    "source": "/tmp/ghoshavr_part1_concise/vision/cnn/cnn_01_curvature.pdf"
+  },
+  {
+    "name": "cnn_02_moments",
+    "caption": "eta=0.04: step 19,999; eta=0.08: step 19,999. Curves show average run-level measurements. H=1/E[1/|a|], G=exp(Lambda), A1=E|a|, A2=sqrt(E|a|^2). The lower panel uses a logarithmic scale. A mean of run-level H estimates is not H of a pooled distribution; finite estimates do not prove inverse-moment existence.",
+    "title": "CNN, 3 convolutional layers (ReLU) | the moment ladder",
+    "source": "/tmp/ghoshavr_part1_concise/vision/cnn/cnn_02_moments.pdf"
+  },
+  {
+    "name": "cnn_03_gain_law",
+    "caption": "eta=0.04: step 19,999; eta=0.08: step 19,999. Curves show average run-level measurements. CDFs and log moments are computed within each run, then averaged equally. These are distributions of a conditional scalar multiplier, not distributions of a fixed parameter coordinate. Values near a=0 dominate inverse moments; p=0 is exactly zero by definition.",
+    "title": "CNN, 3 convolutional layers (ReLU) | gain distributions and moment pressure",
+    "source": "/tmp/ghoshavr_part1_concise/vision/cnn/cnn_03_gain_law.pdf"
+  },
+  {
+    "name": "cnn_04_dynamics",
+    "caption": "Each batch curve averages run-level measurements at shared checkpoints and stops at the last common measurement. Loss and gain panels use their own recorded sampling grids. Finite training prefixes and decreasing loss do not establish a stationary distribution.",
+    "title": "CNN, 3 convolutional layers (ReLU) | training and conditional gain dynamics",
+    "source": "/tmp/ghoshavr_part1_concise/vision/cnn/cnn_04_dynamics.pdf"
+  },
+  {
+    "name": "mlp_d1_01_curvature",
+    "caption": "eta=0.01: step 39,999. Curves show average run-level measurements. The Hessian curve is a finite power-iteration estimate; it is not a certified largest eigenvalue. Actual saved learning rates are used. A red cross retains a pre-escape checkpoint.",
+    "title": "MLP, 1 x 256 (ReLU) | curvature thresholds",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d1/mlp_d1_01_curvature.pdf"
+  },
+  {
+    "name": "mlp_d1_02_moments",
+    "caption": "eta=0.01: step 39,999. Curves show average run-level measurements. H=1/E[1/|a|], G=exp(Lambda), A1=E|a|, A2=sqrt(E|a|^2). The lower panel uses a logarithmic scale. A mean of run-level H estimates is not H of a pooled distribution; finite estimates do not prove inverse-moment existence.",
+    "title": "MLP, 1 x 256 (ReLU) | the moment ladder",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d1/mlp_d1_02_moments.pdf"
+  },
+  {
+    "name": "mlp_d1_03_gain_law",
+    "caption": "eta=0.01: step 39,999. Curves show average run-level measurements. CDFs and log moments are computed within each run, then averaged equally. These are distributions of a conditional scalar multiplier, not distributions of a fixed parameter coordinate. Values near a=0 dominate inverse moments; p=0 is exactly zero by definition.",
+    "title": "MLP, 1 x 256 (ReLU) | gain distributions and moment pressure",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d1/mlp_d1_03_gain_law.pdf"
+  },
+  {
+    "name": "mlp_d1_04_dynamics",
+    "caption": "Each batch curve averages run-level measurements at shared checkpoints and stops at the last common measurement. Loss and gain panels use their own recorded sampling grids. Finite training prefixes and decreasing loss do not establish a stationary distribution.",
+    "title": "MLP, 1 x 256 (ReLU) | training and conditional gain dynamics",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d1/mlp_d1_04_dynamics.pdf"
+  },
+  {
+    "name": "mlp_d2_01_curvature",
+    "caption": "eta=0.005: step 39,999. Curves show average run-level measurements. The Hessian curve is a finite power-iteration estimate; it is not a certified largest eigenvalue. Actual saved learning rates are used. A red cross retains a pre-escape checkpoint.",
+    "title": "MLP, 2 x 512 (ReLU) | curvature thresholds",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d2/mlp_d2_01_curvature.pdf"
+  },
+  {
+    "name": "mlp_d2_02_moments",
+    "caption": "eta=0.005: step 39,999. Curves show average run-level measurements. H=1/E[1/|a|], G=exp(Lambda), A1=E|a|, A2=sqrt(E|a|^2). The lower panel uses a logarithmic scale. A mean of run-level H estimates is not H of a pooled distribution; finite estimates do not prove inverse-moment existence.",
+    "title": "MLP, 2 x 512 (ReLU) | the moment ladder",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d2/mlp_d2_02_moments.pdf"
+  },
+  {
+    "name": "mlp_d2_03_gain_law",
+    "caption": "eta=0.005: step 39,999. Curves show average run-level measurements. CDFs and log moments are computed within each run, then averaged equally. These are distributions of a conditional scalar multiplier, not distributions of a fixed parameter coordinate. Values near a=0 dominate inverse moments; p=0 is exactly zero by definition.",
+    "title": "MLP, 2 x 512 (ReLU) | gain distributions and moment pressure",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d2/mlp_d2_03_gain_law.pdf"
+  },
+  {
+    "name": "mlp_d2_04_dynamics",
+    "caption": "Each batch curve averages run-level measurements at shared checkpoints and stops at the last common measurement. Loss and gain panels use their own recorded sampling grids. Finite training prefixes and decreasing loss do not establish a stationary distribution.",
+    "title": "MLP, 2 x 512 (ReLU) | training and conditional gain dynamics",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d2/mlp_d2_04_dynamics.pdf"
+  },
+  {
+    "name": "mlp_d3_01_curvature",
+    "caption": "eta=0.01: step 39,999. Curves show average run-level measurements. The Hessian curve is a finite power-iteration estimate; it is not a certified largest eigenvalue. Actual saved learning rates are used. A red cross retains a pre-escape checkpoint.",
+    "title": "MLP, 3 x 256 (ReLU) | curvature thresholds",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d3/mlp_d3_01_curvature.pdf"
+  },
+  {
+    "name": "mlp_d3_02_moments",
+    "caption": "eta=0.01: step 39,999. Curves show average run-level measurements. H=1/E[1/|a|], G=exp(Lambda), A1=E|a|, A2=sqrt(E|a|^2). The lower panel uses a logarithmic scale. A mean of run-level H estimates is not H of a pooled distribution; finite estimates do not prove inverse-moment existence.",
+    "title": "MLP, 3 x 256 (ReLU) | the moment ladder",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d3/mlp_d3_02_moments.pdf"
+  },
+  {
+    "name": "mlp_d3_03_gain_law",
+    "caption": "eta=0.01: step 39,999. Curves show average run-level measurements. CDFs and log moments are computed within each run, then averaged equally. These are distributions of a conditional scalar multiplier, not distributions of a fixed parameter coordinate. Values near a=0 dominate inverse moments; p=0 is exactly zero by definition.",
+    "title": "MLP, 3 x 256 (ReLU) | gain distributions and moment pressure",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d3/mlp_d3_03_gain_law.pdf"
+  },
+  {
+    "name": "mlp_d3_04_dynamics",
+    "caption": "Each batch curve averages run-level measurements at shared checkpoints and stops at the last common measurement. Loss and gain panels use their own recorded sampling grids. Finite training prefixes and decreasing loss do not establish a stationary distribution.",
+    "title": "MLP, 3 x 256 (ReLU) | training and conditional gain dynamics",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d3/mlp_d3_04_dynamics.pdf"
+  },
+  {
+    "name": "mlp_d4_01_curvature",
+    "caption": "eta=0.01: step 39,999. Curves show average run-level measurements. The Hessian curve is a finite power-iteration estimate; it is not a certified largest eigenvalue. Actual saved learning rates are used. A red cross retains a pre-escape checkpoint.",
+    "title": "MLP, 4 x 512 (ReLU) | curvature thresholds",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d4/mlp_d4_01_curvature.pdf"
+  },
+  {
+    "name": "mlp_d4_02_moments",
+    "caption": "eta=0.01: step 39,999. Curves show average run-level measurements. H=1/E[1/|a|], G=exp(Lambda), A1=E|a|, A2=sqrt(E|a|^2). The lower panel uses a logarithmic scale. A mean of run-level H estimates is not H of a pooled distribution; finite estimates do not prove inverse-moment existence.",
+    "title": "MLP, 4 x 512 (ReLU) | the moment ladder",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d4/mlp_d4_02_moments.pdf"
+  },
+  {
+    "name": "mlp_d4_03_gain_law",
+    "caption": "eta=0.01: step 39,999. Curves show average run-level measurements. CDFs and log moments are computed within each run, then averaged equally. These are distributions of a conditional scalar multiplier, not distributions of a fixed parameter coordinate. Values near a=0 dominate inverse moments; p=0 is exactly zero by definition.",
+    "title": "MLP, 4 x 512 (ReLU) | gain distributions and moment pressure",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d4/mlp_d4_03_gain_law.pdf"
+  },
+  {
+    "name": "mlp_d4_04_dynamics",
+    "caption": "Each batch curve averages run-level measurements at shared checkpoints and stops at the last common measurement. Loss and gain panels use their own recorded sampling grids. Finite training prefixes and decreasing loss do not establish a stationary distribution.",
+    "title": "MLP, 4 x 512 (ReLU) | training and conditional gain dynamics",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_d4/mlp_d4_04_dynamics.pdf"
+  },
+  {
+    "name": "mlp_tanh_01_curvature",
+    "caption": "eta=0.005: step 39,999; eta=0.01: step 39,999; eta=0.02: step 39,999. Curves show average run-level measurements. The Hessian curve is a finite power-iteration estimate; it is not a certified largest eigenvalue. Actual saved learning rates are used. A red cross retains a pre-escape checkpoint.",
+    "title": "MLP, 2 x 512 (tanh) | curvature thresholds",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_tanh/mlp_tanh_01_curvature.pdf"
+  },
+  {
+    "name": "mlp_tanh_02_moments",
+    "caption": "eta=0.005: step 39,999; eta=0.01: step 39,999; eta=0.02: step 39,999. Curves show average run-level measurements. H=1/E[1/|a|], G=exp(Lambda), A1=E|a|, A2=sqrt(E|a|^2). The lower panel uses a logarithmic scale. A mean of run-level H estimates is not H of a pooled distribution; finite estimates do not prove inverse-moment existence.",
+    "title": "MLP, 2 x 512 (tanh) | the moment ladder",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_tanh/mlp_tanh_02_moments.pdf"
+  },
+  {
+    "name": "mlp_tanh_03_gain_law",
+    "caption": "eta=0.005: step 39,999; eta=0.01: step 39,999; eta=0.02: step 39,999. Curves show average run-level measurements. CDFs and log moments are computed within each run, then averaged equally. These are distributions of a conditional scalar multiplier, not distributions of a fixed parameter coordinate. Values near a=0 dominate inverse moments; p=0 is exactly zero by definition.",
+    "title": "MLP, 2 x 512 (tanh) | gain distributions and moment pressure",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_tanh/mlp_tanh_03_gain_law.pdf"
+  },
+  {
+    "name": "mlp_tanh_04_dynamics",
+    "caption": "Each batch curve averages run-level measurements at shared checkpoints and stops at the last common measurement. Loss and gain panels use their own recorded sampling grids. Finite training prefixes and decreasing loss do not establish a stationary distribution.",
+    "title": "MLP, 2 x 512 (tanh) | training and conditional gain dynamics",
+    "source": "/tmp/ghoshavr_part1_concise/vision/mlp_tanh/mlp_tanh_04_dynamics.pdf"
+  },
+  {
+    "name": "resnet20_01_curvature",
+    "caption": "eta=0.025: step 14,999; eta=0.05: step 14,999. Curves show average run-level measurements. The Hessian curve is a finite power-iteration estimate; it is not a certified largest eigenvalue. Actual saved learning rates are used. A red cross retains a pre-escape checkpoint.",
+    "title": "ResNet-20 without BatchNorm | curvature thresholds",
+    "source": "/tmp/ghoshavr_part1_concise/vision/resnet20/resnet20_01_curvature.pdf"
+  },
+  {
+    "name": "resnet20_02_moments",
+    "caption": "eta=0.025: step 14,999; eta=0.05: step 14,999. Curves show average run-level measurements. H=1/E[1/|a|], G=exp(Lambda), A1=E|a|, A2=sqrt(E|a|^2). The lower panel uses a logarithmic scale. A mean of run-level H estimates is not H of a pooled distribution; finite estimates do not prove inverse-moment existence.",
+    "title": "ResNet-20 without BatchNorm | the moment ladder",
+    "source": "/tmp/ghoshavr_part1_concise/vision/resnet20/resnet20_02_moments.pdf"
+  },
+  {
+    "name": "resnet20_03_gain_law",
+    "caption": "eta=0.025: step 14,999; eta=0.05: step 14,999. Curves show average run-level measurements. CDFs and log moments are computed within each run, then averaged equally. These are distributions of a conditional scalar multiplier, not distributions of a fixed parameter coordinate. Values near a=0 dominate inverse moments; p=0 is exactly zero by definition.",
+    "title": "ResNet-20 without BatchNorm | gain distributions and moment pressure",
+    "source": "/tmp/ghoshavr_part1_concise/vision/resnet20/resnet20_03_gain_law.pdf"
+  },
+  {
+    "name": "resnet20_04_dynamics",
+    "caption": "Each batch curve averages run-level measurements at shared checkpoints and stops at the last common measurement. Loss and gain panels use their own recorded sampling grids. Finite training prefixes and decreasing loss do not establish a stationary distribution.",
+    "title": "ResNet-20 without BatchNorm | training and conditional gain dynamics",
+    "source": "/tmp/ghoshavr_part1_concise/vision/resnet20/resnet20_04_dynamics.pdf"
+  },
+  {
+    "name": "vit_01_curvature",
+    "caption": "eta=0.2: steps 400-19,999. Curves show average run-level measurements. The Hessian curve is a finite power-iteration estimate; it is not a certified largest eigenvalue. Actual saved learning rates are used. A red cross retains a pre-escape checkpoint.",
+    "title": "ViT, 2 blocks x width 64 | curvature thresholds",
+    "source": "/tmp/ghoshavr_part1_concise/vision/vit/vit_01_curvature.pdf"
+  },
+  {
+    "name": "vit_02_moments",
+    "caption": "eta=0.2: steps 400-19,999. Curves show average run-level measurements. H=1/E[1/|a|], G=exp(Lambda), A1=E|a|, A2=sqrt(E|a|^2). The lower panel uses a logarithmic scale. A mean of run-level H estimates is not H of a pooled distribution; finite estimates do not prove inverse-moment existence.",
+    "title": "ViT, 2 blocks x width 64 | the moment ladder",
+    "source": "/tmp/ghoshavr_part1_concise/vision/vit/vit_02_moments.pdf"
+  },
+  {
+    "name": "vit_03_gain_law",
+    "caption": "eta=0.2: steps 400-19,999. Curves show average run-level measurements. CDFs and log moments are computed within each run, then averaged equally. These are distributions of a conditional scalar multiplier, not distributions of a fixed parameter coordinate. Values near a=0 dominate inverse moments; p=0 is exactly zero by definition.",
+    "title": "ViT, 2 blocks x width 64 | gain distributions and moment pressure",
+    "source": "/tmp/ghoshavr_part1_concise/vision/vit/vit_03_gain_law.pdf"
+  },
+  {
+    "name": "vit_04_dynamics",
+    "caption": "Each batch curve averages run-level measurements at shared checkpoints and stops at the last common measurement. Loss and gain panels use their own recorded sampling grids. Finite training prefixes and decreasing loss do not establish a stationary distribution.",
+    "title": "ViT, 2 blocks x width 64 | training and conditional gain dynamics",
+    "source": "/tmp/ghoshavr_part1_concise/vision/vit/vit_04_dynamics.pdf"
+  },
+  {
+    "name": "cnn_silu_grid_eta_batch",
+    "caption": "Axes are actual training learning rate and batch size. The six panels show Lambda, H, A1, A2, eta E[s_B], and the fraction of expanding gains. Each cell averages run-level statistics from the final three available checkpoints; time windows can differ across settings and runs. Color centers are 0, 1, 1, 1, 2, and 0.5. Curvature and expansion-fraction centers are references, not full-network stability tests. A trailing +/- preserves the side of a reference after rounding. Gray means no gain estimate; E marks a recorded escape, including pre-escape estimates. Finite H does not establish population inverse-moment finiteness.",
+    "title": "CNN with SiLU | stability grid over batch size and step size",
+    "source": "/tmp/ghoshavr_part1_concise/grids_vision/cnn_silu_grid_eta_batch.pdf"
+  },
+  {
+    "name": "mlp_silu_grid_eta_batch",
+    "caption": "Axes are actual training learning rate and batch size. The six panels show Lambda, H, A1, A2, eta E[s_B], and the fraction of expanding gains. Each cell averages run-level statistics from the final three available checkpoints; time windows can differ across settings and runs. Color centers are 0, 1, 1, 1, 2, and 0.5. Curvature and expansion-fraction centers are references, not full-network stability tests. A trailing +/- preserves the side of a reference after rounding. Gray means no gain estimate; E marks a recorded escape, including pre-escape estimates. Finite H does not establish population inverse-moment finiteness.",
+    "title": "MLP, 2 x 512 (SiLU) | stability grid over batch size and step size",
+    "source": "/tmp/ghoshavr_part1_concise/grids_vision/mlp_silu_grid_eta_batch.pdf"
+  },
+  {
+    "name": "wrn_no_bn_grid_eta_batch",
+    "caption": "Axes are actual training learning rate and batch size. The six panels show Lambda, H, A1, A2, eta E[s_B], and the fraction of expanding gains. Each cell averages run-level statistics from the final three available checkpoints; time windows can differ across settings and runs. Color centers are 0, 1, 1, 1, 2, and 0.5. Curvature and expansion-fraction centers are references, not full-network stability tests. A trailing +/- preserves the side of a reference after rounding. Gray means no gain estimate; E marks a recorded escape, including pre-escape estimates. Finite H does not establish population inverse-moment finiteness.",
+    "title": "WideResNet-10-2, native Fixup | stability grid over batch size and step size",
+    "source": "/tmp/ghoshavr_part1_concise/grids_vision/wrn_no_bn_grid_eta_batch.pdf"
+  },
+  {
+    "name": "resnet32_grid_eta_batch",
+    "caption": "Axes are actual training learning rate and batch size. The six panels show Lambda, H, A1, A2, eta E[s_B], and the fraction of expanding gains. Each cell averages run-level statistics from the final three available checkpoints; time windows can differ across settings and runs. Color centers are 0, 1, 1, 1, 2, and 0.5. Curvature and expansion-fraction centers are references, not full-network stability tests. A trailing +/- preserves the side of a reference after rounding. Gray means no gain estimate; E marks a recorded escape, including pre-escape estimates. Finite H does not establish population inverse-moment finiteness.",
+    "title": "ResNet-32 without BatchNorm | stability grid over batch size and step size",
+    "source": "/tmp/ghoshavr_part1_concise/grids_vision/resnet32_grid_eta_batch.pdf"
+  },
+  {
+    "name": "cnn_grid_eta_batch",
+    "caption": "Axes are actual training learning rate and batch size. The six panels show Lambda, H, A1, A2, eta E[s_B], and the fraction of expanding gains. Each cell averages run-level statistics from the final three available checkpoints; time windows can differ across settings and runs. Color centers are 0, 1, 1, 1, 2, and 0.5. Curvature and expansion-fraction centers are references, not full-network stability tests. A trailing +/- preserves the side of a reference after rounding. Gray means no gain estimate; E marks a recorded escape, including pre-escape estimates. Finite H does not establish population inverse-moment finiteness.",
+    "title": "CNN, 3 convolutional layers (ReLU) | stability grid over batch size and step size",
+    "source": "/tmp/ghoshavr_part1_concise/grids_vision/cnn_grid_eta_batch.pdf"
+  },
+  {
+    "name": "mlp_d1_grid_eta_batch",
+    "caption": "Axes are actual training learning rate and batch size. The six panels show Lambda, H, A1, A2, eta E[s_B], and the fraction of expanding gains. Each cell averages run-level statistics from the final three available checkpoints; time windows can differ across settings and runs. Color centers are 0, 1, 1, 1, 2, and 0.5. Curvature and expansion-fraction centers are references, not full-network stability tests. A trailing +/- preserves the side of a reference after rounding. Gray means no gain estimate; E marks a recorded escape, including pre-escape estimates. Finite H does not establish population inverse-moment finiteness.",
+    "title": "MLP, 1 x 256 (ReLU) | stability grid over batch size and step size",
+    "source": "/tmp/ghoshavr_part1_concise/grids_vision/mlp_d1_grid_eta_batch.pdf"
+  },
+  {
+    "name": "mlp_d2_grid_eta_batch",
+    "caption": "Axes are actual training learning rate and batch size. The six panels show Lambda, H, A1, A2, eta E[s_B], and the fraction of expanding gains. Each cell averages run-level statistics from the final three available checkpoints; time windows can differ across settings and runs. Color centers are 0, 1, 1, 1, 2, and 0.5. Curvature and expansion-fraction centers are references, not full-network stability tests. A trailing +/- preserves the side of a reference after rounding. Gray means no gain estimate; E marks a recorded escape, including pre-escape estimates. Finite H does not establish population inverse-moment finiteness.",
+    "title": "MLP, 2 x 512 (ReLU) | stability grid over batch size and step size",
+    "source": "/tmp/ghoshavr_part1_concise/grids_vision/mlp_d2_grid_eta_batch.pdf"
+  },
+  {
+    "name": "mlp_d3_grid_eta_batch",
+    "caption": "Axes are actual training learning rate and batch size. The six panels show Lambda, H, A1, A2, eta E[s_B], and the fraction of expanding gains. Each cell averages run-level statistics from the final three available checkpoints; time windows can differ across settings and runs. Color centers are 0, 1, 1, 1, 2, and 0.5. Curvature and expansion-fraction centers are references, not full-network stability tests. A trailing +/- preserves the side of a reference after rounding. Gray means no gain estimate; E marks a recorded escape, including pre-escape estimates. Finite H does not establish population inverse-moment finiteness.",
+    "title": "MLP, 3 x 256 (ReLU) | stability grid over batch size and step size",
+    "source": "/tmp/ghoshavr_part1_concise/grids_vision/mlp_d3_grid_eta_batch.pdf"
+  },
+  {
+    "name": "mlp_d4_grid_eta_batch",
+    "caption": "Axes are actual training learning rate and batch size. The six panels show Lambda, H, A1, A2, eta E[s_B], and the fraction of expanding gains. Each cell averages run-level statistics from the final three available checkpoints; time windows can differ across settings and runs. Color centers are 0, 1, 1, 1, 2, and 0.5. Curvature and expansion-fraction centers are references, not full-network stability tests. A trailing +/- preserves the side of a reference after rounding. Gray means no gain estimate; E marks a recorded escape, including pre-escape estimates. Finite H does not establish population inverse-moment finiteness.",
+    "title": "MLP, 4 x 512 (ReLU) | stability grid over batch size and step size",
+    "source": "/tmp/ghoshavr_part1_concise/grids_vision/mlp_d4_grid_eta_batch.pdf"
+  },
+  {
+    "name": "mlp_tanh_grid_eta_batch",
+    "caption": "Axes are actual training learning rate and batch size. The six panels show Lambda, H, A1, A2, eta E[s_B], and the fraction of expanding gains. Each cell averages run-level statistics from the final three available checkpoints; time windows can differ across settings and runs. Color centers are 0, 1, 1, 1, 2, and 0.5. Curvature and expansion-fraction centers are references, not full-network stability tests. A trailing +/- preserves the side of a reference after rounding. Gray means no gain estimate; E marks a recorded escape, including pre-escape estimates. Finite H does not establish population inverse-moment finiteness.",
+    "title": "MLP, 2 x 512 (tanh) | stability grid over batch size and step size",
+    "source": "/tmp/ghoshavr_part1_concise/grids_vision/mlp_tanh_grid_eta_batch.pdf"
+  },
+  {
+    "name": "resnet20_grid_eta_batch",
+    "caption": "Axes are actual training learning rate and batch size. The six panels show Lambda, H, A1, A2, eta E[s_B], and the fraction of expanding gains. Each cell averages run-level statistics from the final three available checkpoints; time windows can differ across settings and runs. Color centers are 0, 1, 1, 1, 2, and 0.5. Curvature and expansion-fraction centers are references, not full-network stability tests. A trailing +/- preserves the side of a reference after rounding. Gray means no gain estimate; E marks a recorded escape, including pre-escape estimates. Finite H does not establish population inverse-moment finiteness.",
+    "title": "ResNet-20 without BatchNorm | stability grid over batch size and step size",
+    "source": "/tmp/ghoshavr_part1_concise/grids_vision/resnet20_grid_eta_batch.pdf"
+  },
+  {
+    "name": "vit_grid_eta_batch",
+    "caption": "Axes are actual training learning rate and batch size. The six panels show Lambda, H, A1, A2, eta E[s_B], and the fraction of expanding gains. Each cell averages run-level statistics from the final three available checkpoints; time windows can differ across settings and runs. Color centers are 0, 1, 1, 1, 2, and 0.5. Curvature and expansion-fraction centers are references, not full-network stability tests. A trailing +/- preserves the side of a reference after rounding. Gray means no gain estimate; E marks a recorded escape, including pre-escape estimates. Finite H does not establish population inverse-moment finiteness.",
+    "title": "ViT, 2 blocks x width 64 | stability grid over batch size and step size",
+    "source": "/tmp/ghoshavr_part1_concise/grids_vision/vit_grid_eta_batch.pdf"
+  },
+  {
+    "name": "gpt01_token_dynamics",
+    "caption": "Columns compare learning rates and colors compare effective batches in sequences. Top: validation-window Monte Carlo loss along training. Bottom: matched-parent-batch frozen-Adam GGN scalar Lambda = mean(log|1-eta s|), measured on 8 fresh probe batches at each checkpoint. Lines show average run-level estimates. All parent optimizers use Adam; the frozen diagnostic excludes momentum and preconditioner evolution. Positive scalar Lambda is not a full Adam Lyapunov exponent. Warmup occupies the first 10% of tokens.",
+    "title": "GPT / FineWeb-Edu: loss improves while frozen scalar growth can expand",
+    "source": "/tmp/ghoshavr_part1_concise/gpt/gpt01_token_dynamics.pdf"
+  },
+  {
+    "name": "gpt02_moment_ladder",
+    "caption": "Final checkpoint only, with probe batch equal to parent batch. H=1/mean(|a|^-1), Lambda=mean(log|a|), A1=mean(|a|), A2=sqrt(mean(|a|^2)); each transformed quantity crosses its empirical boundary at zero. Vertical scales are symmetric-log except for the entirely near-zero top-left panel, which is linear. Every statistic is computed separately within a run; the displayed log statistics are then averaged. Raw Hessian uses 16 probes and frozen GGN 8. These finite-sample moment summaries do not establish population inverse-moment existence, an invariant distribution, or a full-optimizer boundary.",
+    "title": "GPT / FineWeb-Edu: the apparent edge depends on moment and metric",
+    "source": "/tmp/ghoshavr_part1_concise/gpt/gpt02_moment_ladder.pdf"
+  },
+  {
+    "name": "gpt03_gain_law",
+    "caption": "Eta 0.0003; final checkpoint and matched parent/probe batch. Top: empirical cumulative distribution of log absolute scalar gain. Bottom: empirical log moment function over p in [-1,2], with psi(0)=0 by identity. Raw and frozen Hessian use 16 probes per run, GGN uses 8. Lines are pointwise averages of run-level CDFs and moment curves, without merging raw samples across runs or checkpoints. Gain distributions are not distributions of model coordinates, so these panels do not establish bimodality.",
+    "title": "GPT / FineWeb-Edu: a few large gains change positive moments",
+    "source": "/tmp/ghoshavr_part1_concise/gpt/gpt03_gain_law.pdf"
+  },
+  {
+    "name": "gpt04_inverse_and_mechanism",
+    "caption": "Eta 0.0003; final checkpoint and matched parent/probe batch. Top: median H over 256 randomized sample orders for each prefix size, computed separately per run; the line averages these medians. Prefix reshuffling is a sensitivity diagnostic, not new independent data or proof of inverse-moment convergence. Bottom: expansion caused by negative curvature (a>1) versus positive-curvature overshoot (a<-1), with average run-level fractions. GGN is positive semidefinite, so its expansion is from overshoot. Colors retain the four distinct scalar metric definitions.",
+    "title": "GPT / FineWeb-Edu: inverse moments and the cause of expansion need separate checks",
+    "source": "/tmp/ghoshavr_part1_concise/gpt/gpt04_inverse_and_mechanism.pdf"
+  },
+  {
+    "name": "gpt05_matrix_control",
+    "caption": "Existing final-checkpoint frozen-Adam GGN matrix controls for eta0.0003 parents: propagate u by (I-eta D^(1/2) G_B D^(1/2)) without resetting its direction and sum the log norms. Top gives each cell the same 8,192 tokens (32,8,2 steps at probe batches1,4,16); bottom uses only the common first2 steps. Curves average the available parent/probe-stream measurements. Rate factors are relative to parent eta0.0003. These finite-horizon, fixed-checkpoint matrix products exclude Adam momentum and evolution of D; they are not a full Adam Jacobian, asymptotic Lyapunov exponent, or nonlinear stability certificate.",
+    "title": "GPT / FineWeb-Edu: token-matched matrix probes reveal growth missed by short prefixes",
+    "source": "/tmp/ghoshavr_part1_concise/gpt/gpt05_matrix_control.pdf"
+  },
+  {
+    "name": "gpt_grid01_raw_hessian",
+    "caption": "Raw Hessian; all nine batch-rate cells retained. Values average run-level statistics from final-three-checkpoint pools at 8.192, 12.288 and 16.384 million tokens. Blue/red means below/above the panel reference. Pools contain 48 Hessian or 24 GGN gains per run. Annotations use three significant figures, with strict inequalities when rounded to a threshold. Symlog colorbars retain extreme values; ticks use original units. Eta E[s_B]=2 and P(|a|>1)=0.5 are references, not stability certificates. Small inverse-moment samples do not establish population finiteness or stationarity. Parents use Adam: raw metrics are scalar SGD counterfactuals; frozen metrics exclude momentum and preconditioner evolution. Neither is a full-Adam Jacobian.",
+    "title": "GPT / FineWeb-Edu: batch\u2013step-size grid, raw hessian",
+    "source": "/tmp/ghoshavr_part1_concise/grids_gpt/gpt_grid01_raw_hessian.pdf"
+  },
+  {
+    "name": "gpt_grid02_raw_ggn",
+    "caption": "Raw GGN; all nine batch-rate cells retained. Values average run-level statistics from final-three-checkpoint pools at 8.192, 12.288 and 16.384 million tokens. Blue/red means below/above the panel reference. Pools contain 48 Hessian or 24 GGN gains per run. Annotations use three significant figures, with strict inequalities when rounded to a threshold. Symlog colorbars retain extreme values; ticks use original units. Eta E[s_B]=2 and P(|a|>1)=0.5 are references, not stability certificates. Small inverse-moment samples do not establish population finiteness or stationarity. Parents use Adam: raw metrics are scalar SGD counterfactuals; frozen metrics exclude momentum and preconditioner evolution. Neither is a full-Adam Jacobian.",
+    "title": "GPT / FineWeb-Edu: batch\u2013step-size grid, raw ggn",
+    "source": "/tmp/ghoshavr_part1_concise/grids_gpt/gpt_grid02_raw_ggn.pdf"
+  },
+  {
+    "name": "gpt_grid03_frozen_adam_hessian",
+    "caption": "Frozen Adam Hessian; all nine batch-rate cells retained. Values average run-level statistics from final-three-checkpoint pools at 8.192, 12.288 and 16.384 million tokens. Blue/red means below/above the panel reference. Pools contain 48 Hessian or 24 GGN gains per run. Annotations use three significant figures, with strict inequalities when rounded to a threshold. Symlog colorbars retain extreme values; ticks use original units. Eta E[s_B]=2 and P(|a|>1)=0.5 are references, not stability certificates. Small inverse-moment samples do not establish population finiteness or stationarity. Parents use Adam: raw metrics are scalar SGD counterfactuals; frozen metrics exclude momentum and preconditioner evolution. Neither is a full-Adam Jacobian.",
+    "title": "GPT / FineWeb-Edu: batch\u2013step-size grid, frozen adam hessian",
+    "source": "/tmp/ghoshavr_part1_concise/grids_gpt/gpt_grid03_frozen_adam_hessian.pdf"
+  },
+  {
+    "name": "gpt_grid04_frozen_adam_ggn",
+    "caption": "Frozen Adam GGN; all nine batch-rate cells retained. Values average run-level statistics from final-three-checkpoint pools at 8.192, 12.288 and 16.384 million tokens. Blue/red means below/above the panel reference. Pools contain 48 Hessian or 24 GGN gains per run. Annotations use three significant figures, with strict inequalities when rounded to a threshold. Symlog colorbars retain extreme values; ticks use original units. Eta E[s_B]=2 and P(|a|>1)=0.5 are references, not stability certificates. Small inverse-moment samples do not establish population finiteness or stationarity. Parents use Adam: raw metrics are scalar SGD counterfactuals; frozen metrics exclude momentum and preconditioner evolution. Neither is a full-Adam Jacobian.",
+    "title": "GPT / FineWeb-Edu: batch\u2013step-size grid, frozen adam ggn",
+    "source": "/tmp/ghoshavr_part1_concise/grids_gpt/gpt_grid04_frozen_adam_ggn.pdf"
+  }
+]

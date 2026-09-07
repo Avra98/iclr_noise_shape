@@ -1,0 +1,30 @@
+{
+  "01_ORIGINAL_EIGHT_NETWORKS": {
+    "present_same_size": 58,
+    "source_present": 58
+  },
+  "02_OLDER_RUNS_RECOMPUTED": {
+    "present_same_size": 76,
+    "source_present": 76
+  },
+  "03_NEW_NETWORK_SWEEPS": {
+    "present_same_size": 619,
+    "source_present": 619
+  },
+  "04_OPTIMIZER_CONTROLS": {
+    "present_same_size": 31,
+    "source_present": 31
+  },
+  "05_NONCONVEX_NETWORK_EXPERIMENTS": {
+    "present_same_size": 1161,
+    "source_present": 1161
+  },
+  "06_ADDITIONAL_DIAGNOSTICS": {
+    "present_same_size": 463,
+    "source_present": 463
+  },
+  "ORIGINAL_NETWORK_OVERVIEW.png": {
+    "present_same_size": 1,
+    "source_present": 1
+  }
+}

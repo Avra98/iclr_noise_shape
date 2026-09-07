@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{iclr2026_conference,times}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,graphicx,microtype,url,float,placeins}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,pdftitle={Beyond Local Lyapunov Stability: Inverse Moments and Nonlinear Return in SGD},pdfauthor={Anonymous authors}}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@maketitle}{Under review as a conference paper at ICLR 2026}{ICLR-style working manuscript}{ }{\errmessage{Header patch failed}}
+\patchcmd{\@maketitle}{Paper under double-blind review}{Working manuscript}{ }{\errmessage{Author patch failed}}
+\makeatother
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\title{Beyond Local Lyapunov Stability:\\Inverse Moments and Nonlinear Return in SGD}
+\author{Anonymous authors}
+\begin{document}
+\maketitle
+\begin{abstract}
+Stochastic gradient descent can remain confined while local linear models predict expansion. We separate the return mechanism creating a stationary distribution from the moments describing its central shape. Scalar quadratic SGD gives $a_B=1-\eta h_B$: positive moments govern perturbation growth, while a negative root $\mathbb E|a_B|^{-\alpha}=1$ describes small stationary amplitudes in a returned process. The harmonic reference $\mathbb E|a_B|^{-1}=1$ separates central concentration from depletion under explicit assumptions. A matrix renewal formulation retains direction dynamics. Coercive nonconvex SGD constructions then establish attracting invariant laws beyond local expansion, including a control with a positive stationary tangent exponent. Neural batch-size--step-size heatmaps and fixed-frame continuations show distinct scalar regimes and alternating two-lobe occupancy while transported tangents grow and loss decreases. These results identify what can coexist beyond a local edge and why neural bimodality needs direct, time-resolved measurement.
+\end{abstract}
+\input{sections/introduction}
+\section{Scalar quadratics and the negative-moment boundary}
+\input{sections/scalar}
+\input{sections/theory_figure}
+\section{A matrix renewal formulation}
+\input{contributions/matrix/matrix_main}
+\section{Nonconvex SGD supplies its own return}
+\input{sections/nonlinear}
+\input{sections/equilibrium}
+\input{sections/diagnostics}
+\section{Neural observations across regimes and windows}
+\input{sections/neural_results}
+\clearpage
+\input{sections/related}
+\label{main:lastpage}
+\clearpage
+\bibliography{references}
+\bibliographystyle{iclr2026_conference}
+\clearpage
+\appendix
+\input{contributions/scalar/scalar_proofs}
+\input{contributions/matrix/matrix_appendix}
+\input{contributions/matrix/highdim_example}
+\input{sections/piecewise_appendix}
+\IfFileExists{contributions/scalar/bounded_network_proof.tex}{\input{contributions/scalar/bounded_network_proof}}{}
+\section{Additional empirical details and controls}
+\IfFileExists{contributions/empirical/appendix_nonconvex_empirical.tex}{\input{contributions/empirical/appendix_nonconvex_empirical}}{}
+\input{contributions/empirical/appendix_empirical}
+\IfFileExists{contributions/empirical/appendix_atlas.tex}{\input{contributions/empirical/appendix_atlas}}{}
+\clearpage
+\section{New directional gain-ladder continuations}
+\label{app:directional-ladders}
+\input{sections/latest_directional_results}
+\input{appendix_directional_ladders_body}
+\end{document}

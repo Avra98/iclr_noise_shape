@@ -1,0 +1,78 @@
+% Requires amsmath, amssymb, amsthm, theorem/proposition/corollary environments.
+% Full assumptions and proofs are in matrix_appendix.tex.
+\subsection{Random matrices: radius and direction must evolve together}
+\label{sec:matrix-central}
+For a quadratic in $d$ parameters, the linear update is
+$U_{t+1}=A_{t+1}U_t$, where $A=I-\eta H_B$.
+Writing $U=r s$, with $\|s\|=1$, gives
+\begin{equation}
+ r^+=r\|As\|,\qquad s^+=As/\|As\|.
+ \label{eq:matrix-radius-direction}
+\end{equation}
+Thus a matrix changes both the amplitude and the direction of the next
+update. Its log gains need not be independent. The appropriate analogue
+of the scalar moment $\mathbb E|a|^q$ is the growth rate of the positive
+operator
+\begin{equation}
+ (P_q f)(s)=\mathbb E\!\left[\|As\|^q
+ f\!\left(\frac{As}{\|As\|}\right)\right],
+ \qquad k(q)=\operatorname{spr}(P_q).
+ \label{eq:matrix-pressure-main}
+\end{equation}
+Here $\operatorname{spr}$ denotes spectral radius: $k(q)$ is the long-run moment-growth factor, including changes of direction. The operator weights each next-direction value of $f$ by the current radial gain to order $q$. When the original
+angular chain is ergodic, identifies the top product exponent, and the
+pressure is differentiable at zero,
+$\gamma=(\log k)'(0)$ is the linear-product Lyapunov exponent.
+In one dimension, $k(q)=\mathbb E|a|^q$.
+Classical matrix renewal theory uses a positive root to describe large
+values of a contractive affine recursion \citep{kesten1973random,guivarchlepage2016}.
+The following result uses a negative root to describe small amplitudes of a locally expanding process supplied with return. Its proof changes the sampling law (a probability \emph{tilt}) to emphasize rare inward excursions. The assumptions ensure that directions mix and that this tilted radius drifts inward; Appendix~\ref{app:matrix-renewal} gives the formulas and an explicit noncommuting example.
+
+\begin{theorem}[Matrix central law with finite return cycles]
+\label{thm:matrix-central-main}
+Suppose the linear product is locally expanding, $\gamma>0$, and
+$k(-\alpha)=1$ for some $\alpha>0$.
+Assume the negative-order spectral and Markov renewal conditions in
+Assumption~\ref{ass:matrix-renewal}, including a bounded strictly
+positive eigenfunction and nonarithmetic angular mixing.
+Start an exact linear excursion below radius $r_0$ and restart it from
+the same independent entry law on its first exit above $r_0$.
+If the mean excursion length is finite and the entry law has a finite
+inverse $\alpha$-moment, then its invariant law satisfies
+\begin{equation}
+ \lim_{r\downarrow0}
+ \frac{\pi(\|U\|\le r,\ U/\|U\|\in D)}{(r/r_0)^\alpha}
+ =C\chi(D),
+ \label{eq:matrix-central-main}
+\end{equation}
+for angular continuity sets $D$, provided the tilted excursion has a positive probability of never
+returning to the upper boundary. Here $C>0$ and $\chi$ is a probability
+measure on directions. The matrices may be noncommuting.
+\end{theorem}
+
+\paragraph{What this establishes.}
+Finite return cycles create stationarity; the negative moment root
+determines how often stationary excursions reach the center.
+The proof tilts the joint radius--direction process, applies a Markov
+renewal theorem, and subtracts occupation after upper exit.
+It does not replace matrix products by Rayleigh quotients.
+For a genuine nonlinear SGD chain, Proposition~\ref{prop:nonlinear-transfer}
+gives a precise transfer criterion in terms of its entry law and local
+transition kernel. Those conditions are additional to positive local
+growth and are not established for our neural networks.
+
+\paragraph{Which density can lose its central peak?}
+With an additional renewal-density regularity assumption,
+\eqref{eq:matrix-central-main} gives radial density
+$p_R(r)\asymp r^{\alpha-1}$.
+If a joint local density limit in radius and direction also holds, dividing
+by the polar volume factor gives ambient density
+$p_U(rs)\asymp r^{\alpha-d}$ along directions with positive limiting density.
+For a strictly convex log pressure with roots $-\alpha$ and $0$,
+$k(-1)<1$ means $\alpha>1$, whereas $k(-d)<1$ means $\alpha>d$.
+A fixed coordinate integrates over directions and has no such universal
+threshold: Proposition~\ref{prop:isotropic-counterexample} gives a
+stationary nonlinear SGD example with both inequalities but centrally
+unimodal fixed-coordinate marginals.
+This distinction motivates direct fixed-direction measurements in the
+neural experiments.

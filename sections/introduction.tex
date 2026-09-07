@@ -1,0 +1,14 @@
+\section{Introduction}
+A neural network can keep learning while local curvature predicts expansion. Can the optimizer remain statistically confined, and what shape does its occupation distribution have? An expanding deterministic quadratic has no return mechanism. Random curvature further separates the boundaries for mean-square, logarithmic, and inverse-moment growth.
+
+A scalar quadratic gives the multiplier $a_B=1-\eta h_B$, with sampled curvature $h_B$ and step size $\eta$. Its moments $m(p)=\mathbb E|a_B|^p$ separate several questions. Positive orders describe perturbation growth; the logarithmic average describes a typical product. The negative moment $m(-1)$ measures concentration toward zero. We call $H=1/m(-1)$ the \emph{harmonic gain}; its central-shape interpretation requires an explicit return model.
+
+Classical Kesten--Goldie theory describes large values of a contractive random affine recursion. Our central-mass formulation combines local expansion with outer return: a \emph{negative} moment root then controls small stationary amplitudes. We use reflected-walk and renewal ideas, retain the evolving direction in a matrix formulation, and exhibit nonconvex SGD losses whose gradients supply return.
+
+We separate local growth, nonlinear recurrence, and coordinate-distribution shape through three results:
+\begin{enumerate}
+\item A scalar-to-matrix central renewal formulation with explicit return assumptions. It identifies the inverse root and explains when the harmonic reference separates central concentration from depletion.
+\item Concrete coercive-loss SGD constructions proving that nonlinear return permits an attracting invariant law beyond local expansion. A separate piecewise-smooth construction also has a provably positive stationary tangent exponent.
+\item Neural heatmaps and fixed-frame continuations revealing a concrete diagnostic disagreement: an MLP has negative late fixed-axis log gain, positive transported growth, and alternating two-lobe occupancy under iid batches. A short CNN candidate fails confirmation.
+\end{enumerate}
+The constructions prove what can coexist; the neural measurements test these distinctions over finite training windows.

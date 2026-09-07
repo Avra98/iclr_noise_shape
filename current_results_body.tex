@@ -1,0 +1,37 @@
+\input{current_results_methods}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{img/current_results/fig01_mlp_loss_alignment_bimodality.pdf}
+\caption{The center and plotting direction are fixed at the parent checkpoint. All runs use IID subsets, original parent learning rate, and the full 8192-example training subset. Curvature matrices in the alignment panel use that same subset. Histograms use four declared 512-update intervals and 30 bins without selecting intervals by modality. The short trace uses updates2048--2111. Gain ladders use fresh minibatches at each plotted state: fixed-axis compression versus batch-gradient compression, each summarized by H,G,A1,A2. No propagated-tangent panel and no static ladder panels are included. Sparse even-update conditional probes do not average over oscillation phases; they do not establish stationarity or a full-network Lyapunov exponent. Alignment is measured, not assumed, and Ritz extremality is not certified. The original anchor uses128 fresh draws at zero and24 at subsequent even states512k.}
+\label{fig:current-fig01-mlp-loss-alignment-bimodality}
+\end{figure}\clearpage
+
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{img/current_results/fig02_direction_resolved_ladder.pdf}
+\caption{Fresh conditional minibatch probes at each displayed fixed state, using the same draws across directions. There are 128 draws at update zero and 24 at other displayed states. Only states at multiples of 512 are displayed here; the adjacent phase appears in Figure 3. The batch-gradient direction changes with the sampled batch. All other directions are checkpoint-fixed. Geometric gain G=exp(Lambda) shares the unit reference with H, A1 and A2. Finite H does not establish a finite population inverse moment.}
+\label{fig:current-fig02-direction-resolved-ladder}
+\end{figure}\clearpage
+
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{img/current_results/fig04_cross_architecture_gain_laws.pdf}
+\caption{Batch-gradient scalar gains at update 20000 and matched training/probe batch size. Curves average within-run CDFs or log moments equally across available runs; this is not the log moment of pooled gains. No separate seed panels. Architecture-specific step sizes are labeled; this is not a controlled comparison changing architecture alone. Only measured final-checkpoint cases are shown; the full grids retain earlier/pre-escape observations. Positive and negative moments summarize gain distributions, not parameter-coordinate histograms.}
+\label{fig:current-fig04-cross-architecture-gain-laws}
+\end{figure}\clearpage
+
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{img/current_results/cnn_silu_grid_eta_batch.pdf}
+\caption{\textbf{CNN with SiLU | stability grid over batch size and step size.} Axes are actual training learning rate and batch size. The six panels show Lambda, H, A1, A2, eta E[s\_B], and the fraction of expanding gains. Each cell averages run-level statistics from the final three available checkpoints; time windows can differ across settings and runs. Color centers are 0, 1, 1, 1, 2, and 0.5. Curvature and expansion-fraction centers are references, not full-network stability tests. A trailing +/- preserves the side of a reference after rounding. Gray means no gain estimate; E marks a recorded escape, including pre-escape estimates. Finite H does not establish population inverse-moment finiteness.}
+\label{fig:current-cnn-silu-grid-eta-batch}
+\end{figure}\clearpage
+
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{img/current_results/mlp_silu_grid_eta_batch.pdf}
+\caption{\textbf{MLP, 2 x 512 (SiLU) | stability grid over batch size and step size.} Axes are actual training learning rate and batch size. The six panels show Lambda, H, A1, A2, eta E[s\_B], and the fraction of expanding gains. Each cell averages run-level statistics from the final three available checkpoints; time windows can differ across settings and runs. Color centers are 0, 1, 1, 1, 2, and 0.5. Curvature and expansion-fraction centers are references, not full-network stability tests. A trailing +/- preserves the side of a reference after rounding. Gray means no gain estimate; E marks a recorded escape, including pre-escape estimates. Finite H does not establish population inverse-moment finiteness.}
+\label{fig:current-mlp-silu-grid-eta-batch}
+\end{figure}\clearpage
+
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{img/current_results/gpt_grid03_frozen_adam_hessian.pdf}
+\caption{\textbf{GPT / FineWeb-Edu: batch--step-size grid, frozen adam hessian.} Frozen Adam Hessian; all nine batch-rate cells retained. Values average run-level statistics from final-three-checkpoint pools at 8.192, 12.288 and 16.384 million tokens. Blue/red means below/above the panel reference. Pools contain 48 Hessian or 24 GGN gains per run. Annotations use three significant figures, with strict inequalities when rounded to a threshold. Symlog colorbars retain extreme values; ticks use original units. Eta E[s\_B]=2 and P(|a|>1)=0.5 are references, not stability certificates. Small inverse-moment samples do not establish population finiteness or stationarity. Parents use Adam: raw metrics are scalar SGD counterfactuals; frozen metrics exclude momentum and preconditioner evolution. Neither is a full-Adam Jacobian.}
+\label{fig:current-gpt-grid03-frozen-adam-hessian}
+\end{figure}\clearpage

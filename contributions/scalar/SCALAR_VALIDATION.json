@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "smooth_example": {
+    "eta": 2.015,
+    "beta": 0.92,
+    "mu": 0.08,
+    "s": 0.05,
+    "central_absolute_gains": [
+      0.91425,
+      1.11575
+    ],
+    "outer_slopes": [
+      0.93955,
+      0.73805
+    ],
+    "central_product_exact": "16321191/16000000",
+    "central_H_exact": "16321191/16240000",
+    "lambda0": 0.009937801287297857,
+    "H0": 1.004999445812808,
+    "alpha0_numeric": 2.017426671021733,
+    "alpha0_numerical_sign_bracket": [
+      2.01742,
+      2.01744
+    ],
+    "min_population_hessian_exact": "-7/200"
+  },
+  "counterexample": {
+    "reset_probability_exact": "41/110",
+    "normalizations_exact": true,
+    "invariance_polynomials_exact": true
+  },
+  "exact_return_examples": [
+    {
+      "b": 1.5,
+      "c": 1.0,
+      "alpha": 0.5,
+      "H": 0.6666666666666666,
+      "boundary_atom": 0.3333333333333333
+    },
+    {
+      "b": 2.0,
+      "c": 1.0,
+      "alpha": 1.0,
+      "H": 1.0,
+      "boundary_atom": 0.5
+    },
+    {
+      "b": 3.0,
+      "c": 1.0,
+      "alpha": 2.0,
+      "H": 1.3333333333333333,
+      "boundary_atom": 0.6666666666666666
+    }
+  ],
+  "scope": "Certificates check constants and algebra; analytic proofs are in scalar_proofs.tex."
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "recorded_missing": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/resnet32/eta0.05/seed88881/B2048/latest_resume.pt",
+    "other_current_weights": [
+      "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/resnet32/eta0.05/seed88881/B2048/checkpoints/ckpt_020000.pt"
+    ],
+    "same_state_verified": false
+  },
+  {
+    "recorded_missing": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/resnet32/eta0.05/seed88881/B32/latest_resume.pt",
+    "other_current_weights": [
+      "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/resnet32/eta0.05/seed88881/B32/checkpoints/ckpt_020000.pt"
+    ],
+    "same_state_verified": false
+  },
+  {
+    "recorded_missing": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/resnet32/eta0.05/seed88881/B8/latest_resume.pt",
+    "other_current_weights": [
+      "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/resnet32/eta0.05/seed88881/B8/checkpoints/ckpt_020000.pt"
+    ],
+    "same_state_verified": false
+  },
+  {
+    "recorded_missing": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/resnet32/eta0.1/seed88883/B4096/latest_resume.pt",
+    "other_current_weights": [],
+    "same_state_verified": false
+  },
+  {
+    "recorded_missing": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B2048/latest_resume.pt",
+    "other_current_weights": [
+      "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B2048/checkpoints/ckpt_020000.pt"
+    ],
+    "same_state_verified": false
+  },
+  {
+    "recorded_missing": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B32/latest_resume.pt",
+    "other_current_weights": [
+      "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B32/checkpoints/ckpt_020000.pt"
+    ],
+    "same_state_verified": false
+  },
+  {
+    "recorded_missing": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B4096/latest_resume.pt",
+    "other_current_weights": [
+      "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B4096/checkpoints/ckpt_020000.pt"
+    ],
+    "same_state_verified": false
+  },
+  {
+    "recorded_missing": "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B8/latest_resume.pt",
+    "other_current_weights": [
+      "/scratch/users/ghoshavr/eoss/results/marc_moment_campaign_20260905/vision/wrn_no_bn/eta0.002/seed88881/B8/checkpoints/ckpt_020000.pt"
+    ],
+    "same_state_verified": false
+  }
+]

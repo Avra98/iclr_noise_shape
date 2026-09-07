@@ -1,0 +1,514 @@
+% Appendix proof module. Compatible with scalar_main.tex but mostly standalone.
+\section{Scalar theory: assumptions and complete derivations}\label{sc:proofs}
+
+\subsection{Deterministic and iid quadratic products}
+For \(\ell(x)=hx^2/2\), deterministic gradient descent satisfies
+\(x_t=(1-\eta h)^t x_0\). If \(h>0\), convergence to zero from every
+finite start occurs precisely when \(0<\eta h<2\). At \(\eta h=2\),
+nonzero starts follow a two-cycle rather than converge, and at
+\(\eta h>2\) their magnitudes diverge. The mean, mean-square, logarithmic,
+and harmonic multiplier criteria coincide in this deterministic case.
+This calculation does not describe stationary fluctuations because
+there is no sampled forcing and no mechanism returning an expanding
+linear orbit to a bounded scale.
+
+For iid batches, common-noise differences satisfy
+\(\Delta_t/\Delta_0=\prod_{j=1}^t A_j\), regardless of additive forcing.
+The logarithm is a sum of iid integrable variables, so the strong law
+gives the almost-sure exponent in Proposition~\ref{sc:ordering}.
+Independence also gives the exact \(p\)-moment identity, for every real
+\(p\) for which the moment is defined. For negative \(p\), this identity
+describes inverse-distance growth; its contraction means repulsion from
+zero and must not be called contraction toward zero.
+
+Jensen applied to \(\exp(-\log M)\) gives
+\(\log\mathbb E M^{-1}\ge-\mathbb E\log M\). Jensen applied to
+\(\exp(\log M)\) gives \(\mathbb E\log M\le\log\mathbb E M\).
+Cauchy--Schwarz gives \(\mathbb E M\le(\mathbb E M^2)^{1/2}\).
+These are precisely \eqref{sc:ladder}. If \(M\) is nonconstant, the
+first Jensen inequality is strict whenever both sides are finite, so
+\(H=1\) then also implies \(\gamma>0\).
+
+For example, let \(M=1/2\) with probability \(1/5\) and \(M=2\) with
+probability \(4/5\). Then \(\gamma=(3/5)\log2>0\),
+\(m(-1)=4/5\), \(H=5/4>1\), and \(m(-2)=1\).
+Changing the contracting probability to \(2/5\) gives positive
+\(\gamma=(1/5)\log2\) while \(m(-1)=11/10>1\), hence \(H<1\).
+The separated thresholds therefore occur already for two-point curvature
+laws, not only for estimated high-dimensional diagnostics.
+
+\subsection{The affine baseline and why outer return matters}
+The following restricted setting suffices for an exact comparison and
+avoids unspoken nondegeneracy exceptions. Let \((A_t,N_t)\) be iid,
+\(A_t\) take finitely many nonzero real values, and, conditionally on
+\(A_t\), let \(N_t\) be centered Gaussian with variance in
+\([v_-,v_+]\subset(0,\infty)\). Multipliers and noise may be dependent.
+Consider
+\begin{equation}
+ X_{t+1}=A_{t+1}X_t+r(X_t)+N_{t+1},\qquad \sup_x|r(x)|\le R<\infty,
+ \label{sc:bounded-remainder}
+\end{equation}
+where \(r\) is continuous.
+
+\begin{proposition}[Outer logarithmic drift separates recurrence and escape]
+\label{sc:outer-sign}
+If \(\mathbb E\log|A|<0\), \eqref{sc:bounded-remainder} has a unique
+positive Harris invariant probability and converges geometrically in a
+weighted total-variation norm with weight \(1+|x|^p\) for some
+\(0<p\le1\). If \(\mathbb E\log|A|>0\), it has no invariant probability.
+No conclusion at equality is asserted.
+\end{proposition}
+\begin{proof}
+In the negative case, finiteness and nonvanishing of the multiplier
+support imply that \(q(p)=\mathbb E|A|^p\) is differentiable at zero,
+with \(q(0)=1\) and \(q'(0)<0\). Choose \(0<p\le1\) with \(q(p)<1\).
+Subadditivity gives
+\[
+ P(1+|x|^p)\le q(p)(1+|x|^p)+1-q(p)+R^p+\mathbb E|N|^p.
+\]
+The transition density is a finite mixture of strictly positive Gaussian
+densities, continuous jointly in the starting and target state. On any
+two fixed compact intervals it has a positive lower bound. Every compact
+set is therefore small, the chain is Lebesgue irreducible and aperiodic,
+and the geometric Foster--Harris theorem applies
+\citep{hairermattingly2011}. To localize the drift, pick
+\(q(p)<q'<1\) and absorb its additive constant inside a sufficiently
+large level set of \(1+|x|^p\).
+
+For the positive case write \(a_j=|A_j|\),
+\(P_n=\prod_{j=1}^n a_j\), and \(d=\mathbb E\log a_1>0\).
+The reverse triangle inequality, iterated, gives
+\[
+ \frac{|X_n|}{P_n}\ge |X_0|-
+ \sum_{j=1}^n\frac{R+|N_j|}{P_j}.
+\]
+Fix \(0<c<d\). The strong law implies
+\(\log P_n-cn\to\infty\), so
+\(\inf_{n\ge0}P_ne^{-cn}>0\) almost surely. There is a deterministic
+\(K>0\) such that
+\(E_K=\{P_n\ge Ke^{cn}\text{ for all }n\ge0\}\) has positive
+probability. Conditionally on the entire multiplier sequence,
+\(\mathbb E(|N_j|\mid(A_k)_{k\ge1})\le C=\sqrt{2v_+/\pi}\).
+On \(E_K\), therefore,
+\[
+ \mathbb E\!\left[\sum_{j\ge1}\frac{R+|N_j|}{P_j}
+       \,\middle|\,(A_k)_{k\ge1}\right]
+ \le D:=\frac{R+C}{K(e^c-1)}.
+\]
+For \(|X_0|\ge4D\), conditional Markov inequality gives probability at
+least \(1/2\) that the weighted noise sum is at most \(|X_0|/2\).
+Consequently the probability of \(|X_n|\to\infty\) from every such
+large start is at least \(\mathbb P(E_K)/2>0\). The everywhere positive
+one-step density reaches this region from every start with positive
+probability. An invariant law \(\pi\) would thus give positive
+stationary probability \(\delta\) to escape. For any \(M<\infty\),
+Fatou's lemma and stationarity imply
+\[
+ \delta\le\mathbb E_\pi\liminf_n\mathbf1_{\{|X_n|>M\}}
+ \le\liminf_n\mathbb P_\pi(|X_n|>M)=\pi(|x|>M).
+\]
+Letting \(M\to\infty\) contradicts that \(\pi\) is a probability.
+\end{proof}
+
+For the affine case \(r=0\), negative logarithmic drift also gives the
+classical perpetuity representation
+\(X\overset d=\sum_{n\ge1}(A_1\cdots A_{n-1})N_n\).
+The products decay exponentially almost surely and Gaussian innovations
+grow subexponentially, so the series converges absolutely. Splitting off
+the first pair proves the distributional recursion. Under the additional
+Kesten--Goldie assumptions (a root \(\mathbb E|A|^\kappa=1\),
+\(0<\mathbb E|A|^\kappa\log|A|<\infty\), nonarithmetic
+\(\log|A|\), the required \(\kappa\)-moment of the innovation, and no
+deterministic common fixed point), the stationary tails have power
+index \(\kappa\). This last tail theorem is classical
+\citep{kesten1973random,goldie1991implicit}; the theorem above proves the
+existence/nonexistence assertion needed here directly. Gaussian forcing
+excludes absorbing point masses and common deterministic fixed points.
+
+\subsection{Proof of the reflected-log central law}
+Let \(Z_j=-\log M_j\), \(S_n=\sum_{j=1}^nZ_j\), \(S_0=0\), and
+\(W=\log(r_*/R)\). Then
+\[
+ W_{t+1}=\max\{0,W_t+Z_{t+1}\},\qquad \mathbb EZ_1=-\gamma<0.
+\]
+The strong law implies \(S_n\to-\infty\), hence
+\(W_*:=\sup_{n\ge0}S_n<\infty\) almost surely. Splitting the supremum
+at its first increment yields
+\(W_*\overset d=\max\{0,Z_1+W_*'\}\), with an independent copy
+\(W_*'\). This proves invariance. To see uniqueness and attraction,
+couple two finite starting values with the same increments. The larger
+process reaches zero almost surely: before its first visit its value is
+its starting value plus \(S_n\), which cannot stay positive forever.
+The smaller process is zero at that time by monotonicity, and the two
+processes then agree. Couple an arbitrary finite start to an independent
+stationary start this way. The coupling time is finite almost surely,
+so its tail tends to zero and total variation convergence follows.
+
+Put \(\phi(q)=\mathbb E e^{qZ}=m(-q)\). At the positive root
+\(\phi(\alpha)=1\), define the tilted increment law
+\(F_\alpha(dz)=e^{\alpha z}F(dz)\). Its positive mean is
+\(\mu_\alpha=\mathbb E[Ze^{\alpha Z}]\). For
+\(T_u=\inf\{n\ge1:S_n>u\}\), the likelihood identity, first at each
+event \(\{T_u=n\}\) and then summed over \(n\), gives
+\begin{align*}
+ \mathbb P(W_*>u)
+ &=\sum_{n\ge1}\mathbb E_\alpha
+       [e^{-\alpha S_n}\mathbf1_{\{T_u=n\}}]\\
+ &=e^{-\alpha u}\mathbb E_\alpha e^{-\alpha O_u},
+ \qquad O_u=S_{T_u}-u.
+\end{align*}
+Under the tilted law \(T_u<\infty\) almost surely, since its drift is
+positive. The nonarithmetic overshoot renewal theorem, with the stated
+exponential-neighborhood and finite-mean assumptions, gives
+\(O_u\Rightarrow O_\infty\), where \(O_\infty\) is finite and
+nonnegative. The bounded continuous function \(e^{-\alpha o}\) yields
+\(\mathbb E_\alpha e^{-\alpha O_u}\to
+C:=\mathbb E_\alpha e^{-\alpha O_\infty}\in(0,1]\).
+This is the classical Cram\'er--Lundberg asymptotic; its random-walk
+renewal formulation is also described by
+\citet{blanchet2006corrected}.
+Substitution of \(u=\log(r_*/r)\) proves the small-ball law.
+Strict versus weak inequalities have the same asymptotic by squeezing
+between radii \(r\) and \((1+\epsilon)r\) and then letting
+\(\epsilon\downarrow0\).
+
+Here is a proof of the concrete density condition in the theorem.
+Suppose \(Z=-\log M\) has a bounded continuous density \(f\), supported
+in \([-b_-,b_+]\), with \(b_+,b_->0\). Let \(\tau_+\) be its first
+strictly positive ladder epoch and define the defective ladder-height
+measure \(G(D)=\mathbb P(\tau_+<\infty,S_{\tau_+}\in D)\) on
+\((0,b_+]\). Write \(p=G((0,b_+])\). Since \(S_n\to-\infty\), the
+walk has finitely many strict upper records almost surely. The strong
+Markov property would produce infinitely many records if \(p=1\), so
+\(p<1\). Decomposing the supremum by its number of records gives
+\[
+ \mathcal L(W_*)=(1-p)\sum_{n\ge0}G^{*n}.
+\]
+The ladder measure has density
+\[
+ g_G(x)=\mathbf1_{\{0<x\le b_+\}}
+   \sum_{n\ge0}\mathbb E[
+      \mathbf1_{\{\tau_+>n\}}f(x-S_n)].
+\]
+The summand is zero unless \(-b_+\le S_n\le0\). A bounded-increment
+random walk with negative mean has finite expected occupation of this
+compact interval: for large \(n\), the event \(S_n\ge-b_+\) is an
+exponentially unlikely deviation from its negative mean, by Hoeffding's
+inequality. Thus \(g_G\) is bounded. Dominated convergence using the
+same finite occupation measure makes it continuous on \((0,b_+)\),
+with finite one-sided endpoint limits. It is consequently directly
+Riemann integrable and compactly supported.
+
+Exponential tilting at the stopped ladder epoch gives
+\(\widehat G(dx)=e^{\alpha x}G(dx)\), which is a probability: under
+the tilted positive-drift walk the first positive ladder epoch is finite
+almost surely. Its mean \(\widehat\mu=\int x\widehat G(dx)\) lies
+in \((0,b_+]\), and it has a bounded, directly Riemann integrable
+density \(\widehat g\). Let
+\(\widehat U=\sum_{n\ge0}\widehat G^{*n}\). The positive-increment
+key renewal theorem applied to \(\widehat g\) gives
+\[
+ \widehat u(w):=\int\widehat g(w-y)\widehat U(dy)
+       \longrightarrow\frac1{\widehat\mu}.
+\]
+This convolution is a density of \(\widehat U-\delta_0\), since
+\(\widehat U=\delta_0+\widehat G*\widehat U\). Undoing the tilt
+in the supremum decomposition therefore gives a density on \((0,\infty)\),
+\[
+ g_{W_*}(w)=(1-p)e^{-\alpha w}\widehat u(w)
+ \sim\frac{1-p}{\widehat\mu}e^{-\alpha w}.
+\]
+Its integral tail identifies the earlier constant as
+\(C=(1-p)/(\alpha\widehat\mu)\). Finally
+\(p_R(r)=g_{W_*}(\log(r_*/r))/r\), proving the density assertion.
+The atom \(1-p\) at \(W_*=0\), equivalently at \(R=r_*\), is retained.
+This argument derives the local density from the positive-increment
+renewal theorem and does not differentiate a CDF asymptotic.
+
+For the harmonic comparison, let \(\psi(q)=\log\phi(q)\).
+It is strictly convex for a nonconstant gain, with \(\psi(0)=0\) and
+\(\psi'(0)=-\gamma<0\). Its unique positive zero is \(\alpha\).
+It is negative on \((0,\alpha)\) and positive beyond \(\alpha\)
+within its finite domain. Since \(\psi(1)=-\log H\), this proves
+\eqref{sc:shape-ladder}. Existence of the root is a substantive assumption:
+if \(M>1\) almost surely then no positive inverse root exists.
+
+\subsection{A solvable return model with an exact density}
+\begin{proposition}[Exponential log excursions]\label{sc:solvable}
+Let \(U\sim\operatorname{Exp}(b)\), \(V\sim\operatorname{Exp}(c)\) be
+independent, \(b>c>0\), and \(M=e^{V-U}\). In
+\eqref{sc:saturation}, set \(\alpha=b-c\) and \(\rho=c/b\). Then
+\begin{equation}
+ \pi_R=(1-\rho)\delta_{r_*}
+ +\rho\,\frac\alpha{r_*}\left(\frac r{r_*}\right)^{\alpha-1}
+             \mathbf1_{(0,r_*)}(r)\,dr.
+ \label{sc:exact-density}
+\end{equation}
+The local logarithmic drift is \(1/c-1/b>0\) and
+\(m(-q)=bc/[(b-q)(c+q)]\) for \(0\le q<b\).
+Thus \(m(-\alpha)=1\), and, when \(b>1\), \(H>1\) precisely when
+\(\alpha>1\).
+\end{proposition}
+\begin{proof}
+For the reflected coordinate, propose
+\(W\sim(1-\rho)\delta_0+\rho\operatorname{Exp}(\alpha)\), independent
+of fresh \(U,V\). Its Laplace transform is
+\[
+ \mathbb E e^{-sW}=1-\rho+\rho\frac\alpha{\alpha+s}
+   =\frac{\alpha(b+s)}{b(\alpha+s)}.
+\]
+Multiplying by the Laplace transform \(b/(b+s)\) of \(U\) shows
+\(W+U\sim\operatorname{Exp}(\alpha)\). Therefore, for \(w\ge0\),
+\[
+ \mathbb P((W+U-V)_+>w)
+ =e^{-\alpha w}\mathbb E e^{-\alpha V}
+ =\rho e^{-\alpha w}.
+\]
+This is the proposed invariant law; uniqueness follows from the preceding
+coupling argument. Transforming back gives \eqref{sc:exact-density}.
+Independence gives the displayed moment formula, whose nonzero root is
+\(b-c\). Finally
+\(H=(b-1)(c+1)/(bc)\), so
+\(H-1=(\alpha-1)/(bc)\).
+\end{proof}
+The boundary atom is real and must be retained in plots or simulations.
+A fair independent sign gives a symmetric invariant coordinate with
+half the mass on each side, but its two boundary atoms are not a theorem
+about two smooth interior modes in neural-network coordinates.
+
+\subsection{Finite-mean reinjection: a useful generalization}
+The hard cap can be replaced by independent excursions. The following
+version uses bounded increments and entries to make the renewal averaging
+step transparent. Suppose \(Y=\log M\) has a bounded continuous density
+with bounded support, \(\mathbb EY>0\), \(\mathbb P(Y<0)>0\), and
+\(\mathbb E e^{-\alpha Y}=1\) for \(\alpha>0\). Let the independent
+entry \(Z\) lie in \([-L,-\ell]\), with \(0<\ell\le L<\infty\).
+Run \(Q_n=Z+\sum_{j=1}^nY_j\) until
+\(\tau=\inf\{n\ge0:Q_n\ge0\}\); discard the exit and restart at a
+fresh independent \(Z\). Then
+\begin{equation}
+ \pi_Q(D)=\frac{\mathbb E\sum_{n=0}^{\tau-1}
+                  \mathbf1_{\{Q_n\in D\}}}{\mathbb E\tau}
+ \label{sc:occupation}
+\end{equation}
+is invariant. To see \(\mathbb E\tau<\infty\), write
+\(\mu=\mathbb EY>0\). Since \(\{\tau>n\}\) implies
+\(\sum_{j=1}^nY_j<L\), bounded-increment Hoeffding bounds make the
+tail summable for \(n>2L/\mu\).
+For bounded test functions, the expected one-step change summed over a
+cycle telescopes to the next fresh entry minus the present entry; its
+expectation is zero. This proves \eqref{sc:occupation} is invariant.
+
+Let \(m_\alpha=-\mathbb E[Y e^{-\alpha Y}]>0\) and
+\(D_\alpha=\mathbb E[e^{-\alpha Z}-e^{-\alpha Q_\tau}]>0\).
+For every fixed \(h>0\), the renewal calculation gives
+\begin{equation}
+ \pi_Q((x,x+h])\sim
+ \frac{D_\alpha}{\alpha m_\alpha\mathbb E\tau}
+ (e^{\alpha h}-1)e^{\alpha x},\qquad x\to-\infty.
+ \label{sc:regeneration-asymptotic}
+\end{equation}
+Here is the calculation. For the increment law \(F\), write
+\(U=\sum_{n\ge0}F^{*n}\). Tilting by \(e^{-\alpha y}\) yields a
+probability \(F_\alpha\) with negative drift \(-m_\alpha\) and
+\(U(dt)=e^{\alpha t}U_\alpha(dt)\). The nonarithmetic random-walk
+renewal theorem, applied on fixed intervals and then to continuous test
+functions on those intervals, gives
+\[
+ U_z((x,x+h])\sim
+ e^{-\alpha z}\frac{e^{\alpha h}-1}{\alpha m_\alpha}e^{\alpha x}.
+\]
+This convergence is uniform over \(z\) in a compact set. One can obtain
+uniformity from convergence on a finite grid of interval endpoints and
+monotone upper/lower interval approximations. The original entry is in a
+compact interval, and the exit overshoot lies in \([0,y_+]\), where
+\(y_+\) bounds the positive increments. Thus the averaging is valid
+without any unbounded-entry interchange. The strong Markov property gives
+the exact killed-potential identity
+\[
+ U_Z(D)=\mathbb E\sum_{n<\tau}\mathbf1_{\{Q_n\in D\}}
+       +\mathbb E U_{Q_\tau}(D).
+\]
+Subtract the two uniformly valid asymptotics and divide by
+\(\mathbb E\tau\) to obtain \eqref{sc:regeneration-asymptotic}.
+Bounded local renewal masses give a uniform exponential bound for the
+fixed-width intervals; a geometric-series domination then permits
+summing toward \(-\infty\). Hence for \(R=e^Q\),
+\[
+ \mathbb P_\pi(R\le r)\sim
+ \frac{D_\alpha}{\alpha m_\alpha\mathbb E\tau}r^\alpha.
+\]
+The bounded continuous increment density also verifies the density
+version here directly. The tilted unrestricted potential satisfies
+\(U_\alpha=\delta_0+F_\alpha*U_\alpha\). Its absolutely continuous
+part therefore has the continuous density
+\(u_\alpha(x)=\int f_\alpha(x-y)U_\alpha(dy)\).
+The fixed-interval renewal theorem gives vague convergence of
+\(U_\alpha(x+dt)\) to \(dt/m_\alpha\) as \(x\to-\infty\).
+Because \(f_\alpha\) is continuous and compactly supported, this
+convolution converges to \(1/m_\alpha\). The convergence is uniform
+under bounded shifts. At sufficiently negative locations the compactly
+supported entry and exit measures have no atoms; the killed-potential
+subtraction therefore has a density there. Undoing the tilt and
+subtracting its entry and exit coefficients proves
+\(p_R(r)\sim D_\alpha r^{\alpha-1}/(m_\alpha\mathbb E\tau)\).
+This result proves an excursion law with specified return. Applying it
+to a nonlinear SGD path requires verifying its return and approximation
+hypotheses, including the distribution of entry near zero.
+
+\subsection{Proof of the smooth nonlinear SGD example}
+For the general parameters in Theorem~\ref{sc:nonlinear-recurrence},
+expansion of the sampled loss gives
+\[
+ \ell(x;h,e)=\tfrac12(h-\beta)x^2+\tfrac\beta2\log(1+x^2)
+              -\sqrt h\,e x+\tfrac12e^2.
+\]
+Because \(h-\beta\ge\mu-s>0\), every realized loss is coercive.
+Taking expectations gives
+\(L(x)=\mu x^2/2+(\beta/2)\log(1+x^2)+C\).
+Its derivative is \(x[\mu+\beta/(1+x^2)]\), so zero is the unique
+minimizer. Its second derivative is
+\[
+ L''(x)=\mu+\beta\frac{1-x^2}{(1+x^2)^2}.
+\]
+The fraction attains its minimum \(-1/8\) at \(x^2=3\); thus
+\(\min L''=\mu-\beta/8<0\).
+Differentiation of the sampled loss gives the exact step
+\[
+ X^+=(1-\eta(h-\beta))X-\frac{\eta\beta X}{1+X^2}
+            +\eta\sqrt h\,e.
+\]
+The remainder has absolute value at most \(\eta\beta/2\). The assumptions
+on \(\eta\) imply
+\(a_*:=\max\{|1-\eta(\mu-s)|,|1-\eta(\mu+s)|\}<1\).
+For any \(p>0\), choose \(\delta>0\) so
+\(q=(1+\delta)a_*^p<1\). The elementary bound
+\[
+ |u+v|^p\le(1+\delta)|u|^p+C_{p,\delta}|v|^p
+\]
+(or subadditivity when \(p\le1\)) gives
+\(P|x|^p\le q|x|^p+C_p\), since the remainder is bounded and the
+Gaussian noise has all moments. At \(p=1\) this drift, combined with the
+Gaussian compact minorization in the proof of
+Proposition~\ref{sc:outer-sign}, gives recurrence, uniqueness, and
+convergence. This direct argument also covers a zero outer slope, which
+was excluded from the logarithmic-sign proposition.
+Iteration from any fixed finite start
+bounds \(\sup_n\mathbb E|X_n|^p\). Convergence in law and the
+Portmanteau theorem give \(\int|x|^p\pi(dx)<\infty\), without assuming
+this moment when integrating the drift.
+
+The conditional noise variances are \(\eta^2\sigma^2h\), bounded above
+and away from zero. Invariance writes the density as a mixture of
+translated Gaussian densities. Every Gaussian derivative of fixed
+order is uniformly bounded over its translation and this compact
+variance interval. Differentiating under the invariant mixture shows
+that the density is bounded and smooth; positivity is immediate.
+Reflection equivariance and uniqueness give evenness.
+Finally the exact sampled Jacobian at zero is \(1-\eta h\).
+At the numerical instance in the theorem, the signed gains are
+\(-.91425,-1.11575\), whose product is greater than one.
+Their harmonic mean is greater than one by direct rational arithmetic.
+Strict convexity of \(q\mapsto\mathbb E|1-\eta h|^{-q}\), its negative
+derivative at zero, and its divergence as \(q\to\infty\) (from the
+contracting atom) give a unique positive root. Evaluating this finite
+two-term function gives \eqref{sc:concrete-numbers}; the signs are exact
+and do not depend on the displayed decimal rounding.
+
+Increasing \(\beta\) while holding \((\mu,s,\eta)\) fixed leaves the
+outer slopes unchanged and makes both central gains grow without bound.
+Every fixed finite \(\beta\) still has a bounded remainder and finite
+Gaussian moments. Consequently recurrence and all finite polynomial
+moments can coexist with arbitrarily large central logarithmic and
+harmonic gains, although a contracting central atom and hence a finite
+inverse root eventually disappear.
+
+\paragraph{A contrasting occupied inverse moment at a larger step.}
+The same fixed loss at \(\eta=8\) has outer slopes \(.76,-.04\) and
+central Jacobians \(-6.6,-7.4\), so all recurrence conclusions remain
+valid and \(H_0=6.977142857\ldots>1\).
+
+The Jacobian at an occupied state is instead
+\[
+ D_h(x)=1-8(h-.92)-7.36\frac{1-x^2}{(1+x^2)^2}.
+\]
+It is state dependent. In fact its simple zeros, together with the
+strictly positive invariant density, imply
+\(\mathbb E_{\pi,h}|D_h(X)|^{-1}=\infty\): the integrand is comparable
+to \(1/|x-x_c|\) near any simple zero \(x_c\).
+Thus the occupied harmonic gain can be zero while the central frozen
+harmonic gain exceeds one. A finite Monte Carlo inverse moment need not
+detect this divergence. This reinforces why all scalar directions and
+locations must be identified in an empirical threshold claim.
+
+\paragraph{When central depletion gives off-center modes.}
+Suppose a signed invariant law has a continuous even density \(f\) on
+\(\mathbb R\), \(f(0)=0\), \(f(x)\to0\) as \(|x|\to\infty\), and
+positive total mass. Some \(x_0>0\) has \(f(x_0)>0\). The limit at zero
+and infinity confines the supremum on \([0,\infty)\) to a compact
+subinterval of \((0,\infty)\), where continuity attains it. Its negative
+reflection is another maximizer. Thus there are at least two off-center
+modes. This does not exclude additional modes or a plateau. Exactly two
+requires, for example, a unique maximum on each half-line. Moreover,
+at fixed nonzero additive Gaussian noise the density in the theorem is
+positive at zero, so an ideal multiplicative depletion law cannot be
+transferred literally down to zero without a small-noise argument.
+
+\subsection{A counterexample to a universal harmonic-to-bimodality claim}
+\label{sc:counterexample}
+On \((0,1)\), take \(M=1/2\) with probability \(1/5\) and \(M=2\)
+otherwise. If \(MR<1\), set \(R'=MR\); otherwise independently restart
+from density
+\[
+ g(r)=\begin{cases}(24+21r^2)/41,&0<r<1/2,\\
+                   (72-27r^2)/41,&1/2\le r<1.
+       \end{cases}
+\]
+The multiplier has \(\gamma=(3/5)\log2>0\), \(H=5/4>1\), and inverse
+root \(\alpha=2\). Nevertheless the exact invariant density is
+\[
+ f(r)=\frac{12}{11}(1-r^2/4),\qquad0<r<1,
+\]
+which decreases from the origin. Both displayed functions integrate to
+one. The killed transfer operator is
+\[
+ Tf(r)=\frac25 f(2r)\mathbf1_{\{r<1/2\}}+\frac25 f(r/2).
+\]
+Direct substitution on the two half-intervals gives
+\(f-Tf=(41/110)g\). Under \(f\), the reset probability is
+\((4/5)\int_{1/2}^1f(r)dr=41/110\), so \(f=Tf+(41/110)g\)
+proves invariance. Adding a reflection-symmetric sign yields a smooth
+central maximum. The return law places substantial mass arbitrarily
+near zero and does not satisfy the inverse entry-moment condition of
+the more general regenerative theorem. The multiplier alone cannot
+distinguish this counterexample from a regular-return model with the
+same \(\alpha\).
+
+\subsection{Exactly two modes in the confined diffusion normal form}
+For clarity, one setting where mode count can be proved completely is
+the \emph{diffusion} normal form
+\[
+ dY=(aY-cY^3)dt+\sqrt{\sigma^2+\nu^2Y^2}\,dW,
+ \qquad c,\sigma,\nu>0.
+\]
+The quartic inward drift and nondegenerate diffusion give a nonexplosive
+positive recurrent scalar process. Solving its zero-current equation
+\((Dp)'=2(a y-c y^3)p\), where \(D=\sigma^2+\nu^2y^2\), gives
+\[
+ p(y)=C(\sigma^2+\nu^2y^2)^{a/\nu^2+c\sigma^2/\nu^4-1}
+                e^{-cy^2/\nu^2}.
+\]
+It is normalizable, and direct differentiation yields
+\[
+ (\log p)'(y)=\frac{2y[(a-\nu^2)-cy^2]}{\sigma^2+\nu^2y^2}.
+\]
+There is one mode at zero for \(a\le\nu^2\), and exactly two modes at
+\(\pm\sqrt{(a-\nu^2)/c}\) for \(a>\nu^2\).
+The zero-additive-noise local logarithmic exponent is
+\(a-\nu^2/2\). When $a>\nu^2/2$, its nontrivial zero-noise invariant density on the
+punctured line has central exponent \(\alpha=2a/\nu^2-1\), so the mode transition occurs at
+\(\alpha=1\). This is a diffusion theorem; fixed-step SGD requires its
+own confinement and approximation argument. In particular, a raw cubic
+explicit update with nondegenerate Gaussian innovations can escape and
+does not inherit this invariant law merely because its local Taylor
+expansion matches the diffusion drift.

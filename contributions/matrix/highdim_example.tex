@@ -1,0 +1,180 @@
+\section{An exact SGD construction and a projection counterexample}
+\label{app:matrix-example}
+This example verifies stationarity and positive local matrix-product
+growth in every dimension. It also rules out a universal inference from
+matrix negative moments to fixed-coordinate bimodality.
+
+\begin{proposition}[Stationarity past the local matrix thresholds]
+\label{prop:isotropic-counterexample}
+For every $d\ge2$ and $\rho,\sigma>0$, there is an explicit online
+nonquadratic regression loss for which fixed-step SGD has a unique
+attracting invariant probability with finite second moment, while its
+linearization at the population minimizer satisfies
+\begin{equation}
+ \gamma\ge\frac{\log2}{2d}>0,\qquad
+ k(-1)\le1-\frac{1}{8d}<1,\qquad k(-d)=\frac78<1.
+ \label{eq:counterexample-instability}
+\end{equation}
+The pressure has a unique nonzero root $k(-\alpha)=1$ with
+$\alpha>d$. Nevertheless, for $d\ge3$ every fixed one-dimensional
+projection of the invariant law has a centrally unimodal density.
+\end{proposition}
+
+\begin{proof}
+At each update independently sample
+\[
+ v\sim\operatorname{Unif}(S^{d-1}),\qquad
+ h=\begin{cases}1/2&\text{with probability }1/4,\\
+                 3&\text{with probability }3/4,
+   \end{cases}
+ \qquad e\sim N(0,\sigma^2).
+\]
+Let $a=\sqrt h\,v$, $q=(a^\top u)^2/2$, and use step size one on
+\begin{equation}
+ \ell(u;a,e)=\frac12(a^\top u-e)^2
+ -\frac12\{q-\rho\log(1+q/\rho)\}.
+ \label{eq:highdim-loss}
+\end{equation}
+The centered residual makes the population loss, apart from a
+constant, the expectation of
+$q/2+(\rho/2)\log(1+q/\rho)$. This expression is positive when $q>0$,
+and the random directions span the space, so the unique population
+minimizer is zero. Differentiation gives the exact SGD map
+\begin{equation}
+ u^+=\left(I-h\left[1-\frac{q}{2(\rho+q)}\right]vv^\top\right)u
+       +e\sqrt h\,v.
+ \label{eq:highdim-exact-map}
+\end{equation}
+
+\paragraph{Local matrix growth.}
+The derivative at zero is $A=I-hvv^\top$. For any fixed unit $s$, set
+$T=(v^\top s)^2$, so $\mathbb ET=1/d$. The norm gain is
+\[
+ G^2=\|As\|^2=1+h(h-2)T,\qquad \frac12\le G\le2.
+\]
+Isotropy makes this conditional gain law independent of the entire
+past, including the evolving direction of a matrix product. Thus its
+log gains are iid. The chord inequalities
+\[
+ \tfrac12\log(1+3T)\ge T\log2,
+ \qquad \tfrac12\log(1-3T/4)\ge-T\log2
+\]
+give $\mathbb E\log G\ge(\log2)/(2d)>0$.
+For each deterministic nonzero initial vector the strong law identifies
+the product exponent with this expectation. Applying this simultaneously
+to a finite orthonormal basis, and bounding the operator norm above by
+the Frobenius norm and below by each column norm, proves that the top
+matrix-product exponent has the same value.
+
+\paragraph{Negative pressure.}
+For every real $z$, isotropy gives $P_z1=m(z)1$, where
+$m(z)=\mathbb EG^z$. Positivity yields
+$\|P_z\|_\infty=m(z)$, so $k(z)=m(z)$ exactly.
+The convex function
+\[
+ F(t)=\tfrac14(1-3t/4)^{-1/2}
+      +\tfrac34(1+3t)^{-1/2}
+\]
+has $F(0)=1$ and $F(1)=7/8$, hence
+$F(t)\le1-t/8$ for $0\le t\le1$.
+Consequently $k(-1)=\mathbb EF(T)\le1-1/(8d)$.
+For any invertible matrix $B$, polar integration of
+$e^{-\|Bx\|^2}$ gives
+\begin{equation}
+ \mathbb E_{s\sim\operatorname{Unif}(S^{d-1})}\|Bs\|^{-d}
+       =|\det B|^{-1}.
+ \label{eq:spherical-determinant}
+\end{equation}
+Since $|\det(I-hvv^\top)|=|1-h|$, isotropy and
+\eqref{eq:spherical-determinant} imply
+$k(-d)=\tfrac14\cdot2+\tfrac34\cdot\tfrac12=7/8$.
+All moments exist because $G\in[1/2,2]$.
+The function $\log m$ is strictly convex because $\log G$ is
+nonconstant; $m(0)=1$ and $m'(0)=\gamma>0$.
+Since $G<1$ with positive probability, $m(-s)\to\infty$ as
+$s\to\infty$. There is therefore a unique nonzero negative root, and
+$m(-d)<1$ puts it at $-\alpha<-d$.
+
+\paragraph{Global nonlinear return.}
+Rewrite \eqref{eq:highdim-exact-map} exactly as
+\begin{align}
+ u^+&=A_\infty u+b(u;h,v)+e\sqrt h\,v,
+ &A_\infty&=I-\tfrac h2vv^\top,\\
+ b(u;h,v)&=-\frac{\rho h}{2(\rho+q)}vv^\top u,
+ &\|b(u;h,v)\|&\le B_0:=\sqrt{3\rho/8}.
+ \label{eq:highdim-bounded-remainder}
+\end{align}
+The bound follows by maximizing $x/(\rho+hx^2/2)$ for $x\ge0$.
+With $c=h/2$, $\mathbb E[c(2-c)]=43/64$, and hence
+\[
+ \mathbb E\|A_\infty u\|^2
+   =\theta\|u\|^2,
+ \qquad \theta=1-\frac{43}{64d}<1.
+\]
+The centered independent residual removes cross terms and contributes
+$\mathbb E\|e\sqrt h\,v\|^2=19\sigma^2/8$. Young's inequality gives
+\[
+ \mathbb E[\|u^+\|^2\mid u]
+ \le(1+\epsilon)\theta\|u\|^2
+     +(1+\epsilon^{-1})B_0^2+19\sigma^2/8.
+\]
+Choosing $\epsilon=(1-\theta)/(2\theta)$ makes the first coefficient
+$\lambda=(1+\theta)/2<1$. This is a geometric drift bound for
+$V(u)=1+\|u\|^2$. The map is Feller. Iterating the bound gives uniform
+second moments for the time marginals from any fixed initial state;
+their Ces\`aro averages are tight, and any weak limit is invariant.
+Lower semicontinuity gives a finite invariant second moment.
+
+\paragraph{Irreducibility and uniqueness.}
+Conditional on $h$, the one-step kernel has, for $y\ne u$, density
+\begin{equation}
+ p_h(u,y)=\frac{2\varphi_{\sigma\sqrt h}(r-\mu_h(w,u))}
+ {|S^{d-1}|r^{d-1}},
+ \quad r=\|y-u\|,\quad w=(y-u)/r,
+ \label{eq:highdim-density}
+\end{equation}
+where $\varphi_s$ is the centered Gaussian density of standard
+deviation $s$ and
+\[
+ \mu_h(w,u)=-h\left[1-
+ \frac{h(w^\top u)^2/2}{2(\rho+h(w^\top u)^2/2)}\right]w^\top u.
+\]
+To derive \eqref{eq:highdim-density}, condition on the random axis and
+write the signed displacement along it as a Gaussian with mean
+$\mu_h(v,u)$ and variance $\sigma^2h$. The two signed axes $w,-w$
+give equal contributions, and polar coordinates give the displayed
+Jacobian. The density is strictly positive. On compact source and
+target sets, $r$ and the absolute Gaussian argument are uniformly
+bounded, so it has a positive uniform lower bound off the diagonal;
+the diagonal is Lebesgue-null. Every compact set is therefore small,
+the chain is Lebesgue-irreducible, and minorizing a ball on itself gives
+aperiodicity. The drift and small-set condition imply unique positive
+Harris recurrence and convergence from every starting point
+\citep{hairermattingly2011}.
+
+\paragraph{Fixed projections remain unimodal.}
+The update law commutes with every orthogonal transformation.
+Uniqueness therefore makes its invariant distribution rotationally
+invariant. We may write $U=RS$, where $S$ is uniform on the sphere
+independently of $R>0$. For any unit direction $v_0$ and $d\ge3$,
+the conditional density of $v_0^\top U$ is
+\begin{equation}
+ f(x\mid R)=\frac{c_d}{R}
+ \left(1-\frac{x^2}{R^2}\right)^{(d-3)/2}
+ {\mathbf 1}_{\{|x|<R\}}.
+ \label{eq:projection-mixture}
+\end{equation}
+It is symmetric and nonincreasing in $|x|$: it is uniform on
+$(-R,R)$ when $d=3$. Mixing over $R$ preserves this monotonicity.
+Thus every fixed projection is centrally unimodal despite
+\eqref{eq:counterexample-instability} and $\alpha>d$.
+\end{proof}
+
+This proposition establishes post-\emph{local}-Lyapunov stationarity
+without claiming the central renewal law for the noisy chain. In
+particular, fixed additive noise cannot be neglected in the limit
+$\|u\|\downarrow0$. The sample loss in this particular example is
+nonquadratic but convex along its observed coordinate: writing
+$x=a^\top u$ and $t=x^2/(2\rho)$, its second derivative is
+$1/2+(1-t)/(2(1+t)^2)\ge7/16$.
+It should not be used as the separate nonconvex example.

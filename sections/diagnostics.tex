@@ -1,0 +1,20 @@
+\section{From the theory to measurable neural quantities}
+\label{sec:diagnostics}
+The scalar reduction is exact in one dimension. In a network, it is a diagnostic of a specified frame. At state $\theta$, let $J_B=I-\eta H_B(\theta)$ be the plain-SGD Jacobian and let $q$ be a unit vector. Its scalar compression and reset norm are
+\begin{equation}
+ a_q=q^\top J_Bq,\qquad
+ \|J_Bq\|^2=a_q^2+\|(I-qq^\top)J_Bq\|^2.
+ \label{eq:compression-identity}
+\end{equation}
+The second term is the motion discarded by scalar projection. Reinitializing $q$ after every step also discards the direction inherited from earlier steps. The matrix-product measurement instead uses
+\begin{equation}
+ v_{t+1}=J_{B_t}(\theta_t)v_t,\qquad
+ \widehat\lambda_{[s,s+T)}=\frac1T
+ \sum_{t=s}^{s+T-1}\log\frac{\|J_{B_t}(\theta_t)v_t\|}{\|v_t\|}.
+ \label{eq:transport}
+\end{equation}
+Numerical normalization preserves $v_t$'s direction and accumulates the logarithms. This is a finite-time transported growth rate, becoming a Lyapunov exponent only under a justified long-time limit. Even one-step norms do not determine this limit: alternating $\operatorname{diag}(2,.1)$ and $\operatorname{diag}(.1,2)$ have norm two at each step but two-step product $.2I$.
+
+For the batch-gradient axis $q_B=g_B/\|g_B\|$, with $g_B=\nabla L_B(\theta)$, we write $a_g=1-\eta s_B$, where $s_B=q_B^\top H_Bq_B$. This uses the same batch for curvature and direction. We report $\widehat\Lambda_g=\operatorname{mean}\log|a_g|$ and $\widehat H_g=(\operatorname{mean}|a_g|^{-1})^{-1}$. These moments of a random compression do not equal moments of a batch-averaged sharpness, and $q_B$ is neither fixed nor transported. A finite harmonic estimate also cannot certify that its population inverse moment is finite: rare near-zero gains can dominate it.
+
+Finally, a projected parameter histogram must use one fixed axis and one fixed center. Otherwise the coordinate itself changes with the optimizer. We therefore pair dense fixed-frame traces with independent conditional probes and the derivative product in \eqref{eq:transport}. Small windows reveal transient structure; bandwidth changes, ordered traces, and independent batch streams help distinguish a recurring pair of lobes from drift or a fragile histogram split.

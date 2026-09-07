@@ -1,0 +1,94 @@
+{
+  "id": "mlp_iid_control",
+  "checkpoint": "/scratch/users/ghoshavr/eoss/results/NEURAL_NETWORK_RESULTS_20260905/07_FIXED_FRAME_BIMODALITY/checkpoint_snapshot/mlp_silu_b01e04d97c24/latest_resume.pt",
+  "metadata": "/scratch/users/ghoshavr/eoss/results/NEURAL_NETWORK_RESULTS_20260905/07_FIXED_FRAME_BIMODALITY/checkpoint_snapshot/mlp_silu_b01e04d97c24/trajectory_meta.json",
+  "frame": "/scratch/users/ghoshavr/eoss/results/NEURAL_NETWORK_RESULTS_20260905/07_FIXED_FRAME_BIMODALITY/vision/mlp_silu_b01e04d97c24/frame.pt",
+  "eta": 0.04,
+  "sampling": "iid_subsets",
+  "stream": 920201,
+  "role": "sampling_control",
+  "steps": 4096,
+  "probe_draws": 24,
+  "initial_draws": 128,
+  "frozen_horizon": 256,
+  "precision_steps": [
+    0,
+    512,
+    513,
+    2048
+  ],
+  "architecture": "mlp_silu",
+  "batch": 4096,
+  "requested_steps": 4096,
+  "axis_names": [
+    "fixed_top_ritz",
+    "fixed_gradient",
+    "fixed_random_1",
+    "fixed_random_2"
+  ],
+  "moving_names": [
+    "top_initialized",
+    "gradient_initialized",
+    "random_initialized"
+  ],
+  "checkpoint_sha256": "38913367ad977256c41e061dec5852154ffe8fa083146cc084dd767414f65366",
+  "parent_step": 10001,
+  "source_metadata": "/scratch/users/ghoshavr/eoss/results/NEURAL_NETWORK_RESULTS_20260905/07_FIXED_FRAME_BIMODALITY/checkpoint_snapshot/mlp_silu_b01e04d97c24/trajectory_meta.json",
+  "fixed_frame_eigenpair": {
+    "method": "fully_reorthogonalized_Lanczos_largest_algebraic_Ritz",
+    "iterations": 30,
+    "requested_iterations": 30,
+    "rayleigh": 68.10303292386104,
+    "ritz_value": 68.10302790782733,
+    "ritz_min": -2.130811398023109,
+    "absolute_residual": 1.9075247049547773e-05,
+    "relative_residual": 2.800939571841516e-07,
+    "residual_tolerance": 0.001,
+    "residual_converged": true,
+    "extremality_certified": false,
+    "sign_pivot": 1812651
+  },
+  "fixed_frame_examples": 8192,
+  "fixed_gradient_examples": 8192,
+  "axis_gram": [
+    [
+      0.9999999989702891,
+      0.40173611519190455,
+      -2.8994711628529827e-09,
+      4.851282462228247e-09
+    ],
+    [
+      0.40173611519190455,
+      1.0000000199113956,
+      -1.4006460165762321e-06,
+      -0.00035714764109408736
+    ],
+    [
+      -2.8994711628529827e-09,
+      -1.4006460165762321e-06,
+      1.000000000114297,
+      6.348187908702705e-09
+    ],
+    [
+      4.851282462228247e-09,
+      -0.00035714764109408736,
+      6.348187908702705e-09,
+      0.9999999998810859
+    ]
+  ],
+  "training_precision": "float32 with TF32 disabled",
+  "reduction_precision": "float64 for projections, Rayleigh quotients and norm ratios",
+  "optimizer": "plain SGD; no clipping, momentum or weight decay",
+  "loss": "mean examples, sum outputs squared error",
+  "coordinates": "q^T(theta_t-theta_checkpoint); fixed axes and center throughout; pre-update state",
+  "moving": "continuous product of every training-update Jacobian, normalized between updates, three initial directions; no direction resetting",
+  "fixed": "scalar compression 1-eta q^T H_B q / ||q||^2; full reset-axis norm ||(I-eta H_B)q||/||q|| also saved",
+  "precision_scope": "sparse same-state same-vector float64 derivative comparisons; no global asymptotic error bound",
+  "fresh_probe_pairing": "Same independently generated minibatches within each adjacent512k/512k+1 state pair, indexed by pair_group/draw_index",
+  "branch_is_exact_resume": false,
+  "source_sha256": "9165b30a76488c883df1d22798bd65e7be53bad966ae0f525c4e6e3e5212fea5",
+  "gpu": "NVIDIA RTX A5000",
+  "status": "completed",
+  "completed_updates": 4096,
+  "elapsed_seconds": 188.55749583244324
+}
