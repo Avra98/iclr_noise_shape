@@ -1,0 +1,2060 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,array,multirow}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[hypertexnames=false]{hyperref}
+\usepackage{enumitem}
+\usepackage{float}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{assumption}{Assumption}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Pp}{\mathbb P}
+\newcommand{\Sph}{\mathbb S}
+\newcommand{\Id}{\mathbf I}
+\newcommand{\uvec}{\mathbf u}
+\newcommand{\svec}{\mathbf s}
+\newcommand{\vvec}{\mathbf v}
+\newcommand{\Avec}{\mathbf A}
+\newcommand{\Hvec}{\mathbf H}
+\newcommand{\Pvec}{\mathbf P}
+\newcommand{\xivec}{\boldsymbol\xi}
+\newcommand{\PiProd}{\boldsymbol\Pi}
+\newcommand{\ind}{\mathbf 1}
+
+\title{\textbf{Kesten Tails and Nonlinear Self-Stabilization in}\\
+Finite-Step Random-Covariate SGD}
+\author{Anonymous draft}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study constant-step stochastic gradient descent as an exact discrete
+random dynamical system.  For batch-quadratic linear regression, the
+linearized iterates form an affine random recurrence.  Below its top
+Lyapunov boundary, multivariate Kesten theory predicts power-law stationary
+tails.  Above that boundary the linear recursion is not stationary, but a
+local negative quartic and positive higher-order correction can stabilize a
+flip mode through the exact two-step map.  We define the Lyapunov exponent
+and an inverse-moment ``harmonic'' diagnostic from full products of the batch
+matrices and, under explicit spectral-identification, differentiability, and
+strict-convexity assumptions on the pressure, prove that any inverse-moment
+crossing cannot precede the Lyapunov crossing.  We also give an exact
+two-dimensional deterministic flip theorem.  In the post-Lyapunov regime we
+prove, for an exact scalar regenerative excursion, the discrete
+on--off-intermittency law
+$\Pp(|a|\leq r)\sim C r^\alpha$ and
+$p(a)\sim C'|a|^{\alpha-1}$, where
+$\E M^{-\alpha}=1$.  A separate proposition gives the conditional matrix
+extension under projective spectral-gap, Markov-renewal, angular, and
+regeneration hypotheses, with $k_\eta(-\alpha)=1$.  The analysis makes
+explicit that fixed additive noise restricts the law to an intermediate
+window rather than the literal origin.
+We then test the nonlinear stochastic recursion directly in dimensions two and
+five, with fresh random covariates, noncommuting batch Hessians, deterministic
+and bounded random quartic coefficients, and calibrated step-size sweeps across the
+entire post-Lyapunov, pre-harmonic interval.  Every reported trajectory uses
+the finite-step SGD update itself; no iterate is clipped or reset.  The
+experiments distinguish a broad centered cloud from directional bimodality
+and measure how nonlinear strength, coefficient variability, temporal
+persistence, batch size, and covariance anisotropy affect bursts and modes.
+An additional five-noise-scale audit shows that the primary-noise chains
+yield no admissible window under our stated operational criterion; the
+product-root exponent emerges only after sufficient low-noise scale
+separation and is stable across the tested finite horizons.
+\end{abstract}
+
+\section{Introduction}
+
+Let $B_t$ denote an independently sampled minibatch and consider the exact
+finite-step recursion
+\begin{equation}
+  \uvec_{t+1}
+  =\Avec_{B_t}\uvec_t+\eta\xivec_{B_t}
+   -\eta\nabla V_{B_t}(\uvec_t),
+  \qquad
+  \Avec_B=\Id-\eta\Hvec_B.
+  \label{eq:intro-recursion}
+\end{equation}
+The product
+$\PiProd_n=\Avec_{B_{n-1}}\cdots\Avec_{B_0}$ governs the local linear
+dynamics.  When its top Lyapunov exponent is negative, the affine part of
+\eqref{eq:intro-recursion} can possess a stationary law with a Kesten tail
+\cite{Kesten1973,Goldie1991}.  When the exponent is positive, the affine model
+alone cannot be stationary.  The central question is then whether the
+nonlinear term returns expanding trajectories, and whether its stationary
+cloud remains centered or separates into modes.
+
+We keep three statements distinct throughout:
+\begin{enumerate}[leftmargin=2em]
+  \item a negative top Lyapunov exponent is a criterion for linear
+  stationarity;
+  \item recurrence of the nonlinear chain is a separate global property;
+  \item an inverse-moment crossing is a local diagnostic and is not, without
+  additional structure, a universal necessary-and-sufficient condition for
+  bimodality.
+\end{enumerate}
+
+The main contributions are as follows.
+\begin{enumerate}[label=\arabic*.,leftmargin=2em]
+  \item We specify a batch-quadratic loss with an exact, smooth,
+  globally controlled negative-quartic continuation and derive its ordinary
+  finite-step SGD update.
+  \item We show why the untamed explicit polynomial update has an escape
+  region, even when the highest-order term is restoring in the loss.
+  \item We define the full-product Lyapunov and pressure diagnostics and give
+  an interacting-particle estimator for the inverse-moment pressure.
+  \item For an exact scalar regenerative coordinate, we prove the
+  on--off-intermittency law
+  $\Pp(|a|\leq r)\sim C r^\alpha$ and
+  $p(a)\sim C'|a|^{\alpha-1}$, where
+  $\E M^{-\alpha}=1$.  We give a separate conditional Markov-additive
+  extension with $k_\eta(-\alpha)=1$ and isolate the additional projective
+  spectral-gap, regeneration, and cone conditions needed for matrix products.
+  \item For an explicit separable two-dimensional flip normal form, we prove
+  that one symmetric period-two orbit is attracting and a second, outer orbit
+  is repelling under explicit coefficient conditions.
+  \item We perform calibrated finite-step experiments below the Lyapunov edge,
+  throughout the Lyapunov--harmonic gap, and beyond the harmonic diagnostic.
+  Deterministic, i.i.d., and persistent random quartic coefficients are tested
+  at fixed mean.
+  \item We separate a broad centered cloud from two-lobe structure by comparing
+  broad-variance and pinned-direction covariates in dimensions two and five.
+\end{enumerate}
+
+\section{Related work}
+
+\paragraph{Random affine recursions and heavy-tailed SGD.}
+Kesten's renewal theorem and Goldie's implicit renewal theory are the classical
+sources for power-law tails of affine stochastic recursions
+\cite{Kesten1973,Goldie1991}; the modern multivariate theory is synthesized by
+Buraczewski, Damek, and Mikosch~\cite{BuraczewskiDamekMikosch2016}.  In
+stochastic optimization, G\"urb\"uzbalaban, \c{S}im\c{s}ekli, and Zhu prove
+heavy-tailed stationary behavior for constant-step SGD on quadratic linear
+regression~\cite{GurbuzbalabanSimsekliZhu2021}, while Hodgkinson and Mahoney
+identify multiplicative noise as a general mechanism for heavy tails in
+discrete stochastic optimizers~\cite{HodgkinsonMahoney2021}.  Our
+sub-Lyapunov theorem is a specialization of this line.  The present focus is
+what can remain recurrent after the affine recursion has lost stationarity,
+when an explicit finite-amplitude nonlinear feedback is retained.
+
+\paragraph{Edge of stability and self-stabilization.}
+Cohen et al. documented that full-batch neural-network training commonly
+operates near the classical flip boundary~\cite{CohenEtAl2021}.  Subsequent
+work analyzed unstable convergence and edge-of-stability dynamics from
+complementary perspectives~\cite{AhnZhangSra2022,AroraLiPanigrahi2022}.
+Damian, Nichani, and Lee identified a deterministic cubic self-stabilization
+mechanism and its implicit bias toward lower sharpness
+\cite{DamianNichaniLee2023}.  We preserve their emphasis on the actual
+finite-step map, but study fresh random covariates, noncommuting matrix
+products, and the distinction between recurrence, shells, and directional
+bimodality.
+
+\paragraph{On--off intermittency and reinjection.}
+The post-Lyapunov mechanism studied here is an instance of classical
+on--off intermittency: multiplicative motion away from a transversely
+unstable set is repeatedly reinjected by nonlinear dynamics.  This mechanism
+and its bursting and laminar-phase statistics were introduced and developed
+by Platt, Spiegel, and Tresser; Heagy, Platt, and Hammel; and Ott and
+Sommerer~\cite{PlattSpiegelTresser1993,HeagyPlattHammel1994,OttSommerer1994}.
+We therefore do not claim the small-amplitude power law as a new
+intermittency mechanism.  In particular, the classical $-3/2$ law for
+laminar durations is a first-passage statement and is not the stationary
+amplitude exponent proved below.  Our role is to formulate the Cram\'er--renewal
+argument for an exact scalar regenerative recursion, give a conditional
+Markov-additive extension tied to the full matrix-product pressure, and state
+explicitly the reinjection, projective-mixing, and observable-window
+conditions.  The proof uses standard
+random-walk renewal and exponential-tilting tools
+\cite{Asmussen2003,NeyNummelin1987I,NeyNummelin1987II}.
+
+\paragraph{Random dynamical systems and bifurcation language.}
+The separation between sample-path stability and changes in an invariant
+distribution is standard in the random-dynamical-systems viewpoint
+\cite{Arnold1998}.  Here the Lyapunov crossing concerns the inner linear
+cocycle, whereas a modal change is a property of the nonlinear invariant law.
+Keeping those statements separate prevents the inverse-moment diagnostic
+from being misidentified as a universal bimodality theorem.
+
+\section{Exact finite-step stochastic quadratic--quartic SGD}
+\label{sec:model}
+
+\subsection{Random-covariate regression}
+
+For a minibatch of size $b$, let
+$\mathbf X_B\in\R^{b\times d}$ contain the covariates and let
+$\boldsymbol\varepsilon_B\in\R^b$ contain the label innovations.  Define
+\begin{equation}
+  \Hvec_B=\frac1b\mathbf X_B^\top\mathbf X_B,
+  \qquad
+  \xivec_B=\frac1b\mathbf X_B^\top\boldsymbol\varepsilon_B.
+  \label{eq:hessian-noise}
+\end{equation}
+The batch loss is
+\begin{equation}
+  L_B(\uvec)
+  =\frac1{2b}\|\mathbf X_B\uvec-\boldsymbol\varepsilon_B\|^2
+   +V_{\beta_B}(\uvec).
+  \label{eq:batch-loss}
+\end{equation}
+
+Let $\Pvec$ be the orthogonal projection onto the critical subspace and put
+$s=\|\Pvec\uvec\|^2$.  For $R>0$ and $\beta>0$, define the exact saturating
+potential
+\begin{equation}
+  V_\beta(\uvec)
+  =-\frac{\beta R^2}{2}
+      \left[s-R^2\log\!\left(1+\frac{s}{R^2}\right)\right].
+  \label{eq:saturating-potential}
+\end{equation}
+It is a genuine smooth loss, not an update rule imposed after the SGD step.
+Its gradient is
+\begin{equation}
+ \nabla V_\beta(\uvec)
+ =-\frac{\beta R^2s}{R^2+s}\Pvec\uvec.
+ \label{eq:saturating-gradient}
+\end{equation}
+Near the reference point,
+\begin{equation}
+  V_\beta(\uvec)
+  =-\frac\beta4\|\Pvec\uvec\|^4
+   +\frac{\beta}{6R^2}\|\Pvec\uvec\|^6
+   +O(\|\Pvec\uvec\|^8).
+  \label{eq:local-expansion}
+\end{equation}
+Thus the loss has the requested negative quartic and positive sextic terms
+locally.  As $\|\Pvec\uvec\|\to\infty$, its gradient is asymptotic to
+$-\beta R^2\Pvec\uvec$.  The outer discrete matrix cocycle therefore supplies
+a rigorous sufficient condition for global recurrence; we do not claim that
+this condition is necessary.  Section~\ref{sec:recurrence} gives the precise
+condition used below.
+
+Substituting \eqref{eq:saturating-gradient} into the gradient step gives the
+exact recursion used in every experiment:
+\begin{equation}
+  \uvec_{t+1}
+  =(\Id-\eta\Hvec_{B_t})\uvec_t+\eta\xivec_{B_t}
+   +\eta\frac{\beta_tR^2s_t}{R^2+s_t}\Pvec\uvec_t,
+  \quad s_t=\|\Pvec\uvec_t\|^2.
+  \label{eq:exact-discrete-update}
+\end{equation}
+Since $\nabla^2V_\beta(\mathbf0)=\mathbf0$, changing the nonlinear
+coefficient process does not change the linear multiplier
+$\Avec_B=\Id-\eta\Hvec_B$.
+
+\subsection{Constant, i.i.d., and persistent coefficients}
+
+We compare three bounded processes with the same mean $\bar\beta$:
+\begin{align}
+  &\text{constant:} &&\beta_t=\bar\beta,\notag\\
+  &\text{i.i.d.:} &&\beta_t=\bar\beta(1+\delta S_t),
+      \quad S_t\stackrel{\mathrm{i.i.d.}}{\sim}
+      \operatorname{Unif}\{-1,+1\},\notag\\
+  &\text{persistent:} &&\beta_t=\bar\beta(1+\delta S_t),
+      \quad \Pp(S_{t+1}=-S_t)=p_{\mathrm{flip}}.
+  \label{eq:beta-processes}
+\end{align}
+Here $0\leq\delta<1$, so $\beta_t$ is positive and bounded.  The persistent case is a homogeneous
+Markov chain on the augmented state $(\uvec_t,S_t)$.  Thus slowly changing
+curvature is represented directly at the iteration level.  The experiment
+uses $p_{\rm flip}=0.002$ and $0.00035$, corresponding to stay probabilities
+$0.998$ and $0.99965$.
+
+\subsection{Why the raw polynomial cannot be used globally}
+
+The Taylor polynomial of \eqref{eq:saturating-gradient} is useful locally,
+but its explicit gradient step is not a valid global stabilizer.
+
+\begin{proposition}[Uniform escape region for an explicit polynomial map]
+\label{prop:polynomial-escape}
+Let
+\begin{equation}
+  x_{t+1}=a_tx_t+g_tx_t^3-hx_t^5+e_t,
+  \qquad h>0,
+  \label{eq:polynomial-map}
+\end{equation}
+where $|a_t|\leq A$, $|g_t|\leq G$, and $|e_t|\leq E$ for every $t$.
+There exists a finite $R_0=R_0(A,G,E,h)$ such that
+\begin{equation}
+  |x_t|\geq R_0
+  \quad\Longrightarrow\quad
+  |x_{t+1}|\geq\frac h2|x_t|^5\geq2|x_t|.
+  \label{eq:escape-bound}
+\end{equation}
+Consequently, every trajectory that enters this region diverges in norm.
+\end{proposition}
+
+\begin{proof}
+The reverse triangle inequality gives
+\[
+ |x_{t+1}|
+ \geq h|x_t|^5-G|x_t|^3-A|x_t|-E.
+\]
+Choose $R_0$ so that the last three terms are at most
+$h|x_t|^5/2$ and $h|x_t|^5/2\geq2|x_t|$ whenever
+$|x_t|\geq R_0$.  Iterating the inequality proves divergence.
+\end{proof}
+
+\begin{remark}
+A positive highest-order coefficient in a polynomial loss does not prevent an
+explicit fixed-step update from overshooting.  Projection, clipping, and
+resetting would conceal this issue.  Equation~\eqref{eq:saturating-potential}
+instead changes the loss itself outside the local regime and remains an
+ordinary SGD experiment.
+\end{remark}
+
+\subsection{A sufficient discrete recurrence condition}
+\label{sec:recurrence}
+
+The far-field multiplier of \eqref{eq:exact-discrete-update} is
+\begin{equation}
+  \Avec_{\infty,t}
+  =\Id-\eta\Hvec_t+\eta\beta_tR^2\Pvec.
+  \label{eq:outer-multiplier}
+\end{equation}
+The primary experiments estimate its top product exponent.  The theorem below
+uses the stronger $m$-step block-moment condition.
+
+\begin{theorem}[Discrete self-stabilization by an outer cocycle]
+\label{thm:foster}
+Suppose $(\Hvec_t,\xivec_t,\beta_t)$ is i.i.d.,
+$0\leq\beta_t\leq\beta_{\max}$, and, for some $p\in(0,1]$ and integer
+$m\geq1$,
+\begin{equation}
+  \E\left\|
+    \Avec_{\infty,m-1}\cdots\Avec_{\infty,0}
+  \right\|^p\leq\rho<1,
+  \qquad
+  \E\|\Avec_{\infty,t}\|^p<\infty,
+  \qquad
+  \E\|\xivec_t\|^p<\infty.
+  \label{eq:far-field-moment}
+\end{equation}
+Then the exact update \eqref{eq:exact-discrete-update} satisfies
+\begin{equation}
+  \E[1+\|\uvec_{t+m}\|^p\mid\uvec_t=\uvec]
+  \leq \rho(1+\|\uvec\|^p)+C
+  \label{eq:foster-drift}
+\end{equation}
+for some $\rho<1$ and $C<\infty$.  If the chain is Feller, the drift condition
+implies existence of an invariant probability law with a finite $p$th
+moment.  If, in addition,
+the chain is irreducible and aperiodic and compact sets are petite, the
+invariant law is unique and the chain is positive Harris recurrent.  Under
+all the preceding drift and kernel assumptions, a positive inner exponent
+$\gamma_\eta>0$ together with \eqref{eq:far-field-moment} gives an exact
+finite-step self-stabilization regime: typical infinitesimal perturbations of
+the inner cocycle grow, whereas the nonlinear chain is positive Harris
+recurrent.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Write the exact update as
+$\uvec_{t+1}=\Avec_{\infty,t}\uvec_t+\mathbf b_t(\uvec_t)
++\eta\xivec_t$, where
+\[
+ \mathbf b_t(\uvec)
+ =-\eta\beta_t\frac{R^4}{R^2+\|\Pvec\uvec\|^2}\Pvec\uvec.
+\]
+Since $\sup_{r\geq0}r/(R^2+r^2)=1/(2R)$,
+$\|\mathbf b_t(\uvec)\|\leq\eta\beta_{\max}R^3/2$ uniformly.  Iterate for
+$m$ steps and use $\|\sum_j\mathbf y_j\|^p\leq\sum_j\|\mathbf y_j\|^p$
+for $p\leq1$.  Independence and \eqref{eq:far-field-moment} yield
+\eqref{eq:foster-drift}; standard $m$-step Foster theory gives the invariant
+law and the Harris conclusion.
+\end{proof}
+
+The experiments below estimate the full-product outer Lyapunov exponent
+\begin{equation}
+ \gamma_{\infty}
+ =\lim_{n\to\infty}\frac1n
+ \log\|\Avec_{\infty,n-1}\cdots\Avec_{\infty,0}\|.
+ \label{eq:outer-lyapunov}
+\end{equation}
+They do not by themselves numerically certify
+\eqref{eq:far-field-moment}.  Under pressure regularity and moments in a
+neighborhood of zero, $\gamma_{\infty}<0$ implies that such a block condition
+holds for some sufficiently small $p>0$ and sufficiently large $m$.
+Accordingly, the recurrence theorem is applied conditional on these standard
+pressure assumptions.
+
+For the experimental transition kernel, the Feller property is immediate:
+the update is continuous in $\uvec$ for every realization of the bounded
+driving variables, so dominated convergence maps bounded continuous test
+functions to continuous functions.  We have not proved
+$\psi$-irreducibility, aperiodicity, or petiteness of compact sets for this
+specific law.  This is nontrivial because the residual signs are Rademacher;
+any smoothing must come from the continuously distributed Hessian parameters
+$(\lambda,\theta)$.  Thus uniqueness and positive Harris recurrence in
+Theorem~\ref{thm:foster} remain conditional on its stated kernel assumptions.
+
+\section{Discrete random-matrix diagnostics}
+\label{sec:matrix-diagnostics}
+
+\subsection{Lyapunov exponent and projective pressure}
+
+For the linear multiplier product
+\begin{equation}
+  \PiProd_n=\Avec_{B_{n-1}}\cdots\Avec_{B_0},
+  \qquad \Avec_B=\Id-\eta\Hvec_B,
+  \label{eq:product}
+\end{equation}
+define the top Lyapunov exponent
+\begin{equation}
+  \gamma_\eta
+  =\lim_{n\to\infty}\frac1n\log\|\PiProd_n\|
+  \quad\text{almost surely}.
+  \label{eq:lyapunov}
+\end{equation}
+For $q$ in a range where the required moments are finite, define the
+projective transfer operator
+\begin{equation}
+  (\mathcal P_{\eta,q}f)(\svec)
+  =\E\left[
+    \|\Avec_B\svec\|^q
+    f\left(\frac{\Avec_B\svec}{\|\Avec_B\svec\|}\right)
+  \right],
+  \qquad \svec\in\Sph^{d-1},
+  \label{eq:transfer}
+\end{equation}
+and
+\begin{equation}
+  k_\eta(q)=\rho(\mathcal P_{\eta,q}),
+  \qquad
+  \Lambda_\eta(q)=\log k_\eta(q).
+  \label{eq:pressure}
+\end{equation}
+
+\begin{assumption}[Negative-pressure spectral identification]
+\label{ass:negative-pressure-identification}
+For $q\in[-1,0]$, the operator $\mathcal P_{\eta,q}$ has a simple isolated
+leading eigenvalue on a suitable H\"older space and, for every
+$\svec\in\Sph^{d-1}$,
+\begin{equation}
+ \log\rho(\mathcal P_{\eta,q})
+ =\lim_{n\to\infty}\frac1n
+   \log\E\|\PiProd_n\svec\|^q,
+ \label{eq:negative-pressure-identification}
+\end{equation}
+with a value independent of $\svec$.  The pressure is differentiable at
+$q=0$ and satisfies $\Lambda_\eta'(0)=\gamma_\eta$.
+\end{assumption}
+
+\begin{remark}[Convexity from finite products]
+For fixed $n$ and $\svec$, the map
+$q\mapsto n^{-1}\log\E\|\PiProd_n\svec\|^q$ is convex by H\"older's
+inequality.  Whenever the finite limit in
+\eqref{eq:negative-pressure-identification} exists, its pointwise limit is
+therefore convex.  The substantive unverified ingredient for the experimental
+matrix law is the spectral identification, equivalently an appropriate
+spectral-gap statement, especially at $q=-1$.  Strict convexity remains a
+separate nondegeneracy assumption.
+\end{remark}
+
+Under the standard spectral hypotheses,
+$\Lambda_\eta(0)=0$ and
+$\Lambda_\eta'(0)=\gamma_\eta$
+\cite{GuivarchLePage2012,WangSteinsaltz2020}.
+
+When $\gamma_\eta<0$ and the affine recurrence is nondegenerate, a positive
+root
+\begin{equation}
+  k_\eta(\kappa_\eta)=1,
+  \qquad \kappa_\eta>0,
+  \label{eq:kesten-root}
+\end{equation}
+is the Kesten tail exponent under the usual irreducibility, moment, and
+non-arithmetic assumptions.  This statement concerns the linear affine
+recursion.  For the nonlinear chain, the Kesten fit is expected only before
+the nonlinear force is appreciable.
+
+\begin{theorem}[Multivariate Kesten baseline]
+\label{thm:kesten-baseline}
+Consider the affine recursion
+$\uvec_{t+1}=\Avec_t\uvec_t+\eta\xivec_t$ with i.i.d.
+$(\Avec_t,\xivec_t)$.  Assume $\gamma_\eta<0$, the required logarithmic and
+$\kappa$-moments are finite, the matrix semigroup is strongly irreducible and
+proximal, the associated product is non-arithmetic, and the recursion has no
+common deterministic fixed point.  If $k_\eta(\kappa_\eta)=1$ for some
+$\kappa_\eta>0$, then the affine recursion has a stationary law $\mathbf U$ that is
+multivariately regularly varying with index $\kappa_\eta$.  In particular,
+\begin{equation}
+ \Pp(\|\mathbf U\|>t)\sim C t^{-\kappa_\eta},
+ \qquad
+ \Pp(|\vvec^\top\mathbf U|>t)\sim C(\vvec)t^{-\kappa_\eta},
+ \qquad t\to\infty,
+ \label{eq:kesten-directional}
+\end{equation}
+for every direction charged by the spectral tail measure.  The exponent is
+common; only $C(\vvec)$ depends on direction.
+\end{theorem}
+
+Theorem~\ref{thm:kesten-baseline} is the quadratic reference result tested in
+the sub-Lyapunov control.  It is not extended unchanged beyond
+$\gamma_\eta=0$, where the affine stationary law ceases to exist.
+
+\begin{definition}[Two finite-step diagnostics]
+Along a step-size path, the \emph{Lyapunov edge} is a simple crossing
+$\gamma_\eta=0$.  Whenever the negative moment is finite, define
+\begin{equation}
+  h_\eta=k_\eta(-1)
+  \label{eq:harmonic}
+\end{equation}
+and call $h_\eta=1$ the \emph{inverse-moment harmonic diagnostic}.
+\end{definition}
+
+\begin{theorem}[Ordering of the two diagnostics]
+\label{thm:ordering}
+Suppose Assumption~\ref{ass:negative-pressure-identification} holds on
+$[-1,0]$.
+If $h_\eta<1$, then $\gamma_\eta>0$.  At a crossing $h_\eta=1$, strict
+convexity on $[-1,0]$ implies $\gamma_\eta>0$.
+\end{theorem}
+
+\begin{proof}
+Convexity and $\Lambda_\eta(0)=0$ imply
+\[
+  \gamma_\eta=\Lambda_\eta'(0)
+  \geq\Lambda_\eta(0)-\Lambda_\eta(-1)
+  =-\log h_\eta.
+\]
+This proves the conclusion when $h_\eta<1$.
+For the strict crossing case, $\Lambda_\eta(-1)=\Lambda_\eta(0)=0$ and
+strict convexity imply $\Lambda_\eta(q)<0$ for every $q\in(-1,0)$.  Hence
+\[
+ \gamma_\eta=\Lambda_\eta'(0)
+ \geq\frac{\Lambda_\eta(0)-\Lambda_\eta(q)}{-q}>0.
+\]
+\end{proof}
+
+Theorem~\ref{thm:ordering} is an ordering result, not a theorem that the
+second crossing creates modes.  If $\gamma_\eta>0$ and a unique negative root
+exists, write
+\begin{equation}
+  k_\eta(-\alpha_\eta)=1,
+  \qquad \alpha_\eta>0.
+  \label{eq:negative-root}
+\end{equation}
+Assume additionally that $-1$ and $-\alpha_\eta$ lie in the finite domain of
+$\Lambda_\eta$, that $-\alpha_\eta$ is its unique negative zero, and that
+$\Lambda_\eta$ is strictly convex on the convex hull of
+$\{0,-1,-\alpha_\eta\}$.  Then the algebraic equivalences are
+\begin{equation}
+  h_\eta>1\Longleftrightarrow0<\alpha_\eta<1,
+  \qquad
+  h_\eta=1\Longleftrightarrow\alpha_\eta=1,
+  \qquad
+  h_\eta<1\Longleftrightarrow\alpha_\eta>1.
+  \label{eq:root-order}
+\end{equation}
+
+\subsection{A proved discrete reinjection law}
+\label{sec:reinjection-theorem}
+
+The exponent in \eqref{eq:negative-root} describes a \emph{small-amplitude}
+law after the Lyapunov crossing, not a Kesten upper tail.  The mechanism is
+classical on--off intermittency.  In logarithmic amplitude, typical motion
+has positive drift away from the origin, while rare contracting products
+create deep negative excursions; nonlinear self-stabilization returns the
+process from the outer scale and starts another excursion.  The following
+renewal-theoretic theorem makes that statement exact for a scalar
+regenerative coordinate.  A direction-dependent matrix product is handled
+separately in Proposition~\ref{prop:matrix-reinjection}.  The scalar theorem
+is a discrete random-walk result and uses no diffusion approximation.
+For a scalar flip coordinate, $M_n$ below is the absolute one-step
+multiplier; the alternating sign is carried separately and does not affect
+the log amplitude.
+
+\begin{theorem}[Scalar regenerative reinjection law]
+\label{thm:scalar-reinjection}
+Let $(M_n)_{n\geq1}$ be i.i.d. positive random variables, put
+$Y_n=\log M_n$ and $S_n=\sum_{j=1}^nY_j$, and assume:
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+  \item $0<\mu:=\E Y_1<\infty$, and the law of $Y_1$ is non-arithmetic;
+  \item for some $\alpha>0$ and $\epsilon>0$,
+  \begin{equation}
+     \E e^{-\alpha Y_1}=1,
+     \qquad \E e^{-(\alpha+\epsilon)Y_1}<\infty,
+     \qquad
+     m_\alpha:=-\E[Y_1e^{-\alpha Y_1}]\in(0,\infty);
+     \label{eq:scalar-cramer-assumptions}
+  \end{equation}
+  \item the reinjection variable $Z<0$ is independent of $(Y_n)$ and
+  $\E e^{-(\alpha+\epsilon)Z}<\infty$;
+  \item for $X_n=Z+S_n$ and
+  $\tau=\inf\{n\geq0:X_n\geq0\}$, one has $\E\tau<\infty$.
+\end{enumerate}
+Construct a regenerative chain by retaining
+$(X_0,\ldots,X_{\tau-1})$, discarding the overshoot, drawing an independent
+copy of $Z$, and repeating.  Its invariant cycle-occupation law $\pi_X$
+satisfies, for every fixed $h>0$,
+\begin{equation}
+ \pi_X((x,x+h])
+ \sim
+ \frac{D_\alpha}{\E\tau}
+ \frac{e^{\alpha h}-1}{\alpha m_\alpha}e^{\alpha x},
+ \qquad x\to-\infty,
+ \label{eq:log-reinjection-local-tail}
+\end{equation}
+where
+\begin{equation}
+ D_\alpha
+ :=\E\!\left[e^{-\alpha Z}-e^{-\alpha X_\tau}\right]>0.
+ \label{eq:scalar-reinjection-constant}
+\end{equation}
+If the tilted renewal measure admits a density for which the renewal-density
+theorem holds, then $\pi_X$ has a left-tail density $q_X$ and
+\begin{equation}
+ q_X(x)\sim
+ \frac{D_\alpha}{m_\alpha\E\tau}e^{\alpha x}.
+ \label{eq:log-reinjection-density}
+\end{equation}
+Consequently, for $R=e^X$,
+\begin{equation}
+ \Pp(R\leq r)\sim
+ \frac{D_\alpha}{\alpha m_\alpha\E\tau}r^\alpha,
+ \qquad
+ p_R(r)\sim
+ \frac{D_\alpha}{m_\alpha\E\tau}r^{\alpha-1},
+ \qquad r\downarrow0.
+ \label{eq:radial-reinjection-density}
+\end{equation}
+For a reflection-symmetric signed coordinate $A$ with $|A|=R$,
+\begin{equation}
+ p_A(a)\sim
+ \frac{D_\alpha}{2m_\alpha\E\tau}|a|^{\alpha-1},
+ \qquad a\to0^\pm.
+ \label{eq:signed-reinjection-density}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Let $F$ be the law of $Y_1$ and introduce the Cram\'er tilt
+$F_\alpha(dy)=e^{-\alpha y}F(dy)$.  It is a probability law by
+\eqref{eq:scalar-cramer-assumptions}, and its mean is
+$\int yF_\alpha(dy)=-m_\alpha<0$.  If
+$U=\sum_{n\geq0}F^{*n}$ and
+$U_\alpha=\sum_{n\geq0}F_\alpha^{*n}$ are the corresponding potential
+measures, then the change of measure gives the exact identity
+\begin{equation}
+ U(dt)=e^{\alpha t}U_\alpha(dt).
+ \label{eq:renewal-tilt-identity}
+\end{equation}
+The non-arithmetic random-walk renewal theorem, applied to the tilted walk
+of drift $-m_\alpha$, therefore yields for a walk started at $z$,
+\begin{equation}
+ U_z((x,x+h])
+ \sim e^{-\alpha z}
+ \frac{e^{\alpha h}-1}{\alpha m_\alpha}e^{\alpha x},
+ \qquad x\to-\infty.
+ \label{eq:started-renewal-asymptotic}
+\end{equation}
+The $(\alpha+\epsilon)$ moment of $Z$ justifies averaging this limit over
+the reinjection law.
+
+Let
+$G_Z(B)=\E\sum_{n=0}^{\tau-1}\ind_{\{X_n\in B\}}$ be the occupation
+measure of one killed excursion.  The strong Markov property at $\tau$
+gives the exact killed-potential decomposition
+\begin{equation}
+ U_Z(B)=G_Z(B)+\E[U_{X_\tau}(B)].
+ \label{eq:killed-potential-identity}
+\end{equation}
+Using \eqref{eq:started-renewal-asymptotic} in the two potential terms
+shows that their leading coefficients differ by $D_\alpha$.  Notice that
+$D_\alpha>0$ pointwise because $Z<0\leq X_\tau$.  Finally, the
+renewal--reward formula gives $\pi_X=G_Z/\E\tau$, proving
+\eqref{eq:log-reinjection-local-tail}.  Summing fixed-width log intervals,
+with the standard exponential renewal bound controlling the remainder,
+gives the small-ball CDF in \eqref{eq:radial-reinjection-density}.  The
+density version of the renewal theorem gives
+\eqref{eq:log-reinjection-density}; the changes of variables
+$p_R(r)=q_X(\log r)/r$ and $R=|A|$ give
+\eqref{eq:radial-reinjection-density}--\eqref{eq:signed-reinjection-density}.
+This is the usual Cram\'er--renewal calculation
+\cite{Asmussen2003,Alsmeyer1994}.
+\end{proof}
+
+\begin{corollary}[What the Lyapunov--harmonic gap means]
+\label{cor:scalar-reinjection-order}
+Under the assumptions of Theorem~\ref{thm:scalar-reinjection}, including its
+renewal-density hypothesis, let
+$\psi(s)=\log\E M_1^{-s}$ be finite and strictly convex on
+$[0,s_*]$ for some $s_*\geq1$.
+If $\E\log M_1>0$ and $\E M_1^{-1}>1$, then the nonzero root
+$\psi(\alpha)=0$ is unique and satisfies $0<\alpha<1$.  Hence
+\eqref{eq:signed-reinjection-density} is an integrable but divergent central
+cusp.  At $\E M_1^{-1}=1$, the nonzero root is $\alpha=1$ and the leading
+local density is flat.  If $\E M_1^{-1}<1$ and a nonzero root exists in
+$(1,s_*]$, then that root has $\alpha>1$ and the idealized local density
+vanishes at the origin.  This last conclusion is central depletion, not by
+itself bimodality.
+\end{corollary}
+
+\begin{proof}
+Since $\psi(0)=0$ and
+$\psi'(0)=-\E\log M_1<0$, strict convexity together with
+$\psi(1)>0$ produces exactly one second zero in $(0,1)$.  The equality and
+post-crossing cases follow from the same convexity argument on the domain
+where the second root exists.
+\end{proof}
+
+Thus the apparent paradox in the gap is resolved: the origin is unstable in
+the typical Lyapunov sense, yet rare contracting products create so much
+occupation near it that the stationary density diverges there.  The nonlinear
+self-stabilization term fixes the reinjection law, the normalization, and the
+outer cutoff; because its derivative vanishes at the origin, it does not
+change the Cram\'er exponent of the inner multiplicative walk.
+
+The same separation explains bounded stochastic self-stabilization
+coefficients.  An i.i.d. $\beta_t$, or a persistent finite-state $\beta_t$
+after augmenting the regenerative state, can change $Z$, $D_\alpha$,
+$\E\tau$, and the cutoff distribution.  It does not change the inner
+pressure root so long as the nonlinear derivative at the origin remains zero
+and the linear matrix law is unchanged.  This is a conditional invariance of
+the local exponent, not a claim that the full stationary distribution is
+independent of the coefficient process.
+
+\begin{remark}[Additive core and nonlinear cutoff]
+\label{rem:reinjection-window}
+Theorem~\ref{thm:scalar-reinjection} is an ideal excursion theorem.  At fixed
+nonzero additive noise, its $r\downarrow0$ conclusion cannot hold literally:
+the additive core rounds the density.  If a family of exact two-boundary
+excursions has lower radius $r_{\rm core}$, upper radius $r_{\rm nl}$,
+reinjection inside the two boundaries, convergence in the tilted
+$(\alpha+\epsilon)$ moment, and the uniform local-renewal bound needed for a
+triangular-array renewal theorem, the killed-potential proof gives the same
+exponent at radii $r_L$ satisfying
+\begin{equation}
+ \frac{r_{\rm core}}{r_L}\to0,
+ \qquad
+ \frac{r_L}{r_{\rm nl}}\to0.
+ \label{eq:explicit-intermediate-window}
+\end{equation}
+Thus the operational implication is the two-sided window
+\begin{equation}
+ r_{\rm core}\ll r\ll r_{\rm nl}.
+ \label{eq:reinjection-window-short}
+\end{equation}
+The required uniform renewal and reinjection conditions are additional
+hypotheses, not consequences of a large scale ratio.
+\end{remark}
+
+For an actual additive recursion, the lower boundary is an approximation,
+not a literal reset.  A useful deterministic error bound makes the required
+scale separation explicit.  If
+$a_{n+1}=B_{n+1}a_n+N_{n+1}(a_n)+\sigma\zeta_{n+1}$ with
+$|B_n|\geq b_*>0$, $|N_n(a)|\leq C|a|^{1+\delta}$, and
+$|\zeta_n|\leq K$, then on $r_-\leq|a_n|\leq r_+$,
+\begin{equation}
+ \left|
+  \log\frac{|a_{n+1}|}{|a_n|}-\log|B_{n+1}|
+ \right|
+ \leq \frac{2}{b_*}
+ \left(Cr_+^\delta+\frac{\sigma K}{r_-}\right),
+ \label{eq:local-log-error-bound}
+\end{equation}
+provided the right-hand side is at most one.  This follows by factoring
+$B_{n+1}a_n$ and using $|\log|1+z||\leq2|z|$ for $|z|\leq1/2$.
+Hence a transfer from the exact excursion theorem to nonlinear SGD requires
+both $\sigma\ll r_-\ll r_+\ll r_{\rm nl}$ and a verified regenerative
+minorization for the nonlinear return kernel.  We do not infer either fact
+from a fitted slope.
+
+\begin{proposition}[Conditional matrix and projection extension]
+\label{prop:matrix-reinjection}
+Let $(\Avec_n)$ be i.i.d. invertible matrices.  On real projective space
+$\mathbb P^{d-1}$, define the Markov additive process
+\begin{equation}
+ J_n=[\Avec_n\svec_{n-1}],
+ \qquad
+ X_n=X_0+\sum_{j=1}^n\log\|\Avec_j\svec_{j-1}\|.
+ \label{eq:projective-additive-process}
+\end{equation}
+Here $[\svec]$ denotes the line through either unit representative
+$\svec$, and $\svec_{n-1}$ is any unit representative of $J_{n-1}$.
+Suppose the induced projective chain is geometrically ergodic on a
+H\"older space; the induced operator $\mathcal P_{\eta,q}$ has a simple
+isolated leading eigenvalue in a neighborhood of $q=-\alpha$;
+$k_\eta(-\alpha)=1$ and
+$m_\alpha:=-\Lambda_\eta'(-\alpha)>0$; and the Markov additive process is
+non-arithmetic and satisfies the moment hypotheses of the Markov renewal
+theorem.  Let $r_\alpha>0$ be its leading eigenfunction.  At every upper
+exit, suppose the nonlinear return restarts $(X_0,J_0)\sim\nu$ independently
+of future matrices, and, for
+$\tau=\inf\{n\geq0:X_n\geq0\}$, assume
+\begin{equation}
+ \E_\nu\tau<\infty,
+ \quad
+ \int e^{-(\alpha+\epsilon)x}r_\alpha(j)\,\nu(dx,dj)<\infty,
+ \quad
+ D_\alpha^{\rm mat}:=E_\nu\!\left[
+ e^{-\alpha X_0}r_\alpha(J_0)
+ -e^{-\alpha X_\tau}r_\alpha(J_\tau)
+ \right]>0.
+ \label{eq:matrix-regeneration-assumptions}
+\end{equation}
+Then there exist $C_\alpha\in(0,\infty)$ and a probability measure
+$\chi_\alpha$ on $\mathbb P^{d-1}$ such that, for every fixed $h>0$ and
+every $\chi_\alpha$-continuity set $D$,
+\begin{equation}
+ \lim_{x\to-\infty}e^{-\alpha x}
+ \pi\!\left(X\in(x,x+h],\ J\in D\right)
+ =C_\alpha\frac{e^{\alpha h}-1}{\alpha}\chi_\alpha(D).
+ \label{eq:matrix-log-reinjection}
+\end{equation}
+Writing $\mathbf U=e^X\svec$ with either projective representative, this
+implies the radial small-ball law
+\begin{equation}
+ \Pp(\|\mathbf U\|\leq r)
+ \sim\frac{C_\alpha}{\alpha}r^\alpha.
+ \label{eq:matrix-radial-small-ball}
+\end{equation}
+For a fixed direction $\vvec$, suppose the excursion law is pinned away from
+its orthogonal hyperplane,
+\begin{equation}
+ |\vvec^\top\svec|\geq c_\vvec>0
+ \quad \pi\text{-almost surely throughout occupied excursion states}.
+ \label{eq:pinned-projection-condition}
+\end{equation}
+Then the absolute projection has the explicit small-ball law
+\begin{equation}
+ \Pp(|\vvec^\top\mathbf U|\leq r)
+ \sim\frac{C_\alpha}{\alpha}r^\alpha
+ \int_{\mathbb P^{d-1}}|\vvec^\top\svec|^{-\alpha}
+ \chi_\alpha(d[\svec]).
+ \label{eq:matrix-projection-small-ball}
+\end{equation}
+If the corresponding Markov-renewal density theorem holds, it yields density
+asymptotics proportional to $r^{\alpha-1}$, with constants matching
+\eqref{eq:matrix-radial-small-ball}--\eqref{eq:matrix-projection-small-ball}.
+A signed-side statement
+requires augmenting the projective state by sign or parity; reflection
+symmetry then makes the two side constants equal.
+\end{proposition}
+
+\begin{proof}[Proof logic]
+The Doob transform on projective space
+\begin{equation}
+ (\widehat{\mathcal P}_\alpha f)(j)
+ =\frac1{r_\alpha(j)}
+ \E\!\left[
+   \|\Avec_1\svec\|^{-\alpha}
+   r_\alpha([\Avec_1\svec])
+   f([\Avec_1\svec])
+ \right]
+ \label{eq:projective-doob-transform}
+\end{equation}
+is a probability kernel, where $\svec$ is either representative of $j$.  On
+$n$-step paths its likelihood ratio is
+$e^{-\alpha(X_n-X_0)}r_\alpha(J_n)/r_\alpha(J_0)$, and the tilted
+log-radius drift is
+$\Lambda_\eta'(-\alpha)=-m_\alpha<0$.  The Markov renewal theorem
+\cite{Kesten1974,NeyNummelin1987I,NeyNummelin1987II} therefore gives a
+constant left-tail renewal measure and a limiting tilted angular law.
+Undoing the transform contributes $e^{\alpha x}$.  The weighted defect in
+\eqref{eq:matrix-regeneration-assumptions}, the killed-potential identity,
+and renewal--reward normalization then give
+\eqref{eq:matrix-log-reinjection}.  Summing log intervals gives
+\eqref{eq:matrix-radial-small-ball}.  Finally,
+$\log|\vvec^\top\mathbf U|=X+\log|\vvec^\top\svec|$; pinning makes the
+second term bounded, so integrating the radial small-ball limit over
+$\chi_\alpha$ gives \eqref{eq:matrix-projection-small-ball}.
+\end{proof}
+
+Proposition~\ref{prop:matrix-reinjection} identifies the precise additional
+high-dimensional issue: the pressure root controls the radial log excursion,
+but a projection also depends on direction.  Working on projective space
+removes the deterministic sign flip visible in the experimental cocycle; a
+signed statement instead uses a parity-augmented chain or the two-step
+skeleton.  Without a projective spectral gap, an i.i.d. regenerative angular
+restart, and pinning away from $\vvec^\perp$, a radial cusp need not imply the
+same directional cusp.
+These assumptions are not silently declared verified for the nonlinear
+experimental chain.
+
+\subsection{Full-product estimators}
+
+The top exponent is estimated with normalized vector iteration.  Given one
+matrix stream and a unit vector $\svec_0$, iterate
+\begin{equation}
+  \ell_t=\log\|\Avec_t\svec_t\|,
+  \qquad
+  \svec_{t+1}=\frac{\Avec_t\svec_t}{\|\Avec_t\svec_t\|},
+  \qquad
+  \widehat\gamma_\eta=\frac1T\sum_{t=0}^{T-1}\ell_t.
+  \label{eq:gamma-estimator}
+\end{equation}
+The implementation averages over independent product trajectories and
+discloses every deterministic seed used for the plotted point estimates.
+
+For $k_\eta(q)$ we use a population Feynman--Kac estimator.  Maintain
+$N_p$ directions $\svec_t^{(i)}$.  At step $t$:
+\begin{enumerate}[leftmargin=2.2em]
+  \item independently sample a batch matrix $\Avec_t^{(i)}$ for every
+  particle;
+  \item set
+  $w_t^{(i)}=\|\Avec_t^{(i)}\svec_t^{(i)}\|^q$ and
+  $\widetilde\svec_{t+1}^{(i)}=
+  \Avec_t^{(i)}\svec_t^{(i)}/
+  \|\Avec_t^{(i)}\svec_t^{(i)}\|$;
+  \item record
+  $c_t=N_p^{-1}\sum_iw_t^{(i)}$ and resample the new particles from
+  $\widetilde\svec_{t+1}^{(i)}$ with probabilities proportional to
+  $w_t^{(i)}$.
+\end{enumerate}
+Then
+\begin{equation}
+  \log\widehat k_\eta(q)
+  =\frac1T\sum_{t=0}^{T-1}\log c_t.
+  \label{eq:smc-pressure}
+\end{equation}
+The particle count, product length, burn-in, and seeds used for each plot are
+recorded in the executable artifact.  For a generic matrix law, finiteness of
+the corresponding inverse moment remains a theorem assumption and cannot be
+proved by a finite simulation.  For the bounded laws used here,
+Lemma~\ref{lem:inverse-moment-finite} proves finiteness on the full calibration
+grid.  What remains assumed is the projective spectral identification in
+Assumption~\ref{ass:negative-pressure-identification}.
+In particular, $h_\eta$ is not replaced by an average of individual Hessian
+eigenvalues or by a one-step operator norm.
+
+\section{Exact discrete flip mechanism}
+\label{sec:flip}
+
+\subsection{Two-step local calculation}
+
+Along a signed critical coordinate, the local update has the form
+\begin{equation}
+  x_{t+1}=-(1+\delta_t)x_t+g_tx_t^3-h_tx_t^5+O(x_t^7).
+  \label{eq:local-flip}
+\end{equation}
+At exact flip and to cubic order,
+$f(x)=-x+gx^3+O(x^5)$, hence
+\begin{equation}
+  f(f(x))=x-2gx^3+O(x^5).
+  \label{eq:two-step-expansion}
+\end{equation}
+For the negative local quartic in \eqref{eq:local-expansion}, $g>0$.
+Thus the one-step cubic points outward in the raw coordinate, but it is
+restoring in the exact two-step flip map.
+
+\subsection{An exact two-dimensional theorem}
+
+The following theorem gives a finite-step mode-forming mechanism without any
+limiting approximation.
+
+\begin{theorem}[Exact symmetric two-cycles in two dimensions]
+\label{thm:exact-2d-flip}
+Let $g,h>0$, $|\rho|<1$, and
+\begin{equation}
+  F_\delta(x,y)
+  :=\bigl(-(1+\delta)x+gx^3-hx^5,\;\rho y\bigr).
+  \label{eq:2d-map}
+\end{equation}
+Assume
+\begin{equation}
+  0<\delta<\frac{g^2}{4h},
+  \qquad
+  \Delta=g^2-4h\delta,
+  \qquad
+  z_\pm=\frac{g\pm\sqrt\Delta}{2h}.
+  \label{eq:cycle-roots}
+\end{equation}
+Then $F_\delta$ has two symmetric period-two orbits
+\begin{equation}
+  \mathcal O_\pm
+  =\{(\sqrt{z_\pm},0),(-\sqrt{z_\pm},0)\}.
+  \label{eq:two-cycles}
+\end{equation}
+The outer orbit $\mathcal O_+$ is unstable.  The inner orbit
+$\mathcal O_-$ is locally asymptotically stable if
+\begin{equation}
+  z_-\sqrt\Delta<1.
+  \label{eq:cycle-stability}
+\end{equation}
+It is unstable if $z_-\sqrt\Delta>1$.  At
+$z_-\sqrt\Delta=1$ the longitudinal multiplier of the two-step map equals
+one, and no conclusion is asserted without a separate higher-order
+nondegeneracy analysis.
+The origin is unstable.  Every trajectory in the basin of
+$\mathcal O_-$ has the time-averaged limiting measure
+\begin{equation}
+  \frac12\delta_{(\sqrt{z_-},0)}
+  +\frac12\delta_{(-\sqrt{z_-},0)}.
+  \label{eq:cycle-measure}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Because the map is odd in $x$, a point $(r,0)$ belongs to a symmetric
+period-two orbit precisely when its first coordinate maps to $-r$.  For
+$r\neq0$, this condition is
+\[
+  hz^2-gz+\delta=0,
+  \qquad z=r^2,
+\]
+which gives \eqref{eq:cycle-roots}.  At either orbit the derivative of the
+first-coordinate map is, after using the cycle equation,
+\[
+  f'(r)=-1+2gz-4hz^2.
+\]
+Therefore
+$f'(\sqrt{z_-})=-1+2z_-\sqrt\Delta$ and
+$f'(\sqrt{z_+})=-1-2z_+\sqrt\Delta$.
+The first-coordinate multiplier of the two-step map is $f'(r)^2$.  For
+$z_-$ it is less than one when $z_-\sqrt\Delta<1$ and greater than one when
+$z_-\sqrt\Delta>1$; at equality it is one.  For $z_+$ it is strictly greater
+than one.  The transverse two-step multiplier is $\rho^2<1$.
+Finally, the derivative at the origin has first-coordinate magnitude
+$1+\delta>1$.  Convergence to the attracting orbit implies
+\eqref{eq:cycle-measure}.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:exact-2d-flip} applies exactly to maps orthogonally conjugate
+to \eqref{eq:2d-map}.  For a general pinned critical direction with
+cross-coordinate nonlinearities or noncommuting random matrices, persistence
+of this orbit requires a separate hyperbolic-persistence or random
+center-manifold argument and is not asserted by this theorem.  Determining
+whether additive innovations broaden the two phases into two visible modes
+is a property of the full invariant kernel, not of the local derivative
+alone.
+\end{remark}
+
+The globally completed loss admits an equally explicit deterministic result.
+
+\begin{corollary}[Exact two-dimensional flip for the saturated loss]
+\label{cor:saturated-flip}
+Let $\mathbf M\in\R^{2\times2}$ be symmetric with eigenvalues $m_1>m_2$ and leading unit
+eigenvector $\vvec_1$.  For $L=\eta\beta R^2$, consider
+\begin{equation}
+ F(\mathbf z)=\left(\mathbf M
+ -L\frac{\|\mathbf z\|^2}{R^2+\|\mathbf z\|^2}\Id\right)\mathbf z.
+ \label{eq:saturated-demodulated-map}
+\end{equation}
+Put $d=m_1-1$.  A pair of nonzero fixed points along $\vvec_1$ exists if and
+only if $0<d<L$; this pair is
+\begin{equation}
+ \mathbf z_\pm=\pm R\sqrt{\frac{d}{L-d}}\,\vvec_1.
+ \label{eq:saturated-mode-location}
+\end{equation}
+Their longitudinal and transverse Jacobian multipliers are
+\begin{equation}
+ 1-2d\left(1-\frac dL\right),
+ \qquad 1+m_2-m_1,
+ \label{eq:saturated-mode-multipliers}
+\end{equation}
+Hence the two points are locally asymptotically stable if both multipliers
+in \eqref{eq:saturated-mode-multipliers} have modulus strictly less than one,
+and they are unstable if at least one multiplier has modulus strictly greater
+than one.  In the remaining boundary case, when both multipliers have modulus
+at most one and at least one has modulus one, the point is nonhyperbolic and
+the Jacobian calculation alone is inconclusive.  When
+$\mathbf M=\eta\mathbf H-\mathbf I$ arises from the sign
+demodulation of the SGD recurrence above, these two fixed points are the two
+phases of one period-two orbit in the original coordinates.
+\end{corollary}
+
+\begin{proof}
+A nonzero fixed point must be an eigenvector of $\mathbf M$.  Along
+$\vvec_1$, the fixed-point equation is
+$Lr^2/(R^2+r^2)=m_1-1=d$, giving
+\eqref{eq:saturated-mode-location}.  Differentiating
+\eqref{eq:saturated-demodulated-map} in the radial and transverse directions
+gives \eqref{eq:saturated-mode-multipliers}.
+\end{proof}
+
+\subsection{Stochastic and time-varying coefficients}
+
+The coefficient process changes finite-amplitude feedback without changing
+the derivative at the origin.  The following identity measures that feedback
+directly from the finite-step recurrence.
+
+\begin{proposition}[Exact discrete nonlinear balance]
+\label{prop:nonlinear-balance}
+Let a noise-free stationary solution satisfy
+\begin{equation}
+ \mathbf Z_{t+1}
+ =\left(\mathbf M_t-a_t(R_t)\Id\right)\mathbf Z_t,
+ \quad R_t=\|\mathbf Z_t\|,\quad
+ \mathbf S_t=\mathbf Z_t/R_t,
+ \label{eq:noise-free-balance-map}
+\end{equation}
+where $R_t>0$ almost surely, $\E|\log R_t|<\infty$, and
+$a_t(r)=\eta\beta_tR^2r^2/(R^2+r^2)$.  Then
+\begin{equation}
+ \E\log\left\|
+   (\mathbf M_t-a_t(R_t)\Id)\mathbf S_t
+ \right\|=0.
+ \label{eq:nonlinear-balance}
+\end{equation}
+For a stationary solution of the corresponding noisy recurrence, if
+$\Pp(R_t>0)=1$ and the logarithms below are integrable, the exact balance is
+instead
+\begin{equation}
+ \E\log\frac{\|(
+ \mathbf M_t-a_t(R_t)\Id)\mathbf Z_t+\eta\boldsymbol\zeta_t\|}
+ {\|\mathbf Z_t\|}=0,
+ \label{eq:noisy-nonlinear-balance}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Both statements follow by taking expectations of
+$\log R_{t+1}-\log R_t$ under stationarity.
+\end{proof}
+
+For i.i.d. $\beta_t$, the coefficient is part of the ordinary transition
+kernel.  For persistent Markov $\beta_t$, stationarity concerns the augmented
+chain $(\mathbf u_t,\beta_t)$.  A periodic schedule has a periodic invariant
+family, not one time-independent distribution; arbitrary deterministic drift
+is therefore summarized phase-conditionally in our experiments.
+
+Theorem~\ref{thm:foster} applies directly to the i.i.d. case.  For the
+persistent Markov case, the analogous rigorous conclusion requires an
+$m$-step drift condition conditional on the coefficient state for the
+augmented chain.  Finite simulated trajectories alone do not establish this
+condition.
+
+\begin{proposition}[Directional density-curvature identity]
+\label{prop:mode-curvature}
+Suppose a stationary discrete chain has the form
+$\mathbf Z_{t+1}=F_{E_t}(\mathbf Z_t)+\boldsymbol\epsilon_t$.  For a unit
+vector $\vvec$, suppose that, conditional on $E_t$, the projected innovation
+$\vvec^\top\boldsymbol\epsilon_t$ is independent of $\mathbf Z_t$, has an
+even $C^2$ density $g_{E_t,\vvec}$, and differentiation may be passed through
+the stationary expectation.  Let $p_{\vvec}$ be the stationary density of
+$\vvec^\top\mathbf Z$, and put
+$Y=\vvec^\top F_{E_t}(\mathbf Z_t)$.  Then
+\begin{equation}
+ p_{\vvec}''(0)
+ =\E\left[
+ g_{E_t,\vvec}''(-Y)
+ \right].
+ \label{eq:exact-origin-curvature}
+\end{equation}
+If $p_{\vvec}$ is even and $p_{\vvec}''(0)\neq0$, then the origin is a strict
+local minimum if and only if $p_{\vvec}''(0)>0$.  If, in addition,
+$p_{\vvec}(y)\to0$ as $|y|\to\infty$ and $p_{\vvec}$ has at most one critical
+point on $(0,\infty)$, then
+\begin{equation}
+ p_{\vvec}\text{ is bimodal}
+ \quad\Longleftrightarrow\quad p_{\vvec}''(0)>0.
+ \label{eq:bimodal-iff-curvature}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Stationarity gives
+$p_{\vvec}(y)=\E[g_{E_t,\vvec}(y-Y)]$.  Differentiate twice under the
+expectation and set $y=0$.  The final equivalence follows from evenness and
+the stated critical-point restriction.
+\end{proof}
+
+Proposition~\ref{prop:mode-curvature} is first an exact curvature identity.  It
+becomes an if-and-only-if bimodality criterion only under the explicit
+evenness, decay, nonzero-curvature, and one-positive-critical-point shape
+assumptions above; the last assumption excludes competing shoulders or modes
+and is substantive.  This is not a general consequence of $k_\eta(-1)=1$.
+For Gaussian projected noise with variance $\tau^2$, the integrand is
+$\phi_\tau(Y)(Y^2/\tau^4-1/\tau^2)$.  The primary experiments use Rademacher
+residuals, whose projected innovations need not have the required $C^2$
+density, so their directional densities are classified directly and
+\eqref{eq:exact-origin-curvature} is not invoked.
+
+\section{Shells versus directional bimodality}
+\label{sec:shells}
+
+An isotropic nonlinear chain need not choose a direction.  If its radius is
+concentrated near $r$ while its angle is nearly uniform, each fixed
+projection can remain centered.
+
+\begin{proposition}[A shell can have centered projections]
+\label{prop:shell}
+If $\uvec$ is uniform on the sphere of radius $r$ in $\R^d$, then for every
+unit vector $\vvec$, the density of $A=\vvec^\top\uvec$ is
+\begin{equation}
+  p_A(a)\propto
+  (r^2-a^2)^{(d-3)/2}\ind_{\{|a|<r\}}.
+  \label{eq:sphere-projection}
+\end{equation}
+For $d>3$, this density has its unique maximum at zero.
+\end{proposition}
+
+Thus the experiments separately report the norm, the joint angular
+distribution, and projections onto both population and empirical critical
+directions.  A nonzero radial mode is called a shell; it is not called
+bimodality unless a directional marginal has two reproducible maxima.
+
+\section{Finite-step experimental protocol}
+\label{sec:protocol}
+
+\subsection{Data and exact updates}
+
+The primary design uses bounded, full-rank random covariates so both the
+inner and outer discrete products are well defined.  Fix a population
+direction $\vvec_\star=\mathbf e_1$.  For block $j=1,\ldots,B$, draw
+\begin{equation}
+ \lambda_{t,j}=1+\delta_\lambda Z_{t,j},\qquad
+ Z_{t,j}\sim\operatorname{Unif}[-1,1],
+ \label{eq:random-eigenvalue}
+\end{equation}
+and
+\begin{equation}
+ \vvec_{t,j}=\cos(\theta_{t,j})\mathbf e_1
+ +\sin(\theta_{t,j})\mathbf q_{t,j},
+ \qquad \theta_{t,j}\sim\operatorname{Unif}[-\phi,\phi],
+ \label{eq:random-direction}
+\end{equation}
+where $\mathbf q_{t,j}$ is Haar-uniform on the unit sphere in
+$\mathbf e_1^\perp$.  Define
+\begin{equation}
+ \Hvec_{t,j}=h_\perp\Id+
+ (\lambda_{t,j}-h_\perp)\vvec_{t,j}\vvec_{t,j}^\top,
+ \qquad h_\perp=0.8,
+ \qquad
+ \Hvec_t=\frac1B\sum_{j=1}^B\Hvec_{t,j}.
+ \label{eq:bounded-random-hessian}
+\end{equation}
+This is exactly a regression Gram matrix.  Taking
+$\mathbf X_{t,j}=\sqrt d\,\Hvec_{t,j}^{1/2}$ and stacking the $B$ blocks gives
+\begin{equation}
+ \frac1{dB}\mathbf X_t^\top\mathbf X_t=\Hvec_t.
+ \label{eq:exact-gram-realization}
+\end{equation}
+For independent Rademacher residual vectors
+$\boldsymbol\varepsilon_{t,j}\in\{\pm\sigma_\varepsilon\}^d$, we use the
+exact regression innovation
+\begin{equation}
+ \xivec_t=\frac{1}{B\sqrt d}\sum_{j=1}^B
+ \Hvec_{t,j}^{1/2}\boldsymbol\varepsilon_{t,j}
+ =\frac1{dB}\mathbf X_t^\top\boldsymbol\varepsilon_t.
+ \label{eq:bounded-regression-innovation}
+\end{equation}
+The placement of $B$ outside the square root is essential.  Conditional on
+the Gram blocks,
+\[
+ \operatorname{Cov}(\xivec_t\mid\Hvec_{t,1:B})
+ =\frac{\sigma_\varepsilon^2}{dB}\Hvec_t,
+\]
+so the innovation variance decreases as $B^{-1}$.  The implementation uses
+exactly the first expression in \eqref{eq:bounded-regression-innovation}.
+An independent $240{,}000$-draw audit at each $B\in\{1,2,4,8\}$ gives
+empirical-to-theoretical ratios for $\E\|\xivec_t\|^2$ of
+$1.0000,1.0003,0.9993,0.9978$, respectively; moreover,
+$B\E\|\xivec_t\|^2\simeq2.25\times10^{-5}$ in all four cases.  Thus both the
+implementation and its exported audit exhibit the intended $B^{-1}$ variance
+scaling.
+Thus every trajectory is generated by the ordinary finite-step gradient of
+one freshly sampled regression loss.  We do not apply a secondary integrator,
+sample from a target density, clip a state, or reset a run.
+
+In all experiments in this section we take $\Pvec=\Id$ and $R=1$; the fixed
+direction $\vvec_\star$ refers to the anisotropy of the random Hessian law,
+not to a rank-one nonlinear projection.
+
+Because the directions $\vvec_{t,j}$ are freshly sampled, the Hessians are
+noncommuting with probability one.  We use two matrix laws.  The
+\emph{broad-gap} law has $(\delta_\lambda,\phi)=(0.4,0.18)$ and is designed
+to resolve a sizeable interval between the two product diagnostics.  The
+\emph{clean-mode} law has $(\delta_\lambda,\phi)=(0.2,0.10)$ and a more
+strongly pinned critical direction, making directional mode separation
+visible at finite noise.  Both use $h_\perp=0.8$, $R=1$, and
+$\sigma_\varepsilon=0.005$.
+
+The phrase ``pinned'' has an exact local geometric meaning for the clean
+linear product.  Let
+$\mathcal C_\phi=\{\svec:\mathbf e_1^\top\svec\geq
+\cos(\phi)\|\svec\|\}$.
+
+\begin{lemma}[Invariant alternating cones for the clean law]
+\label{lem:clean-cone}
+For the clean-mode law, $\lambda_{t,j}\geq h_\perp$ almost surely.  If
+$\phi<\pi/4$ and $\eta h_\perp>1$, then
+\begin{equation}
+ (\eta\Hvec_t-\Id)\mathcal C_\phi\subseteq\mathcal C_\phi,
+ \qquad
+ (\Id-\eta\Hvec_t)\mathcal C_\phi\subseteq-\mathcal C_\phi.
+ \label{eq:clean-invariant-cones}
+\end{equation}
+Thus the noiseless linear cocycle alternates between two signed cones and
+stays a fixed positive angle away from $\mathbf e_1^\perp$.
+\end{lemma}
+
+\begin{proof}
+For $\svec\in\mathcal C_\phi$, every
+$\vvec_{t,j}\in\mathcal C_\phi$ and
+$\vvec_{t,j}^\top\svec>0$ because $2\phi<\pi/2$.  Moreover,
+\begin{equation}
+ (\eta\Hvec_t-\Id)\svec
+ =(\eta h_\perp-1)\svec
+ +\frac{\eta}{B}\sum_{j=1}^B
+ (\lambda_{t,j}-h_\perp)
+ (\vvec_{t,j}^\top\svec)\vvec_{t,j}.
+ \label{eq:clean-cone-decomposition}
+\end{equation}
+All coefficients are nonnegative, and the circular cone is convex.  This
+proves the first inclusion; the second follows by changing sign.
+\end{proof}
+
+Lemma~\ref{lem:clean-cone} verifies local cone preservation, but not global
+entry into a cone under additive noise or the regenerative return hypothesis
+of Proposition~\ref{prop:matrix-reinjection}.  It therefore supplies one
+piece of direction selection rather than a complete matrix cusp theorem for
+the experiment.
+
+\begin{lemma}[Finite inverse moments on the calibration grid]
+\label{lem:inverse-moment-finite}
+For the broad-gap law,
+$0.6\Id\preceq\Hvec_t\preceq1.4\Id$ almost surely; for the clean-mode law,
+$0.8\Id\preceq\Hvec_t\preceq1.2\Id$ almost surely.  Consequently, for every
+tested $\eta\in[1.82,2.42]$, every $q<0$, every $n\geq1$, and every unit
+vector $\svec$,
+\[
+  \E\|\PiProd_n\svec\|^q<\infty.
+\]
+In particular, the inverse moment defining $k_\eta(-1)$ is finite throughout
+the reported calibration grid.
+\end{lemma}
+
+\begin{proof}
+Averaging Gram blocks preserves their spectral bounds.  If
+$a\Id\preceq\Hvec_t$, then $\eta a>1$ on the stated grid and
+$\sigma_{\min}(\Id-\eta\Hvec_t)\geq\eta a-1=:c_\eta>0$.  Hence
+$\|\PiProd_n\svec\|\geq c_\eta^n$, and for $q<0$,
+$\E\|\PiProd_n\svec\|^q\leq c_\eta^{nq}<\infty$.
+\end{proof}
+
+\subsection{Threshold calibration}
+
+We estimate $\gamma_\eta$ and $h_\eta$ for the two-dimensional broad-gap law
+at $B\in\{1,2,4,8\}$ and for the two-dimensional clean-mode law at $B=1$.
+Let
+$\eta_{\mathrm L}$ denote the interpolated zero of $\widehat\gamma_\eta$ and
+$\eta_{\mathrm H}$ the interpolated zero of
+$\log\widehat h_\eta$ when a crossing is observed.
+Lemma~\ref{lem:inverse-moment-finite} guarantees inverse-moment finiteness on
+this grid.  Interpreting the particle estimate as
+$\rho(\mathcal P_{\eta,-1})$ additionally uses
+Assumption~\ref{ass:negative-pressure-identification}, which is not proved
+for the specific simulated law.  The broad-gap distribution experiment uses
+one point below the Lyapunov edge, three points spanning the gap, and two
+points beyond the harmonic edge.  A separate scaling experiment uses five evenly spaced
+relative positions $r\in\{0.1,0.3,0.5,0.7,0.9\}$, where
+\begin{equation}
+ \eta(r)=\eta_{\mathrm L}
+ +r(\eta_{\mathrm H}-\eta_{\mathrm L}).
+ \label{eq:relative-grid}
+\end{equation}
+The clean-mode experiment uses one point below $\eta_{\mathrm L}$, one in
+the gap, and two beyond $\eta_{\mathrm H}$.  The five-dimensional check uses
+a step size selected from the two-dimensional clean-mode calibration; we
+also calibrate its product edges independently to verify, rather than assume,
+its position relative to the five-dimensional harmonic edge.
+
+Threshold uncertainty is Monte Carlo uncertainty conditional on the local
+linear interpolation used to locate each zero.  For $\eta_{\mathrm L}$ we
+resample complete, independent product trajectories.  For
+$\eta_{\mathrm H}$ we rerun the full Feynman--Kac particle system with
+independent seeds and bootstrap those independent SMC replicates.  The
+reported 95\% intervals use $600$ product trajectories, $18$ independent SMC
+replicates, and $3{,}000$ bootstrap resamples.  They do not include grid or
+model-specification uncertainty.
+
+\subsection{Stationarity and distributional measurements}
+
+Each primary configuration advances many independent chains under the exact
+recursion, discards a fixed burn-in, and stores every tenth iterate.  The
+exact chain counts and horizons are reported with the final run.  The
+reliability experiment uses additional independent seeds and a
+finite-radius initialization check.  We inspect the following diagnostics:
+\begin{enumerate}[leftmargin=2em]
+  \item the median, $0.9$, and $0.99$ quantiles of $\|\uvec_t\|$;
+  \item histograms of the fixed projection $\vvec_\star^\top\uvec_t$;
+  \item central occupancy, exceedance fraction, and lag-one log-radius
+  correlation;
+  \item nonlinear tangent growth and the exact conditional log-radius
+  balance.
+\end{enumerate}
+All primary runs must complete without a nonfinite iterate.  Untamed controls
+are stopped at first escape and reported separately.
+
+For each stored iterate, define the saturation fraction
+\begin{equation}
+  a_t=\frac{\|\uvec_t\|^2}{1+\|\uvec_t\|^2}.
+  \label{eq:activation-ratio}
+\end{equation}
+Its empirical mean records how strongly the bounded nonlinear feedback is
+activated.  We also report the exact conditional log-radius decomposition
+and the tangent exponent of the full nonlinear update.
+
+Mode claims use 301 equal-width bins followed by Gaussian smoothing with
+standard deviation $1.5$ bins.  On the clean-mode range $[-1.1,1.1]$ this is
+a coordinate bandwidth of $0.01096$.  We report the ratio of the smoothed
+density at zero to its positive-side maximum.  Its uncertainty is computed by
+a chain-block bootstrap that resamples complete chains rather than correlated
+retained iterates.  A projection is called split only when the upper endpoint
+of its 95\% bootstrap interval lies below one.  In two dimensions we also
+  display the joint histogram; the five-dimensional panel compares the same
+  fixed critical projection and reports its independently calibrated product
+  edges.
+
+\subsection{Full sweep}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+Quantity & Values \\
+\midrule
+dimension $d$ & $2,5$ \\
+block count $B$ (sample count $dB$) & $1,2,4,8$ \\
+matrix law & broad-gap $(0.4,0.18)$; clean-mode $(0.2,0.10)$ \\
+relative gap position & five points from $0.1$ to $0.9$ \\
+mean nonlinear strength $\bar\beta$ & $0.46,0.50,0.54,0.555,0.575,0.595,0.65$ \\
+coefficient law & constant; i.i.d. $0.555\pm0.04$; persistent $0.555\pm0.04$ \\
+flip probability $p_{\rm flip}$ & $0.002,0.00035$ for persistent laws \\
+label-noise scale $\sigma_\varepsilon$ & $0.005$ primary; $10^{-3}$--$10^{-8}$ in cusp audit \\
+independent chains per main distribution setting & $192$ or $256$ \\
+independent chains per reliability replicate & $96$ \\
+steps per chain & $16{,}000$--$20{,}000$ \\
+\bottomrule
+\end{tabular}
+\caption{Finite-step experiment grid.  The named matrix-law pair in
+parentheses is $(\delta_\lambda,\phi)$.  Product diagnostics are separately
+estimated with normalized products and a Feynman--Kac particle system.  Exact
+numerical values and deterministic seed rules are included in the bundle.}
+\label{tab:full-grid}
+\end{table}
+
+The experiments are structured sweeps rather than a claim of exhaustive
+coverage: each panel changes one factor while holding the others fixed.  Null
+results and stopped escape controls remain in the exported CSV/JSON files.
+
+\section{Finite-step results}
+\label{sec:results}
+
+\subsection{Calibrated phase sweep}
+
+For the broad-gap law in two dimensions, the full-product estimates give
+$(\widehat\eta_{\mathrm L},\widehat\eta_{\mathrm H})=(2.128,2.268)$
+at $B=1$.  Batch averaging moves both edges toward $2$ and narrows their
+separation from $0.140$ at $B=1$ to $0.076$, $0.040$, and $0.019$ at
+$B=2,4,8$, respectively.  Table~\ref{tab:threshold-results} reports the
+local-interpolation Monte Carlo intervals.  These are product estimates: the harmonic curve is
+computed with the projective particle system, not with a one-step norm.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{output/discrete_selfstab/figure1_discrete_product_thresholds.pdf}
+  \caption{\textbf{Full-product threshold calibration.}
+  Top Lyapunov exponent (left) and projective inverse-moment pressure
+  $\log k_\eta(-1)$ (right) for $B=1,2,4,8$ Gram blocks.  Vertical markers
+  are the higher-replication local crossing estimates; shaded regions are
+  their 95\% Monte Carlo intervals.  Increasing $B$ narrows, but does not
+  eliminate over the tested values $B\in\{1,2,4,8\}$, the
+  post-Lyapunov/pre-harmonic interval.}
+  \label{fig:discrete-phase-sweep}
+\end{figure}
+
+\subsection{Inside the Lyapunov--harmonic gap}
+
+This is the primary experiment.  Across the broad-gap sweep, the median
+radius increases from $0.043$ just after the Lyapunov edge to $0.139$ just
+before the harmonic edge, while the $0.99$ quantile increases from $0.691$
+to $1.135$.  The empirically estimated nonlinear tangent exponent remains
+negative ($-0.100$ to $-0.167$ over those endpoints), even though the origin's linear
+exponent is positive.  This is the measured finite-step self-stabilization
+mechanism: expanding small states activate a nonlinear return at finite
+amplitude.  All primary chains are finite and none is clipped or reset.
+
+Across all structured sweeps and reliability replicas, the publication run
+contains $35$ primary configurations and $129{,}760{,}000$ exact SGD
+transitions.  It recorded zero nonfinite primary transitions; the largest
+primary norm was $2.976$.  The separate five-noise-scale cusp audit adds
+$76{,}800{,}000$ exact updates, bringing the total discrete numerical
+evidence to $206{,}560{,}000$ finite-step transitions, again with zero
+nonfinite iterates.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{output/discrete_selfstab/figure2_between_edges_distributions.pdf}
+  \caption{\textbf{What happens between the two discrete thresholds.}
+  Joint $(u_1,u_2)$ densities (top) and log-radius densities (bottom) below
+  the Lyapunov edge, at three locations spanning the gap, and beyond the
+  harmonic edge.  The broad-gap law becomes increasingly intermittent.  Its
+  joint heatmap does not form the clean separated lobes of
+  Figure~\ref{fig:discrete-bimodality}, although its critical-coordinate
+  marginal develops a shallow central depression at the two post-harmonic
+  points.  Every panel is an exact finite-step SGD chain.}
+  \label{fig:gap-distributions}
+\end{figure}
+
+The negative full-product root in \eqref{eq:negative-root} is also estimated
+at five positions in the gap.  Figure~\ref{fig:gap-scaling} is a deliberately
+low-noise mechanism probe, not a measurement made in the primary
+$\sigma_\varepsilon=0.005$ chains.  It compares the root with an empirical
+small-amplitude exponent at $\sigma_\varepsilon=10^{-8}$.  The comparison is
+labelled \emph{intermediate scaling}: fixed label noise rounds the density at
+the origin, and the saturating feedback cuts off large excursions.  The
+product roots at relative gap positions
+$0.1,0.3,0.5,0.7,0.9$ are $0.105,0.321,0.534,0.736,0.897$; the corresponding
+empirical small-ball slopes are $0.158,0.326,0.508,0.671,0.788$.  Repeating the
+same fit on only the first half of each retained trajectory gives
+$0.158,0.327,0.504,0.662,0.784$; the largest half/full-horizon change is
+below $0.010$.  This nested check provides no evidence, at these two
+horizons, that the discrepancy is driven by horizon length.  Agreement is
+closest through the central part of the interval; finite noise and the
+restricted fitting window remain limitations of this intermediate-scale
+comparison.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{output/discrete_selfstab/figure8_gap_scaling.pdf}
+  \caption{\textbf{Detailed scaling inside the Lyapunov--harmonic gap.}
+  The full-product negative root and empirical intermediate small-ball exponents
+  from the full and half retained horizons at bounded label-noise scale
+  $10^{-8}$,
+  small-amplitude cumulative probabilities, tail amplification and central
+  occupancy, and nonlinear activation/tangent contraction at five relative
+  gap positions.  This is a low-noise mechanism probe, not evidence that the
+  cusp is visible at the primary noise scale, and it is not an asymptotic
+  far-tail law.}
+  \label{fig:gap-scaling}
+\end{figure}
+
+\subsection{Noise-scale and horizon audit of the cusp}
+\label{sec:cusp-audit}
+
+We next test the two-sided window principle in
+Remark~\ref{rem:reinjection-window} rather than selecting a visually linear
+segment after seeing the data.  At the authoritative broad-law
+midpoint $\eta=2.198293$ and $\bar\beta=0.595$, the full-product prediction is
+$\alpha=0.5284$.  For each noise scale, define the exact one-step standard
+deviation of the update noise in the pinned coordinate by
+\begin{equation}
+ s_\xi=\eta\sigma_\varepsilon
+ \sqrt{\E[(\Hvec_t)_{11}]/(dB)},
+ \label{eq:cusp-innovation-scale}
+\end{equation}
+with $B=1$ in this audit, and define $r_{\rm cut}=0.092057$ by
+$\bar\beta r_{\rm cut}^2/(1+r_{\rm cut}^2)=0.005$.  The fitting window is
+predeclared as
+\begin{equation}
+ \max\{10s_\xi,\widehat q_{.01}\}<|u_1|
+ <\min\{r_{\rm cut},\widehat q_{.50}\},
+ \label{eq:cusp-fit-window}
+\end{equation}
+and is accepted only if the physical span
+$r_{\rm cut}/(10s_\xi)$ is at least $10$ and the empirical fitting span is at
+least $4$.  These guards are prespecified operational proxies for
+$r_{\rm core}\ll|u_1|\ll r_{\rm nl}$; they do not verify the uniform renewal,
+angular, or regeneration hypotheses of
+Proposition~\ref{prop:matrix-reinjection}.
+
+At the primary scale $\sigma_\varepsilon=0.005$, the physical span is only
+$1.186$, so there is no admissible cusp window and we report no exponent.
+The scale $0.001$ also fails, with span $5.929$; its superficially linear fit
+is displayed as a rejected hollow marker.  Valid windows first appear at
+$10^{-4}$, $10^{-5}$, and $10^{-8}$, with physical spans $59.29$, $592.86$,
+and $592864$.  Their full-horizon fitted small-ball exponents, reported as
+mean plus or minus standard deviation across three independent seeds, are respectively
+$0.5706\pm0.0044$, $0.5629\pm0.0071$, and
+$0.5309\pm0.0042$.  Thus the estimate approaches the product prediction
+$0.5284$ as the intermediate window opens.
+
+Each noise scale is run with $128$ chains per seed; the horizons
+$12{,}000$, $24{,}000$, and $40{,}000$ are nested prefixes.  At $10^{-8}$ the corresponding
+mean slopes are $0.5358$, $0.5336$, and $0.5309$, and the fit $R^2$ rises
+from $0.99933$ to $0.99980$.  The low-noise agreement therefore survives the
+reported horizon and seed checks.  More importantly, the audit rejects a
+cusp claim at the paper's primary noise level.  It is consistent with the
+renewal theorem's scale-separation requirement and the conditional matrix
+extension, but does not verify the latter's angular or regeneration
+assumptions.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{output/discrete_selfstab/figure9_cusp_noise_horizon_audit.pdf}
+  \caption{\textbf{When is the product-root cusp observable?}
+  Exact finite-step SGD at the broad-law midpoint across five label-noise
+  scales, three independent seeds, and three nested horizons.  Fits use only the
+  predeclared window \eqref{eq:cusp-fit-window}.  No admissible window exists
+  at the primary $\sigma_\varepsilon=0.005$ or at $0.001$.  Once sufficient
+  scale separation opens, the fitted small-ball exponent approaches the full-product
+  prediction $\alpha=0.528$, reaching $0.531\pm0.004$ at $10^{-8}$ and
+  remaining stable across the tested horizons.}
+  \label{fig:cusp-noise-horizon-audit}
+\end{figure}
+
+\subsection{Deterministic nonlinear strength}
+
+Since $\nabla^2V_\beta(\mathbf0)=0$, the independently estimated linear
+diagnostics are identical across values of $\bar\beta$.  The nonlinear
+distributions need not be.  We measure how the cutoff radius, burst duration,
+return time, and possible mode locations depend on $\bar\beta$ at fixed
+relative step position.
+
+In a separate nonlinear-strength sweep at $\eta=2.195$, approximately $48\%$
+of the way across the calibrated broad-law gap, increasing $\bar\beta$ from
+$0.46$ to $0.595$
+reduces the empirical $0.99$ radius from $1.111$ to $0.918$ while leaving the
+linear thresholds unchanged.  Every tested far-field product exponent and
+retained-horizon nonlinear tangent exponent is negative.  Thus the nonlinear
+coefficient controls the cutoff and excursion size, not the location of the
+inner product thresholds.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{output/discrete_selfstab/figure3_feedback_strength_sweep.pdf}
+  \caption{\textbf{Deterministic self-stabilization strength.}
+  At fixed matrix law and mid-gap step size, norm survival curves, median and
+  $0.99$ radius, and the far-field/nonlinear tangent exponents are shown as
+  $\bar\beta$ varies.  Stronger feedback lowers the nonlinear cutoff while
+  the independently estimated linear diagnostics remain fixed.}
+  \label{fig:beta-strength}
+\end{figure}
+
+\subsection{Stochastic and slowly varying coefficients}
+
+The coefficient processes in \eqref{eq:beta-processes} keep the mean fixed
+while varying amplitude and temporal persistence.  We test whether coefficient
+variance or persistence changes excursion size, clustered bursting, return
+times, and visible modes.  No universal tail exponent is imposed.
+
+At $\eta=2.247$, approximately $85\%$ of the way across the calibrated gap,
+and at matched mean $0.555$ and amplitude $0.04$, neither i.i.d. nor persistent
+two-state modulation materially changes the radial tail amplification or
+mean burst duration: $q_{.99}/q_{.50}$ stays between $8.81$ and $8.94$, while
+mean burst duration stays between $2.239$ and $2.245$ steps.  Persistence does
+increase the magnitude of the instantaneous coefficient--radius correlation
+from about $0.014$ for i.i.d. modulation to $0.037$ and $0.046$ for
+$p_{\rm flip}=0.002$ and $0.00035$.  All simulated augmented-chain
+trajectories remained finite over the reported horizon.  Thus, within this
+four-law ablation at amplitude $0.04$, we detect no material change in the
+marginal radial tail.  This is a matched-mean null observation, not evidence
+of invariance over coefficient amplitudes or persistence laws.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{output/discrete_selfstab/figure4_stochastic_feedback.pdf}
+  \caption{\textbf{Bounded stochastic and slowly varying quartic curvature.}
+  All runs have the same mean coefficient $\bar\beta$.  Curves compare a
+  constant coefficient, i.i.d. two-state coefficients, and persistent
+  two-state coefficients.  The panels show the matched-mean log-radius
+  density, radial survival, tail amplification, burst duration, and
+  coefficient--radius correlation.  The sampled coefficient is used once in
+  the same finite SGD step as its batch Hessian.}
+  \label{fig:stochastic-beta}
+\end{figure}
+
+\subsection{Directional bimodality, dimension, and batch size}
+
+The additional broad-law metric sharpens what the joint heatmaps alone can
+show.  The critical-coordinate center-to-side-mode ratio remains above one
+just before the harmonic edge, $1.012$ $[1.007,1.017]$, then falls to
+$0.957$ $[0.941,0.972]$ and $0.793$ $[0.779,0.806]$ at the two tested
+post-harmonic points.  These are statistically resolved but shallow
+directional depressions, not the clean separated joint lobes seen below.
+Under the more strongly pinned clean-mode law, the ratio is $1.010$ inside
+the gap, with 95\% chain-bootstrap interval $[1.005,1.015]$, so that run is
+not classified as split.  It falls to $0.096$ $[0.088,0.106]$ just beyond
+the harmonic edge and $0.0039$ $[0.0028,0.0051]$ deeper beyond it.  Thus both
+experimental laws place the measured directional change after the harmonic
+crossing, while the strength and geometric visibility of the lobes depend
+strongly on directional pinning.  This supports a calibrated empirical
+marker; it does not turn the harmonic diagnostic alone into a general
+necessary-and-sufficient theorem.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{output/discrete_selfstab/figure5_discrete_bimodality.pdf}
+  \caption{\textbf{Directional mode formation in the clean-mode law.}
+  Critical-coordinate histograms (top) and joint 2D densities (bottom) below
+  the Lyapunov edge, in the gap, and at two post-harmonic step sizes.  Two
+  lobes in the pooled retained-sample histograms appear only in the displayed
+  post-harmonic runs.}
+  \label{fig:discrete-bimodality}
+\end{figure}
+
+A separate dimension comparison is run at $\eta=2.144$, selected from the
+two-dimensional calibration as $\widehat\eta_{\mathrm H}^{(2)}+0.080$ and
+lying between the two displayed two-dimensional post-harmonic settings.  At
+this common nominal step size, the center-to-mode point estimates are
+$0.0119$ $[0.0094,0.0147]$ in $d=2$ and
+$0.0035$ $[0.0026,0.0047]$ in $d=5$.  An independent five-dimensional
+product calibration gives
+$(\widehat\eta_{\mathrm L}^{(5)},\widehat\eta_{\mathrm H}^{(5)})
+=(2.029,2.061)$, placing the common step $0.083$ beyond its estimated
+five-dimensional harmonic edge.  The step was nevertheless selected from
+the two-dimensional calibration, so the figure retains that provenance in
+its label.  For the broad-gap product, increasing $B$ from $1$ to $8$
+substantially narrows the calibrated two-dimensional gap.
+Because these are exact regression batches, the $B$ comparison changes both
+the variability of the averaged Hessian and the innovation covariance, which
+scales as $1/B$ by \eqref{eq:bounded-regression-innovation}.  The matched-gap
+panel is therefore a batch-size comparison, not an intervention that holds
+additive-noise variance fixed while changing only the matrix product.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{output/discrete_selfstab/figure6_dimension_batch_robustness.pdf}
+  \caption{\textbf{Dimension and batch-size robustness.}
+  Gap width versus $B$ (left), matched-relative-position log-radius densities
+  for $B=1$ and $B=4$ (center), and clean-mode critical-coordinate densities
+  at a common nominal step size in $d=2$ and $d=5$ (right).  The $d=5$ curve
+  is labelled by how the common step was selected; a separate product
+  calibration confirms that it also lies beyond the estimated $d=5$
+  harmonic edge.}
+  \label{fig:dimension-batch}
+\end{figure}
+
+\subsection{Convergence and failure accounting}
+
+Independent-seed reruns agree on the median and $0.99$ radius.  The ordered
+telescoping decomposition
+$\log(r_{\rm lin}/r_{\rm old})+\log(r_{\rm nl}/r_{\rm lin})+
+\log(r_{\rm new}/r_{\rm nl})=\log(r_{\rm new}/r_{\rm old})$ holds to machine
+precision.  The three components depend on this stated ordering; they are not
+an order-independent additive decomposition of the vector update.
+The untamed negative-quartic and affine controls are stopped at first escape rather
+than reset or recycled; they are never used as stationary samples.
+At the stress step size $\eta=2.4$, all $20$ affine controls crossed
+$\|u_t\|=10^6$ within $53$--$132$ steps, all $20$ zero-initialized untamed
+negative-quartic controls crossed within $345$--$8651$ steps, and all six
+untamed controls initialized at radius $3$ crossed within $39$--$67$ steps.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.96\linewidth]{output/discrete_selfstab/figure7_discrete_audits.pdf}
+  \caption{\textbf{Numerical reliability of the discrete chain.}
+  Exact conditional log-radius balance; median and $q_{.99}$ across
+  independent seeds plus a finite-radius initialization check; and
+  first-escape times for affine and untamed negative-quartic controls.  The primary
+  saturated-loss runs have zero nonfinite transitions, clipping operations,
+  or resets.}
+  \label{fig:reliability}
+\end{figure}
+
+\section{Interpretation and theorem status}
+\label{sec:status}
+
+The linear quantities $\gamma_\eta$ and $h_\eta$ do not depend on
+$\beta_t$, because the quartic correction has zero derivative at the origin.
+This does not make the nonlinear stationary law independent of $\beta_t$.
+The experiments test two separate statements: whether the linear crossings
+remain fixed when the nonlinear coefficient law is changed, and how its mean,
+variance, and persistence change the finite-step stationary behavior at the
+same calibrated location.
+
+Below $\eta_{\mathrm L}$, Theorem~\ref{thm:kesten-baseline} supplies the
+affine reference law under its assumptions.  Between $\eta_{\mathrm L}$ and
+$\eta_{\mathrm H}$ we do not claim an upper-tail Kesten law.  Instead,
+Theorem~\ref{thm:scalar-reinjection} proves a lower-amplitude on--off law for
+an exact regenerative scalar excursion, while
+Proposition~\ref{prop:matrix-reinjection} gives a conditional matrix result
+under additional projective spectral, Markov-renewal, angular, and
+regeneration assumptions.  At fixed
+additive noise this is only an intermediate-window statement.  The primary
+$\sigma_\varepsilon=0.005$ chains have no resolved cusp window; their direct
+diagnostic is a recurrent cloud with intermittent excursions and a nonlinear
+return force that becomes dominant at finite radius.  Beyond
+$\eta_{\mathrm H}$ we report whether the critical projection actually becomes
+bimodal.  Agreement supports a finite-step harmonic-bimodality hypothesis;
+disagreement is not removed by redefining the threshold.
+
+The Kesten statement below the Lyapunov edge and
+Theorem~\ref{thm:ordering} are discrete-time results.  The two-step expansion
+\eqref{eq:two-step-expansion} and Theorem~\ref{thm:exact-2d-flip} are also
+exact for their stated maps.  For the nonlinear random matrix recursion,
+however, neither $k_\eta(-1)=1$ nor the sign of a local quartic term alone is
+a necessary-and-sufficient condition for bimodality.  Such a theorem would
+require recurrence, reflection symmetry, one critical direction, regular
+reinjection, and exclusion of competing global modes.  The scalar renewal
+theorem proves why $\alpha=1$ changes the \emph{local density shape}; it does
+not turn that local change into a theorem asserting exactly two global modes.
+The present paper therefore treats the finite-step connection between
+$h_\eta$ and modal structure as a tested hypothesis, while reporting every
+exception.
+
+For the particular bounded-Rademacher transition law, Feller continuity is
+verified, whereas $\psi$-irreducibility, petiteness, and hence uniqueness and
+positive Harris recurrence have not been established.  Likewise, the
+negative-pressure calculations use the spectral identification in
+Assumption~\ref{ass:negative-pressure-identification}.  These are explicit
+analytical assumptions, not conclusions drawn from finite simulations.
+
+\section{Conclusion}
+
+Finite-step random-covariate SGD has three logically separate components: a
+linear matrix product, a nonlinear return mechanism, and the geometry of the
+resulting invariant law.  The top Lyapunov exponent locates loss of linear
+stationarity.  For the bounded laws here, inverse-moment finiteness follows
+from Lemma~\ref{lem:inverse-moment-finite}; under the spectral-identification
+and strict-convexity assumptions of Theorem~\ref{thm:ordering}, an
+inverse-moment crossing cannot precede the Lyapunov edge.  The exact
+regenerative theorem identifies what lies between those two diagnostics:
+the negative pressure root gives an integrable central cusp
+$|a|^{\alpha-1}$ with $0<\alpha<1$, provided a finite-mean nonlinear
+reinjection and a genuine additive-core/nonlinear-cutoff window exist.  Its
+matrix extension additionally requires projective mixing and angular
+pinning.  The exact
+two-step flip map explains how a negative local quartic can
+nevertheless stabilize alternating iterates, while the saturating potential
+makes the global experiment well posed without altering the update after the
+fact.  Calibrated experiments throughout the interval between the two linear
+diagnostics determine whether the recurrent cloud remains centered, broadens,
+or separates along a pinned direction.  Bounded random and persistent
+quartic coefficients then reveal which aspects of self-stabilization depend
+on the mean feedback and which depend on its temporal variability.  A
+separate scale audit prevents overinterpretation: the cusp is unresolved at
+the primary noise level and approaches the pressure prediction only after a
+low-noise intermediate window opens.
+
+\appendix
+
+\section{Reproducibility checklist}
+
+The result bundle contains:
+\begin{enumerate}[leftmargin=2em]
+  \item the exact source implementing \eqref{eq:exact-discrete-update};
+  \item complete configuration files and random seeds;
+  \item aggregate retained-sample summaries and every stopped escape control;
+  \item deterministic seed rules for reproducing
+  $\widehat\gamma_\eta$ and $\widehat k_\eta(q)$;
+  \item the particle counts, product lengths, and burn-ins used by the
+  pressure estimator;
+  \item pooled mode ratios and all plotted density data;
+  \item the five-noise-scale cusp-window audit, its predeclared acceptance
+  rule, and seed-by-horizon slope table;
+  \item a manifest mapping every table entry and figure panel to raw files.
+\end{enumerate}
+
+\section{Additional result tables}
+
+\begin{table}[ht]
+\centering
+\scriptsize
+\begin{tabular}{@{}cclccc@{}}
+\toprule
+$d$ & $B$ & matrix law & $\widehat\eta_{\mathrm L}$
+& $\widehat\eta_{\mathrm H}$ & gap width \\
+\midrule
+$2$ & $1$ & broad-gap & $2.1282\ [2.1272,2.1292]$ & $2.2684\ [2.2676,2.2692]$ & $0.1401$ \\
+$2$ & $2$ & broad-gap & $2.0635\ [2.0628,2.0642]$ & $2.1393\ [2.1368,2.1416]$ & $0.0758$ \\
+$2$ & $4$ & broad-gap & $2.0318\ [2.0313,2.0323]$ & $2.0721\ [2.0693,2.0748]$ & $0.0403$ \\
+$2$ & $8$ & broad-gap & $2.0181\ [2.0178,2.0184]$ & $2.0374\ [2.0352,2.0399]$ & $0.0193$ \\
+$2$ & $1$ & clean-mode & $2.0290\ [2.0285,2.0295]$ & $2.0642\ [2.0616,2.0675]$ & $0.0352$ \\
+$5$ & $1$ & clean-mode & $2.0289\ [2.0284,2.0293]$ & $2.0613\ [2.0597,2.0636]$ & $0.0325$ \\
+\bottomrule
+\end{tabular}
+\caption{Discrete product thresholds.  Each bracket is a 95\% Monte Carlo
+interval conditional on the local interpolation bracket: complete product
+trajectories are resampled for $\eta_{\mathrm L}$ and independent full-SMC
+replicates for $\eta_{\mathrm H}$.}
+\label{tab:threshold-results}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\scriptsize
+\begin{tabular}{@{}llcccccc@{}}
+\toprule
+matrix law & regime & $\eta$ & $\bar\beta$
+& nonfinite & median $r$ & $q_{.99}(r)$ & center/mode (95\% CI) \\
+\midrule
+broad & pre-L & $2.073$ & $0.595$ & $0$ & $0.025$ & $0.493$ & $1.101\ [1.099,1.103]$ \\
+broad & just post-L & $2.131$ & $0.595$ & $0$ & $0.043$ & $0.691$ & $1.077\ [1.074,1.081]$ \\
+broad & mid-gap & $2.198$ & $0.595$ & $0$ & $0.084$ & $0.931$ & $1.046\ [1.042,1.050]$ \\
+broad & just pre-H & $2.266$ & $0.595$ & $0$ & $0.139$ & $1.134$ & $1.012\ [1.007,1.017]$ \\
+broad & post-H & $2.323$ & $0.595$ & $0$ & $0.189$ & $1.286$ & $0.957\ [0.941,0.972]$ \\
+broad & deep post-H & $2.373$ & $0.595$ & $0$ & $0.231$ & $1.421$ & $0.793\ [0.779,0.806]$ \\
+clean & in gap & $2.047$ & $0.650$ & $0$ & $0.075$ & $0.373$ & $1.010\ [1.005,1.015]$ \\
+clean & post-H & $2.109$ & $0.650$ & $0$ & $0.202$ & $0.542$ & $0.096\ [0.088,0.106]$ \\
+clean & deep post-H & $2.159$ & $0.650$ & $0$ & $0.272$ & $0.636$ & $0.0039\ [0.0028,0.0051]$ \\
+\bottomrule
+\end{tabular}
+\caption{Selected nonlinear finite-step outcomes.  ``Center/mode'' is the
+smoothed density at zero divided by its positive-side maximum; values well
+below one indicate two directional lobes.  Intervals resample complete chains;
+all estimates use 301 bins and Gaussian smoothing of 1.5 bins.}
+\label{tab:nonlinear-results}
+\end{table}
+
+\clearpage
+\begin{thebibliography}{99}
+
+\bibitem{Kesten1973}
+H. Kesten.
+\newblock Random difference equations and renewal theory for products of
+random matrices.
+\newblock \emph{Acta Mathematica}, 131:207--248, 1973.
+\newblock \url{https://doi.org/10.1007/BF02392040}.
+
+\bibitem{Goldie1991}
+C. M. Goldie.
+\newblock Implicit renewal theory and tails of solutions of random equations.
+\newblock \emph{Annals of Applied Probability}, 1(1):126--166, 1991.
+
+\bibitem{GuivarchLePage2012}
+Z. Gao, Y. Guivarc'h, and E. Le Page.
+\newblock Stable laws and spectral gap properties for affine random walks.
+\newblock \emph{Annales de l'Institut Henri Poincar\'e, Probabilit\'es et
+Statistiques}, 51(1):319--348, 2015.
+\newblock \url{https://arxiv.org/abs/1108.3146}.
+
+\bibitem{WangSteinsaltz2020}
+F. Wang and D. Steinsaltz.
+\newblock On transfer operators for Markovian products of invertible random
+matrices.
+\newblock 2020.
+\newblock \url{https://arxiv.org/abs/2001.06865}.
+
+\bibitem{DelMoral2004}
+P. Del Moral.
+\newblock \emph{Feynman--Kac Formulae: Genealogical and Interacting Particle
+Systems with Applications}.
+\newblock Springer, 2004.
+
+\bibitem{MeynTweedie2009}
+S. Meyn and R. Tweedie.
+\newblock \emph{Markov Chains and Stochastic Stability}.
+\newblock Cambridge University Press, second edition, 2009.
+
+\bibitem{BuraczewskiDamekMikosch2016}
+D. Buraczewski, E. Damek, and T. Mikosch.
+\newblock \emph{Stochastic Models with Power-Law Tails: The Equation
+$X=AX+B$}.
+\newblock Springer, 2016.
+\newblock \url{https://doi.org/10.1007/978-3-319-29679-1}.
+
+\bibitem{GurbuzbalabanSimsekliZhu2021}
+M. G\"urb\"uzbalaban, U. \c{S}im\c{s}ekli, and L. Zhu.
+\newblock The heavy-tail phenomenon in SGD.
+\newblock In \emph{Proceedings of the 38th International Conference on
+Machine Learning}, volume 139 of PMLR, pages 3964--3975, 2021.
+\newblock \url{https://proceedings.mlr.press/v139/gurbuzbalaban21a.html}.
+
+\bibitem{HodgkinsonMahoney2021}
+L. Hodgkinson and M. Mahoney.
+\newblock Multiplicative noise and heavy tails in stochastic optimization.
+\newblock In \emph{Proceedings of the 38th International Conference on
+Machine Learning}, volume 139 of PMLR, pages 4262--4274, 2021.
+\newblock \url{https://proceedings.mlr.press/v139/hodgkinson21a.html}.
+
+\bibitem{CohenEtAl2021}
+J. M. Cohen, S. Kaur, Y. Li, J. Z. Kolter, and A. Talwalkar.
+\newblock Gradient descent on neural networks typically occurs at the edge
+of stability.
+\newblock In \emph{International Conference on Learning Representations},
+2021.
+\newblock \url{https://arxiv.org/abs/2103.00065}.
+
+\bibitem{AhnZhangSra2022}
+K. Ahn, J. Zhang, and S. Sra.
+\newblock Understanding the unstable convergence of gradient descent.
+\newblock In \emph{Proceedings of the 39th International Conference on
+Machine Learning}, volume 162 of PMLR, pages 247--257, 2022.
+\newblock \url{https://proceedings.mlr.press/v162/ahn22a.html}.
+
+\bibitem{AroraLiPanigrahi2022}
+S. Arora, Z. Li, and A. Panigrahi.
+\newblock Understanding gradient descent on the edge of stability in deep
+learning.
+\newblock In \emph{Proceedings of the 39th International Conference on
+Machine Learning}, volume 162 of PMLR, pages 948--1024, 2022.
+\newblock \url{https://proceedings.mlr.press/v162/arora22a.html}.
+
+\bibitem{DamianNichaniLee2023}
+A. Damian, E. Nichani, and J. D. Lee.
+\newblock Self-stabilization: The implicit bias of gradient descent at the
+edge of stability.
+\newblock In \emph{International Conference on Learning Representations},
+2023.
+\newblock \url{https://arxiv.org/abs/2209.15594}.
+
+\bibitem{Arnold1998}
+L. Arnold.
+\newblock \emph{Random Dynamical Systems}.
+\newblock Springer Monographs in Mathematics. Springer, 1998.
+\newblock \url{https://doi.org/10.1007/978-3-662-12878-7}.
+
+\bibitem{PlattSpiegelTresser1993}
+N. Platt, E. A. Spiegel, and C. Tresser.
+\newblock On--off intermittency: A mechanism for bursting.
+\newblock \emph{Physical Review Letters}, 70(3):279--282, 1993.
+\newblock \url{https://doi.org/10.1103/PhysRevLett.70.279}.
+
+\bibitem{HeagyPlattHammel1994}
+J. F. Heagy, N. Platt, and S. M. Hammel.
+\newblock Characterization of on--off intermittency.
+\newblock \emph{Physical Review E}, 49(2):1140--1150, 1994.
+\newblock \url{https://doi.org/10.1103/PhysRevE.49.1140}.
+
+\bibitem{OttSommerer1994}
+E. Ott and J. C. Sommerer.
+\newblock Blowout bifurcations: The occurrence of riddled basins and
+on--off intermittency.
+\newblock \emph{Physics Letters A}, 188(1):39--47, 1994.
+\newblock \url{https://doi.org/10.1016/0375-9601(94)90114-7}.
+
+\bibitem{Asmussen2003}
+S. Asmussen.
+\newblock \emph{Applied Probability and Queues}.
+\newblock Stochastic Modelling and Applied Probability, volume 51.
+Springer, New York, second edition, 2003.
+\newblock \url{https://doi.org/10.1007/b97236}.
+
+\bibitem{Kesten1974}
+H. Kesten.
+\newblock Renewal theory for functionals of a Markov chain with general
+state space.
+\newblock \emph{The Annals of Probability}, 2(3):355--386, 1974.
+\newblock \url{https://doi.org/10.1214/aop/1176996654}.
+
+\bibitem{NeyNummelin1987I}
+P. Ney and E. Nummelin.
+\newblock Markov additive processes I: Eigenvalue properties and limit
+theorems.
+\newblock \emph{The Annals of Probability}, 15(2):561--592, 1987.
+\newblock \url{https://doi.org/10.1214/aop/1176992159}.
+
+\bibitem{NeyNummelin1987II}
+P. Ney and E. Nummelin.
+\newblock Markov additive processes II: Large deviations.
+\newblock \emph{The Annals of Probability}, 15(2):593--609, 1987.
+\newblock \url{https://doi.org/10.1214/aop/1176992160}.
+
+\bibitem{Alsmeyer1994}
+G. Alsmeyer.
+\newblock On the Markov renewal theorem.
+\newblock \emph{Stochastic Processes and their Applications}, 50(1):37--56,
+1994.
+\newblock \url{https://doi.org/10.1016/0304-4149(94)90146-5}.
+
+\end{thebibliography}
+
+\end{document}
